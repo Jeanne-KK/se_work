@@ -24,31 +24,47 @@ def db_connection():
     except FileNotFoundError:
         return f'<h1>JSON file not found at {json_file_path}</h1>'
     
-@app.route('/login')
-def login():
-    return render_template('inout/login.html')
 
-@app.route('/signup')
-def signup():
-    return render_template('inout/register.html')
 
 @app.route('/home')
 def homepage():
-    return app.send_static_file('home.html')
+    return render_template('home.html')
 
 @app.route('/overview')
 def overview():
-    return app.send_static_file('overview.html')
+    return render_template('overview.html')
 
 @app.route('/teacher_home')
 def t_home():
-    return app.send_static_file('t_home.html')
+    return render_template('t_home.html')
 
 @app.route('/subject_credit')
 def s_credit():
-    return app.send_static_file('sj_credit.html')
+    return render_template('sj_credit.html')
 
 @app.route('/subject_add')
 def s_add():
-    return app.send_static_file('subject_add.html')
+    return render_template('subject_add.html')
+
+@app.route('/subject_list')
+def s_list():
+    return render_template('subject_list.html')
+
+@app.route('/student_reg')
+def s_reg():
+    return render_template('regist_s.html')
+
+@app.route('/teacher_reg')
+def t_reg():
+    return render_template('regist_t.html')
+
+@app.route('/login')
+def login():
+    return render_template('login.html')
+
+@app.route('/who')
+def who():
+    return render_template('who.html')
+
+
 

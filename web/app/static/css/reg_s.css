@@ -1,0 +1,203 @@
+body {
+    background-color: #334568;
+}
+
+nav {
+    background-color: #fecf2a;
+    height: 51px;
+    display: flex;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    justify-content: space-between;
+    align-items: center;
+}
+
+.active {
+    font-family: "Inter", Helvetica;
+    font-weight: 700;
+    color: #334568;
+    font-size: 20px;
+    float: left;
+    padding: 14px 16px;
+}
+
+.rectangle {
+    position: absolute;
+    width: 534px;
+    height: 578px;
+    top: 18%;
+    left: 33%;
+    background-color: #ffffff;
+    border-radius: 25px;
+}
+
+.topic {
+    position: absolute;
+    width: 368px;
+    top: 35px;
+    left: 90px;
+    font-family: "Inter", Helvetica;
+    font-weight: 700;
+    color: #000000;
+    font-size: 25px;
+    letter-spacing: 0;
+    line-height: normal;
+}
+
+.topic1 {
+    position: absolute;
+    width: 368px;
+    top: 95px;
+    left: 53px;
+    font-family: "Inter", Helvetica;
+    font-weight: 500;
+    color: #000000;
+    font-size: 16px;
+    letter-spacing: 0;
+    line-height: normal;
+}
+
+.name {
+    width: 170px;
+    margin-top: 2%;
+    background-color: #ffffff;
+    border-radius: 10px;
+    position: absolute;
+    height: 30px;
+    font-size: 16px;
+}
+
+.topic2 {
+    position: absolute;
+    width: 368px;
+    top: 185px;
+    left: 53px;
+    font-family: "Inter", Helvetica;
+    font-weight: 500;
+    color: #000000;
+    font-size: 16px;
+    letter-spacing: 0;
+    line-height: normal;
+}
+
+.surname {
+    width: 270px;
+    margin-top: 2%;
+    background-color: #ffffff;
+    border-radius: 10px;
+    position: absolute;
+    height: 30px;
+    font-size: 16px;
+}
+
+.topic3 {
+    position: absolute;
+    width: 368px;
+    top: 275px;
+    left: 53px;
+    font-family: "Inter", Helvetica;
+    font-weight: 500;
+    color: #000000;
+    font-size: 16px;
+    letter-spacing: 0;
+    line-height: normal;
+}
+
+.sid {
+    width: 170px;
+    margin-top: 2%;
+    background-color: #ffffff;
+    border-radius: 10px;
+    position: absolute;
+    height: 30px;
+    font-size: 16px;
+}
+
+.topic4 {
+    position: absolute;
+    width: 368px;
+    top: 275px;
+    left: 273px;
+    font-family: "Inter", Helvetica;
+    font-weight: 500;
+    color: #000000;
+    font-size: 16px;
+    letter-spacing: 0;
+    line-height: normal;
+}
+
+.year {
+    width: 100px;
+    margin-top: 2%;
+    background-color: #ffffff;
+    border-radius: 10px;
+    position: absolute;
+    height: 30px;
+    font-size: 16px;
+}
+
+.topic5 {
+    position: absolute;
+    width: 368px;
+    top: 365px;
+    left: 53px;
+    font-family: "Inter", Helvetica;
+    font-weight: 500;
+    color: #000000;
+    font-size: 16px;
+    letter-spacing: 0;
+    line-height: normal;
+}
+
+.mail {
+    width: 170px;
+    margin-top: 2%;
+    background-color: #ffffff;
+    border-radius: 10px;
+    position: absolute;
+    height: 30px;
+    font-size: 16px;
+}
+
+.topic6 {
+    position: absolute;
+    width: 368px;
+    top: 445px;
+    left: 53px;
+    font-family: "Inter", Helvetica;
+    font-weight: 500;
+    color: #000000;
+    font-size: 16px;
+    letter-spacing: 0;
+    line-height: normal;
+}
+
+.pass {
+    width: 170px;
+    margin-top: 2%;
+    background-color: #ffffff;
+    border-radius: 10px;
+    position: absolute;
+    height: 30px;
+    font-size: 16px;
+}
+
+.next {
+    position: absolute;
+    font-family: "Inter", Helvetica;
+    font-weight: 700;
+    font-size: 20px;
+    width: 90px;
+    height: 50px;
+    top: 88%;
+    left: 75%;
+    background-color: #3865bd;
+    color: #ffffff;
+    border-radius: 15px;
+    transition-duration: 0.3s;
+    cursor: pointer;
+}
+
+.next:hover {
+    background-color: #739ff7;
+    color: #000000;
+}
