@@ -1,0 +1,32 @@
+version: "3.9"
+name: "check-grade"
+services:
+  web:
+    build:
+      context: ./web  # Path to the directory containing Dockerfile.web
+      dockerfile: Dockerfile  # Dockerfile name
+    ports:
+      - "56733:8000"
+    volumes:
+      - ./web:/app
+    env_file:
+      - .env.dev
+    links:
+      - mongo
+      
+    
+  mongo:
+    image: mongo:latest  # Use the official MongoDB image
+    hostname: test_mongodb
+    environment:
+      - MONGO_INITDB_DATABASE=test_db
+      - MONGO_INITDB_ROOT_USERNAME=root
+      - MONGO_INITDB_ROOT_PASSWORD=pass
+      
+    ports:
+      - 27017:27017
+    volumes:
+      - ./init-db.js:/docker-entrypoint-initdb.d/init-db.js:ro
+      
+    
+
