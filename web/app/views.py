@@ -1,7 +1,36 @@
-from flask import (jsonify,render_template)
+from flask import (jsonify,render_template, Flask, session, redirect)
+from functools import wraps
 import json
 import os
-from app import app
+from app.user import routes
+from app.user.models import User
+import pymongo
+from pymongo import MongoClient
+
+
+app = Flask(__name__, static_folder='static')
+app.secret_key = 'sethebest'
+#Database
+client = MongoClient(host='test_mongodb',
+                         port=27017, 
+                         username='root', 
+                         password='pass',
+                        authSource="admin")
+db = client["test_db"]
+
+# Decorators
+def login_required(f):
+    @wraps(f)
+    def wrap(*args, **kwargs):
+        if 'logged_in' in session:
+            return f(*args, **kwargs)
+        else:
+            return redirect('/test')
+        
+    return wrap
+
+
+
 
 @app.route('/')
 def home():
@@ -66,5 +95,32 @@ def login():
 def who():
     return render_template('who.html')
 
+
+
+
+
+
+
+
+@app.route('/test')
+def test():
+    return render_template('homes.html')
+
+@app.route('/dashb')
+@login_required
+def dashboard():
+    return render_template('dashboard.html')
+
+@app.route('/user/signup', methods=['POST'])
+def signup():
+    return User().signup()
+
+@app.route('/user/signout')
+def signout():
+    return User().signout()
+
+@app.route('/user/login', methods=['POST'])
+def login_test():
+    return User().login()
 
 

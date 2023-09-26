@@ -2,13 +2,74 @@ body {
     background-color: #334568;
 }
 
-.topnav {
+nav {
     background-color: #fecf2a;
-    margin: -0.5%;
     height: 51px;
+    display: flex;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    justify-content: space-between;
+    align-items: center;
 }
 
-.topnav a {
+.menu {
+    list-style: none;
+}
+
+.menu i {
+    font-weight: 700;
+    color: #334568;
+    font-size: 3rem;
+    margin-right: 1rem;
+}
+
+.list {
+    position: relative;
+}
+
+.popup-menu {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    background-color: #D2E1FF;
+    width: 250px;
+    border-radius: 10px;
+    padding: 1rem;
+    position: absolute;
+    right: 0;
+    list-style: none;
+    display: none;
+    position: absolute;
+    z-index: 1;
+}
+
+.popup-menu li {
+    padding: .5rem 0;
+}
+
+.popup-menu li a {
+    text-decoration: none;
+    color: #334568;
+    font-family: "Inter", Helvetica;
+}
+
+.Logout {
+    padding: .5rem 0;
+    background-color: #FF2E2E;
+    border-radius: 10px;
+    padding: 5px 10px;
+    color: #ffffff;
+    font-size: 16px;
+    position: right;
+    right: 0;
+    float: right;
+    transition-duration: 0.3s;
+    cursor: pointer;
+}
+
+.Logout:hover {
+    background-color: #f94e4e;
+    color: #000000;
+}
+
+.active {
     font-family: "Inter", Helvetica;
     font-weight: 700;
     color: #334568;
@@ -230,4 +291,13 @@ body {
     top: 0;
     left: 103%;
     background-color: #8fb5ff;
+}
+
+.sjname {
+    font-family: "Inter", Helvetica;
+    font-weight: 500;
+    color: #000000;
+    font-size: 24px;
+    text-align: center;
+    margin-top: 2%;
 }

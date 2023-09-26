@@ -1,0 +1,119 @@
+body {
+    background-color: #ffffff;
+}
+
+.topnav {
+    background-color: #fecf2a;
+    margin: -0.5%;
+    height: 51px;
+}
+
+.topnav a {
+    font-family: "Inter", Helvetica;
+    font-weight: 700;
+    color: #334568;
+    font-size: 20px;
+    float: left;
+    padding: 14px 16px;
+}
+
+.area1 {
+    width: 1280px;
+    height: 626px;
+    margin-top: 1%;
+    margin-left: 7.5%;
+    background-color: #bbcff7;
+    border-radius: 50px;
+}
+
+.topic {
+    font-family: "Inter", Helvetica;
+    font-weight: 700;
+    color: #000000;
+    font-size: 40px;
+    text-align: center;
+    margin-top: 2%;
+}
+
+.add {
+    position: absolute;
+    font-family: "Inter", Helvetica;
+    font-weight: 700;
+    font-size: 20px;
+    width: 90px;
+    height: 50px;
+    top: 25%;
+    left: 13%;
+    background-color: #3865bd;
+    color: #ffffff;
+    border-radius: 15px;
+    transition-duration: 0.3s;
+    cursor: pointer;
+}
+
+.add:hover {
+    background-color: #739ff7;
+    color: #000000;
+}
+
+.recg {
+    position: absolute;
+    width: 12%;
+    height: 40px;
+    background-color: #ffffff;
+    border-radius: 5px;
+    text-align: center;
+    top: 33%;
+    left: 15%;
+}
+
+.topic1 {
+    font-family: "Inter", Helvetica;
+    font-weight: 700;
+    color: #000000;
+    font-size: 25px;
+    padding-top: 1.5%;
+    margin-left: 4%;
+}
+
+.recg1 {
+    position: absolute;
+    width: 270%;
+    height: 230%;
+    background-color: #ffffff;
+    border-radius: 15px;
+    top: 130%;
+    left: 10%;
+    text-align: center;
+}
+
+.g1 {
+    font-family: "Inter", Helvetica;
+    font-weight: 600;
+    color: #000000;
+    font-size: 20px;
+    padding-top: 1%;
+    margin-left: 4%;
+    float: left;
+    text-align: left;
+}
+
+.edit {
+    font-family: "Inter", Helvetica;
+    font-weight: 700;
+    width: 60px;
+    height: 40px;
+    background-color: #fa4444;
+    border-radius: 10px;
+    font-size: 18px;
+    transition-duration: 0.3s;
+    cursor: pointer;
+    margin-top: 26%;
+    margin-left: 300%;
+    color: #ffffff;
+}
+
+.edit:hover {
+    background-color: #f89393;
+    color: #000000;
+}

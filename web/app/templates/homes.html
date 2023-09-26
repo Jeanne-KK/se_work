@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Homes</h1>
+    <form action="/user/signup" name="signup_form" method="POST">
+
+        <label for="name">Name</label>
+        <input type="text" name="name" class="field" required>
+
+        <label for="email">Email</label>
+        <input type="email" name="email" class="field" required>
+        
+        <label for="password">Password</label>
+        <input type="password" name="password" class="field" required>
+    
+        <p class="error error--hidden"></p>
+
+        <input type="submit" value="Sign Up" class="btn">
+    
+    
+    </form>
+
+    <form action="/user/login" name="login_form" method="POST">
+
+        <label for="email">Email</label>
+        <input type="email" name="email" class="field" required>
+        
+        <label for="password">Password</label>
+        <input type="password" name="password" class="field" required>
+    
+        <p class="error error--hidden"></p>
+
+        <input type="submit" value="Login" class="btn">
+    
+    
+    </form>
+    <script src="/se_work/web/app/static/js/jquery.js"></script>
+    <script src="/se_work/web/app/static/js/scripts.js"></script>
+</body>
+</html>

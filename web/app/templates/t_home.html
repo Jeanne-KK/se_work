@@ -4,24 +4,99 @@
 <head>
   <meta charset="utf-8">
   <link rel="stylesheet" href="static/css/t_homepage.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
   <title>Teacher Home</title>
 </head>
 
 <body>
-    <div class="topnav">
-      <a class="active">Computer Science CMU</a>
+  <nav>
+    <a class="active">Computer Science CMU</a>
+    <ul class="menu">
+      <li class="list">
+        <a href="javascript:void(0);" onclick="ShowPopupMenu();"><i class="bi bi-list"></i></a>
+        <ul class="popup-menu" id="popupMenu">
+          <li><a href="/overview">ภาพรวม/Overview</a></li>
+          <li><a href="/subject_credit">ภาพรวมหลักสูตร/Subjects</a></li>
+          <li><button class="Logout" type="button">Log out</button></li>
+        </ul>
+      </li>
+    </ul>
+  </nav>
+  <div class="info">
+    ชื่อ - นามสกุล / Name - Surname:
+  </div>
+  <button class="add" id="myBtn" type="button">+ เพิ่มนักศึกษา</button>
+  <div class="box">
+    <div class="topic">
+      รายชื่อนักศึกษาที่ตนเองรับผิดชอบ
     </div>
-    <div class="info">
-        ชื่อ - นามสกุล / Name - Surname:
+    <div class="name">
+      <div class="names">640510686 สิริกร ชัยพัฒนาวรรณ
+        <span class="plans">แผนการศึกษาที่เลือก:
+          <span class="p">แผนสหกิจศึกษา</span>
+        </span>
+      </div>
+
     </div>
-    <button class="add" type="button">+ เพิ่มนักศึกษา</button>
-    <div class="box">
-        <div class="topic">
-            รายชื่อนักศึกษาที่ตนเองรับผิดชอบ
-        </div>
-        <div class="name"></div>
-        <button class="Binfo" type="button">ดูข้อมูล</button>
+    <button class="Binfo" type="button">ดูข้อมูล</button>
+  </div>
+
+
+  <!-- The Modal -->
+  <div id="myModal" class="modal">
+    <!-- Modal content -->
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <div class="ids">รหัสนักศึกษา</div>
+      <form>
+        <input type="text" class="id">
+      </form>&nbsp;
+      <div class="idst">ถึง</div>
+      <form>
+        <input type="text" class="id">
+      </form>
+      <button class="Add" id="myBtn" type="button">Add</button>
     </div>
+  </div>
+
+  <script>
+    // Get the modal
+    var modal = document.getElementById("myModal");
+
+    // Get the button that opens the modal
+    var btn = document.getElementById("myBtn");
+
+    // Get the <span> element that closes the modal
+    var span = document.getElementsByClassName("close")[0];
+
+    // When the user clicks the button, open the modal
+    btn.onclick = function () {
+      modal.style.display = "block";
+    }
+
+    // When the user clicks on <span> (x), close the modal
+    span.onclick = function () {
+      modal.style.display = "none";
+    }
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function (event) {
+      if (event.target == modal) {
+        modal.style.display = "none";
+      }
+    }
+
+    function ShowPopupMenu() {
+      let popupMenu = document.getElementById('popupMenu');
+
+      if (popupMenu.style.display === 'none') {
+          popupMenu.style.display = 'block';
+      } else {
+          popupMenu.style.display = 'none';
+      }
+  }
+  </script>
+
 </body>
 
 </html>

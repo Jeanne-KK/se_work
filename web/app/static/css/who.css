@@ -1,74 +1,74 @@
 body {
-    background-color: #334568;
-    margin: 0 auto;
-  }
-  
-  .active {
-    font-family: "Inter", Helvetica;
-    font-weight: 700;
-    color: #334568;
-    font-size: 20px;
-    float: left;
-    padding: 14px 16px;
-  } 
-  
-  nav{
-    background-color: #fecf2a;
-    height: 51px;
-    display: flex;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-    justify-content: space-between;
-    align-items: center;
-    
-  }
+  background-color: #334568;
+  margin: 0 auto;
+}
 
-  .who .topic {
-    font-family: "Inter-Bold", Helvetica;
-    font-weight: 700;
-    color: #ffffff;
-    font-size: 40px;
-    text-align: center;
-    padding-top: 15%;
-    
-  }
+.active {
+  font-family: "Inter", Helvetica;
+  font-weight: 700;
+  color: #334568;
+  font-size: 20px;
+  float: left;
+  padding: 14px 16px;
+} 
+
+nav{
+  background-color: #fecf2a;
+  height: 51px;
+  display: flex;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  justify-content: space-between;
+  align-items: center;
   
-  .who .BloginS {
-    background-color: #fee386;
-    border-radius: 10px;
-    padding: 10px 40px;
-    font-family: "Inter", Helvetica;
-    font-weight: 700;
-    color: #000000;
-    font-size: 20px;
-    text-align: center;
-    margin-top: 5%;
-    margin-left: 34%;
-    margin-right: 5%;
-    transition-duration: 0.3s;
-    cursor: pointer;
-  }
+}
+
+.who .topic {
+  font-family: "Inter-Bold", Helvetica;
+  font-weight: 700;
+  color: #ffffff;
+  font-size: 40px;
+  text-align: center;
+  padding-top: 15%;
   
-  .who .BloginS:hover {
-    background-color: #ffc506;
-    color: #000000;
-  }
-  
-  .who .BloginT {
-    background-color: #fee386;
-    border-radius: 10px;
-    padding: 10px 40px;
-    font-family: "Inter", Helvetica;
-    font-weight: 700;
-    color: #000000;
-    font-size: 20px;
-    text-align: center;
-    margin-top: 3%;
-    margin-left: 6%;
-    transition-duration: 0.3s;
-    cursor: pointer;
-  }
-  
-  .who .BloginT:hover {
-    background-color: #ffc506;
-    color: #000000;
-  }  
+}
+
+.who .BloginS {
+  background-color: #fee386;
+  border-radius: 10px;
+  padding: 10px 40px;
+  font-family: "Inter", Helvetica;
+  font-weight: 700;
+  color: #000000;
+  font-size: 20px;
+  text-align: center;
+  margin-top: 5%;
+  margin-left: 34%;
+  margin-right: 5%;
+  transition-duration: 0.3s;
+  cursor: pointer;
+}
+
+.who .BloginS:hover {
+  background-color: #ffc506;
+  color: #000000;
+}
+
+.who .BloginT {
+  background-color: #fee386;
+  border-radius: 10px;
+  padding: 10px 40px;
+  font-family: "Inter", Helvetica;
+  font-weight: 700;
+  color: #000000;
+  font-size: 20px;
+  text-align: center;
+  margin-top: 3%;
+  margin-left: 6%;
+  transition-duration: 0.3s;
+  cursor: pointer;
+}
+
+.who .BloginT:hover {
+  background-color: #ffc506;
+  color: #000000;
+}  

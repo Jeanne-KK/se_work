@@ -2,13 +2,74 @@ body {
     background-color: #334568;
 }
 
-.topnav {
+nav {
     background-color: #fecf2a;
-    margin: -0.5%;
     height: 51px;
+    display: flex;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    justify-content: space-between;
+    align-items: center;
 }
 
-.topnav a {
+.menu {
+    list-style: none;
+}
+
+.menu i {
+    font-weight: 700;
+    color: #334568;
+    font-size: 3rem;
+    margin-right: 1rem;
+}
+
+.list {
+    position: relative;
+}
+
+.popup-menu {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    background-color: #D2E1FF;
+    width: 250px;
+    border-radius: 10px;
+    padding: 1rem;
+    position: absolute;
+    right: 0;
+    list-style: none;
+    display: none;
+    position: absolute;
+    z-index: 1;
+}
+
+.popup-menu li {
+    padding: .5rem 0;
+}
+
+.popup-menu li a {
+    text-decoration: none;
+    color: #334568;
+    font-family: "Inter", Helvetica;
+}
+
+.Logout {
+    padding: .5rem 0;
+    background-color: #FF2E2E;
+    border-radius: 10px;
+    padding: 5px 10px;
+    color: #ffffff;
+    font-size: 16px;
+    position: right;
+    right: 0;
+    float: right;
+    transition-duration: 0.3s;
+    cursor: pointer;
+}
+
+.Logout:hover {
+    background-color: #f94e4e;
+    color: #000000;
+}
+
+.active {
     font-family: "Inter", Helvetica;
     font-weight: 700;
     color: #334568;
@@ -21,7 +82,7 @@ body {
     display: flex;
     flex-direction: column;
     position: absolute;
-    padding-top: 0.5%;
+    margin-top: 0.5%;
     margin-left: 3%;
     font-family: "Inter", Helvetica;
     font-weight: 500;
@@ -30,9 +91,21 @@ body {
     line-height: 1.8;
 }
 
+.temp {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    margin-left: 3%;
+    font-family: "Inter", Helvetica;
+    font-weight: 700;
+    color: #ffffff;
+    font-size: 20px;
+    line-height: 1.8;
+    margin-top: 7%;
+}
+
 .plans {
     position: absolute;
-    width: 301px;
     padding-top: 2%;
     left: 72%;
     font-size: 25px;
@@ -52,7 +125,7 @@ body {
     font-size: 20px;
     position: absolute;
     left: 88%;
-    top: 8%;
+    top: 10%;
     transition-duration: 0.3s;
     cursor: pointer;
 }
@@ -65,13 +138,26 @@ body {
 .gpa {
     position: absolute;
     width: 301px;
-    padding-top: 5%;
+    padding-top: 4.7%;
     left: 72%;
     font-size: 25px;
     font-family: "Inter", Helvetica;
     font-weight: 500;
     color: #ffffff;
     line-height: normal;
+}
+
+.impex {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    margin-left: 71.5%;
+    font-family: "Inter", Helvetica;
+    font-weight: 700;
+    color: #ffffff;
+    font-size: 20px;
+    line-height: 1.8;
+    margin-top: 7%;
 }
 
 .study {
@@ -230,3 +316,25 @@ body {
     background-color: #f89393;
     color: #000000;
 }
+
+.sid {
+    font-family: "Inter", Helvetica;
+    font-weight: 500;
+    color: #000000;
+    font-size: 18px;
+    margin-top: 5%;
+    text-align: left;
+    margin-left: -90%;
+}
+
+.g {
+    font-family: "Inter", Helvetica;
+    font-weight: 700;
+    color: #000000;
+}
+
+.vl {
+    border-left: 6px solid rgb(0, 30, 128);
+    height: 214px;
+    margin-left: 50%;
+  }

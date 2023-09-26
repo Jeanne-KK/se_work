@@ -1,10 +1,12 @@
 import os
-from flask import Flask, jsonify
+from flask import Flask, jsonify, render_template
 import pymongo
 from pymongo import MongoClient
+from app.views import app
+#Routes
 
 
-app = Flask(__name__, static_folder='static')
+
 
 # Set your MongoDB URI
 def get_db():
@@ -47,6 +49,24 @@ def check():
         if type(db)==MongoClient:
             db.close()
 
+@app.route("/check_test")
+def check_test():
+    db = ""  # Initialize db to None to handle exceptions correctly
+    app.logger.debug("*BBBBBBBBBBBBBBBBBBBBBB******")
+    try:
+        db = get_db()
+        use = db.user.find()
+        user = [{"_id": u["_id"], "name": u["name"], "email": u["email"]} for u in use]
+        
+        return jsonify({"user": user})  # Return a valid JSON response
+    except Exception as e:
+        return jsonify({"errors": str(e)}), 500  # Return an error response with a 500 status code
+    finally:
+        if isinstance(db, MongoClient):
+            db.close()
+
+
+
 
 @app.route("/insert")
 def insert():
@@ -68,3 +88,4 @@ def insert():
     finally:
         if 'db' in locals() and isinstance(db, MongoClient):
             db.close()
+

@@ -4,16 +4,29 @@
 <head>
     <meta charset="utf-8">
     <link rel="stylesheet" href="static/css/subject_cd.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
     <title>Subject Credits</title>
 </head>
 
 <body>
-    <div class="topnav">
+    <nav>
         <a class="active">Computer Science CMU</a>
-    </div>
+        <ul class="menu">
+            <li class="list">
+                <a href="javascript:void(0);" onclick="ShowPopupMenu();"><i class="bi bi-list"></i></a>
+                <ul class="popup-menu" id="popupMenu">
+                    <li><a href="/overview">ภาพรวม/Overview</a></li>
+                    <li><a href="/subject_credit">ภาพรวมหลักสูตร/Subjects</a></li>
+                    <li><button class="Logout" type="button">Log out</button></li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
     <div class="topic">ภาพรวมหลักสูตร</div>
     <div class="required">วิชาบังคับ<br />(Required Courses)
-        <div class="rec1"></div>
+        <div class="rec1">
+            <div class="sjname">001101</div>
+        </div>
         <div class="cr">Credits:
             <div class="crbox"></div>
         </div>
@@ -60,6 +73,18 @@
             <div class="crbox"></div>
         </div>
     </div>
+
+    <script>
+        function ShowPopupMenu() {
+            let popupMenu = document.getElementById('popupMenu');
+
+            if (popupMenu.style.display === 'none') {
+                popupMenu.style.display = 'block';
+            } else {
+                popupMenu.style.display = 'none';
+            }
+        }
+    </script>
 </body>
 
 </html>

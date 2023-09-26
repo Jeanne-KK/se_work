@@ -27,3 +27,18 @@ db.teacher.insertMany([
 		advisee: ["640510634"]
 	},
 ])
+
+db.user.insertMany([
+	{
+		_id: "test0",
+        name: "test_name0",
+        email: "test_email0",
+        password: "test_pass0"
+	},
+	{
+		_id: "test1",
+        name: "test_name1",
+        email: "test_email1",
+        password: "test_pass1"
+	}
+])

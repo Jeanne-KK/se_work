@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>dashboard</h1>
+    <a href="/user/signout" class="btn btn-secondary">Sign Out</a>
+    <p>
+        <strong>ID:</strong> {{ session['user']['_id'] }}<br>
+        <strong>Name:</strong> {{ session['user']['name'] }}<br>
+        <strong>Email:</strong> {{ session['user']['email'] }}
+
+    </p>
+    <script src="/se_work/web/app/static/js/jquery.js"></script>
+    <script src="/se_work/web/app/static/js/scripts.js"></script>
+</body>
+</html>
