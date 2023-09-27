@@ -81,7 +81,7 @@
                     success: function (resp) {
                         console.log(resp);
                         // หลังจากส่งข้อมูลสำเร็จ นำทางไปยังหน้า "/home"
-                        window.location.href = "/home";
+                        window.location.href = "/teacher_home";
                     },
                     error: function (resp) {
                         $error.text(resp.responseJSON.error).removeClass("error--hidden");

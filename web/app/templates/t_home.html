@@ -5,6 +5,7 @@
   <meta charset="utf-8">
   <link rel="stylesheet" href="static/css/t_homepage.css" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+  <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
   <title>Teacher Home</title>
 </head>
 
@@ -17,30 +18,21 @@
         <ul class="popup-menu" id="popupMenu">
           <li><a href="/overview">ภาพรวม/Overview</a></li>
           <li><a href="/subject_credit">ภาพรวมหลักสูตร/Subjects</a></li>
-          <li><button class="Logout" type="button">Log out</button></li>
+          <li><button class="Logout" type="button"><a href="/user/signout_student" class="btn btn-secondary">Sign Out</a></button></li>
         </ul>
       </li>
     </ul>
   </nav>
   <div class="info">
-    ชื่อ - นามสกุล / Name - Surname:
+    ชื่อ - นามสกุล / Name - Surname:<br> {{session['user']['first_name']}} {{session['user']['last_name']}}
   </div>
   <button class="add" id="myBtn" type="button">+ เพิ่มนักศึกษา</button>
   <div class="box">
-    <div class="topic">
-      รายชื่อนักศึกษาที่ตนเองรับผิดชอบ
+    <div class="topic"> รายชื่อนักศึกษาที่ตนเองรับผิดชอบ </div>
+    <div id="loop_stu" class="name">
+      
     </div>
-    <div class="name">
-      <div class="names">640510686 สิริกร ชัยพัฒนาวรรณ
-        <span class="plans">แผนการศึกษาที่เลือก:
-          <span class="p">แผนสหกิจศึกษา</span>
-        </span>
-      </div>
-
-    </div>
-    <button class="Binfo" type="button">ดูข้อมูล</button>
   </div>
-
 
   <!-- The Modal -->
   <div id="myModal" class="modal">
@@ -60,7 +52,37 @@
   </div>
 
   <script>
-    // Get the modal
+    function showallstudent(data){
+      console.log(data);
+      var container = document.getElementById("loop_stu");
+      var html = '';
+      for (var i = 0; i < data.length; i++){
+        console.log(data[i]["student_ad"]["_id"]);
+        var id = data[i]["student_ad"]["_id"];
+        var first_name = data[i]["student_ad"]["first_name"];
+        var last_name = data[i]["student_ad"]["last_name"];
+        var study_plan = data[i]["student_ad"]["study_plan"];
+        html += `
+          <div class="names">
+          <span class="student-info">${id} ${first_name} ${last_name}</span>
+          <span class="plans">แผนการศึกษาที่เลือก:</span>
+          <span class="p">${study_plan}</span>
+          <button class="Binfo" type="button">ดูข้อมูล</button>
+      </div>
+        `; 
+      }
+      container.innerHTML = html;
+    }
+
+    $(document).ready(function () {
+            $.getJSON("/stu_list", function (data) {
+                // Call the displayData function to update the HTML with the received data
+                showallstudent(data);
+            });
+            
+        });
+    // Rest of your JavaScript code
+
     var modal = document.getElementById("myModal");
 
     // Get the button that opens the modal
@@ -96,7 +118,6 @@
       }
   }
   </script>
-
 </body>
 
 </html>

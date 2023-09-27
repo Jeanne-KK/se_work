@@ -406,6 +406,61 @@ def avggrade():
         if isinstance(db, MongoClient):
             db.close() 
 
+@app.route('/stu_list')
+def stu_list():
+    db=""
+    app.logger.debug("AAAAAAAAAAAAAAAAAAAA")
+    try:
+        app.logger.debug("BBBBBBBBBBBBBBBBBBBBB")
+        db = get_db()
+        app.logger.debug(type(session["user"]["_id"]))
+
+        data = db.teacher.aggregate([
+                    {
+                        "$match": { "_id": session['user']['_id'] }
+                    },
+                    {
+                        "$lookup": {
+                        "from": "student",
+                        "localField": "advisee",
+                        "foreignField": "_id",
+                        "as": "student_ad"
+                        }
+                    },
+                    {
+                        "$project": {
+                        "_id": 0,
+                        "student_ad": {
+                            "_id": 1,
+                            "first_name": 1,
+                            "last_name": 1,
+                            "study_plan": 1
+                        }
+                        }
+                    },
+                    {
+                        "$unwind": "$student_ad"
+                    },
+                    {
+                        "$sort": {
+                        "student_ad._id": 1 
+                        }
+                    }
+                ]);                
+                        
+        data = list(data) 
+        
+        
+        
+           
+        return jsonify(data)
+        
+    except Exception as e:
+        return jsonify({"errors": str(e)}), 500  # Return an error response with a 500 status code
+    finally:
+        if isinstance(db, MongoClient):
+            db.close() 
+
 @app.route('/all_credit')
 def all_credit():
     db=""
@@ -528,49 +583,57 @@ def all_credit():
             db.close() 
 
 
+@app.route('/login')
+def login():
+    return render_template('login.html')
+
 @app.route('/home')
 def homepage():
     return render_template('home.html')
-
-@app.route('/overview')
-@login_required
-def overview():
-    
-    return render_template('overview.html')
-
-@app.route('/teacher_home')
-def t_home():
-
-    return render_template('t_home.html')
-
-@app.route('/subject_credit')
-@login_required
-def s_credit():
-    
-    return render_template('sj_credit.html')
-@app.route('/test')
-def test():
-    return render_template('test.html')
-
-@app.route('/subject_add')
-def s_add():
-    return render_template('subject_add.html')
-
-@app.route('/subject_list')
-def s_list():
-    return render_template('subject_list.html')
 
 @app.route('/student_reg')
 def s_reg():
     return render_template('regist_s.html')
 
+@app.route('/overview')
+@login_required
+def overview():
+    return render_template('overview.html')
+
+@app.route('/subject_credit')
+@login_required
+def s_credit(): 
+    return render_template('sj_credit.html')
+
+
 @app.route('/teacher_reg')
 def t_reg():
     return render_template('regist_t.html')
 
-@app.route('/login')
-def login():
-    return render_template('login.html')
+@app.route('/teacher_home')
+def t_home():
+    return render_template('t_home.html')
+
+
+
+
+@app.route('/subject_add')
+def s_add():
+    return render_template('subject_add.html')
+
+
+
+@app.route('/test')
+def test():
+    return render_template('test.html')
+@app.route('/subject_list')
+def s_list():
+    return render_template('subject_list.html')
+
+
+
+
+
 
 @app.route('/who')
 def who():
@@ -615,3 +678,4 @@ def login_teacher():
 
 
 
+#า

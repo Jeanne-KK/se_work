@@ -6,7 +6,7 @@ db.teacher.insertMany([
 		"_id": "0001",
 		"first_name": "Areerat",
 		"last_name": "Trongratsameethong",
-		"cmu_acc": "arrer_cmu.ac.th",
+		"cmu_acc": "arrer_@cmu.ac.th",
 		"pass": "1234",
 		"advisee": ["640510641", "640510666"]
 	},
@@ -14,7 +14,7 @@ db.teacher.insertMany([
 		"_id": "0002",
 		"first_name": "Kamonphop",
 		"last_name": "Srisopha",
-		"cmu_acc": "kamonphop_cmu.ac.th",
+		"cmu_acc": "kamonphop_@cmu.ac.th",
 		"pass": "1234",
 		"advisee": ["640510713"]
 	},
@@ -22,7 +22,7 @@ db.teacher.insertMany([
 		"_id": "0003",
 		"first_name": "Varin",
 		"last_name": "Chouvatut",
-		"cmu_acc": "varin_vcmu.ac.th",
+		"cmu_acc": "varin_@cmu.ac.th",
 		"pass": "1234",
 		"advisee": ["640510634"]
 	},

@@ -99,7 +99,7 @@ nav {
     color: #000000;
     font-size: 20px;
     position: absolute;
-    left: 84%;
+    right: 5px; /* Position to the right edge of the screen */
     top: 9%;
     transition-duration: 0.3s;
     cursor: pointer;
@@ -113,8 +113,9 @@ nav {
 .box {
     width: 1150px;
     height: 600px;
-    margin-top: 7%;
-    margin-left: 11%;
+    margin: auto;
+    margin-top: 50vh;
+    transform: translateY(-50%);
     background-color: #d1e1ff;
     border-radius: 20px;
 }
@@ -132,21 +133,38 @@ nav {
 }
 
 .name {
-    width: 877px;
-    margin-top: 5%;
+    margin-top: 5%; /* Adjust margin top as needed */
     margin-left: 3%;
-    background-color: #ffffff;
-    border-radius: 15px;
     position: absolute;
-    height: 49px;
+    width: 90%;
+    padding: 20px; /* Adjust padding as needed for spacing */
+    font-family: "Inter", Helvetica;
+    font-weight: 500;
+    color: #000000;
+    font-size: 24px;
+    overflow: hidden; /* Ensures content doesn't overflow */
+}
+  
+.names {
+    margin-top: 15px;
+    display: flex;
+    justify-content: space-between; /* Align items and push the button to the right */
+    font-family: "Inter", Helvetica;
+    font-weight: 500;
+    color: #000000;
+    background-color: #ffffff;
+    border-radius: 5px;
+    padding: 10px;
+    font-size: 24px;
+    align-items: center; /* Align items vertically */
+}
+.student-info {
+    margin-right: 10px;
 }
 
 .Binfo {
-    position: absolute;
-    width: 123px;
-    height: 49px;
-    margin-top: 5%;
-    margin-left: 63%;
+    height: auto;
+    margin-left: 10px; /* Add some margin between the text and the button */
     background-color: #8fb5ff;
     border-radius: 10px;
     font-family: "Inter", Helvetica;
@@ -155,12 +173,14 @@ nav {
     font-size: 20px;
     transition-duration: 0.3s;
     cursor: pointer;
+    margin-left: auto; /* Push the button to the right */
 }
-
+  
 .Binfo:hover {
     background-color: #2b6ef5;
     color: #ffffff;
 }
+  
 
 .modal {
     display: none;
@@ -258,15 +278,6 @@ nav {
 .Add:hover {
     background-color: #87deb9;
     color: #000000;
-}
-
-.names {
-    font-family: "Inter", Helvetica;
-    font-weight: 500;
-    color: #000000;
-    font-size: 24px;
-    margin-left: 4%;
-    padding-top: 1%;
 }
 
 .plans {
