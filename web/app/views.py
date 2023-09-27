@@ -31,7 +31,14 @@ def login_required(f):
     return wrap
 
 
-
+def get_db():
+    client = MongoClient(host='test_mongodb',
+                         port=27017, 
+                         username='root', 
+                         password='pass',
+                        authSource="admin")
+    db = client["test_db"]
+    return db
 
 @app.route('/')
 def home():
@@ -55,21 +62,368 @@ def db_connection():
         return f'<h1>JSON file not found at {json_file_path}</h1>'
     
 
+@app.route('/data1')
+def data1():
+    db=""
+    app.logger.debug("AAAAAAAAAAAAAAAAAAAA")
+    try:
+        app.logger.debug("BBBBBBBBBBBBBBBBBBBBB")
+        db = get_db()
+        app.logger.debug(type(session["user"]["_id"]))
+
+        data = db.student.aggregate([
+            {
+                "$match": {
+                "_id": session['user']['_id'] 
+                }
+            },
+            {
+                "$unwind": "$enroll"
+            },
+            {
+                "$match": {
+                "enroll.year": 1
+                }
+            },
+            {
+                "$group": {
+                "_id": "null",
+                "subjects": {
+                    "$push": {
+                    "subject_id": "$enroll.subject_id",
+                    "grade": "$enroll.grade"
+                    }
+                }
+                }
+            },
+            {
+                "$project": {
+                "_id": 0,
+                "subjects": 1
+                }
+            }
+            ]) 
+        
+        
+        app.logger.debug("****************************")
+        #app.logger.debug(data)
+        app.logger.debug("****************************")
+        data_= []
+        for i in data: 
+            data_ += i["subjects"]
+            app.logger.debug(i["subjects"])
+            
+        return jsonify(data_)
+        
+    except Exception as e:
+        return jsonify({"errors": str(e)}), 500  # Return an error response with a 500 status code
+    finally:
+        if isinstance(db, MongoClient):
+            db.close() 
+
+@app.route('/data2')
+def data2():
+    db=""
+    app.logger.debug("AAAAAAAAAAAAAAAAAAAA")
+    try:
+        app.logger.debug("BBBBBBBBBBBBBBBBBBBBB")
+        db = get_db()
+        app.logger.debug(type(session["user"]["_id"]))
+
+        data = db.student.aggregate([
+            {
+                "$match": {
+                "_id": session['user']['_id'] 
+                }
+            },
+            {
+                "$unwind": "$enroll"
+            },
+            {
+                "$match": {
+                "enroll.year": 2
+                }
+            },
+            {
+                "$group": {
+                "_id": "null",
+                "subjects": {
+                    "$push": {
+                    "subject_id": "$enroll.subject_id",
+                    "grade": "$enroll.grade"
+                    }
+                }
+                }
+            },
+            {
+                "$project": {
+                "_id": 0,
+                "subjects": 1
+                }
+            }
+            ]) 
+        
+        
+        app.logger.debug("****************************")
+        #app.logger.debug(data)
+        app.logger.debug("****************************")
+        data_= []
+        for i in data: 
+            data_ += i["subjects"]
+            app.logger.debug(i["subjects"])
+            
+        return jsonify(data_)
+        
+    except Exception as e:
+        return jsonify({"errors": str(e)}), 500  # Return an error response with a 500 status code
+    finally:
+        if isinstance(db, MongoClient):
+            db.close() 
+
+@app.route('/data3')
+def data3():
+    db=""
+    app.logger.debug("AAAAAAAAAAAAAAAAAAAA")
+    try:
+        app.logger.debug("BBBBBBBBBBBBBBBBBBBBB")
+        db = get_db()
+        app.logger.debug(type(session["user"]["_id"]))
+
+        data = db.student.aggregate([
+            {
+                "$match": {
+                "_id": session['user']['_id'] 
+                }
+            },
+            {
+                "$unwind": "$enroll"
+            },
+            {
+                "$match": {
+                "enroll.year": 3
+                }
+            },
+            {
+                "$group": {
+                "_id": "null",
+                "subjects": {
+                    "$push": {
+                    "subject_id": "$enroll.subject_id",
+                    "grade": "$enroll.grade"
+                    }
+                }
+                }
+            },
+            {
+                "$project": {
+                "_id": 0,
+                "subjects": 1
+                }
+            }
+            ]) 
+        
+        
+        app.logger.debug("****************************")
+        #app.logger.debug(data)
+        app.logger.debug("****************************")
+        data_= []
+        for i in data: 
+            data_ += i["subjects"]
+            app.logger.debug(i["subjects"])
+            
+        return jsonify(data_)
+        
+    except Exception as e:
+        return jsonify({"errors": str(e)}), 500  # Return an error response with a 500 status code
+    finally:
+        if isinstance(db, MongoClient):
+            db.close() 
+
+
+
+@app.route('/data4')
+def data4():
+    db=""
+    app.logger.debug("AAAAAAAAAAAAAAAAAAAA")
+    try:
+        app.logger.debug("BBBBBBBBBBBBBBBBBBBBB")
+        db = get_db()
+        app.logger.debug(type(session["user"]["_id"]))
+
+        data = db.student.aggregate([
+            {
+                "$match": {
+                "_id": session['user']['_id'] 
+                }
+            },
+            {
+                "$unwind": "$enroll"
+            },
+            {
+                "$match": {
+                "enroll.year": 4
+                }
+            },
+            {
+                "$group": {
+                "_id": "null",
+                "subjects": {
+                    "$push": {
+                    "subject_id": "$enroll.subject_id",
+                    "grade": "$enroll.grade"
+                    }
+                }
+                }
+            },
+            {
+                "$project": {
+                "_id": 0,
+                "subjects": 1
+                }
+            }
+            ]) 
+        
+        
+        app.logger.debug("****************************")
+        #app.logger.debug(data)
+        app.logger.debug("****************************")
+        data_= []
+        for i in data: 
+            data_ += i["subjects"]
+            app.logger.debug(i["subjects"])
+            
+        return jsonify(data_)
+        
+    except Exception as e:
+        return jsonify({"errors": str(e)}), 500  # Return an error response with a 500 status code
+    finally:
+        if isinstance(db, MongoClient):
+            db.close() 
+
+@app.route('/tadvisee')
+def tadvisee():
+    db=""
+    app.logger.debug("AAAAAAAAAAAAAAAAAAAA")
+    try:
+        app.logger.debug("BBBBBBBBBBBBBBBBBBBBB")
+        db = get_db()
+        app.logger.debug(type(session["user"]["_id"]))
+
+        data = db.student.aggregate([
+            {
+                "$lookup":{
+                    "from": "teacher",
+                    "localField": "_id",
+                    "foreignField": "advisee",
+                    "as": "teacherad"
+                }
+            },
+            {
+                "$match":{
+                    "_id": session['user']['_id']
+                }
+            },
+            {
+                "$project":{
+                    "_id": 0,	
+                    "teacherad": {
+                        "first_name": 1,
+                        "last_name": 1
+                    }
+                }
+            },
+            
+        ]); 
+        
+        
+        
+        data_= []
+        for i in data:
+            data_ += i["teacherad"]
+            
+            
+        app.logger.debug("****************************")
+        
+        app.logger.debug("****************************")
+        return jsonify(data_)
+    except Exception as e:
+        return jsonify({"errors": str(e)}), 500  # Return an error response with a 500 status code
+    finally:
+        if isinstance(db, MongoClient):
+            db.close()
+
+@app.route('/avggrade')
+def avggrade():
+    db=""
+    app.logger.debug("AAAAAAAAAAAAAAAAAAAA")
+    try:
+        app.logger.debug("BBBBBBBBBBBBBBBBBBBBB")
+        db = get_db()
+        app.logger.debug(type(session["user"]["_id"]))
+
+        data = db.student.aggregate([
+                {
+                    "$match": { "_id": session['user']['_id'] } 
+                },
+                {
+                    "$unwind": "$enroll" 
+                },
+                {
+                    "$group": {
+                    "_id": "null", 
+                    "totalWeightedGrade": { "$sum": { "$multiply": ["$enroll.grade", "$enroll.credit"] } }, 
+                    "totalCredits": { "$sum": "$enroll.credit" } 
+                    }
+                },
+                {
+                    "$project": {
+                    "_id": 0,
+                    "weightedAverageGrade": { "$divide": ["$totalWeightedGrade", "$totalCredits"] }
+                    }
+                },
+                {
+                   "$project": {
+                    "Grade": { "$round": ["$weightedAverageGrade", 3] } 
+                    }
+                }
+        ]);
+                
+                        
+        
+        data = list(data) 
+        
+        app.logger.debug("****************************")  
+        app.logger.debug(data[0]["Grade"])
+        app.logger.debug("****************************")
+
+           
+        return jsonify(data)
+        
+    except Exception as e:
+        return jsonify({"errors": str(e)}), 500  # Return an error response with a 500 status code
+    finally:
+        if isinstance(db, MongoClient):
+            db.close() 
 
 @app.route('/home')
 def homepage():
     return render_template('home.html')
 
 @app.route('/overview')
+@login_required
 def overview():
+    
     return render_template('overview.html')
 
 @app.route('/teacher_home')
 def t_home():
+
     return render_template('t_home.html')
 
 @app.route('/subject_credit')
+@login_required
 def s_credit():
+    
     return render_template('sj_credit.html')
 
 @app.route('/subject_add')

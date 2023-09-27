@@ -25,7 +25,7 @@ class User_student:
             "pass": request.form.get('pass'),
             "enroll": request.form.get('enroll')
         }
-
+        user['pass'] = pbkdf2_sha256.encrypt(user['pass'])
         if db.student.find_one({ "cmu_acc": user['cmu_acc'] }):
             return jsonify({ "error": "Email address already in use" }), 400
 

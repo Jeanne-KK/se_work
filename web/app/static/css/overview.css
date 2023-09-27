@@ -177,7 +177,8 @@ nav {
     font-weight: 500;
     color: #ffffff;
     font-size: 20px;
-    text-align: center;
+    text-align: left;
+    
 }
 
 .study .y2 {
@@ -188,7 +189,8 @@ nav {
     font-weight: 500;
     color: #ffffff;
     font-size: 20px;
-    text-align: center;
+    
+    text-align: left;
 }
 
 .study .y3 {
@@ -199,7 +201,8 @@ nav {
     font-weight: 500;
     color: #ffffff;
     font-size: 20px;
-    text-align: center;
+    
+    text-align: left;
 }
 
 .study .y4 {
@@ -210,7 +213,8 @@ nav {
     font-weight: 500;
     color: #ffffff;
     font-size: 20px;
-    text-align: center;
+    
+    text-align: left;
 }
 
 .study .y1 .board {
@@ -317,14 +321,30 @@ nav {
     color: #000000;
 }
 
+.board {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Two equal-width columns */
+    gap: 10px; /* Adjust the gap between columns */
+    border: 1px solid #000; /* Optional: Add a border for visualization */
+    border-radius: 20px;
+    padding: 10px;
+    background-color: #ffffff;
+}
+
 .sid {
+    /* Adjust styles as needed for the content within .sid */
     font-family: "Inter", Helvetica;
     font-weight: 500;
     color: #000000;
     font-size: 18px;
-    margin-top: 5%;
-    text-align: left;
-    margin-left: -90%;
+    box-sizing: border-box;
+    padding-left: 12%;
+
+}
+.sid .left-content,
+.sid .middle-content,
+.sid .right-content {
+    padding: 2px;
 }
 
 .g {
@@ -337,4 +357,4 @@ nav {
     border-left: 6px solid rgb(0, 30, 128);
     height: 214px;
     margin-left: 50%;
-  }
+}

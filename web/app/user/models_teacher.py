@@ -23,6 +23,7 @@ class User_teacher:
             "pass": request.form.get('pass'),
             "advisee": ""
         }
+        user['pass'] = pbkdf2_sha256.encrypt(user['pass'])
 
         if db.teacher.find_one({ "cmu_acc": user['cmu_acc'] }):
             return jsonify({ "error": "Email address already in use" }), 400
