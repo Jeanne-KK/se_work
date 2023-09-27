@@ -5,6 +5,7 @@
     <meta charset="utf-8">
     <link rel="stylesheet" href="static/css/subject_cd.css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
     <title>Subject Credits</title>
 </head>
 
@@ -28,54 +29,73 @@
             <div class="sjname">001101</div>
         </div>
         <div class="cr">Credits:
-            <div class="crbox"></div>
+            <div id="req" class="crbox"></div>
         </div>
     </div>
     <div class="compulsory">วิชาเอกบังคับร่วม<br />(Compulsory Courses)
         <div class="rec2"></div>
         <div class="cr">Credits:
-            <div class="crbox"></div>
+            <div id="reqco" class="crbox"></div>
         </div>
     </div>
     <div class="plan-spe">วิชาเอกบังคับประจำแผน<br />(Plan-specific)
         <div class="rec3"></div>
         <div class="cr">Credits:
-            <div class="crbox"></div>
+            <div id="specco" class="crbox"></div>
         </div>
     </div>
     <div class="core-courses">วิชาแกน<br />(Core Courses)
         <div class="rec4"></div>
         <div class="cr">Credits:
-            <div class="crbox"></div>
+            <div id="core" class="crbox"></div>
         </div>
     </div>
     <div class="major">วิชาเอกเลือก<br />(Major Elective Courses)
         <div class="rec5"></div>
         <div class="cr">Credits:
-            <div class="crbox"></div>
+            <div id="majorco" class="crbox"></div>
         </div>
     </div>
     <div class="minor">วิชาโท<br />(Minor Courses)
         <div class="rec6"></div>
         <div class="cr">Credits:
-            <div class="crbox"></div>
+            <div id="minor" class="crbox"></div>
         </div>
     </div>
     <div class="ge">วิชาเลือกทั่วไป<br />(GE Elective)
         <div class="rec7"></div>
         <div class="cr">Credits:
-            <div class="crbox"></div>
+            <div id="ge" class="crbox"></div>
         </div>
     </div>
     <div class="free">วิชาเลือกเสรี<br />(Free Elective)
         <div class="rec8"></div>
         <div class="cr">Credits:
-            <div class="crbox"></div>
+            <div id="free" class="crbox"></div>
         </div>
     </div>
 
+
     <script>
-       
+        function showcredit(data){
+            console.log(data[0]["วิชาบังคับ"])
+            var container = document.getElementById("req").innerHTML = data[0]["วิชาบังคับ"];
+            var container = document.getElementById("reqco").innerHTML = data[0]["เอกบังคับร่วม"];
+            var container = document.getElementById("specco").innerHTML = data[0]["เอกประจำแผน"];
+            var container = document.getElementById("core").innerHTML = data[0]["วิชาแกน"];
+            var container = document.getElementById("majorco").innerHTML = data[0]["เอกเลือก"];
+            var container = document.getElementById("minor").innerHTML = data[0]["โท"];
+            var container = document.getElementById("ge").innerHTML = data[0]["GE"];
+            var container = document.getElementById("free").innerHTML = data[0]["เสรี"];
+            
+            
+        }
+        $(document).ready(function () {
+            $.getJSON("/all_credit", function (data) { 
+                showcredit(data);
+            });
+            
+        });
         function ShowPopupMenu() {
             let popupMenu = document.getElementById('popupMenu');
 
