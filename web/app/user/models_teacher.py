@@ -6,6 +6,7 @@ class User_teacher:
     def start_session_teacher(self, user):
         session['logged_in'] = True
         session['user'] = user
+        session['type'] = "2"
         return jsonify(user), 200
 
 
