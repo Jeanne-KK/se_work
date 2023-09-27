@@ -65,6 +65,38 @@ def check_test():
         if isinstance(db, MongoClient):
             db.close()
 
+@app.route("/check_student")
+def check_student():
+    db = ""  # Initialize db to None to handle exceptions correctly
+    app.logger.debug("*BBBBBBBBBBBBBBBBBBBBBB******")
+    try:
+        db = get_db()
+        use = db.student.find()
+        user = [{"_id": u["_id"], "first_name": u["first_name"], "last_name": u["last_name"], "cmu_acc": u["cmu_acc"]} for u in use]
+        
+        return jsonify({"user": user})  # Return a valid JSON response
+    except Exception as e:
+        return jsonify({"errors": str(e)}), 500  # Return an error response with a 500 status code
+    finally:
+        if isinstance(db, MongoClient):
+            db.close()
+
+@app.route("/check_teacher")
+def check_teacher():
+    db=""
+    app.logger.debug("*AAAAAAAAAAAAAAAAAAAAAAA******")
+    try:
+        db = get_db()
+        tea = db.teacher.find()
+        teacher = [{"_id": teac["_id"], "first_name:": teac["first_name"]} for teac in tea]
+        
+        return jsonify({"teachers": teacher})
+    except:
+        pass
+    finally:
+        if type(db)==MongoClient:
+            db.close()
+
 
 
 

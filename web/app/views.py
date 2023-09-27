@@ -3,7 +3,8 @@ from functools import wraps
 import json
 import os
 from app.user import routes
-from app.user.models import User
+from app.user.models_student import User_student
+from app.user.models_teacher import User_teacher
 import pymongo
 from pymongo import MongoClient
 
@@ -25,7 +26,7 @@ def login_required(f):
         if 'logged_in' in session:
             return f(*args, **kwargs)
         else:
-            return redirect('/test')
+            return redirect('/home')
         
     return wrap
 
@@ -99,29 +100,38 @@ def who():
 
 
 
-
-
-
-
-@app.route('/test')
-def test():
-    return render_template('homes.html')
-
 @app.route('/dashb')
 @login_required
-def dashboard():
+def dashb():
     return render_template('dashboard.html')
 
-@app.route('/user/signup', methods=['POST'])
-def signup():
-    return User().signup()
 
-@app.route('/user/signout')
-def signout():
-    return User().signout()
+@app.route('/user/signup_student', methods=['POST'])
+def signup_student():
+    return User_student().signup_student()
 
-@app.route('/user/login', methods=['POST'])
-def login_test():
-    return User().login()
+@app.route('/user/signout_student')
+def signout_student():
+    return User_student().signout_student()
+
+@app.route('/user/login_student', methods=['POST'])
+def login_student():
+    return User_student().login_student()
+##########################################################################
+@app.route('/user/signup_teacher', methods=['POST'])
+def signup_teacher():
+    return User_teacher().signup_teacher()
+
+@app.route('/user/signout_teacher')
+def signout_teacher():
+    return User_teacher().signout_teacher()
+
+@app.route('/user/login_teacher', methods=['POST'])
+def login_teacher():
+    return User_teacher().login_teacher()
+
+
+
+
 
 

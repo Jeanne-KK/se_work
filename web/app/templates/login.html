@@ -15,19 +15,87 @@
   </div>
   <div class="log">Login</div>
   <div class="modal">
-    <div class="email">Email
-      <form>
-        <input type="text" class="enter_e">
-      </form>
+    <form action="/user/login_student" name="login_form" method="POST">
+
+      <div class="email">Email
+        <input type="email" name="cmu_acc" class="enter_e">
     </div>
     <div class="password">Password
-      <form>
-        <input type="text" class="enter_e">
-      </form>
+        <input type="password" name="pass" class="enter_e">
     </div>
-    <button class="Login" id="myBtn" type="button">Login</button>
+
+    <input class="Login" id="myBtn" type="submit" value="Login">
+    </form>
   </div>
 
+
+  <script>
+
+  // ดึงค่า userType จาก URL
+  const urlParams = new URLSearchParams(window.location.search);
+  const userType = urlParams.get('userType');
+
+  // ตรวจสอบค่า userType
+  if (userType === '1') {
+    console.log("sdfghjkl")
+      // กระทำสิ่งที่คุณต้องการเมื่อ userType เป็น '1'
+      $(document).ready(function () {
+            $("form[name=login_form]").submit(function (e) {
+                e.preventDefault();
+
+                var $form = $(this);
+                var $error = $form.find(".error");
+                var data = $form.serialize();
+
+                $.ajax({
+                    url: "/user/login_student",
+                    type: "POST",
+                    data: data,
+                    dataType: "json",
+                    success: function (resp) {
+                        console.log(resp);
+                        // หลังจากส่งข้อมูลสำเร็จ นำทางไปยังหน้า "/home"
+                        window.location.href = "/home";
+                    },
+                    error: function (resp) {
+                        $error.text(resp.responseJSON.error).removeClass("error--hidden");
+                    }
+                });
+            });
+        });
+  } else {
+      // กระทำสิ่งที่คุณต้องการเมื่อ userType ไม่ใช่ '1' (หรือไม่มี userType)
+      $(document).ready(function () {
+            $("form[name=login_form]").submit(function (e) {
+                e.preventDefault();
+
+                var $form = $(this);
+                var $error = $form.find(".error");
+                var data = $form.serialize();
+
+                $.ajax({
+                    url: "/user/login_teacher",
+                    type: "POST",
+                    data: data,
+                    dataType: "json",
+                    success: function (resp) {
+                        console.log(resp);
+                        // หลังจากส่งข้อมูลสำเร็จ นำทางไปยังหน้า "/home"
+                        window.location.href = "/home";
+                    },
+                    error: function (resp) {
+                        $error.text(resp.responseJSON.error).removeClass("error--hidden");
+                    }
+                });
+            });
+        });
+  }
+
+
+  </script>
+  <script src="/se_work/web/app/static/js/jquery.js"></script>
 </body>
+
+
 
 </html>

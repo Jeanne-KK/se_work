@@ -15,9 +15,25 @@
 
   <div class="who">
     <div class="topic">Who is using?</div>
-    <button class="BloginS" type="button">นักศึกษา<br />Student</button>
-    <button class="BloginT" type="button">อาจารย์<br />Teacher</button>
+    <button class="BloginS" type="button" onclick="handleStudent()">นักศึกษา<br />Student</button>
+    <button class="BloginT" type="button" onclick="handleTeacher()">อาจารย์<br />Teacher</button>
   </div>
+
+  <script>
+    function handleStudent() {
+      // นักศึกษารับค่า 1
+      var value = 1;
+      // Redirect to /student_reg and pass the value as a query parameter
+      window.location.href = '/student_reg?value=' + value;
+    }
+
+    function handleTeacher() {
+      // อาจารย์รับค่า 2
+      var value = 2;
+      // Redirect to /teacher_reg and pass the value as a query parameter
+      window.location.href = '/teacher_reg?value=' + value;
+    }
+  </script>
 
 </body>
 

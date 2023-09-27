@@ -7,13 +7,10 @@
 </head>
 <body>
     <h1>dashboard</h1>
-    <a href="/user/signout" class="btn btn-secondary">Sign Out</a>
-    <p>
-        <strong>ID:</strong> {{ session['user']['_id'] }}<br>
-        <strong>Name:</strong> {{ session['user']['name'] }}<br>
-        <strong>Email:</strong> {{ session['user']['email'] }}
-
-    </p>
+    <a href="/user/signout_student" class="btn btn-secondary">Sign Out</a>
+    <strong>ID:</strong> {{ session['user']['_id'] }}<br>
+    <strong>first_name:</strong> {{ session['user']['first_name'] }}<br>
+    <strong>cmu_acc:</strong> {{ session['user']['cmu_acc'] }}
     <script src="/se_work/web/app/static/js/jquery.js"></script>
     <script src="/se_work/web/app/static/js/scripts.js"></script>
 </body>

@@ -15,32 +15,36 @@
         <a class="active">Computer Science CMU</a>
     </nav>
     <div class="rectangle">
-        <div class="topic">ข้อมูลอาจารย์ - Teacher's Info</div>
-        <div class="topic1">ชื่อ - Name
-            <form>
-                <input type="text" class="name" placeholder="Enter name">
-            </form>&nbsp;
-        </div>
-        <div class="topic2">นามสกุล - Surname
-            <form>
-                <input type="text" class="surname" placeholder="Enter surname">
-            </form>&nbsp;
-        </div>
-        <div class="topic5">Email
-            <form>
-                <input type="text" class="mail" placeholder="Enter email">
-            </form>&nbsp;
-        </div>
-        <div class="topic6">Password
-            <form>
-                <input type="text" class="pass" placeholder="Enter password">
-            </form>&nbsp;
-        </div>
-        <div class="choose">เข้าใช้งานในฐานะ
+        <form name="signup_form" method="POST">
+            <div class="topic">ข้อมูลอาจารย์ - Teacher's Info</div>
+            <div class="topic1">ชื่อ - Name
             
-        </div>
-        <button class="next" type="button">Next</button>
+                    <input type="text" name="first_name" class="name" placeholder="Enter name" required>
+                
+            </div>
+            <div class="topic2">นามสกุล - Surname
+                
+                    <input type="text" name="last_name" class="surname" placeholder="Enter surname" required>
+                
+            </div>
+            <div class="topic5">Email
+                
+                    <input type="email" name="cmu_acc" class="mail" placeholder="Enter email" required>
+                
+            </div>
+            <div class="topic6">Password
+
+                    <input type="password" name="pass" class="pass" placeholder="Enter password" required>
+                
+            </div>
+            <div class="choose">เข้าใช้งานในฐานะ
+                
+            </div>
+            <input class="next" type="submit" value="Next">
+        </form>
     </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
     <script>
         function ShowPopupMenu() {
             let popupMenu = document.getElementById('popupMenu');
@@ -51,6 +55,31 @@
                 popupMenu.style.display = 'none';
             }
         }
+
+        $(document).ready(function () {
+            $("form[name=signup_form]").submit(function (e) {
+                e.preventDefault();
+
+                var $form = $(this);
+                var $error = $form.find(".error");
+                var data = $form.serialize();
+
+                $.ajax({
+                    url: "/user/signup_teacher",
+                    type: "POST",
+                    data: data,
+                    dataType: "json",
+                    success: function (resp) {
+                        console.log(resp);
+                        // หลังจากส่งข้อมูลสำเร็จ นำทางไปยังหน้า "/home"
+                        window.location.href = "/home";
+                    },
+                    error: function (resp) {
+                        $error.text(resp.responseJSON.error).removeClass("error--hidden");
+                    }
+                });
+            });
+        });
     </script>
 </body>
 
