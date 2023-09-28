@@ -35,13 +35,13 @@
         </p>
     </div>
     <!-- link ไฟล์ excel ยังทำไม่ได้ -->
-    <div class="temp">Download excel template</div> 
+    <div class="temp"><span id="dowlod" onclick="downloadFile()">Download excel template</span></div> 
     <div class="plans">แผนการศึกษา: {{ session['user']['study_plan'] }}</div>
 
-    <button class="Bplan" id="chooseButton" type="button" onclick="showOptions()">Choose</button>
-    <button id="downloadButton" style="display: none;" onclick="downloadFile()">Download</button>
+
+    
     <input type="file" id="fileInput" style="display: none;">
-    <button class="Bplan" id="uploadButton" name="choose" type="button" style="display: none;" onclick="chooseFile()">Upload</button>
+    <button class="Bplan" id="uploadButton" name="choose" type="button" onclick="chooseFile()">Upload</button>
 
 
     <div id="GPAA" class="gpa">Cumulative GPA :</div>
@@ -74,16 +74,7 @@
         </div>
     </div>
 
-    <script>
-
-    function showOptions() {
-        // แสดงปุ่ม "Download" และ "Upload"
-        document.getElementById('downloadButton').style.display = 'inline-block';
-        document.getElementById('uploadButton').style.display = 'inline-block';
-        // ซ่อนปุ่ม "Choose"
-        document.getElementById('chooseButton').style.display = 'none';
-    }
-
+    <script>   
     function downloadFile() {
         // นี่คือส่วนของโค้ดที่คุณสามารถใช้ในการดาวน์โหลดไฟล์ Excel
         // ในที่นี้จะแสดงตัวอย่างโค้ดเปิดหน้าต่างดาวน์โหลดไฟล์
@@ -110,6 +101,18 @@
     });
 
 
+        const hoverText = document.getElementById("dowlod");
+
+        hoverText.onmouseover = function() {
+            hoverText.style.color = "gray"; // Change text color on hover
+            hoverText.style.cursor = "pointer";
+        };
+
+        hoverText.onmouseout = function() {
+            hoverText.style.color = "black"; // Reset text color when mouse leaves
+            hoverText.style.cursor = "default";
+        };
+        
     
 
         

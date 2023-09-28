@@ -91,7 +91,8 @@ def data1():
                 "subjects": {
                     "$push": {
                     "subject_id": "$enroll.subject_id",
-                    "grade": "$enroll.grade"
+                    "grade": "$enroll.grade",
+                    "credit": "$enroll.credit"
                     }
                 }
                 }
@@ -150,7 +151,8 @@ def data2():
                 "subjects": {
                     "$push": {
                     "subject_id": "$enroll.subject_id",
-                    "grade": "$enroll.grade"
+                    "grade": "$enroll.grade",
+                    "credit": "$enroll.credit"
                     }
                 }
                 }
@@ -158,7 +160,8 @@ def data2():
             {
                 "$project": {
                 "_id": 0,
-                "subjects": 1
+                "subjects": 1,
+                
                 }
             }
             ]) 
@@ -209,7 +212,8 @@ def data3():
                 "subjects": {
                     "$push": {
                     "subject_id": "$enroll.subject_id",
-                    "grade": "$enroll.grade"
+                    "grade": "$enroll.grade",
+                    "credit": "$enroll.credit"
                     }
                 }
                 }
@@ -270,7 +274,8 @@ def data4():
                 "subjects": {
                     "$push": {
                     "subject_id": "$enroll.subject_id",
-                    "grade": "$enroll.grade"
+                    "grade": "$enroll.grade",
+                    "credit": "$enroll.credit"
                     }
                 }
                 }

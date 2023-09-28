@@ -95,7 +95,7 @@ db.student.insertMany([
 				{subject_id: "204231", grade: 2, year: 2, credit: 3},
 				{subject_id: "204252", grade: 4, year: 2, credit: 3},
 				{subject_id: "208269", grade: 2.5, year: 2, credit: 3},
-				{subject_id: "001255", grade: 3.5, year: 2, credit: 3},
+				{subject_id: "001225", grade: 3.5, year: 2, credit: 3},
 				{subject_id: "201111", grade: 3, year: 2, credit: 3},
 				{subject_id: "204212", grade: 3.5, year: 2, credit: 3},
 				{subject_id: "204232", grade: 3, year: 2, credit: 3},
@@ -136,7 +136,7 @@ db.student.insertMany([
 			{subject_id: "204231", grade: 2, year: 2, credit: 3},
 			{subject_id: "204252", grade: 4, year: 2, credit: 3},
 			{subject_id: "208269", grade: 2.5, year: 2, credit: 3},
-			{subject_id: "001255", grade: 3.5, year: 2, credit: 3},
+			{subject_id: "001225", grade: 3.5, year: 2, credit: 3},
 			{subject_id: "201111", grade: 2, year: 2, credit: 3},
 			{subject_id: "204212", grade: 3.5, year: 2, credit: 3},
 			{subject_id: "204232", grade: 2, year: 2, credit: 3},
@@ -148,14 +148,14 @@ db.student.insertMany([
 			{subject_id: "204451", grade: 2, year: 3, credit: 3},
 			{subject_id: "204333", grade: 3.5, year: 3, credit: 3},
 			{subject_id: "176100", grade: 3.5, year: 3, credit: 3},
-			{subject_id: "204306", grade: 2, year: 3, credit: 3},
+			{subject_id: "204306", grade: 2, year: 3, credit: 1},
 			{subject_id: "204315", grade: 3.5, year: 3, credit: 3},
 			{subject_id: "204490", grade: 2, year: 3, credit: 3},
 			{subject_id: "204452", grade: 3, year: 3, credit: 3},
 			{subject_id: "204422", grade: 2, year: 3, credit: 3},
 			{subject_id: "261111", grade: 4, year: 3, credit: 3},
-			{subject_id: "204390", grade: 3.5, year: 4, credit: 3},
-			{subject_id: "204496", grade: 2, year: 4, credit: 3},
+			{subject_id: "204390", grade: 3.5, year: 4, credit: 1},
+			{subject_id: "204496", grade: 2, year: 4, credit: 6},
 			]
 	},
 	{
@@ -165,7 +165,7 @@ db.student.insertMany([
 		year_of_plan: 2564,
 		curriculum_year: 2564,
 		cmu_acc: "nam_@cmu.ac.th",
-		pass: "pbkdf2-sha256$29000$B6B0DsE4J4TwnjNGSOm9tw$9CDun2dpAOllD4IyYJTqpbeH4L8SWHRHui4j7PEdag8",
+		pass: "$pbkdf2-sha256$29000$ZYyxVsrZWysFYAzhPIewtg$IJxCAuq4PPrD7umIE3edPXvnxQTvVzWF84ye99IYbdY",
 		study_plan: "แผนก้าวหน้า",
 		enroll: [
 				{subject_id: "001101", grade: 3, year: 1, credit: 3},
@@ -186,35 +186,40 @@ db.student.insertMany([
 				{subject_id: "204231", grade: 4, year: 2, credit: 3},
 				{subject_id: "204252", grade: 4, year: 2, credit: 3},
 				{subject_id: "208269", grade: 2.5, year: 2, credit: 3},
-				{subject_id: "001255", grade: 3.5, year: 2, credit: 3},
+				{subject_id: "001225", grade: 3.5, year: 2, credit: 3},
 				{subject_id: "201111", grade: 4, year: 2, credit: 3},
 				{subject_id: "204212", grade: 3.5, year: 2, credit: 3},
 				{subject_id: "204232", grade: 4, year: 2, credit: 3},
 				{subject_id: "204271", grade: 3, year: 2, credit: 3},
 				{subject_id: "204363", grade: 3, year: 2, credit: 3},
+				{subject_id: "204364", grade: 3, year: 2, credit: 3},
+				{subject_id: "204383", grade: 3, year: 2, credit: 3},
 				{subject_id: "204321", grade: 4, year: 3, credit: 3},
 				{subject_id: "204341", grade: 2.5, year: 3, credit: 3},
 				{subject_id: "204361", grade: 3.5, year: 3, credit: 3},
 				{subject_id: "204451", grade: 2, year: 3, credit: 3},
 				{subject_id: "204362", grade: 3.5, year: 3, credit: 3},
 				{subject_id: "176100", grade: 3.5, year: 3, credit: 3},
-				{subject_id: "204306", grade: 2, year: 3, credit: 3},
+				{subject_id: "204306", grade: 2, year: 3, credit: 1},
 				{subject_id: "204315", grade: 3.5, year: 3, credit: 3},
 				{subject_id: "204490", grade: 4, year: 3, credit: 3},
 				{subject_id: "204452", grade: 3, year: 3, credit: 3},
 				{subject_id: "204382", grade: 4, year: 3, credit: 3},
 				{subject_id: "261111", grade: 4, year: 3, credit: 3},
-				{subject_id: "204390", grade: 3.5, year: 4, credit: 3},
-				{subject_id: "204491", grade: 2, year: 4, credit: 3},	
+				{subject_id: "204390", grade: 3.5, year: 4, credit: 1},
+				{subject_id: "204491", grade: 2, year: 4, credit: 1},	
 				{subject_id: "201114", grade: 4, year: 4, credit: 3},
+				{subject_id: "204732", grade: 4, year: 4, credit: 3},
+				{subject_id: "204736", grade: 4, year: 4, credit: 3},
 				{subject_id: "204435", grade: 2, year: 4, credit: 3},
 				{subject_id: "204725", grade: 4, year: 4, credit: 3},
 				{subject_id: "204442", grade: 3.5, year: 4, credit: 3},
-				{subject_id: "204499", grade: 3.5, year: 4, credit: 3},
+				{subject_id: "204499", grade: 3.5, year: 4, credit: 2},
 				{subject_id: "204471", grade: 4, year: 4, credit: 3},	
 				{subject_id: "204735", grade: 3, year: 4, credit: 3},
 				{subject_id: "204365", grade: 2, year: 4, credit: 3},
 				{subject_id: "751100", grade: 4, year: 4, credit: 3},
+				{subject_id: "003191", grade: 4, year: 4, credit: 3},
 			]
 	}
 
@@ -438,11 +443,11 @@ db.curriculum.insertOne(
             "รายวิชา": [
               {
                 "รหัสวิชา": "204491",
-                "หน่วยกิต": 3
+                "หน่วยกิต": 1
               },
               {
                 "รหัสวิชา": "204499",
-                "หน่วยกิต": 3
+                "หน่วยกิต": 2
               }
             ]
           },
@@ -451,7 +456,7 @@ db.curriculum.insertOne(
             "รายวิชา": [
               {
                 "รหัสวิชา": "204496",
-                "หน่วยกิต": 3
+                "หน่วยกิต": 6
               },
               {
                 "รหัสวิชา": "204497",
@@ -489,31 +494,214 @@ db.curriculum.insertOne(
           "แผนก้าวหน้า": {
             "หน่วยกิต": 27,
             "เงื่อนไข": {
-              "300": 9,
-              "400": 12
+              "400": 9,
+              "700": 12
             }
           },
           "รายวิชา": {
             "300": [
-              {
-                "รหัสวิชา": "204325",
-                "หน่วยกิต": 3
-              },
-              {
-                "รหัสวิชา": "204333",
-                "หน่วยกิต": 3
-              }
-            ],
-            "400": [
-              {
-                "รหัสวิชา": "204422",
-                "หน่วยกิต": 3
-              },
-              {
-                "รหัสวิชา": "204423",
-                "หน่วยกิต": 3
-              }
-            ]
+                  {
+                      "รหัสวิชา": "204325",
+                      "หน่วยกิต": 3
+                  },
+                            {
+                                "รหัสวิชา": "204333",
+                                "หน่วยกิต": 3
+                            },
+                            {
+                                "รหัสวิชา": "204335",
+                                "หน่วยกิต": 3
+                            },
+                            {
+                                "รหัสวิชา": "204362",
+                                "หน่วยกิต": 3
+                            },
+                            {
+                                "รหัสวิชา": "204363",
+                                "หน่วยกิต": 3
+                            },
+                            {
+                                "รหัสวิชา": "204364",
+                                "หน่วยกิต": 3
+                            },
+                            {
+                                "รหัสวิชา": "204365",
+                                "หน่วยกิต": 3
+                            },
+                            {
+                                "รหัสวิชา": "204381",
+                                "หน่วยกิต": 3
+                            },
+                            {
+                                "รหัสวิชา": "204382",
+                                "หน่วยกิต": 3
+                            },
+                            {
+                                "รหัสวิชา": "204383",
+                                "หน่วยกิต": 3
+                            }
+                        ],
+                        "400": [
+                            {
+                                "รหัสวิชา": "204422",
+                                "หน่วยกิต": 3
+                            },
+                            {
+                                "รหัสวิชา": "204423",
+                                "หน่วยกิต": 3
+                            },
+                            {
+                                "รหัสวิชา": "204424",
+                                "หน่วยกิต": 3
+                            },
+                            {
+                                "รหัสวิชา": "204425",
+                                "หน่วยกิต": 3
+                            },
+                            {
+                                "รหัสวิชา": "204426",
+                                "หน่วยกิต": 3
+                            },
+                            {
+                                "รหัสวิชา": "204432",
+                                "หน่วยกิต": 3
+                            },
+                            {
+                                "รหัสวิชา": "204435",
+                                "หน่วยกิต": 3
+                            },
+                            {
+                                "รหัสวิชา": "204441",
+                                "หน่วยกิต": 3
+                            },
+                            {
+                                "รหัสวิชา": "204442",
+                                "หน่วยกิต": 3
+                            },
+                            {
+                                "รหัสวิชา": "204443",
+                                "หน่วยกิต": 3
+                            },
+                            {
+                                "รหัสวิชา": "204452",
+                                "หน่วยกิต": 3
+                            },
+                            {
+                                "รหัสวิชา": "204453",
+                                "หน่วยกิต": 3
+                            },
+                            {
+                                "รหัสวิชา": "204454",
+                                "หน่วยกิต": 3
+                            },
+                            {
+                                "รหัสวิชา": "204456",
+                                "หน่วยกิต": 3
+                            },
+                            {
+                                "รหัสวิชา": "204471",
+                                "หน่วยกิต": 3
+                            },
+                            {
+                                "รหัสวิชา": "204481",
+                                "หน่วยกิต": 3
+                            },
+                            {
+                                "รหัสวิชา": "204482",
+                                "หน่วยกิต": 3
+                            },
+                            {
+                                "รหัสวิชา": "204483",
+                                "หน่วยกิต": 3
+                            },
+                            {
+                                "รหัสวิชา": "204494",
+                                "หน่วยกิต": 3
+                            },
+                            {
+                                "รหัสวิชา": "204495",
+                                "หน่วยกิต": 3
+                            },
+                            {
+                                "รหัสวิชา": "206325",
+                                "หน่วยกิต": 3
+                            },
+                            {
+                                "รหัสวิชา": "206336",
+                                "หน่วยกิต": 3
+                            },
+                            {
+                                "รหัสวิชา": "206370",
+                                "หน่วยกิต": 3
+                            },
+                            {
+                                "รหัสวิชา": "206428",
+                                "หน่วยกิต": 3
+                            },
+                            {
+                                "รหัสวิชา": "206463",
+                                "หน่วยกิต": 3
+                            },
+                            {
+                                "รหัสวิชา": "206476",
+                                "หน่วยกิต": 3
+                            },
+                            {
+                                "รหัสวิชา": "206481",
+                                "หน่วยกิต": 3
+                            }
+                        ],
+                        "700":[
+                            {
+                                "รหัสวิชา": "204712",
+                                "หน่วยกิต": 3
+                            },
+                            {
+                                "รหัสวิชา": "204713",
+                                "หน่วยกิต": 3
+                            },
+                            {
+                                "รหัสวิชา": "204715",
+                                "หน่วยกิต": 3
+                            },
+                            {
+                                "รหัสวิชา": "204721",
+                                "หน่วยกิต": 3
+                            },
+                            {
+                                "รหัสวิชา": "204725",
+                                "หน่วยกิต": 3
+                            },
+                            {
+                                "รหัสวิชา": "204728",
+                                "หน่วยกิต": 3
+                            },
+                            {
+                                "รหัสวิชา": "204732",
+                                "หน่วยกิต": 3
+                            },
+                            {
+                                "รหัสวิชา": "204735",
+                                "หน่วยกิต": 3
+                            },
+                            {
+                                "รหัสวิชา": "204736",
+                                "หน่วยกิต": 3
+                            },
+                            {
+                                "รหัสวิชา": "204737",
+                                "หน่วยกิต": 3
+                            },
+                            {
+                                "รหัสวิชา": "204779",
+                                "หน่วยกิต": 3
+                            },
+                            {
+                                "รหัสวิชา": "204789",
+                                "หน่วยกิต": 3
+                            },
+                            
+                            ]
           }
         }
         

@@ -24,75 +24,209 @@
         </ul>
     </nav>
     <div class="topic">ภาพรวมหลักสูตร</div>
-    <div class="required">วิชาบังคับ<br />(Required Courses)
-        <div class="rec1">
-            <div class="sjname">001101</div>
-        </div>
+    <div i class="required">วิชาบังคับ<br />(Required Courses)
+        <div id="reqbox" class="rec1"></div>
         <div class="cr">Credits:
-            <div id="req" class="crbox"></div>
+            <div class="crbox"><span id="bfreq"></span><span id="req"></span></div>
         </div>
     </div>
     <div class="compulsory">วิชาเอกบังคับร่วม<br />(Compulsory Courses)
-        <div class="rec2"></div>
+        <div id="reqcobox" class="rec2"></div>
         <div class="cr">Credits:
-            <div id="reqco" class="crbox"></div>
+            <div  class="crbox"><span id="bfreqco"></span><span id="reqco"></span></div>
         </div>
     </div>
     <div class="plan-spe">วิชาเอกบังคับประจำแผน<br />(Plan-specific)
-        <div class="rec3"></div>
+        <div id="speccobox" class="rec3"></div>
         <div class="cr">Credits:
-            <div id="specco" class="crbox"></div>
+            <div class="crbox"><span id="bfspecco"></span><span id="specco"></span></div>
         </div>
     </div>
     <div class="core-courses">วิชาแกน<br />(Core Courses)
-        <div class="rec4"></div>
+        <div id="corebox" class="rec4"></div>
         <div class="cr">Credits:
-            <div id="core" class="crbox"></div>
+            <div class="crbox"><span id="bfcore"></span><span id="core"></span></div>
         </div>
     </div>
     <div class="major">วิชาเอกเลือก<br />(Major Elective Courses)
-        <div class="rec5"></div>
+        <div id="majorbox" class="rec5"></div>
         <div class="cr">Credits:
-            <div id="majorco" class="crbox"></div>
+            <div class="crbox"><span id="bfmajorco"></span><span id="majorco"></span></div>
         </div>
+        
     </div>
     <div class="minor">วิชาโท<br />(Minor Courses)
-        <div class="rec6"></div>
+        <div id="minorbox" class="rec6"></div>
         <div class="cr">Credits:
-            <div id="minor" class="crbox"></div>
+            <div  class="crbox"><span id="bfminor"></span><span id="minor"></span></div>
         </div>
     </div>
     <div class="ge">วิชาเลือกทั่วไป<br />(GE Elective)
-        <div class="rec7"></div>
+        <div id="gebox" class="rec7"></div>
         <div class="cr">Credits:
-            <div id="ge" class="crbox"></div>
+            <div class="crbox"><span id="bfge"></span><span id="ge"></span></div>
         </div>
     </div>
     <div class="free">วิชาเลือกเสรี<br />(Free Elective)
-        <div class="rec8"></div>
+        <div id="freebox" class="rec8"></div>
         <div class="cr">Credits:
-            <div id="free" class="crbox"></div>
+            <div class="crbox"><span id="bffree"></span><span id="free"></span></div>
         </div>
     </div>
 
+    <script> 
+        var credit1 = 0;
+        var credit2 = 0; 
+        var credit3 = 0;
+        var credit4 = 0;
+        
+        
+        var credit7 = 0;
+        var credit8 = 0;
+            
+        var listsub = [];
 
-    <script>
+        var chcredit = 0;
+        function showdata(data){
+            var credit5 = 0;
+            var credit6 = 0;
+            var container1 = document.getElementById("reqbox");
+            var container2 = document.getElementById("reqcobox");
+            var container3 = document.getElementById("speccobox");
+            var container4 = document.getElementById("corebox"); 
+            var container5 = document.getElementById("majorbox"); 
+            var container6 = document.getElementById("minorbox"); 
+            var container7 = document.getElementById("gebox"); 
+            var container8 = document.getElementById("freebox"); 
+            var cn1 = document.getElementById("bfreq");
+            var cn2 = document.getElementById("bfreqco");
+            var cn3 = document.getElementById("bfspecco");
+            var cn4 = document.getElementById("bfcore");
+            var cn5 = document.getElementById("bfmajorco");
+            var cn6 = document.getElementById("bfminor");
+            var cn7 = document.getElementById("bfge");
+            var cn8 = document.getElementById("bffree");
+            
+            
+            
+
+
+            for(var i = 0; i < data.length; i++){
+                var html = '';
+                
+                
+                if(testt(data[i]["subject_id"])[0].slice(0, 31) == "หมวด วิชาศึกษาทั่วไป วิชาบังคับ"){
+                    html += `<div class="sjname">${data[i]["subject_id"]}</div>`;   
+                    container1.innerHTML += html;
+                    credit1 += data[i]["credit"];
+                }
+                else if(testt(data[i]["subject_id"])[0] == "หมวด วิชาเฉพาะ วิชาแกน รายวิชา "){
+                    html += `<div class="sjname">${data[i]["subject_id"]}</div>`;   
+                    container4.innerHTML += html;
+                    
+                    credit4 += data[i]["credit"];
+                }
+                else if(testt(data[i]["subject_id"])[0] == "หมวด วิชาเฉพาะ วิชาเอก วิชาเอกบังคับร่วม รายวิชา "){
+                    html += `<div class="sjname">${data[i]["subject_id"]}</div>`;   
+                    container2.innerHTML += html;
+                    credit2 += data[i]["credit"];
+                }
+                else if(testt(data[i]["subject_id"])[0].slice(0, 32) == "หมวด วิชาศึกษาทั่วไป GE_Elective"){
+                    html += `<div class="sjname">${data[i]["subject_id"]}</div>`;   
+                    container7.innerHTML += html;
+                    credit7 += data[i]["credit"];
+                }
+                else if(testt(data[i]["subject_id"])[0].slice(0, 44) == "หมวด วิชาเฉพาะ วิชาเอก วิชาเอกบังคับประจำแผน"){
+                    html += `<div class="sjname">${data[i]["subject_id"]}</div>`;   
+                    container3.innerHTML += html;
+                    credit3 += data[i]["credit"];
+                }
+                else if(testt(data[i]["subject_id"])[0].slice(0, 35) == "หมวด วิชาเฉพาะ วิชาเอก วิชาเอกเลือก"){
+                    listsub.push(data[i]);
+                }
+                
+                
+                else{
+                    html += `<div class="sjname">${data[i]["subject_id"]}</div>`;   
+                    container8.innerHTML += html;
+                    // console.log(data[i]["subject_id"]);
+                    credit8 += data[i]["credit"];
+                }
+            }
+            // console.log("******");
+            // console.log(credit1);
+            // console.log(credit2);
+            listsub.sort((a, b) => b.subject_id - a.subject_id)
+            // console.log(listsub);
+            
+            var html1 = ''
+            var html2 = ''
+            var chcreditloop = chcredit;
+            for(var i = 0; i < listsub.length; i++){
+                if(chcreditloop - listsub[i]["credit"] >= 0){
+                    if(listsub[i]["subject_id"][3] == '7'){
+                        html1 +=`<div class="sjname">${listsub[i]["subject_id"]}</div>`;
+                        container5.innerHTML = html1;
+                        credit5 += listsub[i]["credit"];
+                        chcreditloop -= listsub[i]["credit"];
+                    }
+                    else if(listsub[i]["subject_id"][3] == '4'){
+                        html1 +=`<div class="sjname">${listsub[i]["subject_id"]}</div>`;
+                        container5.innerHTML = html1;
+                        credit5 += listsub[i]["credit"];
+                        chcreditloop -= listsub[i]["credit"];
+                    }else{
+                        html1 +=`<div class="sjname">${listsub[i]["subject_id"]}</div>`;
+                        container5.innerHTML = html1;
+                        credit5 += listsub[i]["credit"];
+                        chcreditloop -= listsub[i]["credit"];
+                    }
+                    // console.log(chcreditloop);
+                }else{
+                    html2 +=`<div class="sjname">${listsub[i]["subject_id"]}</div>`;
+                    container6.innerHTML = html2;
+                    credit6 += listsub[i]["credit"];
+                }
+                
+            }
+            cn1.innerHTML = `${credit1}/`;
+            cn2.innerHTML = `${credit2}/`;
+            cn3.innerHTML = `${credit3}/`;
+            cn4.innerHTML = `${credit4}/`;
+            cn5.innerHTML = `${credit5}/`;
+            cn6.innerHTML = `${credit6}/`;
+            cn7.innerHTML = `${credit7}/`;
+            cn8.innerHTML = `${credit8}/`;
+            // console.log("******");
+        }
+        
         function showcredit(data){
-            console.log(data[0]["วิชาบังคับ"])
+            //console.log(data[0]["วิชาบังคับ"])
             var container = document.getElementById("req").innerHTML = data[0]["วิชาบังคับ"];
             var container = document.getElementById("reqco").innerHTML = data[0]["เอกบังคับร่วม"];
             var container = document.getElementById("specco").innerHTML = data[0]["เอกประจำแผน"];
             var container = document.getElementById("core").innerHTML = data[0]["วิชาแกน"];
             var container = document.getElementById("majorco").innerHTML = data[0]["เอกเลือก"];
+            chcredit = data[0]["เอกเลือก"];
             var container = document.getElementById("minor").innerHTML = data[0]["โท"];
             var container = document.getElementById("ge").innerHTML = data[0]["GE"];
             var container = document.getElementById("free").innerHTML = data[0]["เสรี"];
-            
-            
         }
         $(document).ready(function () {
             $.getJSON("/all_credit", function (data) { 
                 showcredit(data);
+            });
+            $.getJSON("/data1", function (data) { 
+                showdata(data);
+            });
+            $.getJSON("/data2", function (data) { 
+                showdata(data);
+            });
+            $.getJSON("/data3", function (data) { 
+                showdata(data);
+            });
+            $.getJSON("/data4", function (data) { 
+                showdata(data);
             });
             
         });
@@ -104,6 +238,565 @@
             } else {
                 popupMenu.style.display = 'none';
             }
+        }
+        function testt(h){
+            const data = {
+                "_id": 2564,
+                "หน่วยกิต": 134,
+                "หมวด": {
+                "วิชาศึกษาทั่วไป": {
+                    "หน่วยกิต": 30,
+                    "วิชาบังคับ": {
+                    "หน่วยกิต": 24,
+                    "กลุ่มวิชาด้านการพัฒนาทักษะการเป็นผู้เรียนรู้": [
+                        {
+                        "รหัสวิชา": "001101",
+                        "หน่วยกิต": 3
+                        },
+                        {
+                        "รหัสวิชา": "001102",
+                        "หน่วยกิต": 3
+                        },
+                        {
+                        "รหัสวิชา": "001201",
+                        "หน่วยกิต": 3
+                        },
+                        {
+                        "รหัสวิชา": "001225",
+                        "หน่วยกิต": 3
+                        },
+                        {
+                        "รหัสวิชา": "204100",
+                        "หน่วยกิต": 3
+                        }
+                    ],
+                    "กลุ่มวิชาด้านการพัฒนาทักษะการเป็นผู้ร่วมสร้างสรรค์นวัตกรรม": [
+                        {
+                        "รหัสวิชา": "201190",
+                        "หน่วยกิต": 3
+                        }
+                    ],
+                    "กลุ่มวิชาด้านการพัฒนาทักษะการเป็นพลเมืองที่เข้มแข็ง": [
+                        {
+                        "รหัสวิชา": "140104",
+                        "หน่วยกิต": 3
+                        },
+                        {
+                        "รหัสวิชา": "201111",
+                        "หน่วยกิต": 3
+                        }
+                    ]
+                    },
+                    "GE_Elective": {
+                    "หน่วยกิต": 6,
+                    "กลุ่มวิชาด้านการพัฒนาทักษะการเป็นผู้เรียนรู้": [
+                        {
+                        "รหัสวิชา": "050100",
+                        "หน่วยกิต": 3
+                        },
+                        {
+                        "รหัสวิชา": "074100",
+                        "หน่วยกิต": 3
+                        },
+                        {
+                        "รหัสวิชา": "701181",
+                        "หน่วยกิต": 3
+                        },
+                        {
+                        "รหัสวิชา": "702101",
+                        "หน่วยกิต": 3
+                        }
+                    ],
+                    "กลุ่มวิชาด้านการพัฒนาทักษะการเป็นผู้ร่วมสร้างสรรค์นวัตกรรม": [
+                        {
+                        "รหัสวิชา": "013110",
+                        "หน่วยกิต": 3
+                        },
+                        {
+                        "รหัสวิชา": "176100",
+                        "หน่วยกิต": 3
+                        },
+                        {
+                        "รหัสวิชา": "201114",
+                        "หน่วยกิต": 3
+                        },
+                        {
+                        "รหัสวิชา": "703103",
+                        "หน่วยกิต": 3
+                        },
+                        {
+                        "รหัสวิชา": "751100",
+                        "หน่วยกิต": 3
+                        },
+                        {
+                        "รหัสวิชา": "851103",
+                        "หน่วยกิต": 3
+                        }
+                    ],
+                    "กลุ่มวิชาด้านการพัฒนาทักษะการเป็นพลเมืองที่เข้มแข็ง": [
+                        {
+                        "รหัสวิชา": "801100",
+                        "หน่วยกิต": 3
+                        },
+                        {
+                        "รหัสวิชา": "951100",
+                        "หน่วยกิต": 3
+                        }
+                    ]
+                    }
+                },
+                "วิชาเฉพาะ": {
+                    "หน่วยกิต": 99,
+                    "วิชาแกน": {
+                    "หน่วยกิต": 24,
+                    "รายวิชา": [
+                        {
+                        "รหัสวิชา": "202101",
+                        "หน่วยกิต": 3
+                        },
+                        {
+                        "รหัสวิชา": "203103",
+                        "หน่วยกิต": 3
+                        },
+                        {
+                        "รหัสวิชา": "204111",
+                        "หน่วยกิต": 3
+                        },
+                        {
+                        "รหัสวิชา": "206111",
+                        "หน่วยกิต": 3
+                        },
+                        {
+                        "รหัสวิชา": "206112",
+                        "หน่วยกิต": 3
+                        },
+                        {
+                        "รหัสวิชา": "206183",
+                        "หน่วยกิต": 3
+                        },
+                        {
+                        "รหัสวิชา": "207187",
+                        "หน่วยกิต": 3
+                        },
+                        {
+                        "รหัสวิชา": "208269",
+                        "หน่วยกิต": 3
+                        }
+                    ]
+                    },
+                    "วิชาเอก": {
+                    "หน่วยกิต": 59,
+                    "วิชาเอกบังคับร่วม": {
+                        "หน่วยกิต": 41,
+                        "รายวิชา": [
+                        {
+                            "รหัสวิชา": "204203",
+                            "หน่วยกิต": 3
+                        },
+                        {
+                            "รหัสวิชา": "204306",
+                            "หน่วยกิต": 1
+                        },
+                        {
+                            "รหัสวิชา": "204212",
+                            "หน่วยกิต": 3
+                        },
+                        {
+                            "รหัสวิชา": "204271",
+                            "หน่วยกิต": 3
+                        },
+                        {
+                            "รหัสวิชา": "204321",
+                            "หน่วยกิต": 3
+                        },
+                        {
+                            "รหัสวิชา": "204361",
+                            "หน่วยกิต": 3
+                        },
+                        {
+                            "รหัสวิชา": "204451",
+                            "หน่วยกิต": 3
+                        },
+                        {
+                            "รหัสวิชา": "204390",
+                            "หน่วยกิต": 1
+                        },
+                        {
+                            "รหัสวิชา": "204490",
+                            "หน่วยกิต": 3
+                        },
+                        {
+                            "รหัสวิชา": "204114",
+                            "หน่วยกิต": 3
+                        },
+                        {
+                            "รหัสวิชา": "204232",
+                            "หน่วยกิต": 3
+                        },
+                        {
+                            "รหัสวิชา": "204252",
+                            "หน่วยกิต": 3
+                        },
+                        {
+                            "รหัสวิชา": "204315",
+                            "หน่วยกิต": 3
+                        },
+                        {
+                            "รหัสวิชา": "204341",
+                            "หน่วยกิต": 3
+                        },
+                        {
+                            "รหัสวิชา": "204231",
+                            "หน่วยกิต": 3
+                        }
+                        ]
+                    },
+                    "วิชาเอกบังคับประจำแผน": {
+                        "แผนปกติ": {
+                        "หน่วยกิต": 3,
+                        "รายวิชา": [
+                            {
+                            "รหัสวิชา": "204491",
+                            "หน่วยกิต": 3
+                            },
+                            {
+                            "รหัสวิชา": "204499",
+                            "หน่วยกิต": 3
+                            }
+                        ]
+                        },
+                        "แผนสหกิจศึกษา": {
+                        "หน่วยกิต": 7,
+                        "รายวิชา": [
+                            {
+                            "รหัสวิชา": "204496",
+                            "หน่วยกิต": 3
+                            },
+                            {
+                            "รหัสวิชา": "204497",
+                            "หน่วยกิต": 1
+                            }
+                        ]
+                        },
+                        "แผนก้าวหน้า": {
+                        "หน่วยกิต": 3,
+                        "รายวิชา": [
+                            {
+                            "รหัสวิชา": "204491",
+                            "หน่วยกิต": 1
+                            },
+                            {
+                            "รหัสวิชา": "204499",
+                            "หน่วยกิต": 2
+                            }
+                        ]
+                        }
+                    },
+                    "วิชาเอกเลือก": {
+                        "แผนปกติ": {
+                        "หน่วยกิต": 15,
+                        "เงื่อนไข": {
+                            "400": 9
+                        }
+                        },
+                        "แผนสหกิจศึกษา": {
+                        "หน่วยกิต": 12,
+                        "เงื่อนไข": {
+                            "400": 6
+                        }
+                        },
+                        "แผนก้าวหน้า": {
+                        "หน่วยกิต": 27,
+                        "เงื่อนไข": {
+                            "300": 9,
+                            "400": 12
+                        }
+                        },
+                        "รายวิชา": {
+                        "300": [
+                            {
+                                "รหัสวิชา": "204325",
+                                "หน่วยกิต": 3
+                            },
+                            {
+                                "รหัสวิชา": "204333",
+                                "หน่วยกิต": 3
+                            },
+                            {
+                                "รหัสวิชา": "204335",
+                                "หน่วยกิต": 3
+                            },
+                            {
+                                "รหัสวิชา": "204362",
+                                "หน่วยกิต": 3
+                            },
+                            {
+                                "รหัสวิชา": "204363",
+                                "หน่วยกิต": 3
+                            },
+                            {
+                                "รหัสวิชา": "204364",
+                                "หน่วยกิต": 3
+                            },
+                            {
+                                "รหัสวิชา": "204365",
+                                "หน่วยกิต": 3
+                            },
+                            {
+                                "รหัสวิชา": "204381",
+                                "หน่วยกิต": 3
+                            },
+                            {
+                                "รหัสวิชา": "204382",
+                                "หน่วยกิต": 3
+                            },
+                            {
+                                "รหัสวิชา": "204383",
+                                "หน่วยกิต": 3
+                            }
+                        ],
+                        "400": [
+                            {
+                                "รหัสวิชา": "204422",
+                                "หน่วยกิต": 3
+                            },
+                            {
+                                "รหัสวิชา": "204423",
+                                "หน่วยกิต": 3
+                            },
+                            {
+                                "รหัสวิชา": "204424",
+                                "หน่วยกิต": 3
+                            },
+                            {
+                                "รหัสวิชา": "204425",
+                                "หน่วยกิต": 3
+                            },
+                            {
+                                "รหัสวิชา": "204426",
+                                "หน่วยกิต": 3
+                            },
+                            {
+                                "รหัสวิชา": "204432",
+                                "หน่วยกิต": 3
+                            },
+                            {
+                                "รหัสวิชา": "204435",
+                                "หน่วยกิต": 3
+                            },
+                            {
+                                "รหัสวิชา": "204441",
+                                "หน่วยกิต": 3
+                            },
+                            {
+                                "รหัสวิชา": "204442",
+                                "หน่วยกิต": 3
+                            },
+                            {
+                                "รหัสวิชา": "204443",
+                                "หน่วยกิต": 3
+                            },
+                            {
+                                "รหัสวิชา": "204452",
+                                "หน่วยกิต": 3
+                            },
+                            {
+                                "รหัสวิชา": "204453",
+                                "หน่วยกิต": 3
+                            },
+                            {
+                                "รหัสวิชา": "204454",
+                                "หน่วยกิต": 3
+                            },
+                            {
+                                "รหัสวิชา": "204456",
+                                "หน่วยกิต": 3
+                            },
+                            {
+                                "รหัสวิชา": "204471",
+                                "หน่วยกิต": 3
+                            },
+                            {
+                                "รหัสวิชา": "204481",
+                                "หน่วยกิต": 3
+                            },
+                            {
+                                "รหัสวิชา": "204482",
+                                "หน่วยกิต": 3
+                            },
+                            {
+                                "รหัสวิชา": "204483",
+                                "หน่วยกิต": 3
+                            },
+                            {
+                                "รหัสวิชา": "204494",
+                                "หน่วยกิต": 3
+                            },
+                            {
+                                "รหัสวิชา": "204495",
+                                "หน่วยกิต": 3
+                            },
+                            {
+                                "รหัสวิชา": "206325",
+                                "หน่วยกิต": 3
+                            },
+                            {
+                                "รหัสวิชา": "206336",
+                                "หน่วยกิต": 3
+                            },
+                            {
+                                "รหัสวิชา": "206370",
+                                "หน่วยกิต": 3
+                            },
+                            {
+                                "รหัสวิชา": "206428",
+                                "หน่วยกิต": 3
+                            },
+                            {
+                                "รหัสวิชา": "206463",
+                                "หน่วยกิต": 3
+                            },
+                            {
+                                "รหัสวิชา": "206476",
+                                "หน่วยกิต": 3
+                            },
+                            {
+                                "รหัสวิชา": "206481",
+                                "หน่วยกิต": 3
+                            }
+                        ],
+                        "700":[
+                            {
+                                "รหัสวิชา": "204712",
+                                "หน่วยกิต": 3
+                            },
+                            {
+                                "รหัสวิชา": "204713",
+                                "หน่วยกิต": 3
+                            },
+                            {
+                                "รหัสวิชา": "204715",
+                                "หน่วยกิต": 3
+                            },
+                            {
+                                "รหัสวิชา": "204721",
+                                "หน่วยกิต": 3
+                            },
+                            {
+                                "รหัสวิชา": "204725",
+                                "หน่วยกิต": 3
+                            },
+                            {
+                                "รหัสวิชา": "204728",
+                                "หน่วยกิต": 3
+                            },
+                            {
+                                "รหัสวิชา": "204732",
+                                "หน่วยกิต": 3
+                            },
+                            {
+                                "รหัสวิชา": "204735",
+                                "หน่วยกิต": 3
+                            },
+                            {
+                                "รหัสวิชา": "204736",
+                                "หน่วยกิต": 3
+                            },
+                            {
+                                "รหัสวิชา": "204737",
+                                "หน่วยกิต": 3
+                            },
+                            {
+                                "รหัสวิชา": "204779",
+                                "หน่วยกิต": 3
+                            },
+                            {
+                                "รหัสวิชา": "204789",
+                                "หน่วยกิต": 3
+                            },
+                            
+                            ]
+                        }
+                    }
+                    
+                    },
+                    "วิชาโท": {
+                        "หน่วยกิต": 15
+                    }
+                },
+                "เสรี": {
+                    "หน่วยกิต": 6
+                }
+                }
+            };
+
+            id_find_position_course = '';
+            id_find_position_course_grade = '';
+
+            deep_test = data['หมวด']['วิชาศึกษาทั่วไป']['GE_Elective']['กลุ่มวิชาด้านการพัฒนาทักษะการเป็นผู้ร่วมสร้างสรรค์นวัตกรรม'];
+            deep_test_seri = data['หมวด'];
+
+            // recursive หา รหัส
+            // console.log('CHECK!!!!!!!!')
+            function find_code(data, code, line_root){
+                // ถ้ามี ['รหัสวิชา'] อยู่ใน obj ให้เช็ค
+                // console.log('data_001 ==> ', data)
+                
+
+                if (typeof(data[0]) == 'object'){
+                // console.log('0000000000000000000000')
+                if (data[0]['รหัสวิชา']){
+                    // console.log('111111111111111111')
+                    // console.log('2222222222222222222', data, code)
+                    if (find_if_in(data, code, line_root)){
+                    // console.log('ininininininininiininininininininiinininininininini', line_root)
+                    id_find_position_course_grade = data[0]['หน่วยกิต'];
+                    
+                    
+                    return 
+                    }
+                }
+
+                }
+
+                
+                for (const obj in data){
+                // เจอ obj ให้หาลึกๆไปต่อ
+                // console.log('CHECK!!!!!!!!', head[obj])
+                if (typeof(data[obj]) == 'object'){
+                    // console.log('----loop')
+                    // console.log('CHECK!!!!!!!11111!', head[obj])
+                    find_code(data[obj], code, line_root + [obj] + ' ');
+                }
+                }
+
+
+                
+            }
+
+            function find_if_in(course, code, line_root){
+                // console.log(course)
+                const coursesInGroup = course.map(c => c["รหัสวิชา"]);
+                
+                if (coursesInGroup.includes(code)) {
+                
+                id_find_position_course = line_root;
+                
+                //console.log('หารหัสเจอละหารหัสเจอละหารหัสเจอละหารหัสเจอละหารหัสเจอละหารหัสเจอละหารหัสเจอละหารหัสเจอละ', line_root);
+                return true;
+                
+                }else{
+                //console.log('หาไม่เจอ');
+                
+                }
+            }
+
+
+           
+
+            find_code(data, h, '');
+            
+            return [id_find_position_course, id_find_position_course_grade];
         }
     </script>
 </body>
