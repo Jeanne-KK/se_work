@@ -46,7 +46,7 @@ class User_student:
             "cmu_acc": request.form.get('cmu_acc')
         })
 
-        if user:
+        if user and pbkdf2_sha256.verify(request.form.get('pass'), user['pass']):
             return self.start_session_student(user)
         
         return jsonify({ "error": "Invalid login credentials" }), 401
