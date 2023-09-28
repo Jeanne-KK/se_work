@@ -37,7 +37,13 @@
     <!-- link ไฟล์ excel ยังทำไม่ได้ -->
     <div class="temp">Download excel template</div> 
     <div class="plans">แผนการศึกษา: {{ session['user']['study_plan'] }}</div>
-    <button class="Bplan" type="button">Choose</button>
+
+    <button class="Bplan" id="chooseButton" type="button" onclick="showOptions()">Choose</button>
+    <button id="downloadButton" style="display: none;" onclick="downloadFile()">Download</button>
+    <input type="file" id="fileInput" style="display: none;">
+    <button class="Bplan" id="uploadButton" name="choose" type="button" style="display: none;" onclick="chooseFile()">Upload</button>
+
+
     <div id="GPAA" class="gpa">Cumulative GPA :</div>
     <!-- จะทำเป็น link กดไป folder ในคอม แต่ทำไม่ได้ -->
     <div class="impex">Import ข้อมูลการลงทะเบียนโดย excel</div> 
@@ -69,6 +75,51 @@
     </div>
 
     <script>
+
+    function showOptions() {
+        // แสดงปุ่ม "Download" และ "Upload"
+        document.getElementById('downloadButton').style.display = 'inline-block';
+        document.getElementById('uploadButton').style.display = 'inline-block';
+        // ซ่อนปุ่ม "Choose"
+        document.getElementById('chooseButton').style.display = 'none';
+    }
+
+    function downloadFile() {
+        // นี่คือส่วนของโค้ดที่คุณสามารถใช้ในการดาวน์โหลดไฟล์ Excel
+        // ในที่นี้จะแสดงตัวอย่างโค้ดเปิดหน้าต่างดาวน์โหลดไฟล์
+        var downloadLink = document.createElement('a');
+        downloadLink.href = '/static/form.xlsx'; // URL ของไฟล์ Excel
+        downloadLink.download = 'form.xlsx'; // ชื่อไฟล์ที่จะดาวน์โหลด
+        downloadLink.click();
+    }
+
+    function chooseFile() {
+        document.getElementById('fileInput').click();
+    }
+
+    document.getElementById('fileInput').addEventListener('change', function() {
+        var selectedFile = this.files[0];
+        if (selectedFile) {
+            // ทำสิ่งที่คุณต้องการกับไฟล์ที่ถูกเลือกที่นี่
+            console.log('ได้รับไฟล์: ' + selectedFile.name);
+
+            // สามารถทำการอัพโหลดไฟล์ไปยังเซิร์ฟเวอร์ที่ต้องการที่นี่
+            // เช่น การใช้ Fetch API หรือ XMLHttpRequest
+            // โดยให้ตรวจสอบเอกสารและโค้ดของเซิร์ฟเวอร์ของคุณสำหรับรายละเอียดเพิ่มเติม
+        }
+    });
+
+
+    
+
+        
+
+
+
+
+
+
+
         console.log("*******")
         
         console.log("*******")
