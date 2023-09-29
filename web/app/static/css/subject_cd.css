@@ -270,7 +270,31 @@ nav {
     background-color: #ffffff;
     border-radius: 20px;
 }
+.cr1 {
+    position: absolute;
+    width: 73px;
+    margin-top: 265%;
+    padding-left: 15%;
+    font-family: "Inter", Helvetica;
+    font-weight: 500;
+    color: #ffffff;
+    font-size: 15px;
+    letter-spacing: 0;
+    line-height: normal;
+}
 
+.cr2 {
+    position: absolute;
+    width: 73px;
+    margin-top: 280%;
+    padding-left: 15%;
+    font-family: "Inter", Helvetica;
+    font-weight: 500;
+    color: #ffffff;
+    font-size: 15px;
+    letter-spacing: 0;
+    line-height: normal;
+}
 .cr {
     position: absolute;
     width: 73px;
@@ -282,6 +306,7 @@ nav {
     font-size: 15px;
     letter-spacing: 0;
     line-height: normal;
+    display: block;
 }
 
 .crbox {

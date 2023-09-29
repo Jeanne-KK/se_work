@@ -215,14 +215,13 @@ db.student.insertMany([
 				{subject_id: "204725", grade: 4, year: 4, credit: 3},
 				{subject_id: "204442", grade: 3.5, year: 4, credit: 3},
 				{subject_id: "204499", grade: 3.5, year: 4, credit: 2},
-				{subject_id: "204471", grade: 4, year: 4, credit: 3},	
+				{subject_id: "204471", grade: 4, year: 4, credit: 3},		
 				{subject_id: "204735", grade: 3, year: 4, credit: 3},
 				{subject_id: "204365", grade: 2, year: 4, credit: 3},
 				{subject_id: "751100", grade: 4, year: 4, credit: 3},
 				{subject_id: "003191", grade: 4, year: 4, credit: 3},
 			]
 	}
-
 ])
 
 db.curriculum.insertOne(

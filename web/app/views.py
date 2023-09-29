@@ -305,6 +305,61 @@ def data4():
         if isinstance(db, MongoClient):
             db.close() 
 
+@app.route('/data5')
+def data5():
+    db=""
+    app.logger.debug("AAAAAAAAAAAAAAAAAAAA")
+    try:
+        app.logger.debug("BBBBBBBBBBBBBBBBBBBBB")
+        db = get_db()
+        app.logger.debug(type(session["user"]["_id"]))
+
+        data = db.student.aggregate([
+            {
+                "$match": {
+                "_id": session['user']['_id'] 
+                }
+            },
+            {
+                "$unwind": "$enroll"
+            }, 
+            {
+                "$group": {
+                "_id": "null",
+                "subjects": {
+                    "$push": {
+                    "subject_id": "$enroll.subject_id",
+                    "grade": "$enroll.grade",
+                    "credit": "$enroll.credit"
+                    }
+                }
+                }
+            },
+            {
+                "$project": {
+                "_id": 0,
+                "subjects": 1
+                }
+            }
+            ]) 
+        
+        
+        app.logger.debug("****************************")
+        #app.logger.debug(data)
+        app.logger.debug("****************************")
+        data_= []
+        for i in data: 
+            data_ += i["subjects"]
+            app.logger.debug(i["subjects"])
+            
+        return jsonify(data_)
+        
+    except Exception as e:
+        return jsonify({"errors": str(e)}), 500  # Return an error response with a 500 status code
+    finally:
+        if isinstance(db, MongoClient):
+            db.close() 
+
 @app.route('/tadvisee')
 def tadvisee():
     db=""
@@ -498,6 +553,9 @@ def all_credit():
                         "เอกเลือก": {
                             "$sum": "$หมวด.วิชาเฉพาะ.วิชาเอก.วิชาเอกเลือก.แผนสหกิจศึกษา.หน่วยกิต"
                         },
+                        "400": { 
+                            "$sum": "$หมวด.วิชาเฉพาะ.วิชาเอก.วิชาเอกเลือก.แผนก้าวหน้า.เงื่อนไข.400"
+                        },
                         "โท": {
                             "$sum": "$หมวด.วิชาเฉพาะ.วิชาโท.หน่วยกิต"
                         },
@@ -530,6 +588,9 @@ def all_credit():
                         "เอกเลือก": {
                             "$sum": "$หมวด.วิชาเฉพาะ.วิชาเอก.วิชาเอกเลือก.แผนปกติ.หน่วยกิต"
                         },
+                        "400": { 
+                            "$sum": "$หมวด.วิชาเฉพาะ.วิชาเอก.วิชาเอกเลือก.แผนก้าวหน้า.เงื่อนไข.400"
+                        },
                         "โท": {
                             "$sum": "$หมวด.วิชาเฉพาะ.วิชาโท.หน่วยกิต"
                         },
@@ -561,6 +622,12 @@ def all_credit():
                         },
                         "เอกเลือก": {
                             "$sum": "$หมวด.วิชาเฉพาะ.วิชาเอก.วิชาเอกเลือก.แผนก้าวหน้า.หน่วยกิต"
+                        },
+                        "400": { 
+                            "$sum": "$หมวด.วิชาเฉพาะ.วิชาเอก.วิชาเอกเลือก.แผนก้าวหน้า.เงื่อนไข.400"
+                        },
+                        "700": {
+                            "$sum": "$หมวด.วิชาเฉพาะ.วิชาเอก.วิชาเอกเลือก.แผนก้าวหน้า.เงื่อนไข.700"
                         },
                         "โท": {
                             "$sum": "$หมวด.วิชาเฉพาะ.วิชาโท.หน่วยกิต"

@@ -49,10 +49,18 @@
         </div>
     </div>
     <div class="major">วิชาเอกเลือก<br />(Major Elective Courses)
-        <div id="majorbox" class="rec5"></div>
+        <div id="majorbox" class="rec5"></div> 
         <div class="cr">Credits:
-            <div class="crbox"><span id="bfmajorco"></span><span id="majorco"></span></div>
+            <div class="crbox"><span id="bfmajorco"></span><span id="majorco"></span></div>      
         </div>
+        <div class="cr1">400: 
+            <div class="crbox"><span id="bf400"></span><span id="400"></span></div>      
+        </div>
+        <div class="cr2">700:
+            
+            <div class="crbox"><span id="bf700"></span><span id="700"></span></div>      
+        </div>
+            
         
     </div>
     <div class="minor">วิชาโท<br />(Minor Courses)
@@ -75,21 +83,18 @@
     </div>
 
     <script> 
-        var credit1 = 0;
-        var credit2 = 0; 
-        var credit3 = 0;
-        var credit4 = 0;
-        
-        
-        var credit7 = 0;
-        var credit8 = 0;
-            
-        var listsub = [];
-
-        var chcredit = 0;
         function showdata(data){
+            var credit1 = 0;
+            var credit2 = 0; 
+            var credit3 = 0;
+            var credit4 = 0; 
             var credit5 = 0;
             var credit6 = 0;
+            var credit7 = 0;
+            var credit8 = 0;
+            var credit400 = 0;
+            var credit700 = 0;
+
             var container1 = document.getElementById("reqbox");
             var container2 = document.getElementById("reqcobox");
             var container3 = document.getElementById("speccobox");
@@ -100,21 +105,27 @@
             var container8 = document.getElementById("freebox"); 
             var cn1 = document.getElementById("bfreq");
             var cn2 = document.getElementById("bfreqco");
-            var cn3 = document.getElementById("bfspecco");
+            var cn3 = document.getElementById("bfspecco"); 
             var cn4 = document.getElementById("bfcore");
             var cn5 = document.getElementById("bfmajorco");
             var cn6 = document.getElementById("bfminor");
             var cn7 = document.getElementById("bfge");
             var cn8 = document.getElementById("bffree");
+            var cn400 = document.getElementById("bf400");
+            var cn700 = document.getElementById("bf700");
             
             
+            
+            
+            var cre_5 = parseInt(document.getElementById("majorco").textContent); 
+            var cre_400 = parseInt(document.getElementById("400").textContent); 
+            var cre_700 = parseInt(document.getElementById("700").textContent); 
+            //console.log(cre_5)
             
 
-
+            data.sort((a, b) => b.subject_id - a.subject_id)
             for(var i = 0; i < data.length; i++){
-                var html = '';
-                
-                
+                var html = ''; 
                 if(testt(data[i]["subject_id"])[0].slice(0, 31) == "หมวด วิชาศึกษาทั่วไป วิชาบังคับ"){
                     html += `<div class="sjname">${data[i]["subject_id"]}</div>`;   
                     container1.innerHTML += html;
@@ -141,8 +152,39 @@
                     container3.innerHTML += html;
                     credit3 += data[i]["credit"];
                 }
-                else if(testt(data[i]["subject_id"])[0].slice(0, 35) == "หมวด วิชาเฉพาะ วิชาเอก วิชาเอกเลือก"){
-                    listsub.push(data[i]);
+                else if(testt(data[i]["subject_id"])[0].slice(0, 35) == "หมวด วิชาเฉพาะ วิชาเอก วิชาเอกเลือก"){ 
+                    if(data[i]["subject_id"][3] == '7'){
+                        html += `<div class="sjname">${data[i]["subject_id"]}</div>`;   
+                        container5.innerHTML += html; 
+                        credit700 += data[i]["credit"];
+                        credit5 += data[i]["credit"];
+                    }else{
+                        if(data[i]["subject_id"][3] == '4'){
+                            
+                            if(cre_400 - credit400 > 0 || cre_5 - credit5 > 0 ){
+                                html += `<div class="sjname">${data[i]["subject_id"]}</div>`;   
+                                container5.innerHTML += html; 
+                                credit400 += data[i]["credit"];
+                                credit5 += data[i]["credit"];
+                            }
+                            else{
+                                html += `<div class="sjname">${data[i]["subject_id"]}</div>`;   
+                                container6.innerHTML += html; 
+                                credit6 += data[i]["credit"];
+                            }
+                        }else{
+                            if(cre_5 - credit5 > 0){
+                                html += `<div class="sjname">${data[i]["subject_id"]}</div>`;
+                                container5.innerHTML += html; 
+                                credit5 += data[i]["credit"]; 
+                            }else{
+                                html += `<div class="sjname">${data[i]["subject_id"]}</div>`;   
+                                container6.innerHTML += html; 
+                                credit6 += data[i]["credit"];
+                            }
+                        }
+                        
+                    }
                 }
                 
                 
@@ -153,42 +195,51 @@
                     credit8 += data[i]["credit"];
                 }
             }
+            console.log("***********");
+            console.log(cre_400);
+            console.log(credit400);
+            console.log(cre_5);
+            console.log(credit5);
+            
+            console.log("***********");
             // console.log("******");
             // console.log(credit1);
             // console.log(credit2);
-            listsub.sort((a, b) => b.subject_id - a.subject_id)
-            // console.log(listsub);
+            // listsub.sort((a, b) => b.subject_id - a.subject_id)
+            // // console.log(listsub);
             
-            var html1 = ''
-            var html2 = ''
-            var chcreditloop = chcredit;
-            for(var i = 0; i < listsub.length; i++){
-                if(chcreditloop - listsub[i]["credit"] >= 0){
-                    if(listsub[i]["subject_id"][3] == '7'){
-                        html1 +=`<div class="sjname">${listsub[i]["subject_id"]}</div>`;
-                        container5.innerHTML = html1;
-                        credit5 += listsub[i]["credit"];
-                        chcreditloop -= listsub[i]["credit"];
-                    }
-                    else if(listsub[i]["subject_id"][3] == '4'){
-                        html1 +=`<div class="sjname">${listsub[i]["subject_id"]}</div>`;
-                        container5.innerHTML = html1;
-                        credit5 += listsub[i]["credit"];
-                        chcreditloop -= listsub[i]["credit"];
-                    }else{
-                        html1 +=`<div class="sjname">${listsub[i]["subject_id"]}</div>`;
-                        container5.innerHTML = html1;
-                        credit5 += listsub[i]["credit"];
-                        chcreditloop -= listsub[i]["credit"];
-                    }
-                    // console.log(chcreditloop);
-                }else{
-                    html2 +=`<div class="sjname">${listsub[i]["subject_id"]}</div>`;
-                    container6.innerHTML = html2;
-                    credit6 += listsub[i]["credit"];
-                }
+            // var html1 = ''
+            // var html2 = ''
+            // var chcreditloop = chcredit;
+            // for(var i = 0; i < listsub.length; i++){
+            //     if(chcreditloop - listsub[i]["credit"] >= 0){
+            //         if(listsub[i]["subject_id"][3] == '7'){
+            //             html1 +=`<div class="sjname">${listsub[i]["subject_id"]}</div>`;
+            //             container5.innerHTML = html1;
+            //             credit5 += listsub[i]["credit"];
+            //             credit700 += listsub[i]["credit"];
+            //             chcreditloop -= listsub[i]["credit"];
+            //         }
+            //         else if(listsub[i]["subject_id"][3] == '4'){
+            //             html1 +=`<div class="sjname">${listsub[i]["subject_id"]}</div>`;
+            //             container5.innerHTML = html1;
+            //             credit5 += listsub[i]["credit"];
+            //             credit400 += listsub[i]["credit"];
+            //             chcreditloop -= listsub[i]["credit"];
+            //         }else{
+            //             html1 +=`<div class="sjname">${listsub[i]["subject_id"]}</div>`;
+            //             container5.innerHTML = html1;
+            //             credit5 += listsub[i]["credit"];
+            //             chcreditloop -= listsub[i]["credit"];
+            //         }
+            //         // console.log(chcreditloop);
+            //     }else{
+            //         html2 +=`<div class="sjname">${listsub[i]["subject_id"]}</div>`;
+            //         container6.innerHTML = html2;
+            //         credit6 += listsub[i]["credit"];
+            //     }
                 
-            }
+            // }
             cn1.innerHTML = `${credit1}/`;
             cn2.innerHTML = `${credit2}/`;
             cn3.innerHTML = `${credit3}/`;
@@ -197,17 +248,31 @@
             cn6.innerHTML = `${credit6}/`;
             cn7.innerHTML = `${credit7}/`;
             cn8.innerHTML = `${credit8}/`;
+            cn400.innerHTML = `${credit400}/`;
+            cn700.innerHTML = `${credit700}/`;
             // console.log("******");
         }
         
         function showcredit(data){
             //console.log(data[0]["วิชาบังคับ"])
+            var ch_plan = "{{session['user']['study_plan']}}"
             var container = document.getElementById("req").innerHTML = data[0]["วิชาบังคับ"];
             var container = document.getElementById("reqco").innerHTML = data[0]["เอกบังคับร่วม"];
             var container = document.getElementById("specco").innerHTML = data[0]["เอกประจำแผน"];
             var container = document.getElementById("core").innerHTML = data[0]["วิชาแกน"];
             var container = document.getElementById("majorco").innerHTML = data[0]["เอกเลือก"];
             chcredit = data[0]["เอกเลือก"];
+            if(ch_plan == "แผนปกติ"){
+                var container = document.getElementById("400").innerHTML = data[0]["400"]; 
+                var container = document.getElementById("700").innerHTML = 0; 
+            }else if(ch_plan == "แผนสหกิจศึกษา"){
+                var container = document.getElementById("400").innerHTML = data[0]["400"]; 
+                var container = document.getElementById("700").innerHTML = 0;
+            }
+            else if(ch_plan == "แผนก้าวหน้า"){
+                var container = document.getElementById("400").innerHTML = data[0]["400"]; 
+                var container = document.getElementById("700").innerHTML = data[0]["700"]; 
+            } 
             var container = document.getElementById("minor").innerHTML = data[0]["โท"];
             var container = document.getElementById("ge").innerHTML = data[0]["GE"];
             var container = document.getElementById("free").innerHTML = data[0]["เสรี"];
@@ -215,19 +280,12 @@
         $(document).ready(function () {
             $.getJSON("/all_credit", function (data) { 
                 showcredit(data);
+                $.getJSON("/data5", function (data) { 
+                    showdata(data);
+                });
             });
-            $.getJSON("/data1", function (data) { 
-                showdata(data);
-            });
-            $.getJSON("/data2", function (data) { 
-                showdata(data);
-            });
-            $.getJSON("/data3", function (data) { 
-                showdata(data);
-            });
-            $.getJSON("/data4", function (data) { 
-                showdata(data);
-            });
+            
+           
             
         });
         function ShowPopupMenu() {
