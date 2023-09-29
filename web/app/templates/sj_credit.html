@@ -24,7 +24,9 @@
         </ul>
     </nav>
     <div class="topic">ภาพรวมหลักสูตร</div>
-    <div i class="required">วิชาบังคับ<br />(Required Courses)
+    <div id="gpatotal" class="gpa">เกรดเฉลี่ยรวม    : <span id="totalgpa"></span><span> / 2.00</span></div>
+    <div id="gpamajortotal" class="gpa">เกรดเฉลี่ยวิชาเอก : <span id="majorgpa"></span><span> / 2.00</span></div>
+    <div class="required">วิชาบังคับ<br />(Required Courses)
         <div id="reqbox" class="rec1"></div>
         <div class="cr">Credits:
             <div id="1" class="crbox"><span id="bfreq"></span><span id="req"></span></div>
@@ -84,7 +86,14 @@
 
     <script> 
 
+
         function showdata(data){
+            var gpatop = 0;
+            var gpadown = 0;
+
+            var majorgpatop = 0;
+            var majorgpadown = 0;
+
             var credit1 = 0;
             var credit2 = 0; 
             var credit3 = 0;
@@ -126,6 +135,8 @@
 
             data.sort((a, b) => b.subject_id - a.subject_id)
             for(var i = 0; i < data.length; i++){
+                gpatop += data[i]["grade"] * data[i]["credit"];
+                gpadown += data[i]["credit"];
                 var html = ''; 
                 if(testt(data[i]["subject_id"])[0].slice(0, 31) == "หมวด วิชาศึกษาทั่วไป วิชาบังคับ"){
                     html += `<div class="sjname">${data[i]["subject_id"]}</div>`;   
@@ -142,6 +153,8 @@
                     html += `<div class="sjname">${data[i]["subject_id"]}</div>`;   
                     container2.innerHTML += html;
                     credit2 += data[i]["credit"];
+                    majorgpatop += data[i]["grade"] * data[i]["credit"];
+                    majorgpadown += data[i]["credit"];
                 }
                 else if(testt(data[i]["subject_id"])[0].slice(0, 32) == "หมวด วิชาศึกษาทั่วไป GE_Elective"){
                     html += `<div class="sjname">${data[i]["subject_id"]}</div>`;   
@@ -152,15 +165,22 @@
                     html += `<div class="sjname">${data[i]["subject_id"]}</div>`;   
                     container3.innerHTML += html;
                     credit3 += data[i]["credit"];
+                    majorgpatop += data[i]["grade"] * data[i]["credit"];
+                    majorgpadown += data[i]["credit"];
                 }
                 else if(testt(data[i]["subject_id"])[0].slice(0, 35) == "หมวด วิชาเฉพาะ วิชาเอก วิชาเอกเลือก"){ 
+                    majorgpatop += data[i]["grade"] * data[i]["credit"];
+                    majorgpadown += data[i]["credit"];
                     if(data[i]["subject_id"][3] == '7'){
                         html += `<div class="sjname">${data[i]["subject_id"]}</div>`;   
                         container5.innerHTML += html; 
                         credit700 += data[i]["credit"];
                         credit5 += data[i]["credit"];
+                        
                     }else{
+                        
                         if(data[i]["subject_id"][3] == '4'){
+                            
                             
                             if(cre_400 - credit400 > 0 || cre_5 - credit5 > 0 ){
                                 html += `<div class="sjname">${data[i]["subject_id"]}</div>`;   
@@ -187,8 +207,6 @@
                         
                     }
                 }
-                
-                
                 else{
                     html += `<div class="sjname">${data[i]["subject_id"]}</div>`;   
                     container8.innerHTML += html;
@@ -296,6 +314,24 @@
             }
             if(a7002 - a7001 > 0){
                 var tt = document.getElementById("5.2").style.backgroundColor = "red";
+            }
+
+
+
+            var ttgpa = (gpatop/gpadown).toFixed(3);
+            var ttg = Math.round(ttgpa * 100) / 100;
+            var setgpa = document.getElementById("totalgpa").innerHTML = ttg;
+            var mmgpa = (majorgpatop/majorgpadown).toFixed(3);
+            var mmg = Math.round(mmgpa * 100) / 100;
+            var setmajorgpa = document.getElementById("majorgpa").innerHTML = mmg;
+
+            
+
+            if(ttg < 2.00){
+                var tt = document.getElementById("gpatotal").style.color = "red";
+            }
+            if(mmg < 2.00){
+                var tt = document.getElementById("gpamajortotal").style.color = "red";
             }
         }
         

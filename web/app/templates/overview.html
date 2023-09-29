@@ -393,8 +393,10 @@
             console.log(typeof(a));
             console.log("11111111111");
             var container = document.getElementById("GPAA");
-            var html = a.toFixed(2);
-            container.innerHTML = `Cumulative GPA : ${a.toFixed(2)}`;;
+            var html = a.toFixed(3);
+            var gpaa = a.toFixed(3);
+            var tgpa = Math.round(gpaa * 100) / 100;
+            container.innerHTML = `Cumulative GPA : ${tgpa}`;
 
         }
         $(document).ready(function () {

@@ -86,7 +86,14 @@ nav {
     text-align: center;
     margin-top: 2%;
 }
+.gpa{
 
+    margin-left: 5%;
+    font-size: 18px;
+    color: white;
+    line-height: normal;
+    font-family: "Inter", Helvetica;
+}
 .required {
     position: absolute;
     width: 203px;
