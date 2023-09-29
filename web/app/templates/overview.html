@@ -52,29 +52,99 @@
             <div id="loop"class="board">
                 
             </div>
-            <!--<button class="edit" type="button">Edit</button>-->
+            <button id="myBtn1" class="edit" type="button">เพิ่ม</button>
+            <button id="myBtn" class="edit" type="button">ลบ</button>
+            
         </div>
         <div class="y2">Year 2
             <div id="loop2"class="board">
                 
             </div>
-            <!--<button class="edit" type="button">Edit</button>-->
+            
         </div>
         <div class="y3">Year 3
             <div id="loop3"class="board">
                 
             </div>
-            <!--<button class="edit" type="button">Edit</button>-->
+            <!-- <button class="edit" type="button">Edit</button> -->
         </div>
         <div class="y4">Year 4
             <div id ="loop4"class="board">
                 
             </div>
-            <!--<button class="edit" type="button">Edit</button>-->
+            <!-- <button class="edit" type="button">Edit</button> -->
         </div>
     </div>
 
+
+    <div id="myModal" class="modal">
+    <!-- Modal content -->
+        <div class="modal-content">
+        <span class="close ttt">&times;</span>
+        <div class="ids">รหัสวิชา</div>
+        <form method="post">
+            <input type="text" name="subj" class="id">
+            <input class="Add" id="myBtn" type="submit" value="ลบ">
+        </form> 
+        </div>
+    </div>
+
+    <div id="myModal1" class="modal">
+    <!-- Modal content -->
+        <div class="modal-content">
+        <span class="close ttt1">&times;</span>
+        
+        <form method="post" action="/form2">
+            <div class="t">
+                <input type="text" name="subj" class="" placeholder="subject">
+                <input type="text" name="grade" class="" placeholder="grade">
+                <input type="text" name="year" class="" placeholder="year">
+                <input type="text" name="credit" class="" placeholder="credit">
+                <input class="" id="myBtn" type="submit" value="เพิ่ม">
+            </div>
+        </form> 
+        </div>
+    </div>
     <script>   
+        var modal = document.getElementById("myModal");
+        var modal1 = document.getElementById("myModal1");
+
+        // Get the button that opens the modal
+        var btn = document.getElementById("myBtn");
+        var btn1 = document.getElementById("myBtn1");
+        
+
+        // Get the <span> element that closes the modal
+        var span = document.getElementsByClassName("ttt")[0];
+        var span1 = document.getElementsByClassName("ttt1")[0];
+
+        // When the user clicks the button, open the modal
+        btn.onclick = function () {
+        modal.style.display = "block";
+        }
+        btn1.onclick = function () {
+        modal1.style.display = "block";
+        }
+
+        // When the user clicks on <span> (x), close the modal
+        span.onclick = function () {
+        modal.style.display = "none";
+        }
+        span1.onclick = function () {
+        modal1.style.display = "none";
+        }
+
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function (event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+        }
+        window.onclick = function (event) {
+        if (event.target == modal1) {
+            modal1.style.display = "none";
+        }
+        }
     function downloadFile() {
         // นี่คือส่วนของโค้ดที่คุณสามารถใช้ในการดาวน์โหลดไฟล์ Excel
         // ในที่นี้จะแสดงตัวอย่างโค้ดเปิดหน้าต่างดาวน์โหลดไฟล์

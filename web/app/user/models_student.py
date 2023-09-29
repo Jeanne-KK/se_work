@@ -20,10 +20,11 @@ class User_student:
             "first_name": request.form.get('first_name'),
             "last_name": request.form.get('last_name'),
             "year_of_study": request.form.get('year_of_study'),
-            "curriculum_year": request.form.get('curriculum_year'),
+            "study_plan": "แผนปกติ",
+            "curriculum_year": request.form.get('year_of_study'),
             "cmu_acc": request.form.get('cmu_acc'),
             "pass": request.form.get('pass'),
-            "enroll": request.form.get('enroll')
+            "enroll": [] 
         }
         user['pass'] = pbkdf2_sha256.encrypt(user['pass'])
         if db.student.find_one({ "cmu_acc": user['cmu_acc'] }):

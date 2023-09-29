@@ -27,38 +27,38 @@
     <div i class="required">วิชาบังคับ<br />(Required Courses)
         <div id="reqbox" class="rec1"></div>
         <div class="cr">Credits:
-            <div class="crbox"><span id="bfreq"></span><span id="req"></span></div>
+            <div id="1" class="crbox"><span id="bfreq"></span><span id="req"></span></div>
         </div>
     </div>
     <div class="compulsory">วิชาเอกบังคับร่วม<br />(Compulsory Courses)
         <div id="reqcobox" class="rec2"></div>
         <div class="cr">Credits:
-            <div  class="crbox"><span id="bfreqco"></span><span id="reqco"></span></div>
+            <div id="2" class="crbox"><span id="bfreqco"></span><span id="reqco"></span></div>
         </div>
     </div>
     <div class="plan-spe">วิชาเอกบังคับประจำแผน<br />(Plan-specific)
         <div id="speccobox" class="rec3"></div>
         <div class="cr">Credits:
-            <div class="crbox"><span id="bfspecco"></span><span id="specco"></span></div>
+            <div id="3" class="crbox"><span id="bfspecco"></span><span id="specco"></span></div>
         </div>
     </div>
     <div class="core-courses">วิชาแกน<br />(Core Courses)
         <div id="corebox" class="rec4"></div>
         <div class="cr">Credits:
-            <div class="crbox"><span id="bfcore"></span><span id="core"></span></div>
+            <div id="4" class="crbox"><span id="bfcore"></span><span id="core"></span></div>
         </div>
     </div>
     <div class="major">วิชาเอกเลือก<br />(Major Elective Courses)
         <div id="majorbox" class="rec5"></div> 
         <div class="cr">Credits:
-            <div class="crbox"><span id="bfmajorco"></span><span id="majorco"></span></div>      
+            <div id="5" class="crbox"><span id="bfmajorco"></span><span id="majorco"></span></div>      
         </div>
         <div class="cr1">400: 
-            <div class="crbox"><span id="bf400"></span><span id="400"></span></div>      
+            <div id="5.1" class="crbox"><span id="bf400"></span><span id="400"></span></div>      
         </div>
         <div class="cr2">700:
             
-            <div class="crbox"><span id="bf700"></span><span id="700"></span></div>      
+            <div id="5.2" class="crbox"><span id="bf700"></span><span id="700"></span></div>      
         </div>
             
         
@@ -66,23 +66,24 @@
     <div class="minor">วิชาโท<br />(Minor Courses)
         <div id="minorbox" class="rec6"></div>
         <div class="cr">Credits:
-            <div  class="crbox"><span id="bfminor"></span><span id="minor"></span></div>
+            <div id="6" class="crbox"><span id="bfminor"></span><span id="minor"></span></div>
         </div>
     </div>
     <div class="ge">วิชาเลือกทั่วไป<br />(GE Elective)
         <div id="gebox" class="rec7"></div>
         <div class="cr">Credits:
-            <div class="crbox"><span id="bfge"></span><span id="ge"></span></div>
+            <div id="7" class="crbox"><span id="bfge"></span><span id="ge"></span></div>
         </div>
     </div>
     <div class="free">วิชาเลือกเสรี<br />(Free Elective)
         <div id="freebox" class="rec8"></div>
         <div class="cr">Credits:
-            <div class="crbox"><span id="bffree"></span><span id="free"></span></div>
+            <div id="8" class="crbox"><span id="bffree"></span><span id="free"></span></div>
         </div>
     </div>
 
     <script> 
+
         function showdata(data){
             var credit1 = 0;
             var credit2 = 0; 
@@ -195,13 +196,7 @@
                     credit8 += data[i]["credit"];
                 }
             }
-            console.log("***********");
-            console.log(cre_400);
-            console.log(credit400);
-            console.log(cre_5);
-            console.log(credit5);
             
-            console.log("***********");
             // console.log("******");
             // console.log(credit1);
             // console.log(credit2);
@@ -251,6 +246,57 @@
             cn400.innerHTML = `${credit400}/`;
             cn700.innerHTML = `${credit700}/`;
             // console.log("******");
+            var req1 = parseInt(document.getElementById("bfreq").textContent);
+            var req2 = parseInt(document.getElementById("req").textContent);
+            var reqco1 = parseInt(document.getElementById("bfreqco").textContent);
+            var reqco2 = parseInt(document.getElementById("reqco").textContent);
+            var specco1 = parseInt(document.getElementById("bfspecco").textContent); 
+            var specco2 = parseInt(document.getElementById("specco").textContent); 
+            var core1 = parseInt(document.getElementById("bfcore").textContent);
+            var core2 = parseInt(document.getElementById("core").textContent);
+            var majorco1 = parseInt(document.getElementById("bfmajorco").textContent);
+            var majorco2 = parseInt(document.getElementById("majorco").textContent);
+            var minor1 = parseInt(document.getElementById("bfminor").textContent);
+            var minor2 = parseInt(document.getElementById("minor").textContent);
+            var ge1 = parseInt(document.getElementById("bfge").textContent);
+            var ge2 = parseInt(document.getElementById("ge").textContent);
+            var free1 = parseInt(document.getElementById("bffree").textContent);
+            var free2 = parseInt(document.getElementById("free").textContent);
+            var a4001 = parseInt(document.getElementById("bf400").textContent);
+            var a4002 = parseInt(document.getElementById("400").textContent);
+            var a7001 = parseInt(document.getElementById("bf700").textContent);
+            var a7002 = parseInt(document.getElementById("700").textContent);
+
+            if(req2 - req1 > 0){
+                var tt = document.getElementById("1").style.backgroundColor = "red";
+            }
+            if(reqco2 - reqco1 > 0){
+                var tt = document.getElementById("2").style.backgroundColor = "red";
+            }
+            if(specco2 - specco1 > 0){
+                var tt = document.getElementById("3").style.backgroundColor = "red";
+            }
+            if(core2 - core1 > 0){
+                var tt = document.getElementById("4").style.backgroundColor = "red";
+            }
+            if(majorco2 - majorco1 > 0){
+                var tt = document.getElementById("5").style.backgroundColor = "red";
+            }
+            if(minor2 - minor1 > 0){
+                var tt = document.getElementById("6").style.backgroundColor = "red";
+            }
+            if(ge2 - ge1 > 0){
+                var tt = document.getElementById("7").style.backgroundColor = "red";
+            }
+            if(free2 - free1 > 0){
+                var tt = document.getElementById("8").style.backgroundColor = "red";
+            }
+            if(a4002 - a4001 > 0){
+                var tt = document.getElementById("5.1").style.backgroundColor = "red";
+            }
+            if(a7002 - a7001 > 0){
+                var tt = document.getElementById("5.2").style.backgroundColor = "red";
+            }
         }
         
         function showcredit(data){

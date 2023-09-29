@@ -1,4 +1,4 @@
-from flask import (jsonify,render_template, Flask, session, redirect)
+from flask import (jsonify,render_template, Flask, session, redirect, request)
 from functools import wraps
 import json
 import os
@@ -667,9 +667,60 @@ def homepage():
 def s_reg():
     return render_template('regist_s.html')
 
-@app.route('/overview')
+@app.route('/overview', methods=('GET', 'POST'))
 @login_required
 def overview():
+    if request.method == 'POST':
+        app.logger.debug(request.form)
+        db=""
+        name = request.form.get('subj')
+        try:
+            db = get_db()
+            data = db.student.update_one(
+                    { "_id": session['user']['_id'] },
+                    { "$pull": { "enroll": { "subject_id": name } } }
+                    ) 
+            return redirect('/overview')
+            
+        except Exception as e:
+            return jsonify({"errors": str(e)}), 500  # Return an error response with a 500 status code
+        finally:
+            if isinstance(db, MongoClient):
+                db.close()
+    return render_template('overview.html')
+
+@app.route('/form2', methods=('GET', 'POST'))
+@login_required
+def form2():
+    if request.method == 'POST':
+        app.logger.debug(request.form)
+        db=""
+        suba = request.form.get('subj')
+        gradea = int(request.form.get('grade'))
+        yeara = int(request.form.get('year'))
+        credita = int(request.form.get('credit'))
+        
+        try:
+            db = get_db()
+            data = db.student.update_one(
+                {
+                    "_id": session['user']['_id'],
+                },
+                {
+                    "$push": {
+                        "enroll":{
+                            "subject_id": suba, "grade": gradea, "year": yeara, "credit": credita
+                        }
+                    }
+                }
+            )
+            return redirect('/overview')
+            
+        except Exception as e:
+            return jsonify({"errors": str(e)}), 500  # Return an error response with a 500 status code
+        finally:
+            if isinstance(db, MongoClient):
+                db.close()
     return render_template('overview.html')
 
 @app.route('/subject_credit')
