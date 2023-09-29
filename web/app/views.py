@@ -521,6 +521,29 @@ def stu_list():
         if isinstance(db, MongoClient):
             db.close() 
 
+@app.route('/curri')
+def curri():
+    db=""
+    try:
+        db = get_db()
+        # app.logger.debug(type(session["user"]["_id"]))
+        app.logger.debug("***********")
+        app.logger.debug(session['user']['curriculum_year'])
+        app.logger.debug(type(session['user']['curriculum_year']))
+        
+        data = db.curriculum.find({"_id": int(session['user']['curriculum_year'])})    
+        data= list(data)
+        app.logger.debug(data)
+        app.logger.debug("***********")
+        return jsonify(data)
+        
+    except Exception as e:
+        return jsonify({"errors": str(e)}), 500  # Return an error response with a 500 status code
+    finally:
+        if isinstance(db, MongoClient):
+            db.close() 
+
+
 @app.route('/all_credit')
 def all_credit():
     db=""
