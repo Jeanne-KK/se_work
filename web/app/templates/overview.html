@@ -436,6 +436,87 @@
             }
         }
     </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.4/xlsx.full.min.js"></script>
+    <script>
+        function chooseFile() {
+          // เรียกใช้งาน input ที่ซ่อนไว้
+          const fileInput = document.getElementById('fileInput');
+          
+          // กำหนดคอนฟิกเลือกสำหรับ input เป็นไฟล์ Excel
+          fileInput.accept = '.xlsx, .xls';
+          
+          // เมื่อไฟล์ถูกเลือก
+          fileInput.addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            
+            // ตรวจสอบว่ามีไฟล์ที่ถูกเลือก
+            if (file) {
+              const reader = new FileReader();
+              
+              // เมื่ออ่านไฟล์เสร็จสิ้น
+              reader.onload = function(event) {
+                const data = event.target.result;
+                
+                // ใช้ SheetJS เพื่อแปลง Excel เป็น JSON
+                const workbook = XLSX.read(data, { type: 'binary' });
+                const jsonData = XLSX.utils.sheet_to_json(workbook.Sheets[workbook.SheetNames[0]]);
+                
+                // jsonData จะมีข้อมูล JSON จาก Excel
+                console.log('jsonData  ===> ', jsonData);
+                // enroll_all = {}
+                //---------------แปลงให้อยู่รูปแบบที่ถูกสำหรับจัดเก็บ-----------
+                var yyy
+                const transformedData = jsonData.map(item => {
+                    const subject_id = item.__EMPTY_1.toString();
+                    const grade = parseFloat(item.__EMPTY_2);
+                    
+                    if (item.__EMPTY_5){
+                        yyy = item.__EMPTY_5
+                        console.log('ssss')
+                    }
+                    const year = item.__EMPTY_5 || yyy; // ถ้าไม่มีข้อมูลปีกำหนดให้เป็น 1
+                    const credit = parseFloat(item.__EMPTY_3);
+                    return { subject_id, grade, year, credit };
+                });
+
+                const enroll_add = { enroll: transformedData }; 
+
+                enroll_add_all = enroll_add['enroll']
+                // ลบ row แรก 
+                if (Array.isArray(enroll_add_all) && enroll_add_all.length > 0) {
+                for (let i = 0; i < enroll_add_all.length; i++) {
+                    if (isNaN(enroll_add_all[i].credit)) {
+                    enroll_add_all.splice(i, 1); // ลบอ็อบเจ็กต์ที่มี credit เป็น NaN ออกจากอาร์เรย์
+                    i--; // เพื่อป้องกันการข้ามอ็อบเจ็กต์หลังจากการลบ
+                    }
+                }
+                } else {
+                console.error("enroll_add is not an array or is empty");
+                }
+
+
+
+
+                console.log('enroll_add_all ==> ', enroll_add_all) 
+                console.log('enroll_add_all ==> ', typeof(enroll_add_all)) 
+                // console.log('enroll_add ==> ', Object.keys(enroll_add).length) 
+                // console.log('enroll_add ==> ', Object.keys(enroll_add)) 
+
+
+               
+              };
+              
+              // อ่านไฟล์เป็น binary
+              reader.readAsBinaryString(file);
+            }
+          });
+          
+          // เปิดหน้าต่างเลือกไฟล์
+          fileInput.click();
+        }
+
+        
+    </script>
 </body>
 
 </html>

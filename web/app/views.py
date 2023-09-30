@@ -521,6 +521,30 @@ def stu_list():
         if isinstance(db, MongoClient):
             db.close() 
 
+@app.route('/stu_list_all')
+def stu_list_all():
+    db="" 
+    try:
+        db = get_db()
+        app.logger.debug(type(session["user"]["_id"]))
+
+        data = db.teacher.find({ "cmu_acc": session['user']['cmu_acc'] }, { "advisee": 1, "_id": 0 })
+        data= list(data)
+        app.logger.debug(data)
+                        
+        
+        
+        
+        
+           
+        return jsonify(data)
+        
+    except Exception as e:
+        return jsonify({"errors": str(e)}), 500  # Return an error response with a 500 status code
+    finally:
+        if isinstance(db, MongoClient):
+            db.close() 
+
 @app.route('/curri')
 def curri():
     db=""
@@ -711,6 +735,31 @@ def overview():
             if isinstance(db, MongoClient):
                 db.close()
     return render_template('overview.html')
+
+@app.route('/del_stu', methods=('GET', 'POST'))
+@login_required
+def del_stu():
+    if request.method == 'POST':
+        app.logger.debug(request.form)
+        db=""
+        name = request.form.get('_id')
+        
+        app.logger.debug(type(name))
+        
+        try:
+            db = get_db()
+            data = db.teacher.update_one(
+                        { "cmu_acc": session['user']['cmu_acc'] },  
+                        { "$pull": { "advisee": name } } 
+                    ) 
+            return redirect('/teacher_home')
+            
+        except Exception as e:
+            return jsonify({"errors": str(e)}), 500  # Return an error response with a 500 status code
+        finally:
+            if isinstance(db, MongoClient):
+                db.close()
+    return render_template('t_home.html')
 
 @app.route('/form2', methods=('GET', 'POST'))
 @login_required

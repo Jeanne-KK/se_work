@@ -51,33 +51,120 @@
   </div>
 
   <script>
-    function showallstudent(data){
-      console.log(data);
-      var container = document.getElementById("loop_stu");
-      var html = '';
-      for (var i = 0; i < data.length; i++){
-        console.log(data[i]["student_ad"]["_id"]);
-        var id = data[i]["student_ad"]["_id"];
-        var first_name = data[i]["student_ad"]["first_name"];
-        var last_name = data[i]["student_ad"]["last_name"];
-        var study_plan = data[i]["student_ad"]["study_plan"];
-        html += `
-          <div class="names">
-          <span class="student-info">${id} ${first_name} ${last_name}</span>
-          <span class="plans">แผนการศึกษาที่เลือก:</span>
-          <span class="p">${study_plan}</span>
-          <button class="Binfo" type="button">ดูข้อมูล</button>
-      </div>
-        `; 
-      }
-      container.innerHTML = html;
+    function del_stu(data){
+      var users = data.toString();
+      var formData = {};
+      formData['_id'] = users;
+      var url = "/del_stu";
+      $.post(url, formData, function(){
+        window.location.href = "/teacher_home";
+      });
     }
+    function showallstudent(data, data2){
+      
+      data2[0]['advisee'].sort();
+      console.log(data2[0]["advisee"].length);
+      console.log(data.length);
+      var container = document.getElementById("loop_stu");
+      var j = 0;
+      for( var i = 0; i < data2[0]["advisee"].length; i++){
+        console.log(i);
+        var html = ''; 
+        if(data.length <= j){
+          var id = data2[0]["advisee"][i];
+          html += `
+            <div class="names">
+            <span class="student-info">${id}</span>
+            
+            <span class="p"></span>
+            <button class="Binfo" type="button">ดูข้อมูล</button>
+            <button onclick="del_stu(${id})" class="Binfo" type="button">ลบ</button>
+            </div>
+          `; 
+        }else{
+          if(data2[0]["advisee"][i] == data[j]['student_ad']["_id"]){
+            var id = data[j]["student_ad"]["_id"];
+            var first_name = data[j]["student_ad"]["first_name"];
+            var last_name = data[j]["student_ad"]["last_name"];
+            var study_plan = data[j]["student_ad"]["study_plan"];
+            html += `
+              <div class="names">
+              <span class="student-info">${id} ${first_name} ${last_name}</span>
+              <span class="plans">แผนการศึกษาที่เลือก:</span>
+              <span class="p">${study_plan}</span>
+              <button class="Binfo" type="button">ดูข้อมูล</button>
+              <button onclick="del_stu(${id})" class="Binfo" type="button">ลบ</button>
+              </div>
+              
+            `; 
+            j++;
+          }else{
+            var id = data2[0]["advisee"][i];
+            html += `
+              <div class="names">
+              <span class="student-info">${id}</span>
+              
+              <span class="p"></span>
+              <button class="Binfo" type="button">ดูข้อมูล</button>
+              <button onclick="del_stu(${id})" class="Binfo" type="button">ลบ</button>
+              </div>
+            `; 
+          }
+        }
+        
+        container.innerHTML += html;
+        
+      }
+    } 
+    
+      
+      
+    // }
+    // function showallstudent(data, data2) {
+    //   console.log(data2[0]["advisee"][0]);
+    //   console.log(data[1]['student_ad']);
+    //   var container = document.getElementById("loop_stu");
+      
+    //   for (var i = 0; i < data2[0]["advisee"].length; i++) { // Corrected the loop increment variable
+    //     var html = '';
+    //     for (var j = 0; j < data.length; j++) {
+    //       if (data[j]["student_ad"] && data2[0]["advisee"][i] == data[j]["student_ad"]["_id"]) { // Check if data[j]["student_ad"] exists
+    //         var id = data[j]["student_ad"]["_id"];
+    //         var first_name = data[j]["student_ad"]["first_name"];
+    //         var last_name = data[j]["student_ad"]["last_name"];
+    //         var study_plan = data[j]["student_ad"]["study_plan"];
+    //         html += `
+    //           <div class="names">
+    //             <span class="student-info">${id} ${first_name} ${last_name}</span>
+    //             <span class="plans">แผนการศึกษาที่เลือก:</span>
+    //             <span class="p">${study_plan}</span>
+    //             <button class="Binfo" type="button">ดูข้อมูล</button>
+    //           </div>
+    //         `;
+    //         break; // Exit the loop once a match is found
+    //       } else {
+    //         var id = data2[0]["advisee"][i];
+    //         html += `
+    //           <div class="names">
+    //             <span class="student-info">${id}</span>
+    //             <span class="p"></span>
+    //             <button class="Binfo" type="button">ดูข้อมูล</button>
+    //           </div>
+    //         `;
+    //       }
+    //     }
+    //     container.innerHTML += html;
+    //   }
+    // }
 
     $(document).ready(function () {
-            $.getJSON("/stu_list", function (data) {
+            $.getJSON("/stu_list_all", function (list_all) {
+              $.getJSON("/stu_list", function (list) {
                 // Call the displayData function to update the HTML with the received data
-                showallstudent(data);
+                showallstudent(list, list_all);
+              });
             });
+            
             
         });
     // Rest of your JavaScript code
