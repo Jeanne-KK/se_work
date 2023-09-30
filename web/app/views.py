@@ -528,7 +528,7 @@ def stu_list_all():
         db = get_db()
         app.logger.debug(type(session["user"]["_id"]))
 
-        data = db.teacher.find({ "cmu_acc": session['user']['cmu_acc'] }, { "advisee": 1, "_id": 0 })
+        data = db.teacher.find({ "_id": session['user']['_id'] }, { "advisee": 1, "_id": 0 })
         data= list(data)
         app.logger.debug(data)
                         

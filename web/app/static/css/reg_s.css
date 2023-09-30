@@ -58,12 +58,13 @@ nav {
 
 .name {
     width: 170px;
-    margin-top: 2%;
+    margin-top: 7%;
     background-color: #ffffff;
     border-radius: 10px;
     position: absolute;
     height: 30px;
     font-size: 16px;
+    margin-left: -20%;
 }
 
 .topic2 {
@@ -81,12 +82,13 @@ nav {
 
 .surname {
     width: 270px;
-    margin-top: 2%;
+    margin-top: 7%;
     background-color: #ffffff;
     border-radius: 10px;
     position: absolute;
     height: 30px;
     font-size: 16px;
+    margin-left: -36%;
 }
 
 .topic3 {
@@ -104,12 +106,13 @@ nav {
 
 .sid {
     width: 170px;
-    margin-top: 2%;
+    margin-top: 7%;
     background-color: #ffffff;
     border-radius: 10px;
     position: absolute;
     height: 30px;
     font-size: 16px;
+    margin-left: -52%;
 }
 
 .topic4 {
@@ -127,12 +130,13 @@ nav {
 
 .year {
     width: 100px;
-    margin-top: 2%;
+    margin-top: 7%;
     background-color: #ffffff;
     border-radius: 10px;
     position: absolute;
     height: 30px;
     font-size: 16px;
+    margin-left: -51%;
 }
 
 .topic5 {
@@ -150,12 +154,13 @@ nav {
 
 .mail {
     width: 170px;
-    margin-top: 2%;
+    margin-top: 7%;
     background-color: #ffffff;
     border-radius: 10px;
     position: absolute;
     height: 30px;
     font-size: 16px;
+    margin-left: -10%;
 }
 
 .topic6 {
@@ -173,12 +178,13 @@ nav {
 
 .pass {
     width: 170px;
-    margin-top: 2%;
+    margin-top: 7%;
     background-color: #ffffff;
     border-radius: 10px;
     position: absolute;
     height: 30px;
     font-size: 16px;
+    margin-left: -18%;
 }
 
 .next {

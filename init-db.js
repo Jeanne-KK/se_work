@@ -3,26 +3,23 @@ db.animal_db.drop();
 
 db.teacher.insertMany([
 	{
-		"_id": "0001",
+		"_id": "arrer_@cmu.ac.th",
 		"first_name": "Areerat",
 		"last_name": "Trongratsameethong",
-		"cmu_acc": "arrer_@cmu.ac.th",
 		"pass": "$pbkdf2-sha256$29000$SWktpTTm/H8vRYjR2nuPcQ$eMYTVcZQnUpiKfO3lfFJpeyCUZH8fD0QxFztB43UVCY",
 		"advisee": ["640510641", "640510666"]
 	},
 	{
-		"_id": "0002",
+		"_id": "kamonphop_@cmu.ac.th",
 		"first_name": "Kamonphop",
 		"last_name": "Srisopha",
-		"cmu_acc": "kamonphop_@cmu.ac.th",
 		"pass": "$pbkdf2-sha256$29000$SWktpTTm/H8vRYjR2nuPcQ$eMYTVcZQnUpiKfO3lfFJpeyCUZH8fD0QxFztB43UVCY",
 		"advisee": ["640510713"]
 	},
 	{
-		"_id": "0003",
+		"_id": "varin_@cmu.ac.th",
 		"first_name": "Varin",
 		"last_name": "Chouvatut",
-		"cmu_acc": "varin_@cmu.ac.th",
 		"pass": "$pbkdf2-sha256$29000$SWktpTTm/H8vRYjR2nuPcQ$eMYTVcZQnUpiKfO3lfFJpeyCUZH8fD0QxFztB43UVCY",
 		"advisee": ["640510634"]
 	},
@@ -228,7 +225,6 @@ db.curriculum.insertOne(
 {
   "_id": 2564,
   "หน่วยกิต": 134,
-  "grade_check":{"แผนปกติ": 2.00, "แผนสหกิจศึกษา": 2.00, "แผนก้าวหน้า": 3.50},
   "หมวด": {
     "วิชาศึกษาทั่วไป": {
       "หน่วยกิต": 30,
@@ -237,38 +233,46 @@ db.curriculum.insertOne(
         "กลุ่มวิชาด้านการพัฒนาทักษะการเป็นผู้เรียนรู้": [
           {
             "รหัสวิชา": "001101",
+            "ชื่อวิชา": "Fundamental English 1",
             "หน่วยกิต": 3
           },
           {
             "รหัสวิชา": "001102",
+            "ชื่อวิชา": "Fundamental English 2",
             "หน่วยกิต": 3
           },
           {
             "รหัสวิชา": "001201",
+            "ชื่อวิชา": "Critical Reading and Effective Writing",
             "หน่วยกิต": 3
           },
           {
             "รหัสวิชา": "001225",
+            "ชื่อวิชา": "English in Science and Technology Context",
             "หน่วยกิต": 3
           },
           {
             "รหัสวิชา": "204100",
+            "ชื่อวิชา": "Information Technology and Modern Life",
             "หน่วยกิต": 3
           }
         ],
         "กลุ่มวิชาด้านการพัฒนาทักษะการเป็นผู้ร่วมสร้างสรรค์นวัตกรรม": [
           {
             "รหัสวิชา": "201190",
+            "ชื่อวิชา": "Critical Thinking, Problem Solving and Science Communication",
             "หน่วยกิต": 3
           }
         ],
         "กลุ่มวิชาด้านการพัฒนาทักษะการเป็นพลเมืองที่เข้มแข็ง": [
           {
             "รหัสวิชา": "140104",
+            "ชื่อวิชา": "Citizenship",
             "หน่วยกิต": 3
           },
           {
             "รหัสวิชา": "201111",
+            "ชื่อวิชา": "The World of Science",
             "หน่วยกิต": 3
           }
         ]
@@ -278,54 +282,66 @@ db.curriculum.insertOne(
         "กลุ่มวิชาด้านการพัฒนาทักษะการเป็นผู้เรียนรู้": [
           {
             "รหัสวิชา": "050100",
+            "ชื่อวิชา": "Usage of the Thai Language",
             "หน่วยกิต": 3
           },
           {
             "รหัสวิชา": "074100",
+            "ชื่อวิชา": "Nutrition for Promotion of Health",
             "หน่วยกิต": 3
           },
           {
             "รหัสวิชา": "701181",
+            "ชื่อวิชา": "Accounting for Non Accountants",
             "หน่วยกิต": 3
           },
           {
             "รหัสวิชา": "702101",
+            "ชื่อวิชา": "Finance for Daily Life",
             "หน่วยกิต": 3
           }
         ],
         "กลุ่มวิชาด้านการพัฒนาทักษะการเป็นผู้ร่วมสร้างสรรค์นวัตกรรม": [
           {
             "รหัสวิชา": "013110",
+            "ชื่อวิชา": "Psychology and Daily Life",
             "หน่วยกิต": 3
           },
           {
             "รหัสวิชา": "176100",
+            "ชื่อวิชา": "Law and Modern World",
             "หน่วยกิต": 3
           },
           {
             "รหัสวิชา": "201114",
+            "ชื่อวิชา": "Environmental Science in Today's World",
             "หน่วยกิต": 3
           },
           {
             "รหัสวิชา": "703103",
+            "ชื่อวิชา": "Introduction to Entrepreneurship and Business",
             "หน่วยกิต": 3
           },
           {
             "รหัสวิชา": "751100",
+            "ชื่อวิชา": "Economics for Everyday Life",
             "หน่วยกิต": 3
           },
           {
             "รหัสวิชา": "851103",
+            "ชื่อวิชา": "Life and Society Through Media",
             "หน่วยกิต": 3
           }
         ],
         "กลุ่มวิชาด้านการพัฒนาทักษะการเป็นพลเมืองที่เข้มแข็ง": [
           {
             "รหัสวิชา": "801100",
+            "ชื่อวิชา": "Architecture in Everyday Life",
             "หน่วยกิต": 3
           },
           {
             "รหัสวิชา": "951100",
+            "ชื่อวิชา": "Modern Life and Animation",
             "หน่วยกิต": 3
           }
         ]
@@ -338,34 +354,42 @@ db.curriculum.insertOne(
         "รายวิชา": [
           {
             "รหัสวิชา": "202101",
+            "ชื่อวิชา": "Basic Biology 1",
             "หน่วยกิต": 3
           },
           {
             "รหัสวิชา": "203103",
+            "ชื่อวิชา": "General Chemistry 1",
             "หน่วยกิต": 3
           },
           {
             "รหัสวิชา": "204111",
+            "ชื่อวิชา": "Fundamentals of Programming",
             "หน่วยกิต": 3
           },
           {
             "รหัสวิชา": "206111",
+            "ชื่อวิชา": "Calculus 1",
             "หน่วยกิต": 3
           },
           {
             "รหัสวิชา": "206112",
+            "ชื่อวิชา": "Calculus 2",
             "หน่วยกิต": 3
           },
           {
             "รหัสวิชา": "206183",
+            "ชื่อวิชา": "Discrete Structure",
             "หน่วยกิต": 3
           },
           {
             "รหัสวิชา": "207187",
+            "ชื่อวิชา": "Physics 1",
             "หน่วยกิต": 3
           },
           {
             "รหัสวิชา": "208269",
+            "ชื่อวิชา": "Statistics for Computer Science",
             "หน่วยกิต": 3
           }
         ]
@@ -377,62 +401,77 @@ db.curriculum.insertOne(
           "รายวิชา": [
             {
               "รหัสวิชา": "204203",
+              "ชื่อวิชา": "Computer Science Technology",
               "หน่วยกิต": 3
             },
             {
               "รหัสวิชา": "204306",
+              "ชื่อวิชา": "Ethics for Computer Professionals",
               "หน่วยกิต": 1
             },
             {
               "รหัสวิชา": "204212",
+              "ชื่อวิชา": "Modern Application Development",
               "หน่วยกิต": 3
             },
             {
               "รหัสวิชา": "204271",
+              "ชื่อวิชา": "Introduction to Artificial Intelligence",
               "หน่วยกิต": 3
             },
             {
               "รหัสวิชา": "204321",
+              "ชื่อวิชา": "Database Systems",
               "หน่วยกิต": 3
             },
             {
               "รหัสวิชา": "204361",
+              "ชื่อวิชา": "Software Engineering",
               "หน่วยกิต": 3
             },
             {
               "รหัสวิชา": "204451",
+              "ชื่อวิชา": "Algorithm Design and Analysis",
               "หน่วยกิต": 3
             },
             {
               "รหัสวิชา": "204390",
+              "ชื่อวิชา": "Computer Job Training",
               "หน่วยกิต": 1
             },
             {
               "รหัสวิชา": "204490",
+              "ชื่อวิชา": "Research in Computer Science",
               "หน่วยกิต": 3
             },
             {
               "รหัสวิชา": "204114",
+              "ชื่อวิชา": "Introduction to Object-oriented Programming",
               "หน่วยกิต": 3
             },
             {
               "รหัสวิชา": "204232",
+              "ชื่อวิชา": "Computer Networks and Protocols",
               "หน่วยกิต": 3
             },
             {
               "รหัสวิชา": "204252",
+              "ชื่อวิชา": "Data Structures and Analysis",
               "หน่วยกิต": 3
             },
             {
               "รหัสวิชา": "204315",
+              "ชื่อวิชา": "Organization of Programming Languages",
               "หน่วยกิต": 3
             },
             {
               "รหัสวิชา": "204341",
+              "ชื่อวิชา": "Operating Systems",
               "หน่วยกิต": 3
             },
             {
               "รหัสวิชา": "204231",
+              "ชื่อวิชา": "Computer Organization and Architecture",
               "หน่วยกิต": 3
             }
           ]
@@ -443,10 +482,12 @@ db.curriculum.insertOne(
             "รายวิชา": [
               {
                 "รหัสวิชา": "204491",
+                "ชื่อวิชา": "Independent Study 1",
                 "หน่วยกิต": 1
               },
               {
                 "รหัสวิชา": "204499",
+                "ชื่อวิชา": "Independent Study 2",
                 "หน่วยกิต": 2
               }
             ]
@@ -456,10 +497,12 @@ db.curriculum.insertOne(
             "รายวิชา": [
               {
                 "รหัสวิชา": "204496",
+                "ชื่อวิชา": "Cooperative Education",
                 "หน่วยกิต": 6
               },
               {
                 "รหัสวิชา": "204497",
+                "ชื่อวิชา": "Seminar in Computer Science",
                 "หน่วยกิต": 1
               }
             ]
@@ -469,10 +512,12 @@ db.curriculum.insertOne(
             "รายวิชา": [
               {
                 "รหัสวิชา": "204491",
+                "ชื่อวิชา": "Independent Study 1",
                 "หน่วยกิต": 1
               },
               {
                 "รหัสวิชา": "204499",
+                "ชื่อวิชา": "Independent Study 2",
                 "หน่วยกิต": 2
               }
             ]
@@ -500,204 +545,253 @@ db.curriculum.insertOne(
           },
           "รายวิชา": {
             "300": [
-                  {
-                      "รหัสวิชา": "204325",
-                      "หน่วยกิต": 3
-                  },
+                            {
+                                "รหัสวิชา": "204325",
+                                "ชื่อวิชา": "Systems Analysis and Design",
+                                "หน่วยกิต": 3
+                            },
                             {
                                 "รหัสวิชา": "204333",
+                                "ชื่อวิชา": "Internet Application Development",
                                 "หน่วยกิต": 3
                             },
                             {
                                 "รหัสวิชา": "204335",
+                                "ชื่อวิชา": "Competitive Programming",
                                 "หน่วยกิต": 3
                             },
                             {
                                 "รหัสวิชา": "204362",
+                                "ชื่อวิชา": "Object-oriented Design",
                                 "หน่วยกิต": 3
                             },
                             {
                                 "รหัสวิชา": "204363",
+                                "ชื่อวิชา": "Software Modeling and Requirements",
                                 "หน่วยกิต": 3
                             },
                             {
                                 "รหัสวิชา": "204364",
+                                "ชื่อวิชา": "Software Design and Implementation",
                                 "หน่วยกิต": 3
                             },
                             {
                                 "รหัสวิชา": "204365",
+                                "ชื่อวิชา": "Human-computer Interaction",
                                 "หน่วยกิต": 3
                             },
                             {
                                 "รหัสวิชา": "204381",
+                                "ชื่อวิชา": "Numerical Computation and Software",
                                 "หน่วยกิต": 3
                             },
                             {
                                 "รหัสวิชา": "204382",
+                                "ชื่อวิชา": "Computer Graphics",
                                 "หน่วยกิต": 3
                             },
                             {
                                 "รหัสวิชา": "204383",
+                                "ชื่อวิชา": "Image Processing",
                                 "หน่วยกิต": 3
                             }
                         ],
                         "400": [
                             {
                                 "รหัสวิชา": "204422",
+                                "ชื่อวิชา": "Data Warehousing",
                                 "หน่วยกิต": 3
                             },
                             {
                                 "รหัสวิชา": "204423",
+                                "ชื่อวิชา": "Data Mining",
                                 "หน่วยกิต": 3
                             },
                             {
                                 "รหัสวิชา": "204424",
+                                "ชื่อวิชา": "Ontology Design and Development",
                                 "หน่วยกิต": 3
                             },
                             {
                                 "รหัสวิชา": "204425",
+                                "ชื่อวิชา": "Management Information System",
                                 "หน่วยกิต": 3
                             },
                             {
                                 "รหัสวิชา": "204426",
+                                "ชื่อวิชา": "Data Engineering",
                                 "หน่วยกิต": 3
                             },
                             {
                                 "รหัสวิชา": "204432",
+                                "ชื่อวิชา": "Computer Network Design and Management",
                                 "หน่วยกิต": 3
                             },
                             {
                                 "รหัสวิชา": "204435",
+                                "ชื่อวิชา": "Parallel Processing",
                                 "หน่วยกิต": 3
                             },
                             {
                                 "รหัสวิชา": "204441",
+                                "ชื่อวิชา": "Concurrent Programming and Distributed System",
                                 "หน่วยกิต": 3
                             },
                             {
                                 "รหัสวิชา": "204442",
+                                "ชื่อวิชา": "Compiler Construction",
                                 "หน่วยกิต": 3
                             },
                             {
                                 "รหัสวิชา": "204443",
+                                "ชื่อวิชา": "Computer System Security",
                                 "หน่วยกิต": 3
                             },
                             {
                                 "รหัสวิชา": "204452",
+                                "ชื่อวิชา": "Theory of Computation",
                                 "หน่วยกิต": 3
                             },
                             {
                                 "รหัสวิชา": "204453",
+                                "ชื่อวิชา": "Pattern Recognition",
                                 "หน่วยกิต": 3
                             },
                             {
                                 "รหัสวิชา": "204454",
+                                "ชื่อวิชา": "Combinatorial Optimization Algorithms and Programming",
                                 "หน่วยกิต": 3
                             },
                             {
                                 "รหัสวิชา": "204456",
+                                "ชื่อวิชา": "Machine Learning",
                                 "หน่วยกิต": 3
                             },
                             {
                                 "รหัสวิชา": "204471",
+                                "ชื่อวิชา": "Artificial Intelligence",
                                 "หน่วยกิต": 3
                             },
                             {
                                 "รหัสวิชา": "204481",
+                                "ชื่อวิชา": "Mathematical Programming and Software",
                                 "หน่วยกิต": 3
                             },
                             {
                                 "รหัสวิชา": "204482",
+                                "ชื่อวิชา": "Simulation and Modelling",
                                 "หน่วยกิต": 3
                             },
                             {
                                 "รหัสวิชา": "204483",
+                                "ชื่อวิชา": "Computer Vision",
                                 "หน่วยกิต": 3
                             },
                             {
                                 "รหัสวิชา": "204494",
+                                "ชื่อวิชา": "Selected Topics in Computer Science 1",
                                 "หน่วยกิต": 3
                             },
                             {
                                 "รหัสวิชา": "204495",
+                                "ชื่อวิชา": "Selected Topics in Computer Science 2",
                                 "หน่วยกิต": 3
                             },
                             {
                                 "รหัสวิชา": "206325",
+                                "ชื่อวิชา": "Linear Algebra",
                                 "หน่วยกิต": 3
                             },
                             {
                                 "รหัสวิชา": "206336",
+                                "ชื่อวิชา": "Real Analysis 1",
                                 "หน่วยกิต": 3
                             },
                             {
                                 "รหัสวิชา": "206370",
+                                "ชื่อวิชา": "Probability 1",
                                 "หน่วยกิต": 3
                             },
                             {
                                 "รหัสวิชา": "206428",
+                                "ชื่อวิชา": "Coding Theory",
                                 "หน่วยกิต": 3
                             },
                             {
                                 "รหัสวิชา": "206463",
+                                "ชื่อวิชา": "Deterministic Optimization",
                                 "หน่วยกิต": 3
                             },
                             {
                                 "รหัสวิชา": "206476",
+                                "ชื่อวิชา": "Game Theory",
                                 "หน่วยกิต": 3
                             },
                             {
                                 "รหัสวิชา": "206481",
+                                "ชื่อวิชา": "Graph Theory",
                                 "หน่วยกิต": 3
                             }
                         ],
                         "700":[
                             {
                                 "รหัสวิชา": "204712",
+                                "ชื่อวิชา": "Computer Systems and Networks",
                                 "หน่วยกิต": 3
                             },
                             {
                                 "รหัสวิชา": "204713",
+                                "ชื่อวิชา": "Cloud Computing and Big Data",
                                 "หน่วยกิต": 3
                             },
                             {
                                 "รหัสวิชา": "204715",
+                                "ชื่อวิชา": "Intelligent Embedded System",
                                 "หน่วยกิต": 3
                             },
                             {
                                 "รหัสวิชา": "204721",
+                                "ชื่อวิชา": "Data Engineering",
                                 "หน่วยกิต": 3
                             },
                             {
                                 "รหัสวิชา": "204725",
+                                "ชื่อวิชา": "Data Analytics and Machine Learning",
                                 "หน่วยกิต": 3
                             },
                             {
                                 "รหัสวิชา": "204728",
+                                "ชื่อวิชา": "Data Manipulation",
                                 "หน่วยกิต": 3
                             },
                             {
                                 "รหัสวิชา": "204732",
+                                "ชื่อวิชา": "Software Engineering : Theory and Application",
                                 "หน่วยกิต": 3
                             },
                             {
                                 "รหัสวิชา": "204735",
+                                "ชื่อวิชา": "Computation and Algorithms",
                                 "หน่วยกิต": 3
                             },
                             {
                                 "รหัสวิชา": "204736",
+                                "ชื่อวิชา": "Software Process Improvement",
                                 "หน่วยกิต": 3
                             },
                             {
                                 "รหัสวิชา": "204737",
+                                "ชื่อวิชา": "Software Quality Engineering",
                                 "หน่วยกิต": 3
                             },
                             {
                                 "รหัสวิชา": "204779",
+                                "ชื่อวิชา": "Selected Topics in Computer Science",
                                 "หน่วยกิต": 3
                             },
                             {
                                 "รหัสวิชา": "204789",
+                                "ชื่อวิชา": "Selected Topics in Computer Science",
                                 "หน่วยกิต": 3
                             },
                             

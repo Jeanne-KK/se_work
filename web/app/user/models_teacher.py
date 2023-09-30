@@ -16,16 +16,15 @@ class User_teacher:
          
 
         user = {
-            "_id": request.form.get('_id'),
+            "_id": request.form.get('cmu_acc'),
             "first_name": request.form.get('first_name'),
             "last_name": request.form.get('last_name'),
-            "cmu_acc": request.form.get('cmu_acc'),
             "pass": request.form.get('pass'),
             "advisee": []
         }
         user['pass'] = pbkdf2_sha256.encrypt(user['pass'])
 
-        if db.teacher.find_one({ "cmu_acc": user['cmu_acc'] }):
+        if db.teacher.find_one({ "_id": user['_id'] }):
             return jsonify({ "error": "Email address already in use" }), 400
 
         if db.teacher.insert_one(user):
@@ -42,13 +41,10 @@ class User_teacher:
         from app.views import db
 
         user = db.teacher.find_one({
-            "cmu_acc": request.form.get('cmu_acc')
+            "_id": request.form.get('cmu_acc')
         })
 
         if user and pbkdf2_sha256.verify(request.form.get('pass'), user['pass']):
-            return self.start_session_student(user)
-
-        if user:
             return self.start_session_teacher(user)
         
         return jsonify({ "error": "Invalid login credentials" }), 401

@@ -18,28 +18,31 @@
         <form name="signup_form" method="POST">
             <div class="topic">ข้อมูลอาจารย์ - Teacher's Info</div>
             <div class="topic1">ชื่อ - Name
-            
-                    <input type="text" name="first_name" class="name" placeholder="Enter name" required>
-                
+
+                <input type="text" name="first_name" class="name" placeholder="Enter name" required>
+
             </div>
             <div class="topic2">นามสกุล - Surname
-                
-                    <input type="text" name="last_name" class="surname" placeholder="Enter surname" required>
-                
+
+                <input type="text" name="last_name" class="surname" placeholder="Enter surname" required>
+
             </div>
             <div class="topic5">Email
-                
-                    <input type="email" name="cmu_acc" class="mail" placeholder="Enter email" required>
-                
+
+                <input type="email" name="cmu_acc" class="mail" placeholder="Enter email" required>
+
             </div>
             <div class="topic6">Password
 
-                    <input type="password" name="pass" class="pass" placeholder="Enter password" required>
-                    <p class="error error--hidden"></p>
-                
+                <input type="password" name="pass" class="pass" placeholder="Enter password" required>
+                <p class="error error--hidden"></p>
+
             </div>
-            <div class="choose">เข้าใช้งานในฐานะ
-                
+            <div class="choose">เข้าใช้งานในฐานะ <br>
+                <input class="t" type="radio" id="t" name="fav_language" value="teacher">
+                <label for="t">อาจารย์</label><br>
+                <input class="ts" type="radio" id="ts" name="fav_language" value="ts">
+                <label for="ts">ผู้นำเข้าหลักสูตร</label><br>
             </div>
             <input class="next" type="submit" value="Next">
         </form>
