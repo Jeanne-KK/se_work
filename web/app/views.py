@@ -742,7 +742,7 @@ def del_stu():
     if request.method == 'POST':
         app.logger.debug(request.form)
         db=""
-        name = request.form.get('_id')
+        name = request.form.get('name')
         
         app.logger.debug(type(name))
         
@@ -760,6 +760,50 @@ def del_stu():
             if isinstance(db, MongoClient):
                 db.close()
     return render_template('t_home.html')
+
+@app.route('/add_sub_all', methods=('GET', 'POST'))
+@login_required
+def add_sub_all():
+    if request.method == 'POST':
+        
+        # app.logger.debug(request.form)
+        app.logger.debug(len(request.form))
+        db=""  
+        try:
+            db = get_db()
+            
+            lenn = len(request.form)
+            
+            for i in range(0, lenn/4):
+                app.logger.debug("AAA")
+                id = request.form.get('enroll[{}][subject_id]'.format(str(i)))
+                grade = request.form.get('enroll[{}][grade]'.format(str(i)))
+                year = request.form.get('enroll[{}][year]'.format(str(i)))
+                year = request.form.get('enroll[{}][credit]'.format(str(i)))
+                credit = int(credit) 
+                grade = float(grade)
+                year = int(year)
+                data = db.student.update_one(
+                            {
+                                "_id": session['user']['_id'],
+                            },
+                            {
+                                "$push": {
+                                    "enroll":{
+                                        "subject_id": id, "grade": grade, "year": year, "credit": credit
+                                    }
+                                }
+                            }
+                        )
+            return redirect('/overview')
+            
+        except Exception as e:
+            return jsonify({"errors": str(e)}), 500  # Return an error response with a 500 status code
+        finally:
+            if isinstance(db, MongoClient):
+                db.close()
+    return render_template('overview.html')
+    
 
 @app.route('/form2', methods=('GET', 'POST'))
 @login_required

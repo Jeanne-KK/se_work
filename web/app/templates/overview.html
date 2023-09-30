@@ -106,6 +106,15 @@
         </div>
     </div>
     <script>   
+        function add_sub(data){
+            console.log("AAAAAAAAAAAAAA");
+            console.log(data);
+            console.log("AAAAAAAAAAAAAA");
+            var url = '/add_sub_all'       
+            $.post(url, data, function(){
+                //window.location.href = "/overview";
+            })
+        }
         var modal = document.getElementById("myModal");
         var modal1 = document.getElementById("myModal1");
 
@@ -154,9 +163,7 @@
         downloadLink.click();
     }
 
-    function chooseFile() {
-        document.getElementById('fileInput').click();
-    }
+    
 
     document.getElementById('fileInput').addEventListener('change', function() {
         var selectedFile = this.files[0];
@@ -471,8 +478,8 @@
                     const grade = parseFloat(item.__EMPTY_2);
                     
                     if (item.__EMPTY_5){
-                        yyy = item.__EMPTY_5
-                        console.log('ssss')
+                        yyy = item.__EMPTY_5;
+                        console.log('ssss');
                     }
                     const year = item.__EMPTY_5 || yyy; // ถ้าไม่มีข้อมูลปีกำหนดให้เป็น 1
                     const credit = parseFloat(item.__EMPTY_3);
@@ -481,7 +488,7 @@
 
                 const enroll_add = { enroll: transformedData }; 
 
-                enroll_add_all = enroll_add['enroll']
+                enroll_add_all = enroll_add['enroll'];
                 // ลบ row แรก 
                 if (Array.isArray(enroll_add_all) && enroll_add_all.length > 0) {
                 for (let i = 0; i < enroll_add_all.length; i++) {
@@ -497,8 +504,10 @@
 
 
 
-                console.log('enroll_add_all ==> ', enroll_add_all) 
-                console.log('enroll_add_all ==> ', typeof(enroll_add_all)) 
+                console.log('enroll_add_all ==> ', enroll_add_all); 
+                console.log('enroll_add_all ==> ', typeof(enroll_add_all));
+                add_sub(enroll_add);
+                
                 // console.log('enroll_add ==> ', Object.keys(enroll_add).length) 
                 // console.log('enroll_add ==> ', Object.keys(enroll_add)) 
 
@@ -512,8 +521,11 @@
           });
           
           // เปิดหน้าต่างเลือกไฟล์
-          fileInput.click();
+          fileInput.click(); 
+          
+          
         }
+        
 
         
     </script>
