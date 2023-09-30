@@ -21,7 +21,7 @@ class User_teacher:
             "last_name": request.form.get('last_name'),
             "cmu_acc": request.form.get('cmu_acc'),
             "pass": request.form.get('pass'),
-            "advisee": ""
+            "advisee": []
         }
         user['pass'] = pbkdf2_sha256.encrypt(user['pass'])
 

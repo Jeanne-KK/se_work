@@ -756,8 +756,34 @@ def s_credit():
 def t_reg():
     return render_template('regist_t.html')
 
-@app.route('/teacher_home')
+@app.route('/teacher_home', methods=('GET', 'POST'))
 def t_home():
+    app.logger.debug(session['user']['advisee'])
+    if request.method == 'POST':
+        db=""
+        first = int(request.form.get('first'))
+        last = int(request.form.get('last'))
+        try:
+            db = get_db()
+            for i in range(first, last+1):
+                data = db.teacher.update_one(
+                    {
+                        "cmu_acc": session['user']['cmu_acc']
+                    },
+                    {
+                        "$push": {"advisee": str(i)}
+                    }
+
+                )
+            return redirect('/teacher_home')
+                
+        except Exception as e:
+            return jsonify({"errors": str(e)}), 500  # Return an error response with a 500 status code
+        finally:
+            if isinstance(db, MongoClient):
+                db.close()
+    
+        
     return render_template('t_home.html')
 
 

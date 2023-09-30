@@ -24,8 +24,8 @@
         </ul>
     </nav>
     <div class="topic">ภาพรวมหลักสูตร</div>
-    <div id="gpatotal" class="gpa">เกรดเฉลี่ยรวม    : <span id="totalgpa"></span><span id="toplan"></span></div>
-    <div id="gpamajortotal" class="gpa">เกรดเฉลี่ยวิชาเอก : <span id="majorgpa"></span><span id="maplan"></span></div>
+    <div id="gpatotal" class="gpa">เกรดเฉลี่ยรวม    : <span id="totalgpa"></span> / <span id="toplan"></span></div>
+    <div id="gpamajortotal" class="gpa">เกรดเฉลี่ยวิชาเอก : <span id="majorgpa"></span> / <span id="maplan"></span></div>
     <div class="required">วิชาบังคับ<br />(Required Courses)
         <div id="reqbox" class="rec1"></div>
         <div class="cr">Credits:
@@ -86,15 +86,7 @@
 
     <script> 
         
-        var plan = "{{session['user']['study_plan']}}";
-        if(plan == "แผนก้าวหน้า"){
-            var tran = document.getElementById("toplan").innerHTML = " / 3.50";
-            var tran = document.getElementById("maplan").innerHTML = " / 3.50";
-        }else{
-            var tran = document.getElementById("toplan").innerHTML = " / 2.00";
-            var tran = document.getElementById("maplan").innerHTML = " / 2.00";
-
-        }
+        
         function showdata(data, curri){
             var gpatop = 0;
             var gpadown = 0;
@@ -285,9 +277,8 @@
             if(a7002 - a7001 > 0){
                 var tt = document.getElementById("5.2").style.backgroundColor = "red";
             }
-
-
-
+            
+            
             var ttgpa = (gpatop/gpadown).toFixed(3);
             var ttg = Math.round(ttgpa * 100) / 100;
             ttg = ttg.toFixed(2);
@@ -298,21 +289,14 @@
             var setmajorgpa = document.getElementById("majorgpa").innerHTML = mmg;
 
             
-            if(plan == "แผนก้าวหน้า"){
-                if(ttg < 3.50){
-                    var tt = document.getElementById("gpatotal").style.color = "red";
-                }
-                if(mmg < 3.50){
-                    var tt = document.getElementById("gpamajortotal").style.color = "red";
-                }
-
-            }else{
-                if(ttg < 2.00){
-                    var tt = document.getElementById("gpatotal").style.color = "red";
-                }
-                if(mmg < 2.00){
-                    var tt = document.getElementById("gpamajortotal").style.color = "red";
-                }
+            var top = document.getElementById("toplan").innerHTML ;
+            var down = document.getElementById("maplan").innerHTML; 
+            
+            if(ttg < top){
+                var tt = document.getElementById("gpatotal").style.color = "red";
+            }
+            if(mmg < down){
+                var tt = document.getElementById("gpamajortotal").style.color = "red";
             }
         }
         
@@ -346,7 +330,12 @@
                 showcredit(data);
                 $.getJSON("/curri", function (ttt) { 
                     curri = ttt;
-                    console.log(curri[0]); 
+                    var plan = "{{session['user']['study_plan']}}";
+                    
+                    console.log(curri[0]["grade_check"][plan]); 
+                    
+                    var tran = document.getElementById("toplan").innerHTML = `${curri[0]["grade_check"][plan].toFixed(2)}`;
+                    var tran = document.getElementById("maplan").innerHTML = `${curri[0]["grade_check"][plan].toFixed(2)}`; 
                     $.getJSON("/data5", function (data) { 
                         showdata(data, curri[0]);
                     });

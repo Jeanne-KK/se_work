@@ -7,7 +7,7 @@ db.teacher.insertMany([
 		"first_name": "Areerat",
 		"last_name": "Trongratsameethong",
 		"cmu_acc": "arrer_@cmu.ac.th",
-		"pass": "1234",
+		"pass": "$pbkdf2-sha256$29000$SWktpTTm/H8vRYjR2nuPcQ$eMYTVcZQnUpiKfO3lfFJpeyCUZH8fD0QxFztB43UVCY",
 		"advisee": ["640510641", "640510666"]
 	},
 	{
@@ -15,7 +15,7 @@ db.teacher.insertMany([
 		"first_name": "Kamonphop",
 		"last_name": "Srisopha",
 		"cmu_acc": "kamonphop_@cmu.ac.th",
-		"pass": "1234",
+		"pass": "$pbkdf2-sha256$29000$SWktpTTm/H8vRYjR2nuPcQ$eMYTVcZQnUpiKfO3lfFJpeyCUZH8fD0QxFztB43UVCY",
 		"advisee": ["640510713"]
 	},
 	{
@@ -23,7 +23,7 @@ db.teacher.insertMany([
 		"first_name": "Varin",
 		"last_name": "Chouvatut",
 		"cmu_acc": "varin_@cmu.ac.th",
-		"pass": "1234",
+		"pass": "$pbkdf2-sha256$29000$SWktpTTm/H8vRYjR2nuPcQ$eMYTVcZQnUpiKfO3lfFJpeyCUZH8fD0QxFztB43UVCY",
 		"advisee": ["640510634"]
 	},
 ])
@@ -228,6 +228,7 @@ db.curriculum.insertOne(
 {
   "_id": 2564,
   "หน่วยกิต": 134,
+  "grade_check":{"แผนปกติ": 2.00, "แผนสหกิจศึกษา": 2.00, "แผนก้าวหน้า": 3.50},
   "หมวด": {
     "วิชาศึกษาทั่วไป": {
       "หน่วยกิต": 30,
