@@ -14,7 +14,7 @@ body {
 
 .topnav {
   background-color: #fecf2a;
-  margin: -0.4%;
+  margin: 0.4%;
   height: 3.188rem;
 }
 
@@ -37,20 +37,21 @@ body {
 }
 
 .modal {
-  margin-top: 2%;
-  margin-left: 36%;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   padding: 20px;
   border-radius: 20px;
   background: #ffffff;
   width: 384px;
-  height: 318px;
+  height: 350px;
   flex-shrink: 0;
-
 }
 
 .email {
   margin-top: 4%;
-  margin-left: 8%;
+  margin-left: 5%;
   font-family: "Inter", Helvetica;
   font-weight: 500;
   color: #000;
@@ -59,19 +60,19 @@ body {
 }
 
 .enter_e {
-  width: 280px;
+  width: 300px;
   margin-top: 3%;
-  margin-left: -3%;
+  margin-left: 10%;
   background-color: #e1e1e1;
   border-radius: 10px;
   position: absolute;
   height: 32px;
-  font-size: 24px;
+  font-size: 20px;
 }
 
 .password {
   margin-top: 25%;
-  margin-left: 8%;
+  margin-left: 5%;
   font-family: "Inter", Helvetica;
   font-weight: 500;
   color: #000;
@@ -86,24 +87,23 @@ body {
   border-radius: 10px;
   position: absolute;
   height: 32px;
-  font-size: 24px;
-  margin-left: -6%;
+  font-size: 20px;
+  margin-left: 10%;
 }
 
 .Login {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
   background-color: #4E6DA8;
   border-radius: 10px;
-  padding: 5px 12px;
+  padding: 10px 20px; /* Increased padding to make the button larger */
   font-weight: 500;
   color: #ffffff;
-  font-size: 24px;
-  position: absolute;
-  margin-left: 9.5%;
-  margin-top: 0%;
+  font-size: 20px; /* Increased font size to make the button larger */
   transition-duration: 0.3s;
   cursor: pointer;
 }
-
 .Login:hover {
   background-color: #9ab8f1;
   color: #000000;
@@ -112,4 +112,19 @@ body {
 .noacc {
   margin-top: 20%;
   text-align: center;
+}
+.who--hidden {
+  font-family: "Inter", Helvetica;
+  font-weight: 500;
+  color: #c71919;
+  text-decoration: none; /* Remove underline */
+}
+
+.who--hidden:hover {
+  color: #4E6DA8; /* Change color on hover */
+}
+
+.bi.bi-arrow-right {
+  font-size: 1.2em; /* Adjust the arrow icon size */
+  vertical-align: middle; /* Align the arrow vertically with the text */
 }
