@@ -332,10 +332,10 @@
                     curri = ttt;
                     var plan = "{{session['user']['study_plan']}}";
                     
-                    console.log(curri[0]["grade_check"][plan]); 
-                    
-                    var tran = document.getElementById("toplan").innerHTML = `${curri[0]["grade_check"][plan].toFixed(2)}`;
-                    var tran = document.getElementById("maplan").innerHTML = `${curri[0]["grade_check"][plan].toFixed(2)}`; 
+                    console.log(curri[0]["เกณฑ์การสำเร็จการศึกษา"][plan]["เกรดเฉลี่ยตลอดหลักสูตร"]); 
+
+                    var tran = document.getElementById("toplan").innerHTML = `${curri[0]["เกณฑ์การสำเร็จการศึกษา"][plan]["เกรดเฉลี่ยตลอดหลักสูตร"].toFixed(2)}`;
+                    var tran = document.getElementById("maplan").innerHTML = `${curri[0]["เกณฑ์การสำเร็จการศึกษา"][plan]['เกรดเฉลี่ยวิชาเอก'].toFixed(2)}`; 
                     $.getJSON("/data5", function (data) { 
                         showdata(data, curri[0]);
                     });
