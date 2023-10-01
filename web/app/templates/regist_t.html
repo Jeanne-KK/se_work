@@ -61,13 +61,15 @@
         }
 
         $(document).ready(function () {
-            $("form[name=signup_form]").submit(function (e) {
-                e.preventDefault();
+        $("form[name=signup_form]").submit(function (e) {
+            e.preventDefault();
 
-                var $form = $(this);
-                var $error = $form.find(".error");
-                var data = $form.serialize();
+            var $form = $(this);
+            var $error = $form.find(".error");
+            var data = $form.serialize();
+            var fav_language = $("input[name=fav_language]:checked").val(); // รับค่า fav_language จากปุ่มตัวเลือก
 
+            if (fav_language === "teacher") {
                 $.ajax({
                     url: "/user/signup_teacher",
                     type: "POST",
@@ -82,8 +84,24 @@
                         $error.text(resp.responseJSON.error).removeClass("error--hidden");
                     }
                 });
-            });
+            } else if (fav_language === "ts") {
+                $.ajax({
+                    url: "/user/signup_curriculum_manager",
+                    type: "POST",
+                    data: data,
+                    dataType: "json",
+                    success: function (resp) {
+                        window.location.href = "/home";
+                        console.log(resp);
+                        // หลังจากส่งข้อมูลสำเร็จ นำทางไปยังหน้า "/home"
+                    },
+                    error: function (resp) {
+                        $error.text(resp.responseJSON.error).removeClass("error--hidden");
+                    }
+                });
+            }
         });
+    });
     </script>
 </body>
 

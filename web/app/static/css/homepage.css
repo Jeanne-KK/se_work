@@ -52,7 +52,7 @@ body {
   font-size: 20px;
   text-align: center;
   margin-top: 3%;
-  margin-left: 34%;
+  margin-left: 24%;
   margin-right: 5%;
   transition-duration: 0.3s;
   cursor: pointer;
@@ -73,7 +73,7 @@ body {
   font-size: 20px;
   text-align: center;
   margin-top: 3%;
-  margin-left: 3%;
+  margin-left: 2%;
   margin-bottom: 3%;
   transition-duration: 0.3s;
   cursor: pointer;
@@ -88,4 +88,25 @@ body {
   color: #ffffff;
   font-family: "Inter-Bold", Helvetica;
   margin-left: 45%;
+}
+
+.home .BloginT2 {
+  background-color: #86bafe;
+  border-radius: 10px;
+  padding: 15px 25px;
+  font-family: "Inter", Helvetica;
+  font-weight: 700;
+  color: #000000;
+  font-size: 20px;
+  text-align: center;
+  margin-top: 3%;
+  margin-left: 7%;
+  margin-bottom: 3%;
+  transition-duration: 0.3s;
+  cursor: pointer;
+}
+
+.home .BloginT2:hover {
+  background-color: #066aff;
+  color: #000000;
 }

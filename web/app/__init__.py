@@ -98,6 +98,22 @@ def check_teacher():
         if type(db)==MongoClient:
             db.close()
 
+@app.route("/check_curriculum_manager")
+def check_curriculum_manager():
+    db=""
+    app.logger.debug("*AAAAAAAAAAAAAAAAAAAAAAA******")
+    try:
+        db = get_db()
+        cu = db.curriculum_manager.find()
+        curri = [{"_id": curr["_id"], "first_name:": curr["first_name"]} for curr in cu]
+        
+        return jsonify({"curriculum_manager": curri})
+    except:
+        pass
+    finally:
+        if type(db)==MongoClient:
+            db.close()
+
 
 
 

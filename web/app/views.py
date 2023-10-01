@@ -5,6 +5,7 @@ import os
 from app.user import routes
 from app.user.models_student import User_student
 from app.user.models_teacher import User_teacher
+from app.user.models_curriculum_manager import User_Curriculum_manager
 import pymongo
 from pymongo import MongoClient
 
@@ -698,10 +699,20 @@ def signout_teacher():
 @app.route('/user/login_teacher', methods=['POST'])
 def login_teacher():
     return User_teacher().login_teacher()
+############################################################################
+
+@app.route('/user/signup_curriculum_manager', methods=['POST'])
+def signup_curriculum_manager():
+    return User_Curriculum_manager().signup_curriculum()
+
+@app.route('/user/signout_curriculum_manager')
+def signout_curriculum_manager():
+    return User_Curriculum_manager().signout_curriculum()
+
+@app.route('/user/login_curriculum_manager', methods=['POST'])
+def login_curriculum_manager():
+    return User_Curriculum_manager().login_curriculum()
 
 
 
 
-
-
-#า

@@ -22,6 +22,7 @@
     </p>
     <button id="studentButton" class="BloginS" type="button">สำหรับนักศึกษา<br />Student Login</button>
     <button id="teacherButton" class="BloginT" type="button">สำหรับอาจารย์<br />Teacher Login</button>
+    <button id="t2Button" class="BloginT2" type="button">สำหรับ<br />ผู้นำเข้าหลักสูตร</button>
     <a class="who" href="/who" > No account? Register <i class="bi bi-arrow-right"></i></a>
   </div>
 </body>
@@ -42,6 +43,11 @@
     teacherButton.addEventListener("click", function () {
       // ส่งค่า 2 ไปยังหน้า "/login"
       window.location.href = "/login?userType=2";
+    });
+
+    t2Button.addEventListener("click", function () {
+      // ส่งค่า 3 ไปยังหน้า "/login"
+      window.location.href = "/login?userType=3";
     });
   });
   </script>

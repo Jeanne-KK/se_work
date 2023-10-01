@@ -1,6 +1,21 @@
 db = db.getSiblingDB("test_db");
 db.animal_db.drop();
 
+db.curriculum_manager.insertMany([
+	{
+		"_id": "arr_@cmu.ac.th",
+		"first_name": "Areerat",
+		"last_name": "Trongratsameethong",
+		"pass": "$pbkdf2-sha256$29000$SWktpTTm/H8vRYjR2nuPcQ$eMYTVcZQnUpiKfO3lfFJpeyCUZH8fD0QxFztB43UVCY"
+	},
+	{
+		"_id": "narin@cmu.ac.th",
+		"first_name": "na",
+		"last_name": "rin",
+		"pass": "$pbkdf2-sha256$29000$SWktpTTm/H8vRYjR2nuPcQ$eMYTVcZQnUpiKfO3lfFJpeyCUZH8fD0QxFztB43UVCY"
+	}
+])
+
 db.teacher.insertMany([
 	{
 		"_id": "arrer_@cmu.ac.th",
