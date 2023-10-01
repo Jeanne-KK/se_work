@@ -23,6 +23,7 @@ def get_db():
 
 app.config['SECRET_KEY'] = 'a8112ea716969327fc2a49fc8dd0e2ca9fa484033e771552'
 app.config['JSON_AS_ASCII'] = False
+app.config['DEBUG'] = True
 
 # This ensures that Flask won't track modifications to the MongoDB
 

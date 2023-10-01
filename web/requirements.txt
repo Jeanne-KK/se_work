@@ -5,3 +5,4 @@ Flask-SQLAlchemy==3.0.2
 psycopg2-binary==2.9.5
 SQLAlchemy-serializer==1.4.1
 pymongo
+werkzeug==2.2.2

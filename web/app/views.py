@@ -768,22 +768,30 @@ def add_sub_all():
     if request.method == 'POST':
         
         # app.logger.debug(request.form)
-        app.logger.debug(len(request.form))
+        
         db=""  
         try:
             db = get_db()
             
-            lenn = len(request.form)
+            lenn = int(len(request.form)/4)
+            app.logger.debug(lenn)
             
-            for i in range(0, lenn/4):
+            # for i in range(0, lenn):
+            #     app.logger.debug("5")
+            for i in range(0, lenn):
+                app.logger.debug("1")
                 app.logger.debug("AAA")
-                id = request.form.get('enroll[{}][subject_id]'.format(str(i)))
+                _id = request.form.get('enroll[{}][subject_id]'.format(str(i)))
                 grade = request.form.get('enroll[{}][grade]'.format(str(i)))
                 year = request.form.get('enroll[{}][year]'.format(str(i)))
                 credit = request.form.get('enroll[{}][credit]'.format(str(i)))
                 credit = int(credit) 
                 grade = float(grade)
                 year = int(year)
+                # app.logger.debug(_id)
+                # app.logger.debug(grade)
+                # app.logger.debug(credit)
+                # app.logger.debug(year)
                 data = db.student.update_one(
                             {
                                 "_id": session['user']['_id'],
@@ -791,7 +799,7 @@ def add_sub_all():
                             {
                                 "$push": {
                                     "enroll":{
-                                        "subject_id": id, "grade": grade, "year": year, "credit": credit
+                                        "subject_id": _id, "grade": grade, "year": year, "credit": credit
                                     }
                                 }
                             }
@@ -813,7 +821,7 @@ def form2():
         app.logger.debug(request.form)
         db=""
         suba = request.form.get('subj')
-        gradea = int(request.form.get('grade'))
+        gradea = float(request.form.get('grade'))
         yeara = int(request.form.get('year'))
         credita = int(request.form.get('credit'))
         
