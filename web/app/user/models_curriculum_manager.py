@@ -7,6 +7,7 @@ class User_Curriculum_manager:
         session['logged_in'] = True
         session['user'] = user
         session['type'] = "2"
+        
         return jsonify(user), 200
 
 

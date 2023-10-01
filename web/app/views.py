@@ -71,11 +71,16 @@ def data5():
         app.logger.debug("BBBBBBBBBBBBBBBBBBBBB")
         db = get_db()
         app.logger.debug(type(session["user"]["_id"]))
+        ch = ''
+        if session['type'] == '2':
+            ch = session['stu']
+        else:
+            ch =session['user']['_id']
 
         data = db.student.aggregate([
             {
                 "$match": {
-                "_id": session['user']['_id'] 
+                "_id":  ch
                 }
             },
             {
@@ -304,10 +309,14 @@ def curri():
         db = get_db()
         # app.logger.debug(type(session["user"]["_id"]))
         app.logger.debug("***********")
-        app.logger.debug(session['user']['curriculum_year'])
-        app.logger.debug(type(session['user']['curriculum_year']))
-        
-        data = db.curriculum.find({"_id": int(session['user']['curriculum_year'])})    
+        # app.logger.debug(session['user']['curriculum_year'])
+        # app.logger.debug(type(session['user']['curriculum_year']))
+        ch = ''
+        if session['type'] == '2':
+            ch = session['year']
+        else:
+            ch = session['user']['curriculum_year']
+        data = db.curriculum.find({"_id": int(ch)})    
         data= list(data)
         app.logger.debug(data)
         app.logger.debug("***********")
@@ -320,6 +329,23 @@ def curri():
             db.close() 
 
 
+
+@app.route('/set_session', methods=('GET', 'POST'))
+def revalue():
+    db = ""
+    if request.method == 'POST':
+        name = request.form.get("_id")
+        db = get_db()
+        session['stu'] = str(name)
+        studata = db.student.find_one({"_id": session['stu']})
+        ch = studata["study_plan"]
+        session['plan'] = ch
+        session['year'] = studata['curriculum_year']
+        app.logger.debug(session['stu'])
+        return redirect('/teacher_home')
+        
+    
+
 @app.route('/all_credit')
 def all_credit():
     db=""
@@ -328,9 +354,15 @@ def all_credit():
         app.logger.debug("BBBBBBBBBBBBBBBBBBBBB")
         db = get_db()
         app.logger.debug(type(session["user"]["_id"]))
-        
+        ch = ""
+        if session['type'] == "2":
+            app.logger.debug("teacher here")
+            studata = db.student.find_one({"_id": session['stu']})
+            ch = studata["study_plan"]
+        else:
+            ch = session['user']['study_plan'] 
         data= "" 
-        if(session['user']['study_plan'] == "แผนสหกิจศึกษา"):
+        if(ch == "แผนสหกิจศึกษา"):
             data = db.curriculum.aggregate([
                     {
                         "$project": {
@@ -365,7 +397,7 @@ def all_credit():
                         }
                     }
                     ])
-        elif(session['user']['study_plan'] == "แผนปกติ"):
+        elif(ch == "แผนปกติ"):
             data = data = db.curriculum.aggregate([
                     {
                         "$project": {
@@ -400,7 +432,7 @@ def all_credit():
                         }
                     }
                     ]) 
-        elif(session['user']['study_plan'] == "แผนก้าวหน้า"):
+        elif(ch == "แผนก้าวหน้า"):
             data = data = db.curriculum.aggregate([
                     {
                         "$project": {
@@ -494,14 +526,14 @@ def del_stu():
     if request.method == 'POST':
         app.logger.debug(request.form)
         db=""
-        name = request.form.get('name')
+        name = request.form.get('_id')
         
-        app.logger.debug(type(name))
+        app.logger.debug(name)
         
         try:
             db = get_db()
             data = db.teacher.update_one(
-                        { "cmu_acc": session['user']['cmu_acc'] },  
+                        { "_id": session['user']['_id'] },  
                         { "$pull": { "advisee": name } } 
                     ) 
             return redirect('/teacher_home')
@@ -613,17 +645,29 @@ def t_reg():
 
 @app.route('/teacher_home', methods=('GET', 'POST'))
 def t_home():
-    app.logger.debug(session['user']['advisee'])
+    app.logger.debug("AAAABBB")
+    app.logger.debug(session['stu'])
+    
+    
+    app.logger.debug("EIEIEIE")
+    app.logger.debug(session['stu'])
+    
+        
+
+    
+    
     if request.method == 'POST':
         db=""
         first = int(request.form.get('first'))
         last = int(request.form.get('last'))
+        app.logger.debug(first)
+        app.logger.debug(last)
         try:
             db = get_db()
             for i in range(first, last+1):
                 data = db.teacher.update_one(
                     {
-                        "cmu_acc": session['user']['cmu_acc']
+                        "_id": session['user']['_id']
                     },
                     {
                         "$push": {"advisee": str(i)}

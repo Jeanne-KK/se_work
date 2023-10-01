@@ -60,6 +60,27 @@
         window.location.href = "/teacher_home";
       });
     }
+
+    function check(data){
+      console.log("************");
+      
+      var formData = {};
+      formData['_id'] = data;
+      $.post('/set_session', formData, function(){
+        window.location.href = "/subject_credit";
+        
+      }); 
+      
+      
+      // var users = data.toString();
+      //console.log(users);
+      // var formData = {};
+      // formData['_id'] = users;
+      // var url = "/subject_credit_t";
+      // $.post(url, formData, function(){
+      // });
+    }
+
     function showallstudent(data, data2){
       
       data2[0]['advisee'].sort();
@@ -92,7 +113,7 @@
               <span class="student-info">${id} ${first_name} ${last_name}</span>
               <span class="plans">แผนการศึกษาที่เลือก:</span>
               <span class="p">${study_plan}</span>
-              <button class="Binfo" type="button">ดูข้อมูล</button>
+              <button onclick="check(${id})" class="Binfo" type="button">ดูข้อมูล</button>
               <button onclick="del_stu(${id})" class="Binfo" type="button">ลบ</button>
               </div>
               
@@ -105,7 +126,7 @@
               <span class="student-info">${id}</span>
               
               <span class="p"></span>
-              <button class="Binfo" type="button">ดูข้อมูล</button>
+              
               <button onclick="del_stu(${id})" class="Binfo" type="button">ลบ</button>
               </div>
             `; 
@@ -158,6 +179,8 @@
     // }
 
     $(document).ready(function () {
+      
+      
             $.getJSON("/stu_list_all", function (list_all) {
               $.getJSON("/stu_list", function (list) {
                 // Call the displayData function to update the HTML with the received data

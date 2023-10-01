@@ -307,7 +307,13 @@
         
         function showcredit(data){
             //console.log(data[0]["วิชาบังคับ"])
-            var ch_plan = "{{session['user']['study_plan']}}"
+            var ch_plan = "";
+            if("{{session['type']}}" == '2'){
+                ch_plan = "{{session['plan']}}";
+            }else{
+                ch_plan = "{{session['user']['study_plan']}}";
+            }
+            
             var container = document.getElementById("req").innerHTML = data[0]["วิชาบังคับ"];
             var container = document.getElementById("reqco").innerHTML = data[0]["เอกบังคับร่วม"];
             var container = document.getElementById("specco").innerHTML = data[0]["เอกประจำแผน"];
@@ -330,13 +336,20 @@
             var container = document.getElementById("free").innerHTML = data[0]["เสรี"];
         }
         $(document).ready(function () {
-            var curri;
+            console.log("{{session['stu']}}"); 
             $.getJSON("/all_credit", function (data) { 
                 showcredit(data);
+                
                 $.getJSON("/curri", function (ttt) { 
                     curri = ttt;
-                    var plan = "{{session['user']['study_plan']}}";
-                    
+                    var plan = "";
+                    if("{{session['type']}}" == '2'){
+                        plan = "{{session['plan']}}";
+                    }else{
+                        plan = "{{session['user']['study_plan']}}";
+                    }
+                    console.log("AAAAAAAAAAA");
+                        
                     console.log(curri[0]["เกณฑ์การสำเร็จการศึกษา"][plan]["เกรดเฉลี่ยตลอดหลักสูตร"]); 
 
                     var tran = document.getElementById("toplan").innerHTML = `${curri[0]["เกณฑ์การสำเร็จการศึกษา"][plan]["เกรดเฉลี่ยตลอดหลักสูตร"].toFixed(2)}`;
@@ -344,13 +357,9 @@
                     $.getJSON("/data5", function (data) { 
                         showdata(data, curri[0]);
                     });
-                }); 
-                
-                
+                });  
             });
-            
-           
-            
+             
         });
         function ShowPopupMenu() {
             let popupMenu = document.getElementById('popupMenu');

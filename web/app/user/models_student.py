@@ -7,6 +7,7 @@ class User_student:
         session['logged_in'] = True
         session['user'] = user
         session['type'] = "1"
+        
         return jsonify(user), 200
 
 
