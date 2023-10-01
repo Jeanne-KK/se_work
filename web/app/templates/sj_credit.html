@@ -146,6 +146,11 @@
                 else if(testt(data[i]["subject_id"], curri)[0] == "หมวด วิชาเฉพาะ วิชาแกน รายวิชา "){
                     html += `<div class="sjname">${data[i]["subject_id"]}</div>`;   
                     container4.innerHTML += html;
+                    if(data[i]["subject_id"].slice(0,3) == '204'){
+                        majorgpatop += data[i]["grade"] * data[i]["credit"];
+                        majorgpadown += data[i]["credit"];
+                        
+                    }
                     
                     credit4 += data[i]["credit"];
                 }

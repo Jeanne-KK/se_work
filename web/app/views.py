@@ -62,249 +62,6 @@ def db_connection():
         return f'<h1>JSON file not found at {json_file_path}</h1>'
     
 
-@app.route('/data1')
-def data1():
-    db=""
-    app.logger.debug("AAAAAAAAAAAAAAAAAAAA")
-    try:
-        app.logger.debug("BBBBBBBBBBBBBBBBBBBBB")
-        db = get_db()
-        app.logger.debug(type(session["user"]["_id"]))
-
-        data = db.student.aggregate([
-            {
-                "$match": {
-                "_id": session['user']['_id'] 
-                }
-            },
-            {
-                "$unwind": "$enroll"
-            },
-            {
-                "$match": {
-                "enroll.year": 1
-                }
-            },
-            {
-                "$group": {
-                "_id": "null",
-                "subjects": {
-                    "$push": {
-                    "subject_id": "$enroll.subject_id",
-                    "grade": "$enroll.grade",
-                    "credit": "$enroll.credit"
-                    }
-                }
-                }
-            },
-            {
-                "$project": {
-                "_id": 0,
-                "subjects": 1
-                }
-            }
-            ]) 
-        
-        
-        app.logger.debug("****************************")
-        #app.logger.debug(data)
-        app.logger.debug("****************************")
-        data_= []
-        for i in data: 
-            data_ += i["subjects"]
-            app.logger.debug(i["subjects"])
-            
-        return jsonify(data_)
-        
-    except Exception as e:
-        return jsonify({"errors": str(e)}), 500  # Return an error response with a 500 status code
-    finally:
-        if isinstance(db, MongoClient):
-            db.close() 
-
-@app.route('/data2')
-def data2():
-    db=""
-    app.logger.debug("AAAAAAAAAAAAAAAAAAAA")
-    try:
-        app.logger.debug("BBBBBBBBBBBBBBBBBBBBB")
-        db = get_db()
-        app.logger.debug(type(session["user"]["_id"]))
-
-        data = db.student.aggregate([
-            {
-                "$match": {
-                "_id": session['user']['_id'] 
-                }
-            },
-            {
-                "$unwind": "$enroll"
-            },
-            {
-                "$match": {
-                "enroll.year": 2
-                }
-            },
-            {
-                "$group": {
-                "_id": "null",
-                "subjects": {
-                    "$push": {
-                    "subject_id": "$enroll.subject_id",
-                    "grade": "$enroll.grade",
-                    "credit": "$enroll.credit"
-                    }
-                }
-                }
-            },
-            {
-                "$project": {
-                "_id": 0,
-                "subjects": 1,
-                
-                }
-            }
-            ]) 
-        
-        
-        app.logger.debug("****************************")
-        #app.logger.debug(data)
-        app.logger.debug("****************************")
-        data_= []
-        for i in data: 
-            data_ += i["subjects"]
-            app.logger.debug(i["subjects"])
-            
-        return jsonify(data_)
-        
-    except Exception as e:
-        return jsonify({"errors": str(e)}), 500  # Return an error response with a 500 status code
-    finally:
-        if isinstance(db, MongoClient):
-            db.close() 
-
-@app.route('/data3')
-def data3():
-    db=""
-    app.logger.debug("AAAAAAAAAAAAAAAAAAAA")
-    try:
-        app.logger.debug("BBBBBBBBBBBBBBBBBBBBB")
-        db = get_db()
-        app.logger.debug(type(session["user"]["_id"]))
-
-        data = db.student.aggregate([
-            {
-                "$match": {
-                "_id": session['user']['_id'] 
-                }
-            },
-            {
-                "$unwind": "$enroll"
-            },
-            {
-                "$match": {
-                "enroll.year": 3
-                }
-            },
-            {
-                "$group": {
-                "_id": "null",
-                "subjects": {
-                    "$push": {
-                    "subject_id": "$enroll.subject_id",
-                    "grade": "$enroll.grade",
-                    "credit": "$enroll.credit"
-                    }
-                }
-                }
-            },
-            {
-                "$project": {
-                "_id": 0,
-                "subjects": 1
-                }
-            }
-            ]) 
-        
-        
-        app.logger.debug("****************************")
-        #app.logger.debug(data)
-        app.logger.debug("****************************")
-        data_= []
-        for i in data: 
-            data_ += i["subjects"]
-            app.logger.debug(i["subjects"])
-            
-        return jsonify(data_)
-        
-    except Exception as e:
-        return jsonify({"errors": str(e)}), 500  # Return an error response with a 500 status code
-    finally:
-        if isinstance(db, MongoClient):
-            db.close() 
-
-
-
-@app.route('/data4')
-def data4():
-    db=""
-    app.logger.debug("AAAAAAAAAAAAAAAAAAAA")
-    try:
-        app.logger.debug("BBBBBBBBBBBBBBBBBBBBB")
-        db = get_db()
-        app.logger.debug(type(session["user"]["_id"]))
-
-        data = db.student.aggregate([
-            {
-                "$match": {
-                "_id": session['user']['_id'] 
-                }
-            },
-            {
-                "$unwind": "$enroll"
-            },
-            {
-                "$match": {
-                "enroll.year": 4
-                }
-            },
-            {
-                "$group": {
-                "_id": "null",
-                "subjects": {
-                    "$push": {
-                    "subject_id": "$enroll.subject_id",
-                    "grade": "$enroll.grade",
-                    "credit": "$enroll.credit"
-                    }
-                }
-                }
-            },
-            {
-                "$project": {
-                "_id": 0,
-                "subjects": 1
-                }
-            }
-            ]) 
-        
-        
-        app.logger.debug("****************************")
-        #app.logger.debug(data)
-        app.logger.debug("****************************")
-        data_= []
-        for i in data: 
-            data_ += i["subjects"]
-            app.logger.debug(i["subjects"])
-            
-        return jsonify(data_)
-        
-    except Exception as e:
-        return jsonify({"errors": str(e)}), 500  # Return an error response with a 500 status code
-    finally:
-        if isinstance(db, MongoClient):
-            db.close() 
-
 @app.route('/data5')
 def data5():
     db=""
@@ -330,7 +87,8 @@ def data5():
                     "$push": {
                     "subject_id": "$enroll.subject_id",
                     "grade": "$enroll.grade",
-                    "credit": "$enroll.credit"
+                    "credit": "$enroll.credit",
+                    "year": "$enroll.year"
                     }
                 }
                 }
@@ -531,14 +289,7 @@ def stu_list_all():
         data = db.teacher.find({ "_id": session['user']['_id'] }, { "advisee": 1, "_id": 0 })
         data= list(data)
         app.logger.debug(data)
-                        
-        
-        
-        
-        
-           
         return jsonify(data)
-        
     except Exception as e:
         return jsonify({"errors": str(e)}), 500  # Return an error response with a 500 status code
     finally:
@@ -773,7 +524,7 @@ def add_sub_all():
         try:
             db = get_db()
             
-            lenn = int(len(request.form)/4)
+            lenn = int(len(request.form)/5)
             app.logger.debug(lenn)
             
             # for i in range(0, lenn):
@@ -782,6 +533,7 @@ def add_sub_all():
                 app.logger.debug("1")
                 app.logger.debug("AAA")
                 _id = request.form.get('enroll[{}][subject_id]'.format(str(i)))
+                name = request.form.get('enroll[{}][subject_name]'.format(str(i)))
                 grade = request.form.get('enroll[{}][grade]'.format(str(i)))
                 year = request.form.get('enroll[{}][year]'.format(str(i)))
                 credit = request.form.get('enroll[{}][credit]'.format(str(i)))

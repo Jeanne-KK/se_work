@@ -74,6 +74,26 @@
             </div>
             <!-- <button class="edit" type="button">Edit</button> -->
         </div>
+        <div class="y5">Year 5
+            <div id ="loop5"class="board">    
+            </div>
+            <!-- <button class="edit" type="button">Edit</button> -->
+        </div>
+        <div class="y6">Year 6
+            <div id ="loop6"class="board">    
+            </div>
+            <!-- <button class="edit" type="button">Edit</button> -->
+        </div>
+        <div class="y7">Year 7
+            <div id ="loop7"class="board">    
+            </div>
+            <!-- <button class="edit" type="button">Edit</button> -->
+        </div>
+        <div class="y8">Year 8
+            <div id ="loop8"class="board">    
+            </div>
+            <!-- <button class="edit" type="button">Edit</button> -->
+        </div>
     </div>
 
 
@@ -126,7 +146,8 @@
         // Get the <span> element that closes the modal
         var span = document.getElementsByClassName("ttt")[0];
         var span1 = document.getElementsByClassName("ttt1")[0];
-
+        $('.y5').attr('hidden', 'hidden');
+        $('.y5').removeAttr('hidden', 'hidden');
         // When the user clicks the button, open the modal
         btn.onclick = function () {
         modal.style.display = "block";
@@ -192,14 +213,16 @@
         
     
 
-        
 
 
-
-
-
-
-
+        var ch1 = 0;
+        var ch2 = 0;
+        var ch3 = 0;
+        var ch4 = 0;
+        var ch5 = 0;
+        var ch6 = 0;
+        var ch7 = 0;
+        var ch8 = 0;
         console.log("*******")
         
         console.log("*******")
@@ -209,11 +232,18 @@
             console.log(data.length)
             console.log("TTTTTTTTTTTTTT")
             
-            var container = document.getElementById("loop");
-            var html = '';
-            var j = 0;
+            var container1 = document.getElementById("loop");
+            var container2 = document.getElementById("loop2");
+            var container3 = document.getElementById("loop3");
+            var container4 = document.getElementById("loop4");
+            var container5 = document.getElementById("loop5");
+            var container6 = document.getElementById("loop6");
+            var container7 = document.getElementById("loop7");
+            var container8 = document.getElementById("loop8");
+            
+            
             for(var i = 0; i < data.length; i++){
-                j++;
+                html = '';
                 var num;
                 if(data[i]["grade"] == "4"){
                     num = "A"
@@ -239,150 +269,88 @@
                 if(data[i]["grade"] == "0"){
                     num = "F"
                 }
-                
                 html+= `<div class='sid'><span class="left-content">${data[i]["subject_id"]}</span><span class="middle-content">Grade:</span><span class="right-content">${num}</span></div>`; 
-            }
-            for(var k = 0; k <16- j; k++){
-                html+= `<div class='sid'><span class="left-content">&nbsp;</span><span class="middle-content">&nbsp;</span><span class="right-content">&nbsp;</span></div>`; 
+                if(data[i]['year'] == 1){
+                    container1.innerHTML += html;
+                    ch1++;
+                }
+                else if(data[i]['year'] == 2){
+                    container2.innerHTML += html;
+                    ch2++;
 
-            }
-            container.innerHTML = html;
-            return 2;
-        }
-        function displayData2(data){
-            console.log(data[0]);
-            console.log(data.length)
-            
-            var container = document.getElementById("loop2");
-            var html = '';
-            
-            var j = 0;
-            for(var i = 0; i < data.length; i++){
-                j++;
-                var num;
-                if(data[i]["grade"] == "4"){
-                    num = "A"
                 }
-                if(data[i]["grade"] == "3.5"){
-                    num = "B+"
+                else if(data[i]['year'] == 3){
+                    container3.innerHTML += html;           
+                    ch3++;
                 }
-                if(data[i]["grade"] == "3"){
-                    num = "B"
+                else if(data[i]['year'] == 4){
+                    container4.innerHTML += html;             
+                    ch4++;
                 }
-                if(data[i]["grade"] == "2.5"){
-                    num = "C+"
+                else if(data[i]['year'] == 5){
+                    container5.innerHTML += html;                 
+                    ch5++;
                 }
-                if(data[i]["grade"] == "2"){
-                    num = "C"
+                else if(data[i]['year'] == 6){
+                    container6.innerHTML += html;                   
+                    ch6++;
                 }
-                if(data[i]["grade"] == "1.5"){
-                    num = "D+"
+                else if(data[i]['year'] == 7){
+                    container7.innerHTML += html;                    
+                    ch7++;
                 }
-                if(data[i]["grade"] == "1"){
-                    num = "D"
-                }
-                if(data[i]["grade"] == "0"){
-                    num = "F"
+                else if(data[i]['year'] == 8){
+                    container8.innerHTML += html;    
+                    ch8++;
                 }
                 
-                html+= `<div class='sid'><span class="left-content">${data[i]["subject_id"]}</span><span class="middle-content">Grade:</span><span class="right-content">${num}</span></div>`; 
             }
-            for(var k = 0; k <16- j; k++){
-                html+= `<div class='sid'><span class="left-content">&nbsp;</span><span class="middle-content">&nbsp;</span><span class="right-content">&nbsp;</span></div>`; 
+            // for(var k = 0; k <16- j; k++){
+            //     html+= `<div class='sid'><span class="left-content">&nbsp;</span><span class="middle-content">&nbsp;</span><span class="right-content">&nbsp;</span></div>`; 
+
+            // }
+            
+            for(var i = 0; i < 16-ch1; i++){
+                container1.innerHTML += `<div class='sid'><span class="left-content">&nbsp;</span><span class="middle-content">&nbsp;</span><span class="right-content">&nbsp;</span></div>`;
+            }
+            for(var i = 0; i < 16-ch2; i++){
+                container2.innerHTML += `<div class='sid'><span class="left-content">&nbsp;</span><span class="middle-content">&nbsp;</span><span class="right-content">&nbsp;</span></div>`;
+            }
+            for(var i = 0; i < 16-ch3; i++){
+                container3.innerHTML += `<div class='sid'><span class="left-content">&nbsp;</span><span class="middle-content">&nbsp;</span><span class="right-content">&nbsp;</span></div>`;
+            }
+            for(var i = 0; i < 16-ch4; i++){
+                container4.innerHTML += `<div class='sid'><span class="left-content">&nbsp;</span><span class="middle-content">&nbsp;</span><span class="right-content">&nbsp;</span></div>`;
+            }
+            for(var i = 0; i < 16-ch5; i++){
+                container5.innerHTML += `<div class='sid'><span class="left-content">&nbsp;</span><span class="middle-content">&nbsp;</span><span class="right-content">&nbsp;</span></div>`;
+            }
+            for(var i = 0; i < 16-ch6; i++){
+                container6.innerHTML += `<div class='sid'><span class="left-content">&nbsp;</span><span class="middle-content">&nbsp;</span><span class="right-content">&nbsp;</span></div>`;
+            }
+            for(var i = 0; i < 16-ch7; i++){
+                container7.innerHTML += `<div class='sid'><span class="left-content">&nbsp;</span><span class="middle-content">&nbsp;</span><span class="right-content">&nbsp;</span></div>`;
+            }
+            for(var i = 0; i < 16-ch8; i++){
+                container8.innerHTML += `<div class='sid'><span class="left-content">&nbsp;</span><span class="middle-content">&nbsp;</span><span class="right-content">&nbsp;</span></div>`;
+            }
+
+            if(ch6 == 0 && ch5 == 0){
+                $('.y6').attr('hidden', 'hidden');
+                $('.y5').attr('hidden', 'hidden'); 
+            }
+            if(ch7 == 0 && ch8 == 0){
+                $('.y7').attr('hidden', 'hidden');
+                $('.y8').attr('hidden', 'hidden'); 
+            }else{
+                $('.y6').removeAttr('hidden', 'hidden');
+                $('.y5').removeAttr('hidden', 'hidden'); 
 
             }
-            container.innerHTML = html;
-            return 3;
-            
-        }
-        function displayData3(data){
-            console.log(data[0]);
-            console.log(data.length)
-            
-            var container = document.getElementById("loop3");
-            var html = '';
-
-            var j = 0;
-            for(var i = 0; i < data.length; i++){
-                j++;
-                var num;
-                if(data[i]["grade"] == "4"){
-                    num = "A"
-                }
-                if(data[i]["grade"] == "3.5"){
-                    num = "B+"
-                }
-                if(data[i]["grade"] == "3"){
-                    num = "B"
-                }
-                if(data[i]["grade"] == "2.5"){
-                    num = "C+"
-                }
-                if(data[i]["grade"] == "2"){
-                    num = "C"
-                }
-                if(data[i]["grade"] == "1.5"){
-                    num = "D+"
-                }
-                if(data[i]["grade"] == "1"){
-                    num = "D"
-                }
-                if(data[i]["grade"] == "0"){
-                    num = "F"
-                }
                 
-                html+= `<div class='sid'><span class="left-content">${data[i]["subject_id"]}</span><span class="middle-content">Grade:</span><span class="right-content">${num}</span></div>`; 
-            }
-            for(var k = 0; k <16- j; k++){
-                html+= `<div class='sid'><span class="left-content">&nbsp;</span><span class="middle-content">&nbsp;</span><span class="right-content">&nbsp;</span></div>`; 
-
-            }
-            container.innerHTML = html;
-        }
-        function displayData4(data){
-            console.log(data[0]);
-            console.log(data.length)
             
-            var container = document.getElementById("loop4");
-            var html = '';
-
-            var j = 0;
-            for(var i = 0; i < data.length; i++){
-                j++;
-                var num;
-                if(data[i]["grade"] == "4"){
-                    num = "A"
-                }
-                if(data[i]["grade"] == "3.5"){
-                    num = "B+"
-                }
-                if(data[i]["grade"] == "3"){
-                    num = "B"
-                }
-                if(data[i]["grade"] == "2.5"){
-                    num = "C+"
-                }
-                if(data[i]["grade"] == "2"){
-                    num = "C"
-                }
-                if(data[i]["grade"] == "1.5"){
-                    num = "D+"
-                }
-                if(data[i]["grade"] == "1"){
-                    num = "D"
-                }
-                if(data[i]["grade"] == "0"){
-                    num = "F"
-                }
-                
-                html+= `<div class='sid'><span class="left-content">${data[i]["subject_id"]}</span><span class="middle-content">Grade:</span><span class="right-content">${num}</span></div>`; 
-            }
-            for(var k = 0; k <16- j; k++){
-                html+= `<div class='sid'><span class="left-content">&nbsp;</span><span class="middle-content">&nbsp;</span><span class="right-content">&nbsp;</span></div>`; 
-
-            }
-            container.innerHTML = html;
         }
+        
         function showteacher(data){
             
             var a= data[0]["first_name"];
@@ -407,22 +375,11 @@
 
         }
         $(document).ready(function () {
-            $.getJSON("/data1", function (data) {
+            $.getJSON("/data5", function (data) {
                 // Call the displayData function to update the HTML with the received data
                 displayData(data);
             });
-            $.getJSON("/data2", function (data) {
-                // Call the displayData function to update the HTML with the received data
-                displayData2(data);
-            });
-            $.getJSON("/data3", function (data) {
-                // Call the displayData function to update the HTML with the received data
-                displayData3(data);
-            });
-            $.getJSON("/data4", function (data) {
-                // Call the displayData function to update the HTML with the received data
-                displayData4(data);
-            });
+           
             $.getJSON("/tadvisee", function (data) {
                 // Call the displayData function to update the HTML with the received data
                 showteacher(data);
@@ -472,18 +429,30 @@
                 console.log('jsonData  ===> ', jsonData);
                 // enroll_all = {}
                 //---------------แปลงให้อยู่รูปแบบที่ถูกสำหรับจัดเก็บ-----------
-                var yyy
+                console.log("HELLO");
+                if (Array.isArray(jsonData) && jsonData.length > 0) {
+                for (let i = 0; i < jsonData.length; i++) {
+                    if (isNaN(jsonData[i].__EMPTY_1)) {
+                    jsonData.splice(i, 1); // ลบอ็อบเจ็กต์ที่มี credit เป็น NaN ออกจากอาร์เรย์
+                    i--; // เพื่อป้องกันการข้ามอ็อบเจ็กต์หลังจากการลบ
+                    }
+                }
+                } else {
+                    console.error("enroll_add is not an array or is empty");
+                }
+                var yyy;
                 const transformedData = jsonData.map(item => {
                     const subject_id = item.__EMPTY_1.toString();
-                    const grade = parseFloat(item.__EMPTY_2);
-                    
-                    if (item.__EMPTY_5){
-                        yyy = item.__EMPTY_5;
+                    const  subject_name = item.__EMPTY_2.toString();
+
+                    if (item.EMPTY_5){
+                        yyy = parseFloat(item.__EMPTY_5);
                         console.log('ssss');
                     }
-                    const year = item.__EMPTY_5 || yyy; // ถ้าไม่มีข้อมูลปีกำหนดให้เป็น 1
-                    const credit = parseFloat(item.__EMPTY_3);
-                    return { subject_id, grade, year, credit };
+                    const year = parseFloat(item.__EMPTY_5) || yyy; // ถ้าไม่มีข้อมูลปีกำหนดให้เป็น 1
+                    const grade = parseFloat(item.__EMPTY_3);
+                    const credit = parseFloat(item.__EMPTY_4);
+                    return { subject_id, subject_name, grade, credit , year};
                 });
 
                 const enroll_add = { enroll: transformedData }; 
@@ -506,6 +475,8 @@
 
                 console.log('enroll_add_all ==> ', enroll_add_all); 
                 console.log('enroll_add_all ==> ', typeof(enroll_add_all));
+                console.log("aaaa");
+                console.log("aaaa");
                 add_sub(enroll_add);
                 
                 // console.log('enroll_add ==> ', Object.keys(enroll_add).length) 

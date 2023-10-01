@@ -353,8 +353,54 @@ nav {
     text-align: left;
 }
 
+.study .y5 {
+    left: 17%;
+    top: 99%;
+    position: absolute;
+    font-family: "Inter", Helvetica;
+    font-weight: 500;
+    color: #ffffff;
+    font-size: 20px;
+    
+    text-align: left;
+}
+
+.study .y6 {
+    left: 57%;
+    top: 99%;
+    position: absolute;
+    font-family: "Inter", Helvetica;
+    font-weight: 500;
+    color: #ffffff;
+    font-size: 20px;
+    
+    text-align: left;
+}
+.study .y7 {
+    left: 17%;
+    top: 135%;
+    position: absolute;
+    font-family: "Inter", Helvetica;
+    font-weight: 500;
+    color: #ffffff;
+    font-size: 20px;
+    
+    text-align: left;
+}
+
+.study .y8 {
+    left: 57%;
+    top: 135%;
+    position: absolute;
+    font-family: "Inter", Helvetica;
+    font-weight: 500;
+    color: #ffffff;
+    font-size: 20px;
+    
+    text-align: left;
+}
 .study .y1 .board {
-    position: fixed;
+    
     width: 387px;
     height: 229px;
     left: 17%;
@@ -364,7 +410,7 @@ nav {
 }
 
 .study .y2 .board {
-    position: fixed;
+    
     width: 387px;
     height: 229px;
     left: 57%;
@@ -374,7 +420,7 @@ nav {
 }
 
 .study .y3 .board {
-    position: fixed;
+    
     width: 387px;
     height: 229px;
     left: 17%;
@@ -384,7 +430,44 @@ nav {
 }
 
 .study .y4 .board {
-    position: fixed;
+    
+    width: 387px;
+    height: 229px;
+    left: 57%;
+    top: 67%;
+    background-color: #ffffff;
+    border-radius: 20px;
+}
+
+.study .y5 .board {
+    
+    width: 387px;
+    height: 229px;
+    left: 57%;
+    top: 67%;
+    background-color: #ffffff;
+    border-radius: 20px;
+}
+.study .y6 .board {
+    
+    width: 387px;
+    height: 229px;
+    left: 57%;
+    top: 67%;
+    background-color: #ffffff;
+    border-radius: 20px;
+}
+.study .y7 .board {
+    
+    width: 387px;
+    height: 229px;
+    left: 57%;
+    top: 67%;
+    background-color: #ffffff;
+    border-radius: 20px;
+}
+.study .y8 .board {
+    
     width: 387px;
     height: 229px;
     left: 57%;
