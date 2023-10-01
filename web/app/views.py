@@ -764,6 +764,7 @@ def del_stu():
 @app.route('/add_sub_all', methods=('GET', 'POST'))
 @login_required
 def add_sub_all():
+    app.logger.debug('ZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZ')
     if request.method == 'POST':
         
         # app.logger.debug(request.form)
@@ -779,7 +780,7 @@ def add_sub_all():
                 id = request.form.get('enroll[{}][subject_id]'.format(str(i)))
                 grade = request.form.get('enroll[{}][grade]'.format(str(i)))
                 year = request.form.get('enroll[{}][year]'.format(str(i)))
-                year = request.form.get('enroll[{}][credit]'.format(str(i)))
+                credit = request.form.get('enroll[{}][credit]'.format(str(i)))
                 credit = int(credit) 
                 grade = float(grade)
                 year = int(year)

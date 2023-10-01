@@ -84,25 +84,25 @@
         <div class="ids">รหัสวิชา</div>
         <form method="post">
             <input type="text" name="subj" class="id">
-            <input class="Add" id="myBtn" type="submit" value="ลบ">
+            <input class="Del" id="myBtn" type="submit" value="ลบ">
         </form> 
         </div>
     </div>
 
     <div id="myModal1" class="modal">
-    <!-- Modal content -->
+    <!-- Modal1 content -->
         <div class="modal-content">
         <span class="close ttt1">&times;</span>
-        
+        <div class="ids2">เพิ่มวิชา</div>
         <form method="post" action="/form2">
-            <div class="t">
-                <input type="text" name="subj" class="" placeholder="subject">
-                <input type="text" name="grade" class="" placeholder="grade">
-                <input type="text" name="year" class="" placeholder="year">
-                <input type="text" name="credit" class="" placeholder="credit">
-                <input class="" id="myBtn" type="submit" value="เพิ่ม">
+            <div class="center-container">
+                <input type="text" name="subj" class="input-a" placeholder="รหัสวิชา">
+                <input type="text" name="grade" class="input-a" placeholder="เกรดทีได้รับ">
+                <input type="text" name="year" class="input-a" placeholder="ปีที่รับการศึกษา">
+                <input type="text" name="credit" class="input-a" placeholder="หน่วยกิต">
             </div>
-        </form> 
+                <input class="Add" id="myBtn" type="submit" value="เพิ่ม">
+        </form>
         </div>
     </div>
     <script>   
