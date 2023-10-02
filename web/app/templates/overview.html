@@ -30,15 +30,14 @@
     </nav>
     <div class="info">
         <p class="text">
-            <span class="span">ชื่อ - นามสกุล / Name - Surname: {{ session['user']['first_name'] }} {{ session['user']['last_name'] }}</span><br>
-            <span class="span">รหัสนักศึกษา / Student ID: {{ session['user']['_id'] }}</span><br>
+            <span id="namefirst" class="span"></span><br>
+            <span id="idfirst" class="span">รหัสนักศึกษา / Student ID: {{ session['user']['_id'] }}</span><br>
             <span id="tea" class="span">อาจารย์ที่ปรึกษา / Advisor:</span><br>
             <span class="span">วิชาโท / Minor:
                 <select name="minor">
                     <optgroup label="เลือกวิชาโท">
                         <option value="ไม่เลือกวิชาโท">ไม่เลือกวิชาโท</option>
-                        <option value="Physic">Physic</option>
-                        <option value="Math">Math</option>
+                       
                         
                     </optgroup>
                 </select>
@@ -49,15 +48,12 @@
             </span><br>
             <!-- <span  class="span">แผนการศึกษา: {{ session['user']['study_plan'] }}</span><br> -->
             <span  class="span">แผนการศึกษา: 
-                <select name="แผนการศึกษา">
-                    <optgroup label="แผนการศึกษา">
-                        <option value="แผนปกติ">แผนปกติ</option>
-                        <option value="แผนสหกิจศึกษา">แผนสหกิจศึกษา</option>
-                        <option value="แผนก้าวหน้า">แผนก้าวหน้า</option>
-                        
-                    </optgroup>
-                </select>
-
+                <form id="plan_form" action="/set_plan" method="post">
+                    <select id="planner" name="plan_study">
+                        <optgroup id="planer" label="แผนการศึกษา">
+                        </optgroup>
+                    </select>
+                </form>
 
 
             </span><br>
@@ -157,6 +153,44 @@
         </div>
     </div>
     <script>   
+        console.log("AAA");
+        console.log("{{session['user']['study_plan']}}");
+
+        function plan_set(data){
+            var plann = data["study_plan"];
+            var container = document.getElementById("planer");
+            html = '';
+            console.log(plann);
+            html += `<option value="${plann}">${plann}</option>`;
+            if(plann == "แผนปกติ"){
+                console.log("AAAA"); 
+                html += `<option value="แผนสหกิจศึกษา">แผนสหกิจศึกษา</option><option value="แผนก้าวหน้า">แผนก้าวหน้า</option>`;
+            }
+            if(plann == "แผนสหกิจศึกษา"){
+                html += `<option value="แผนปกติ">แผนปกติ</option><option value="แผนก้าวหน้า">แผนก้าวหน้า</option>`;
+            }
+            if(plann == "แผนก้าวหน้า"){
+                html += `<option value="แผนปกติ">แผนปกติ</option><option value="แผนสหกิจศึกษา">แผนสหกิจศึกษา</option>`;
+            }
+            container.innerHTML += html;
+            
+            $("#planner").change(function(){
+                var selectedOption = $(this).val();
+
+                var confirmation = confirm("เปลี่ยนแผนการศึกษาหรือไม่");
+                
+                if(confirmation){
+                    $("#plan_form").submit();
+                }else{
+                    $(this).val(plann); 
+                }
+            });
+                        
+                        
+                        
+
+        }
+
 
     
         function add_sub(data){
@@ -407,7 +441,18 @@
             container.innerHTML = `Cumulative GPA : ${tgpa.toFixed(2)}`;
 
         }
+        function displayinfo(data){
+            var namecon = document.getElementById("namefirst").innerHTML = `ชื่อ - นามสกุล / Name - Surname: ${data['first_name']} ${data['last_name']} `;
+
+        }
         $(document).ready(function () {
+            
+            $.getJSON("/get_info", function (data) {
+                // Call the displayData function to update the HTML with the received data
+                displayinfo(data);
+                plan_set(data);
+            });
+
             $.getJSON("/data5", function (data) {
                 // Call the displayData function to update the HTML with the received data
                 displayData(data);

@@ -32,6 +32,7 @@ def login_required(f):
     return wrap
 
 
+
 def get_db():
     client = MongoClient(host='test_mongodb',
                          port=27017, 
@@ -175,6 +176,37 @@ def tadvisee():
     finally:
         if isinstance(db, MongoClient):
             db.close()
+
+@app.route('/get_info')
+def get_info():
+    db=""
+    app.logger.debug("AAAAAAAAAAAAAAAAAAAA")
+    try:
+        app.logger.debug("BBBBBBBBBBBBBBBBBBBBB")
+        db = get_db()
+        
+
+        data = db.student.find_one({"_id":session['user']['_id']})
+
+                
+                        
+        
+        
+        
+        app.logger.debug("****************************")  
+        app.logger.debug(data)  
+        
+        app.logger.debug("****************************")
+
+           
+        return jsonify(data)
+        
+    except Exception as e:
+        return jsonify({"errors": str(e)}), 500  # Return an error response with a 500 status code
+    finally:
+        if isinstance(db, MongoClient):
+            db.close() 
+
 
 @app.route('/avggrade')
 def avggrade():
@@ -360,7 +392,10 @@ def all_credit():
             studata = db.student.find_one({"_id": session['stu']})
             ch = studata["study_plan"]
         else:
-            ch = session['user']['study_plan'] 
+            data = db.student.find_one({"_id": session['user']['_id']})
+            ch = data['study_plan']
+            app.logger.debug("ALL_CREDIT")
+            app.logger.debug(session['user']['study_plan'])
         data= "" 
         if(ch == "แผนสหกิจศึกษา"):
             data = db.curriculum.aggregate([
@@ -385,7 +420,7 @@ def all_credit():
                             "$sum": "$หมวด.วิชาเฉพาะ.วิชาเอก.วิชาเอกเลือก.แผนสหกิจศึกษา.หน่วยกิต"
                         },
                         "400": { 
-                            "$sum": "$หมวด.วิชาเฉพาะ.วิชาเอก.วิชาเอกเลือก.แผนก้าวหน้า.เงื่อนไข.400"
+                            "$sum": "$หมวด.วิชาเฉพาะ.วิชาเอก.วิชาเอกเลือก.แผนสหกิจศึกษา.เงื่อนไข.400"
                         },
                         "โท": {
                             "$sum": "$หมวด.วิชาเฉพาะ.วิชาโท.หน่วยกิต"
@@ -420,7 +455,7 @@ def all_credit():
                             "$sum": "$หมวด.วิชาเฉพาะ.วิชาเอก.วิชาเอกเลือก.แผนปกติ.หน่วยกิต"
                         },
                         "400": { 
-                            "$sum": "$หมวด.วิชาเฉพาะ.วิชาเอก.วิชาเอกเลือก.แผนก้าวหน้า.เงื่อนไข.400"
+                            "$sum": "$หมวด.วิชาเฉพาะ.วิชาเอก.วิชาเอกเลือก.แผนปกติ.เงื่อนไข.400"
                         },
                         "โท": {
                             "$sum": "$หมวด.วิชาเฉพาะ.วิชาโท.หน่วยกิต"
@@ -501,6 +536,7 @@ def s_reg():
 @app.route('/overview', methods=('GET', 'POST'))
 @login_required
 def overview():
+    app.logger.debug(session['user']['study_plan'])
     if session['type'] == '2':
         return render_template('t_home.html')
 
@@ -521,6 +557,39 @@ def overview():
         finally:
             if isinstance(db, MongoClient):
                 db.close()
+    return render_template('overview.html')
+
+@app.route('/set_plan', methods=('GET', 'POST'))
+@login_required
+def set_plan():
+    app.logger.debug("testmai")
+
+    if request.method == 'POST':
+        app.logger.debug(request.form)
+        
+        try:
+            db = get_db()
+            name = request.form.get('plan_study')
+            user_id = session['user']['_id']
+
+            # Use update_one to update the study plan for the user
+            db.student.update_one(
+                {"_id": user_id},
+                {"$set": {"study_plan": name}}
+            )
+            session['user']['study_plan'] = name
+
+            app.logger.debug("HI")
+            app.logger.debug(session['user']['study_plan'])
+
+            return redirect('/overview')
+            
+        except Exception as e:
+            return jsonify({"errors": str(e)}), 500  # Return an error response with a 500 status code
+        finally:
+            if isinstance(db, MongoClient):
+                db.close()
+
     return render_template('overview.html')
 
 @app.route('/del_stu', methods=('GET', 'POST'))
