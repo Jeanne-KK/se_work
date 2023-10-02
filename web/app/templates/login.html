@@ -23,10 +23,16 @@
 
       <div class="noacc">
         <a class="who--hidden" href="/who"> No account? Register <i class="bi bi-arrow-right"></i></a>
-      <p class="error error--hidden"></p>
       </div>
       <input class="Login" id="myBtn" type="submit" value="Login">
+      <div id="errorPopup" class="error-popup">
+          <div class="error-content">
+              <img src="/static/img/X-mark.png" alt="Error Image">
+              <p id="errorMessage" class="error error--hidden"></p>
+          </div>
+      </div>
     </form>
+    
   </div>
 
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -35,87 +41,77 @@
     // ดึงค่า userType จาก URL
     const urlParams = new URLSearchParams(window.location.search);
     const userType = urlParams.get('userType');
+    
 
     // ตรวจสอบค่า userType
-    if (userType === '1') {
-      console.log("sdfghjkl")
-      // กระทำสิ่งที่คุณต้องการเมื่อ userType เป็น '1'
-      $(document).ready(function () {
-        $("form[name=login_form]").submit(function (e) {
+    $(document).ready(function () {
+      var $errorPopup = $("#errorPopup");
+      var $errorMessage = $("#errorMessage");
+
+      $("form[name=login_form]").submit(function (e) {
           e.preventDefault();
 
           var $form = $(this);
-          var $error = $form.find(".error");
           var data = $form.serialize();
 
-          $.ajax({
-            url: "/user/login_student",
-            type: "POST",
-            data: data,
-            dataType: "json",
-            success: function (resp) {
-              console.log(resp);
-              // หลังจากส่งข้อมูลสำเร็จ นำทางไปยังหน้า "/home"
-              window.location.href = "/overview";
-            },
-            error: function (resp) {
-              $error.text(resp.responseJSON.error).removeClass("error--hidden");
-            }
-          });
-        });
-      });
-    } else if (userType === '2'){
-      // กระทำสิ่งที่คุณต้องการเมื่อ userType ไม่ใช่ '1' (หรือไม่มี userType)
-      $(document).ready(function () {
-        $("form[name=login_form]").submit(function (e) {
-          e.preventDefault();
-
-          var $form = $(this);
-          var $error = $form.find(".error");
-          var data = $form.serialize();
+          // Determine the userType from the URL
+          const userType = urlParams.get('userType');
 
           $.ajax({
-            url: "/user/login_teacher",
-            type: "POST",
-            data: data,
-            dataType: "json",
-            success: function (resp) {
-              console.log(resp);
-              // หลังจากส่งข้อมูลสำเร็จ นำทางไปยังหน้า "/home"
-              window.location.href = "/teacher_home";
-            },
-            error: function (resp) {
-              $error.text(resp.responseJSON.error).removeClass("error--hidden");
-            }
-          });
-        });
-      });
-    } else if (userType === '3'){
-      $(document).ready(function () {
-        $("form[name=login_form]").submit(function (e) {
-          e.preventDefault();
+              url: getUserTypeLoginEndpoint(userType), // Use a function to get the appropriate login endpoint
+              type: "POST",
+              data: data,
+              dataType: "json",
+              success: function (resp) {
+                  console.log(resp);
+                  // Redirect to the appropriate page based on userType
+                  redirectToUserTypePage(userType);
+              },
+              error: function (resp) {
+                  $errorMessage.text(resp.responseJSON.error);
+                  $errorPopup.show();
 
-          var $form = $(this);
-          var $error = $form.find(".error");
-          var data = $form.serialize();
-
-          $.ajax({
-            url: "/user/login_curriculum_manager",
-            type: "POST",
-            data: data,
-            dataType: "json",
-            success: function (resp) {
-              console.log(resp);
-              // หลังจากส่งข้อมูลสำเร็จ นำทางไปยังหน้า "/home"
-              window.location.href = "/subject_add";
-            },
-            error: function (resp) {
-              $error.text(resp.responseJSON.error).removeClass("error--hidden");
-            }
+                  // Automatically hide the error popup after 3 seconds
+                  setTimeout(function () {
+                      $errorPopup.hide();
+                  }, 3000);
+              }
           });
-        });
       });
-    }
+
+      // Helper function to get the login endpoint based on userType
+      function getUserTypeLoginEndpoint(userType) {
+          switch (userType) {
+              case '1':
+                  return "/user/login_student";
+              case '2':
+                  return "/user/login_teacher";
+              case '3':
+                  return "/user/login_curriculum_manager";
+              default:
+                  return ""; // Handle other cases or set a default endpoint
+          }
+      }
+
+      // Helper function to redirect to the appropriate page based on userType
+      function redirectToUserTypePage(userType) {
+          switch (userType) {
+              case '1':
+                  window.location.href = "/overview";
+                  break;
+              case '2':
+                  window.location.href = "/teacher_home";
+                  break;
+              case '3':
+                  window.location.href = "/subject_add";
+                  break;
+              default:
+                  // Handle other cases or set a default redirect
+                  break;
+          }
+      }
+  });
+
 
 
   </script>
