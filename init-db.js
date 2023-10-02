@@ -1,6 +1,17 @@
 db = db.getSiblingDB("test_db");
 db.animal_db.drop();
 
+
+db.minor.insertOne([
+
+  {
+      "_id": "ไม่เลือกเรียนวิชาโท",
+      "เลือก": ["300", "400"]
+
+  }
+])
+
+
 db.curriculum_manager.insertMany([
 	{
 		"_id": "arr_@cmu.ac.th",

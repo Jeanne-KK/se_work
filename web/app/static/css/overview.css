@@ -232,12 +232,12 @@ nav {
     display: flex;
     flex-direction: column;
     position: absolute;
-    margin-left: 3%;
+    margin-left: 71.5%;
     font-family: "Inter", Helvetica;
     font-weight: 700;
-    color: #ffffff;
+    color: #00fd37;
     font-size: 20px;
-    line-height: 1.8;
+    line-height: 4.5;
     margin-top: 7%;
 }
 
