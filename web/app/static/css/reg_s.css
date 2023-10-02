@@ -207,3 +207,32 @@ nav {
     background-color: #739ff7;
     color: #000000;
 }
+
+.error-popup {
+    display: none;
+    position: relative;
+    top: 150px;
+    left: 25%;
+    width: 50%;
+    height: 20%;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+    justify-content: center;
+    align-items: center;
+    z-index: 999; /* Ensure it's above other content */
+}
+
+.error-content {
+    background-color: #ffdddd;
+    color: #f44336;
+    padding: 20px;
+    border-radius: 5px;
+    text-align: center;
+    position: relative; /* Added position relative */
+}
+
+.error-content img {
+    max-width: 100px; /* Ensure the image does not exceed the container width */
+    margin-bottom: 50px; /* Add spacing below the image */
+}
+
+

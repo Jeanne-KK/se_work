@@ -310,14 +310,10 @@
             }
         }
         
-        function showcredit(data){
+        function showcredit(data, getplan){
             //console.log(data[0]["วิชาบังคับ"])
-            var ch_plan = "";
-            if("{{session['type']}}" == '2'){
-                ch_plan = "{{session['plan']}}";
-            }else{
-                ch_plan = "{{session['user']['study_plan']}}";
-            }
+            var ch_plan = getplan; 
+            console.log(getplan);
             
             var container = document.getElementById("req").innerHTML = data[0]["วิชาบังคับ"];
             var container = document.getElementById("reqco").innerHTML = data[0]["เอกบังคับร่วม"];
@@ -342,28 +338,46 @@
         }
         $(document).ready(function () {
             console.log("{{session['stu']}}"); 
-            $.getJSON("/all_credit", function (data) { 
-                showcredit(data);
-                
-                $.getJSON("/curri", function (ttt) { 
-                    curri = ttt;
-                    var plan = "";
-                    if("{{session['type']}}" == '2'){
-                        plan = "{{session['plan']}}";
-                    }else{
-                        plan = "{{session['user']['study_plan']}}";
-                    }
-                    console.log("AAAAAAAAAAA");
-                        
-                    console.log(curri[0]["เกณฑ์การสำเร็จการศึกษา"][plan]["เกรดเฉลี่ยตลอดหลักสูตร"]); 
+            if("{{session['type']}}" == '2'){
+                $.getJSON("/all_credit", function (data) { 
+                    showcredit(data, "{{session['plan']}}"); 
+                        $.getJSON("/curri", function (ttt) { 
+                            curri = ttt;
+                            var plan = "";
+                            
+                            plan = "{{session['plan']}}";
+                            
+                            console.log("AAAAAAAAAAA");
+                                
+                            console.log(curri[0]["เกณฑ์การสำเร็จการศึกษา"][plan]["เกรดเฉลี่ยตลอดหลักสูตร"]); 
 
-                    var tran = document.getElementById("toplan").innerHTML = `${curri[0]["เกณฑ์การสำเร็จการศึกษา"][plan]["เกรดเฉลี่ยตลอดหลักสูตร"].toFixed(2)}`;
-                    var tran = document.getElementById("maplan").innerHTML = `${curri[0]["เกณฑ์การสำเร็จการศึกษา"][plan]['เกรดเฉลี่ยวิชาเอก'].toFixed(2)}`; 
-                    $.getJSON("/data5", function (data) { 
-                        showdata(data, curri[0]);
+                            var tran = document.getElementById("toplan").innerHTML = `${curri[0]["เกณฑ์การสำเร็จการศึกษา"][plan]["เกรดเฉลี่ยตลอดหลักสูตร"].toFixed(2)}`;
+                            var tran = document.getElementById("maplan").innerHTML = `${curri[0]["เกณฑ์การสำเร็จการศึกษา"][plan]['เกรดเฉลี่ยวิชาเอก'].toFixed(2)}`; 
+                            $.getJSON("/data5", function (data) { 
+                                showdata(data, curri[0]);
+                            });
+                        });      
+                });
+            }else{
+                $.getJSON("/get_info", function(info){
+                    $.getJSON("/all_credit", function (data) { 
+                        showcredit(data, info['study_plan']); 
+                        $.getJSON("/curri", function (ttt) { 
+                            curri = ttt;
+                            var plan = info['study_plan']; 
+                            console.log("AAAAAAAAAAA");
+                                
+                            console.log(curri[0]["เกณฑ์การสำเร็จการศึกษา"][plan]["เกรดเฉลี่ยตลอดหลักสูตร"]); 
+
+                            var tran = document.getElementById("toplan").innerHTML = `${curri[0]["เกณฑ์การสำเร็จการศึกษา"][plan]["เกรดเฉลี่ยตลอดหลักสูตร"].toFixed(2)}`;
+                            var tran = document.getElementById("maplan").innerHTML = `${curri[0]["เกณฑ์การสำเร็จการศึกษา"][plan]['เกรดเฉลี่ยวิชาเอก'].toFixed(2)}`; 
+                            $.getJSON("/data5", function (data) { 
+                                showdata(data, curri[0]);
+                            });
+                        });      
                     });
-                });  
-            });
+                });
+            }
              
         });
         function ShowPopupMenu() {

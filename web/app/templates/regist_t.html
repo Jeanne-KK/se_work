@@ -35,7 +35,12 @@
             <div class="topic6">Password
 
                 <input type="password" name="pass" class="pass" placeholder="Enter password" required>
-                <p class="error error--hidden"></p>
+                <div id="errorPopup" class="error-popup">
+                    <div class="error-content">
+                        <img src="/static/img/X-mark.png" alt="Error Image">
+                        <p id="errorMessage" class="error error--hidden"></p>
+                    </div>
+                </div>
 
             </div>
             <div class="choose">เข้าใช้งานในฐานะ <br>
@@ -61,6 +66,8 @@
         }
 
         $(document).ready(function () {
+            var $errorPopup = $("#errorPopup");
+            var $errorMessage = $("#errorMessage");
         $("form[name=signup_form]").submit(function (e) {
             e.preventDefault();
 
@@ -81,7 +88,13 @@
                         window.location.href = "/home";
                     },
                     error: function (resp) {
-                        $error.text(resp.responseJSON.error).removeClass("error--hidden");
+                        $errorMessage.text(resp.responseJSON.error);
+                        $errorPopup.show();
+
+                        // Automatically hide the error popup after 3 seconds
+                        setTimeout(function () {
+                            $errorPopup.hide();
+                        }, 3000);
                     }
                 });
             } else if (fav_language === "ts") {
@@ -96,7 +109,13 @@
                         // หลังจากส่งข้อมูลสำเร็จ นำทางไปยังหน้า "/home"
                     },
                     error: function (resp) {
-                        $error.text(resp.responseJSON.error).removeClass("error--hidden");
+                        $errorMessage.text(resp.responseJSON.error);
+                        $errorPopup.show();
+
+                        // Automatically hide the error popup after 3 seconds
+                        setTimeout(function () {
+                            $errorPopup.hide();
+                        }, 3000);
                     }
                 });
             }

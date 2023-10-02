@@ -33,8 +33,14 @@
             </div>
             <div class="topic6">Password
                 <input type="password" name="pass" class="pass" placeholder="Enter password" required>
-                <p class="error error--hidden"></p>
             </div>
+            <div id="errorPopup" class="error-popup">
+                <div class="error-content">
+                    <img src="/static/img/X-mark.png" alt="Error Image">
+                    <p id="errorMessage" class="error error--hidden"></p>
+                </div>
+            </div>
+            
 
 
             <input class="next" type="submit" value="Sign Up">
@@ -53,29 +59,40 @@
         }
 
         $(document).ready(function () {
-            $("form[name=signup_form]").submit(function (e) {
-                e.preventDefault();
+        var $errorPopup = $("#errorPopup"); // Select the error popup div
 
-                var $form = $(this);
-                var $error = $form.find(".error");
-                var data = $form.serialize();
+        $("form[name=signup_form]").submit(function (e) {
+            e.preventDefault();
 
-                $.ajax({
-                    url: "/user/signup_student",
-                    type: "POST",
-                    data: data,
-                    dataType: "json",
-                    success: function (resp) {
-                        console.log(resp);
-                        // หลังจากส่งข้อมูลสำเร็จ นำทางไปยังหน้า "/home"
-                        window.location.href = "/home";
-                    },
-                    error: function (resp) {
-                        $error.text(resp.responseJSON.error).removeClass("error--hidden");
-                    }
-                });
+            var $form = $(this);
+            var $error = $form.find(".error");
+            var $errorMessage = $("#errorMessage"); // Select the error message element
+            var data = $form.serialize();
+
+            $.ajax({
+                url: "/user/signup_student",
+                type: "POST",
+                data: data,
+                dataType: "json",
+                success: function (resp) {
+                    console.log(resp);
+                    // หลังจากส่งข้อมูลสำเร็จ นำทางไปยังหน้า "/home"
+                    window.location.href = "/home";
+                },
+                error: function (resp) {
+                    $errorMessage.text(resp.responseJSON.error);
+                    $errorPopup.show(); // Display the error popup
+
+                    // Automatically hide the error popup after 3 seconds
+                    setTimeout(function () {
+                        $errorPopup.hide();
+                    }, 3000);
+                }
             });
         });
+    });
+
+
     </script>
 </body>
 
