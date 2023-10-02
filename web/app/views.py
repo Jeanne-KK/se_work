@@ -609,24 +609,34 @@ def form2():
         app.logger.debug(request.form)
         db=""
         suba = request.form.get('subj')
+        name = request.form.get('subject_n')
         gradea = float(request.form.get('grade'))
         yeara = int(request.form.get('year'))
         credita = int(request.form.get('credit'))
         
         try:
             db = get_db()
-            data = db.student.update_one(
-                {
-                    "_id": session['user']['_id'],
-                },
-                {
-                    "$push": {
-                        "enroll":{
-                            "subject_id": suba, "grade": gradea, "year": yeara, "credit": credita
+            chdata = ''
+            app.logger.debug("aaaaaaaaaaaaaa")
+            app.logger.debug(chdata)
+            chdata = db.student.find_one({"_id": session['user']['_id'], "enroll.subject_id": suba})
+            app.logger.debug("aaaaaaaaaaaaa")
+            app.logger.debug(chdata)
+            if chdata == None:
+                data = db.student.update_one(
+                    {
+                        "_id": session['user']['_id'],
+                    },
+                    {
+                        "$push": {
+                            "enroll":{
+                                "subject_id": suba, "subject_name": name, "grade": gradea, "year": yeara, "credit": credita
+                            }
                         }
                     }
-                }
-            )
+                )
+            
+            
             return redirect('/overview')
             
         except Exception as e:

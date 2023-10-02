@@ -117,8 +117,9 @@
         <form method="post" action="/form2">
             <div class="center-container">
                 <input type="text" name="subj" class="input-a" placeholder="รหัสวิชา">
+                <input type="text" name="subject_n" class="input-a" placeholder="ชื่อวิชา">
                 <input type="text" name="grade" class="input-a" placeholder="เกรดทีได้รับ">
-                <input type="text" name="year" class="input-a" placeholder="ปีที่รับการศึกษา">
+                <input type="text" name="year" class="input-a" placeholder="ปีที่ลงทะเบียน">
                 <input type="text" name="credit" class="input-a" placeholder="หน่วยกิต">
             </div>
                 <input class="Add" id="myBtn" type="submit" value="เพิ่ม">
@@ -126,6 +127,8 @@
         </div>
     </div>
     <script>   
+
+    
         function add_sub(data){
             console.log("AAAAAAAAAAAAAA");
             console.log(data);
@@ -388,6 +391,18 @@
                 // Call the displayData function to update the HTML with the received data
                 showgrade(data);
             });
+            if(ch6 == 0 && ch5 == 0){
+                $('.y6').attr('hidden', 'hidden');
+                $('.y5').attr('hidden', 'hidden'); 
+            }
+            if(ch7 == 0 && ch8 == 0){
+                $('.y7').attr('hidden', 'hidden');
+                $('.y8').attr('hidden', 'hidden'); 
+            }else{
+                $('.y6').removeAttr('hidden', 'hidden');
+                $('.y5').removeAttr('hidden', 'hidden'); 
+
+            }
         });
 
         function ShowPopupMenu() {
