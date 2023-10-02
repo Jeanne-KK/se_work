@@ -56,24 +56,23 @@
         </div>
     </div>  
     <!-- link ไฟล์ excel ยังทำไม่ได้ -->
-    <div class="temp"><span id="dowlod" onclick="downloadFile()">Download excel template</span></div> 
     
-
-
+    <div class="farright">
+        <button class="Bplan" id="uploadButton" name="choose" type="button" onclick="chooseFile()">Upload</button>
+        <br><br>
+        <input type="file" id="fileInput" style="display: none;">
+        <div id="GPAA" class="gpa">Cumulative GPA :</div><br><br>
+        <div class="impex" style="margin-bottom: 10px;">Import ข้อมูลการลงทะเบียนโดย excel</div>
+        <div class="temp" style="margin-bottom: 10px;"><span id="dowlod" onclick="downloadFile()">Download excel template</span></div>
+        <button id="myBtn1" class="edit" type="button">เพิ่ม</button>
+        <button id="myBtn" class="edit" type="button">ลบ</button>
+    </div>
     
-    <input type="file" id="fileInput" style="display: none;">
-    <button class="Bplan" id="uploadButton" name="choose" type="button" onclick="chooseFile()">Upload</button>
-
-
-    <div id="GPAA" class="gpa">Cumulative GPA :</div>
     <!-- จะทำเป็น link กดไป folder ในคอม แต่ทำไม่ได้ -->
-    <div class="impex">Import ข้อมูลการลงทะเบียนโดย excel</div> 
+    
     <div class="study">Overview
         <div class="y1">Year 1
             <div id="loop"class="board"></div>
-            <button id="myBtn1" class="edit" type="button">เพิ่ม</button>
-            <button id="myBtn" class="edit" type="button">ลบ</button>
-            
         </div>
         <div class="y2">Year 2
             <div id="loop2"class="board">
@@ -267,7 +266,7 @@
         };
 
         hoverText.onmouseout = function() {
-            hoverText.style.color = "#00fd37"; // Reset text color when mouse leaves
+            hoverText.style.color = "#00fd37 "; // Reset text color when mouse leaves
             hoverText.style.cursor = "default";
         };
         

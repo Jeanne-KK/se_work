@@ -224,17 +224,7 @@ nav {
     line-height: 1.8;
 }
 
-.temp {
-    display: flex;
-    flex-direction: column;
-    position: absolute;
-    margin-left: 71.5%;
-    font-weight: 700;
-    color: #00fd37;
-    font-size: 20px;
-    line-height: 4.5;
-    margin-top: 7%;
-}
+
 
 .plans {
     position: absolute;
@@ -245,7 +235,25 @@ nav {
     color: #ffffff;
     line-height: normal;
 }
+.temp {
+    font-weight: 700;
+    color: #00fd37;
+    font-size: 20px;
 
+}
+.gpa {
+    position: absolute;
+    width: 301px;
+    font-size: 25px;
+    font-weight: 500;
+    color: #ffffff;
+    line-height: normal;
+}
+.impex {
+    font-weight: 700;
+    color: #ffffff;
+    font-size: 20px;
+}
 .Bplan {
     background-color: #fee386;
     border-radius: 10px;
@@ -253,9 +261,7 @@ nav {
     font-weight: 700;
     color: #000000;
     font-size: 20px;
-    position: absolute;
-    left: 88%;
-    top: 10%;
+    margin-top: 10px;
     transition-duration: 0.3s;
     cursor: pointer;
 }
@@ -264,28 +270,13 @@ nav {
     background-color: #ffc506;
     color: #000000;
 }
-
-.gpa {
+.farright {
     position: absolute;
-    width: 301px;
-    padding-top: 4.7%;
-    left: 72%;
-    font-size: 25px;
-    font-weight: 500;
-    color: #ffffff;
-    line-height: normal;
+    left: 80%;
+    
 }
-
-.impex {
-    display: flex;
-    flex-direction: column;
-    position: absolute;
-    margin-left: 71.5%;
-    font-weight: 700;
-    color: #ffffff;
-    font-size: 20px;
-    line-height: 1.8;
-    margin-top: 7%;
+.farright div {
+    margin-bottom: 50px; /* Adjust the value to control the line spacing */
 }
 
 .study {
@@ -293,7 +284,6 @@ nav {
     color: #ffffff;
     font-size: 60px;
     text-align: center;
-    margin-top: 4%;
 }
 
 .study .y1 {
@@ -456,69 +446,35 @@ nav {
     border-radius: 20px;
 }
 
-.study .y1 .edit {
-
+.edit {
     font-weight: 700;
-    width: 50px;
+    width: 90px; /* Adjust the width to your preference */
     height: 30px;
     background-color: #fc6f59;
     border-radius: 10px;
     transition-duration: 0.3s;
     cursor: pointer;
+    margin-top: 8px;
+    position: absolute;
 }
 
-.study .y1 .edit:hover {
+/* Adjust the positioning for the first button */
+#myBtn1 {
+    left: 0%;
+}
+
+/* Adjust the positioning for the second button */
+#myBtn {
+    left: 35%; /* Adjust the left position for the second button */
+}
+
+/* Adjust the hover effect */
+.edit:hover {
     background-color: #f89393;
     color: #000000;
 }
 
-.study .y2 .edit {
 
-    font-weight: 700;
-    width: 50px;
-    height: 30px;
-    background-color: #fc6f59;
-    border-radius: 10px;
-    transition-duration: 0.3s;
-    cursor: pointer;
-}
-
-.study .y2 .edit:hover {
-    background-color: #f89393;
-    color: #000000;
-}
-
-.study .y3 .edit {
-
-    font-weight: 700;
-    width: 50px;
-    height: 30px;
-    background-color: #fc6f59;
-    border-radius: 10px;
-    transition-duration: 0.3s;
-    cursor: pointer;
-}
-
-.study .y3 .edit:hover {
-    background-color: #f89393;
-    color: #000000;
-}
-
-.study .y4 .edit {
-
-    font-weight: 700;
-    width: 50px;
-    height: 30px;
-    background-color: #fc6f59;
-    border-radius: 10px;
-    transition-duration: 0.3s;
-    cursor: pointer;
-}
-
-.study .y4 .edit:hover {
-    background-color: #f89393;
-    color: #000000;
-}
 
 .board {
     display: grid;
