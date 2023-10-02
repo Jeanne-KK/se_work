@@ -501,6 +501,9 @@ def s_reg():
 @app.route('/overview', methods=('GET', 'POST'))
 @login_required
 def overview():
+    if session['type'] == '2':
+        return render_template('t_home.html')
+
     if request.method == 'POST':
         app.logger.debug(request.form)
         db=""

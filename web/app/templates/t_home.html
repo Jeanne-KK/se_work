@@ -16,8 +16,8 @@
       <li class="list">
         <a href="javascript:void(0);" onclick="ShowPopupMenu();"><i class="bi bi-list"></i></a>
         <ul class="popup-menu" id="popupMenu">
-          <li><a href="/overview">ภาพรวม/Overview</a></li>
-          <li><a href="/subject_credit">ภาพรวมหลักสูตร/Subjects</a></li>
+          <li id="over"><a href="/overview">ภาพรวม/Overview</a></li>
+          <li id="sub"><a href="/subject_credit">ภาพรวมหลักสูตร/Subjects</a></li>
           <li><button class="Logout" type="button"><a href="/user/signout_student" class="btn btn-secondary">Sign Out</a></button></li>
         </ul>
       </li>
@@ -51,14 +51,24 @@
   </div>
 
   <script>
+    if("{{session['type']}}" == '2'){
+        $('#over').attr('hidden', 'hidden');
+        $('#sub').attr('hidden', 'hidden');
+        //$('#').removeAttr('hidden', 'hidden');
+    }
     function del_stu(data){
-      var users = data.toString();
-      var formData = {};
-      formData['_id'] = users;
-      var url = "/del_stu";
-      $.post(url, formData, function(){
-        window.location.href = "/teacher_home";
-      });
+      var text = "ลบนักศึกษารหัส " + data;
+      var result = confirm(text);
+      if(result){
+        var users = data.toString();
+        var formData = {};
+        formData['_id'] = users;
+        var url = "/del_stu";
+        $.post(url, formData, function(){
+          window.location.href = "/teacher_home";
+        });
+      }
+      
     }
 
     function check(data){
