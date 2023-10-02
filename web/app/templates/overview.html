@@ -6,7 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="static/css/overview.css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
-    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bai+Jamjuree:wght@400;500&display=swap" rel="stylesheet">
+
     
     <script src="/static/js/scripts.js"></script>
      <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
@@ -29,37 +32,29 @@
         </ul>
     </nav>
     <div class="info">
-        <p class="text">
+        <div class="text">
             <span id="namefirst" class="span"></span><br>
             <span id="idfirst" class="span">รหัสนักศึกษา / Student ID: {{ session['user']['_id'] }}</span><br>
-            <span id="tea" class="span">อาจารย์ที่ปรึกษา / Advisor:</span><br>
+            <span class="span">อาจารย์ที่ปรึกษา / Advisor:</span><br>
             <span class="span">วิชาโท / Minor:
                 <select name="minor">
                     <optgroup label="เลือกวิชาโท">
                         <option value="ไม่เลือกวิชาโท">ไม่เลือกวิชาโท</option>
-                       
-                        
                     </optgroup>
                 </select>
-
-
-
-
             </span><br>
-            <!-- <span  class="span">แผนการศึกษา: {{ session['user']['study_plan'] }}</span><br> -->
-            <span  class="span">แผนการศึกษา: 
-                <form id="plan_form" action="/set_plan" method="post">
-                    <select id="planner" name="plan_study">
-                        <optgroup id="planer" label="แผนการศึกษา">
-                        </optgroup>
-                    </select>
-                </form>
-
-
-            </span><br>
-            <!-- <div class="plans">แผนการศึกษา: {{ session['user']['study_plan'] }}</div> -->
-        </p>
-    </div>
+    
+            <!-- Move the <form> element inside the <p> element -->
+            <form id="plan_form" action="/set_plan" method="post">
+                <span class="span">แผนการศึกษา:</span>
+                <select id="planner" name="plan_study">
+                    <optgroup id="planer" label="แผนการศึกษา">
+                    </optgroup>
+                </select>
+            </form>
+            <!-- ... Other content ... -->
+        </div>
+    </div>  
     <!-- link ไฟล์ excel ยังทำไม่ได้ -->
     <div class="temp"><span id="dowlod" onclick="downloadFile()">Download excel template</span></div> 
     
@@ -75,9 +70,7 @@
     <div class="impex">Import ข้อมูลการลงทะเบียนโดย excel</div> 
     <div class="study">Overview
         <div class="y1">Year 1
-            <div id="loop"class="board">
-                
-            </div>
+            <div id="loop"class="board"></div>
             <button id="myBtn1" class="edit" type="button">เพิ่ม</button>
             <button id="myBtn" class="edit" type="button">ลบ</button>
             
@@ -274,7 +267,7 @@
         };
 
         hoverText.onmouseout = function() {
-            hoverText.style.color = "black"; // Reset text color when mouse leaves
+            hoverText.style.color = "#00fd37"; // Reset text color when mouse leaves
             hoverText.style.cursor = "default";
         };
         
@@ -290,14 +283,10 @@
         var ch6 = 0;
         var ch7 = 0;
         var ch8 = 0;
-        console.log("*******")
-        
-        console.log("*******")
         function displayData(data){
             console.log(data[0]["subject_id"]);
             console.log(data[0]);
             console.log(data.length)
-            console.log("TTTTTTTTTTTTTT")
             
             var container1 = document.getElementById("loop");
             var container2 = document.getElementById("loop2");
@@ -430,10 +419,8 @@
 
         }
         function showgrade(data){
-            console.log("11111111111");
             var a = data[0]["Grade"];
             console.log(typeof(a));
-            console.log("11111111111");
             var container = document.getElementById("GPAA");
             var html = a.toFixed(3);
             var gpaa = a.toFixed(3);

@@ -1,5 +1,6 @@
 body {
     background-color: #334568;
+    font-family: 'Bai Jamjuree', sans-serif;
 }
 
 nav {
@@ -57,7 +58,6 @@ nav {
 
 .ids {
     color: #FFF;
-    font-family: Inter;
     font-size: 28px;
     font-style: normal;
     font-weight: 700;
@@ -69,7 +69,6 @@ nav {
 }
 .ids2{
     color: #FFF;
-    font-family: Inter;
     font-size: 28px;
     font-style: normal;
     font-weight: 700;
@@ -184,7 +183,6 @@ nav {
 .popup-menu li a {
     text-decoration: none;
     color: #334568;
-    font-family: "Inter", Helvetica;
 }
 
 .Logout {
@@ -207,7 +205,6 @@ nav {
 }
 
 .active {
-    font-family: "Inter", Helvetica;
     font-weight: 700;
     color: #334568;
     font-size: 20px;
@@ -221,7 +218,6 @@ nav {
     position: absolute;
     margin-top: 0.5%;
     margin-left: 3%;
-    font-family: "Inter", Helvetica;
     font-weight: 500;
     color: #ffffff;
     font-size: 16px;
@@ -233,7 +229,6 @@ nav {
     flex-direction: column;
     position: absolute;
     margin-left: 71.5%;
-    font-family: "Inter", Helvetica;
     font-weight: 700;
     color: #00fd37;
     font-size: 20px;
@@ -246,7 +241,6 @@ nav {
     padding-top: 2%;
     left: 72%;
     font-size: 25px;
-    font-family: "Inter", Helvetica;
     font-weight: 500;
     color: #ffffff;
     line-height: normal;
@@ -256,7 +250,6 @@ nav {
     background-color: #fee386;
     border-radius: 10px;
     padding: 10px 20px;
-    font-family: "Inter", Helvetica;
     font-weight: 700;
     color: #000000;
     font-size: 20px;
@@ -278,7 +271,6 @@ nav {
     padding-top: 4.7%;
     left: 72%;
     font-size: 25px;
-    font-family: "Inter", Helvetica;
     font-weight: 500;
     color: #ffffff;
     line-height: normal;
@@ -289,7 +281,6 @@ nav {
     flex-direction: column;
     position: absolute;
     margin-left: 71.5%;
-    font-family: "Inter", Helvetica;
     font-weight: 700;
     color: #ffffff;
     font-size: 20px;
@@ -298,7 +289,6 @@ nav {
 }
 
 .study {
-    font-family: "Inter", Helvetica;
     font-weight: 700;
     color: #ffffff;
     font-size: 60px;
@@ -307,34 +297,30 @@ nav {
 }
 
 .study .y1 {
-    left: 17%;
+    left: 25%; /* Adjusted left position for y1 */
     top: 27%;
     position: absolute;
-    font-family: "Inter", Helvetica;
     font-weight: 500;
     color: #ffffff;
     font-size: 20px;
     text-align: left;
-    
 }
 
 .study .y2 {
-    left: 57%;
+    left: 65%; /* Adjusted left position for y2 */
     top: 27%;
     position: absolute;
-    font-family: "Inter", Helvetica;
     font-weight: 500;
     color: #ffffff;
     font-size: 20px;
-    
     text-align: left;
+    transform: translateX(-50%); /* Center the element relative to its own width */
 }
 
 .study .y3 {
-    left: 17%;
+    left: 25%;
     top: 63%;
     position: absolute;
-    font-family: "Inter", Helvetica;
     font-weight: 500;
     color: #ffffff;
     font-size: 20px;
@@ -343,22 +329,20 @@ nav {
 }
 
 .study .y4 {
-    left: 57%;
+    left: 65%;
     top: 63%;
     position: absolute;
-    font-family: "Inter", Helvetica;
     font-weight: 500;
     color: #ffffff;
     font-size: 20px;
-    
     text-align: left;
+    transform: translateX(-50%); /* Center the element relative to its own width */
 }
 
 .study .y5 {
-    left: 17%;
+    left: 25%;
     top: 99%;
     position: absolute;
-    font-family: "Inter", Helvetica;
     font-weight: 500;
     color: #ffffff;
     font-size: 20px;
@@ -367,41 +351,36 @@ nav {
 }
 
 .study .y6 {
-    left: 57%;
+    left: 65%;
     top: 99%;
     position: absolute;
-    font-family: "Inter", Helvetica;
     font-weight: 500;
     color: #ffffff;
     font-size: 20px;
-    
     text-align: left;
+    transform: translateX(-50%); /* Center the element relative to its own width */
 }
 .study .y7 {
-    left: 17%;
+    left: 25%;
     top: 135%;
     position: absolute;
-    font-family: "Inter", Helvetica;
     font-weight: 500;
     color: #ffffff;
     font-size: 20px;
-    
     text-align: left;
 }
 
 .study .y8 {
-    left: 57%;
+    left: 65%;
     top: 135%;
     position: absolute;
-    font-family: "Inter", Helvetica;
     font-weight: 500;
     color: #ffffff;
     font-size: 20px;
-    
     text-align: left;
+    transform: translateX(-50%); /* Center the element relative to its own width */
 }
 .study .y1 .board {
-    
     width: 387px;
     height: 229px;
     left: 17%;
@@ -478,7 +457,7 @@ nav {
 }
 
 .study .y1 .edit {
-    font-family: "Inter", Helvetica;
+
     font-weight: 700;
     width: 50px;
     height: 30px;
@@ -494,7 +473,7 @@ nav {
 }
 
 .study .y2 .edit {
-    font-family: "Inter", Helvetica;
+
     font-weight: 700;
     width: 50px;
     height: 30px;
@@ -510,7 +489,7 @@ nav {
 }
 
 .study .y3 .edit {
-    font-family: "Inter", Helvetica;
+
     font-weight: 700;
     width: 50px;
     height: 30px;
@@ -526,7 +505,7 @@ nav {
 }
 
 .study .y4 .edit {
-    font-family: "Inter", Helvetica;
+
     font-weight: 700;
     width: 50px;
     height: 30px;
@@ -552,8 +531,7 @@ nav {
 }
 
 .sid {
-    /* Adjust styles as needed for the content within .sid */
-    font-family: "Inter", Helvetica;
+
     font-weight: 500;
     color: #000000;
     font-size: 18px;
@@ -568,7 +546,7 @@ nav {
 }
 
 .g {
-    font-family: "Inter", Helvetica;
+
     font-weight: 700;
     color: #000000;
 }
@@ -577,4 +555,62 @@ nav {
     border-left: 6px solid rgb(0, 30, 128);
     height: 214px;
     margin-left: 50%;
+}
+select[name="minor"] {
+    /* Styles for the select element */
+    width: 50%; /* Adjust width as needed */
+    padding: 2px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-family: 'Bai Jamjuree', sans-serif;
+}
+
+select[name="minor"] optgroup {
+    /* Styles for the optgroup */
+    font-family: 'Bai Jamjuree', sans-serif;
+    font-weight: bold;
+    color: #333;
+}
+
+select[name="minor"] option {
+    /* Styles for the options */
+    padding: 5px;
+    font-family: 'Bai Jamjuree', sans-serif;
+}
+
+/* Style for the "ไม่เลือกวิชาโท" option */
+select[name="minor"] option[value="ไม่เลือกวิชาโท"] {
+    color: #999;
+    font-family: 'Bai Jamjuree', sans-serif;
+}
+
+select#planner,
+select#planner option {
+    font-family: 'Bai Jamjuree', sans-serif; /* Use the desired font-family */
+}
+
+/* Styles for the select element */
+select#planner {
+    width: 50%;
+    padding: 2px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+/* Styles for the optgroup */
+select#planner optgroup {
+    font-weight: bold;
+    color: #333;
+}
+
+/* Styles for the options */
+select#planner option {
+    padding: 5px;
+}
+
+/* Style for the "แผนการศึกษา" option */
+select#planner optgroup[label="แผนการศึกษา"] {
+    color: #000000;
 }
