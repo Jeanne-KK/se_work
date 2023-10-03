@@ -26,6 +26,7 @@
     <div class="topic">ภาพรวมหลักสูตร</div>
     <div id="gpatotal" class="gpa">เกรดเฉลี่ยรวม    : <span id="totalgpa"></span> / <span id="toplan"></span></div>
     <div id="gpamajortotal" class="gpa">เกรดเฉลี่ยวิชาเอก : <span id="majorgpa"></span> / <span id="maplan"></span></div>
+    <div id="check_grad" class="gpa">สถานะ : <span id="grad"></span></div>
     <div class="required">วิชาบังคับ<br />(Required Courses)
         <div id="reqbox" class="rec1"></div>
         <div class="cr">Credits:
@@ -83,6 +84,12 @@
             <div id="8" class="crbox"><span id="bffree"></span><span id="free"></span></div>
         </div>
     </div>
+    <div class="non">อื่นๆ<br />(Other)
+        <div id="nonbox" class="rec9"></div>
+        <div class="cr">Credits:
+            <div id="9" class="crbox"></div>
+        </div>
+    </div>
 
     <script> 
         if("{{session['type']}}" == '2'){
@@ -92,7 +99,8 @@
         }
         
         
-        function showdata(data, curri){
+        function showdata(data, curri, plan){
+            var grad = true;
             var gpatop = 0;
             var gpadown = 0;
 
@@ -107,6 +115,7 @@
             var credit6 = 0;
             var credit7 = 0;
             var credit8 = 0;
+            var credit9 = 0;
             var credit400 = 0;
             var credit700 = 0;
 
@@ -118,6 +127,7 @@
             var container6 = document.getElementById("minorbox"); 
             var container7 = document.getElementById("gebox"); 
             var container8 = document.getElementById("freebox"); 
+            var container9 = document.getElementById("nonbox"); 
             var cn1 = document.getElementById("bfreq");
             var cn2 = document.getElementById("bfreqco");
             var cn3 = document.getElementById("bfspecco"); 
@@ -128,6 +138,7 @@
             var cn8 = document.getElementById("bffree");
             var cn400 = document.getElementById("bf400");
             var cn700 = document.getElementById("bf700");
+            var cn9 = document.getElementById("9")
             
             
             
@@ -172,11 +183,32 @@
                     credit7 += data[i]["credit"];
                 }
                 else if(testt(data[i]["subject_id"], curri)[0].slice(0, 44) == "หมวด วิชาเฉพาะ วิชาเอก วิชาเอกบังคับประจำแผน"){
-                    html += `<div class="sjname">${data[i]["subject_id"]}</div>`;   
-                    container3.innerHTML += html;
-                    credit3 += data[i]["credit"];
-                    majorgpatop += data[i]["grade"] * data[i]["credit"];
-                    majorgpadown += data[i]["credit"];
+                    chp = "";
+                    if(plan == "แผนก้าวหน้า"){
+                        chp= "แผนปกติ";
+                    }else{
+                        chp = plan;
+                    }
+                    if(chp == testt(data[i]["subject_id"], curri)[0].slice(45, 58)){
+                        html += `<div class="sjname">${data[i]["subject_id"]}</div>`;   
+                        container3.innerHTML += html;
+                        credit3 += data[i]["credit"];
+                        majorgpatop += data[i]["grade"] * data[i]["credit"];
+                        majorgpadown += data[i]["credit"];
+                    }else if(chp ==testt(data[i]["subject_id"], curri)[0].slice(45, 52)){
+                        html += `<div class="sjname">${data[i]["subject_id"]}</div>`;   
+                        container3.innerHTML += html;
+                        credit3 += data[i]["credit"];
+                        majorgpatop += data[i]["grade"] * data[i]["credit"];
+                        majorgpadown += data[i]["credit"];
+                    }else{
+                        html += `<div class="sjname">${data[i]["subject_id"]}</div>`;   
+                        container9.innerHTML += html;
+                        credit9 += data[i]["credit"];
+                        majorgpatop += data[i]["grade"] * data[i]["credit"];
+                        majorgpadown += data[i]["credit"];
+                    }
+
                 }
                 else if(testt(data[i]["subject_id"], curri)[0].slice(0, 35) == "หมวด วิชาเฉพาะ วิชาเอก วิชาเอกเลือก"){ 
                     majorgpatop += data[i]["grade"] * data[i]["credit"];
@@ -235,6 +267,7 @@
             cn8.innerHTML = `${credit8}/`;
             cn400.innerHTML = `${credit400}/`;
             cn700.innerHTML = `${credit700}/`;
+            cn9.innerHTML = `${credit9}`;
             // console.log("******");
             var req1 = parseInt(document.getElementById("bfreq").textContent);
             var req2 = parseInt(document.getElementById("req").textContent);
@@ -259,33 +292,43 @@
 
             if(req2 - req1 > 0){
                 var tt = document.getElementById("1").style.backgroundColor = "red";
+                grad = false;
             }
             if(reqco2 - reqco1 > 0){
                 var tt = document.getElementById("2").style.backgroundColor = "red";
+                grad = false;
             }
             if(specco2 - specco1 > 0){
                 var tt = document.getElementById("3").style.backgroundColor = "red";
+                grad = false;
             }
             if(core2 - core1 > 0){
                 var tt = document.getElementById("4").style.backgroundColor = "red";
+                grad = false;
             }
             if(majorco2 - majorco1 > 0){
                 var tt = document.getElementById("5").style.backgroundColor = "red";
+                grad = false;
             }
             if(minor2 - minor1 > 0){
                 var tt = document.getElementById("6").style.backgroundColor = "red";
+                grad = false;
             }
             if(ge2 - ge1 > 0){
                 var tt = document.getElementById("7").style.backgroundColor = "red";
+                grad = false;
             }
             if(free2 - free1 > 0){
                 var tt = document.getElementById("8").style.backgroundColor = "red";
+                grad = false;
             }
             if(a4002 - a4001 > 0){
                 var tt = document.getElementById("5.1").style.backgroundColor = "red";
+                grad = false;
             }
             if(a7002 - a7001 > 0){
                 var tt = document.getElementById("5.2").style.backgroundColor = "red";
+                grad = false;
             }
             
             
@@ -304,9 +347,19 @@
             
             if(ttg < top){
                 var tt = document.getElementById("gpatotal").style.color = "red";
+                grad = false;
             }
             if(mmg < down){
                 var tt = document.getElementById("gpamajortotal").style.color = "red";
+                grad = false;
+            }
+
+            if(grad){
+                document.getElementById("grad").innerHTML += "สามารถจบได้";
+                
+            }else{
+                document.getElementById("grad").innerHTML += "ไม่สามารถจบได้";
+                document.getElementById("grad").style.color = "red";
             }
         }
         
@@ -354,7 +407,7 @@
                             var tran = document.getElementById("toplan").innerHTML = `${curri[0]["เกณฑ์การสำเร็จการศึกษา"][plan]["เกรดเฉลี่ยตลอดหลักสูตร"].toFixed(2)}`;
                             var tran = document.getElementById("maplan").innerHTML = `${curri[0]["เกณฑ์การสำเร็จการศึกษา"][plan]['เกรดเฉลี่ยวิชาเอก'].toFixed(2)}`; 
                             $.getJSON("/data5", function (data) { 
-                                showdata(data, curri[0]);
+                                showdata(data, curri[0], plan);
                             });
                         });      
                 });
@@ -372,7 +425,7 @@
                             var tran = document.getElementById("toplan").innerHTML = `${curri[0]["เกณฑ์การสำเร็จการศึกษา"][plan]["เกรดเฉลี่ยตลอดหลักสูตร"].toFixed(2)}`;
                             var tran = document.getElementById("maplan").innerHTML = `${curri[0]["เกณฑ์การสำเร็จการศึกษา"][plan]['เกรดเฉลี่ยวิชาเอก'].toFixed(2)}`; 
                             $.getJSON("/data5", function (data) { 
-                                showdata(data, curri[0]);
+                                showdata(data, curri[0], plan);
                             });
                         });      
                     });

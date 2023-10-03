@@ -98,7 +98,7 @@ nav {
     position: absolute;
     width: 203px;
     margin-top: 2%;
-    margin-left: 1%;
+    
     font-family: "Inter", Helvetica;
     font-weight: 500;
     color: #ffffff;
@@ -121,7 +121,7 @@ nav {
     position: absolute;
     width: 203px;
     margin-top: 2%;
-    margin-left: 13%;
+    margin-left: 10%;
     font-family: "Inter", Helvetica;
     font-weight: 500;
     color: #ffffff;
@@ -144,7 +144,7 @@ nav {
     position: absolute;
     width: 203px;
     margin-top: 2%;
-    margin-left: 25%;
+    margin-left: 20%;
     font-family: "Inter", Helvetica;
     font-weight: 500;
     color: #ffffff;
@@ -167,7 +167,7 @@ nav {
     position: absolute;
     width: 203px;
     margin-top: 2%;
-    margin-left: 37%;
+    margin-left: 30%;
     font-family: "Inter", Helvetica;
     font-weight: 500;
     color: #ffffff;
@@ -190,7 +190,7 @@ nav {
     position: absolute;
     width: 203px;
     margin-top: 2%;
-    margin-left: 49%;
+    margin-left: 40%;
     font-family: "Inter", Helvetica;
     font-weight: 500;
     color: #ffffff;
@@ -213,7 +213,7 @@ nav {
     position: absolute;
     width: 203px;
     margin-top: 2%;
-    margin-left: 61%;
+    margin-left: 50%;
     font-family: "Inter", Helvetica;
     font-weight: 500;
     color: #ffffff;
@@ -236,7 +236,7 @@ nav {
     position: absolute;
     width: 203px;
     margin-top: 2%;
-    margin-left: 73%;
+    margin-left: 60%;
     font-family: "Inter", Helvetica;
     font-weight: 500;
     color: #ffffff;
@@ -259,7 +259,7 @@ nav {
     position: absolute;
     width: 203px;
     margin-top: 2%;
-    margin-left: 85%;
+    margin-left: 70%;
     font-family: "Inter", Helvetica;
     font-weight: 500;
     color: #ffffff;
@@ -269,6 +269,29 @@ nav {
 }
 
 .rec8 {
+    position: absolute;
+    width: 158px;
+    height: 482px;
+    margin-top: 4%;
+    margin-left: 11%;
+    background-color: #ffffff;
+    border-radius: 20px;
+}
+
+.non {
+    position: absolute;
+    width: 203px;
+    margin-top: 2%;
+    margin-left: 80%;
+    font-family: "Inter", Helvetica;
+    font-weight: 500;
+    color: #ffffff;
+    font-size: 18px;
+    text-align: center;
+    line-height: normal;
+}
+
+.rec9 {
     position: absolute;
     width: 158px;
     height: 482px;

@@ -645,11 +645,14 @@ def add_sub_all():
                 credit = int(credit) 
                 grade = float(grade)
                 year = int(year)
+                chdata = ''
+                chdata = db.student.find_one({"_id": session['user']['_id'], "enroll.subject_id": _id})
                 # app.logger.debug(_id)
                 # app.logger.debug(grade)
                 # app.logger.debug(credit)
                 # app.logger.debug(year)
-                data = db.student.update_one(
+                if chdata == None:
+                    data = db.student.update_one(
                             {
                                 "_id": session['user']['_id'],
                             },
@@ -661,6 +664,8 @@ def add_sub_all():
                                 }
                             }
                         )
+                
+                
             return redirect('/overview')
             
         except Exception as e:

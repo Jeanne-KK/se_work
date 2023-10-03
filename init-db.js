@@ -99,6 +99,7 @@ db.student.insertMany([
 		cmu_acc: "kiattipoom_k@cmu.ac.th",
 		pass: "$pbkdf2-sha256$29000$SWktpTTm/H8vRYjR2nuPcQ$eMYTVcZQnUpiKfO3lfFJpeyCUZH8fD0QxFztB43UVCY",
 		study_plan: "แผนปกติ",
+    minor: "ไม่เลือกวิชาโท",
 		enroll: [
 				{subject_id: "001101", grade: 3, year: 1, credit: 3, subject_name: "Fundamental English 1",},
 				{subject_id: "140104", grade: 2, year: 1, credit: 3, subject_name: "Citizenship",},
@@ -140,6 +141,7 @@ db.student.insertMany([
 		cmu_acc: "ginsontom_g@cmu.ac.th",
 		pass: "$pbkdf2-sha256$29000$TIkxRgjhvBdirNX6f8.5dw$iY3oioV4G5irM6.V1mhI2VzAtUnTmt/OeEzg3vBuxyg",
 		study_plan: "แผนสหกิจศึกษา",
+    minor: "ไม่เลือกวิชาโท",
 		enroll: [
 			{subject_id: "001101", grade: 3, year: 1, credit: 3, subject_name: "Fundamental English 1",},
 			{subject_id: "140104", grade: 2, year: 1, credit: 3, subject_name: "Citizenship",},
@@ -190,6 +192,7 @@ db.student.insertMany([
 		cmu_acc: "nam_@cmu.ac.th",
 		pass: "$pbkdf2-sha256$29000$ZYyxVsrZWysFYAzhPIewtg$IJxCAuq4PPrD7umIE3edPXvnxQTvVzWF84ye99IYbdY",
 		study_plan: "แผนก้าวหน้า",
+    minor: "ไม่เลือกวิชาโท",
 		enroll: [
 				{subject_id: "001101", grade: 3, year: 1, credit: 3, subject_name: "Fundamental English 1",},
 				{subject_id: "140104", grade: 2, year: 1, credit: 3, subject_name: "Citizenship",},
