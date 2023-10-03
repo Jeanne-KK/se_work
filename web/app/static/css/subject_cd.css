@@ -87,9 +87,8 @@ nav {
     margin-top: 2%;
 }
 .gpa{
-
     margin-left: 5%;
-    font-size: 18px;
+    font-size: 20px;
     color: white;
     line-height: normal;
     font-family: "Inter", Helvetica;
@@ -333,7 +332,7 @@ nav {
     font-family: "Inter", Helvetica;
     font-weight: 500;
     color: #ffffff;
-    font-size: 15px;
+    font-size: 13px;
     letter-spacing: 0;
     line-height: normal;
     display: block;
@@ -341,11 +340,16 @@ nav {
 
 .crbox {
     position: absolute;
-    width: 45px;
-    height: 24px;
+    width: 55px;
+    height: 23px;
+    /* margin: 10px; */
+    border-bottom: 10px solid #000;
+    padding: 4px;
+    font-size: 20px;
     top: 0;
     left: 103%;
     background-color: #8fb5ff;
+    word-wrap: break-word;
 }
 
 .sjname {

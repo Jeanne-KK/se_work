@@ -25,36 +25,38 @@
     </nav>
     <div class="topic">ภาพรวมหลักสูตร</div>
     <div id="mino" class="gpa">วิชาโท    : <span id="minospan"></span></div>
-    <div id="gpatotal" class="gpa">เกรดเฉลี่ยรวม    : <span id="totalgpa"></span> / <span id="toplan"></span></div>
-    <div id="gpamajortotal" class="gpa">เกรดเฉลี่ยวิชาเอก : <span id="majorgpa"></span> / <span id="maplan"></span></div>
-    <div id="check_grad" class="gpa">สถานะ : <span id="grad"></span></div>
+    <div  class="gpa">- เพื่อผ่านหลักสูตรต้องมีเกรดเฉลี่ยรวม และ เกรดเฉลี่ยวิชาเอก ผ่านขั้นต่ำ    : <span id="minospan"></span></div>
+    
+    <div id="gpatotal" class="gpa">เกรดเฉลี่ยรวมเพื่อผ่านหลักสูตร    : <span id="totalgpa"></span> / <span id="toplan"></span></div>
+    <div id="gpamajortotal" class="gpa">เกรดเฉลี่ยวิชาเอกเพื่อผ่านหลักสูตร : <span id="majorgpa"></span> / <span id="maplan"></span></div>
+    <div id="check_grad" class="gpa">สถานะ : <span id="grad" style="font-size: 30px;"></span></div>
     <div class="required">วิชาบังคับ<br />(Required Courses)
         <div id="reqbox" class="rec1"></div>
-        <div class="cr">Credits:
+        <div class="cr">หน่วยกิตที่ได้:
             <div id="1" class="crbox"><span id="bfreq"></span><span id="req"></span></div>
         </div>
     </div>
     <div class="compulsory">วิชาเอกบังคับร่วม<br />(Compulsory Courses)
         <div id="reqcobox" class="rec2"></div>
-        <div class="cr">Credits:
+        <div class="cr">หน่วยกิตที่ได้:
             <div id="2" class="crbox"><span id="bfreqco"></span><span id="reqco"></span></div>
         </div>
     </div>
     <div class="plan-spe">วิชาเอกบังคับประจำแผน<br />(Plan-specific)
         <div id="speccobox" class="rec3"></div>
-        <div class="cr">Credits:
+        <div class="cr">หน่วยกิตที่ได้:
             <div id="3" class="crbox"><span id="bfspecco"></span><span id="specco"></span></div>
         </div>
     </div>
     <div class="core-courses">วิชาแกน<br />(Core Courses)
         <div id="corebox" class="rec4"></div>
-        <div class="cr">Credits:
+        <div class="cr">หน่วยกิตที่ได้:
             <div id="4" class="crbox"><span id="bfcore"></span><span id="core"></span></div>
         </div>
     </div>
     <div class="major">วิชาเอกเลือก<br />(Major Elective Courses)
         <div id="majorbox" class="rec5"></div> 
-        <div class="cr">Credits:
+        <div class="cr">หน่วยกิตที่ได้:
             <div id="5" class="crbox"><span id="bfmajorco"></span><span id="majorco"></span></div>      
         </div>
         <div class="cr1">400: 
@@ -69,25 +71,25 @@
     </div>
     <div class="minor">วิชาโท<br />(Minor Courses)
         <div id="minorbox" class="rec6"></div>
-        <div class="cr">Credits:
+        <div class="cr">หน่วยกิตที่ได้:
             <div id="6" class="crbox"><span id="bfminor"></span><span id="minor"></span></div>
         </div>
     </div>
     <div class="ge">วิชาเลือกทั่วไป<br />(GE Elective)
         <div id="gebox" class="rec7"></div>
-        <div class="cr">Credits:
+        <div class="cr">หน่วยกิตที่ได้:
             <div id="7" class="crbox"><span id="bfge"></span><span id="ge"></span></div>
         </div>
     </div>
     <div class="free">วิชาเลือกเสรี<br />(Free Elective)
         <div id="freebox" class="rec8"></div>
-        <div class="cr">Credits:
+        <div class="cr">หน่วยกิตที่ได้:
             <div id="8" class="crbox"><span id="bffree"></span><span id="free"></span></div>
         </div>
     </div>
     <div class="non">อื่นๆ<br />(Other)
         <div id="nonbox" class="rec9"></div>
-        <div class="cr">Credits:
+        <div class="cr">หน่วยกิตที่ได้:
             <div id="9" class="crbox"></div>
         </div>
     </div>
@@ -365,10 +367,10 @@
             }
 
             if(grad){
-                document.getElementById("grad").innerHTML += "สามารถจบได้";
+                document.getElementById("grad").innerHTML += "ลงทะเบียนเรียนครบหลักสูตร";
                 
             }else{
-                document.getElementById("grad").innerHTML += "ไม่สามารถจบได้";
+                document.getElementById("grad").innerHTML += "ลงทะเบียนเรียนยังไม่ครบหลักสูตร";
                 document.getElementById("grad").style.color = "red";
             }
         }

@@ -39,7 +39,7 @@ nav {
     border-radius: 20px;
     background: #4E6DA8;
     width: 360px;
-    height: 385px;
+    height: 450px;
 }
 
 .close {
@@ -51,6 +51,7 @@ nav {
 
 .close:hover,
 .close:focus {
+    
     color: red;
     text-decoration: none;
     cursor: pointer;
@@ -101,7 +102,7 @@ nav {
     text-align: center;
 }
 .input-a {
-    width: 250px;
+    width: 400px;
     position: relative; /* Change position to relative */
     margin-bottom: 10px; /* Add margin to create space between input elements */
     background-color: #ffffff;
@@ -120,9 +121,10 @@ nav {
     color: #ffffff;
     font-size: 24px;
     position: absolute;
+    width: 120px;
     top: 55%;
     left: 50%;
-    transform: translate(-50%, -50%);
+    /* transform: translate(-50%, -50%); */
     transition-duration: 0.3s;
     cursor: pointer;
 }
@@ -135,14 +137,16 @@ nav {
 .Add{
     background-color: #37b47e;
     border-radius: 10px;
-    padding: 10px 20px;
+    padding: 10px 50px;
     font-weight: 500;
     color: #ffffff;
     font-size: 24px;
     position: absolute;
-    top: 85%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    /* top: 85%;
+    left: 50%; */
+    /* margin-left: 60px; */
+    margin-top: 120px;
+    /* transform: translate(-50%, -50%); */
     transition-duration: 0.3s;
     cursor: pointer;
     margin-top: 10px;
@@ -239,6 +243,8 @@ nav {
     font-weight: 700;
     color: #00fd37;
     font-size: 20px;
+    border: solid 5px green;
+    padding: 5px;
 
 }
 .gpa {
@@ -447,15 +453,18 @@ nav {
 }
 
 .edit {
+    font-size: 20px;
     font-weight: 700;
-    width: 90px; /* Adjust the width to your preference */
-    height: 30px;
+    width: 120px; /* Adjust the width to your preference */
+    height: 60px;
     background-color: #fc6f59;
     border-radius: 10px;
     transition-duration: 0.3s;
     cursor: pointer;
     margin-top: 8px;
-    position: absolute;
+    /* position: absolute; */
+    /* margin-left: 150px; */
+    
 }
 
 /* Adjust the positioning for the first button */
