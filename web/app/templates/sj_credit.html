@@ -24,6 +24,7 @@
         </ul>
     </nav>
     <div class="topic">ภาพรวมหลักสูตร</div>
+    <div id="mino" class="gpa">วิชาโท    : <span id="minospan"></span></div>
     <div id="gpatotal" class="gpa">เกรดเฉลี่ยรวม    : <span id="totalgpa"></span> / <span id="toplan"></span></div>
     <div id="gpamajortotal" class="gpa">เกรดเฉลี่ยวิชาเอก : <span id="majorgpa"></span> / <span id="maplan"></span></div>
     <div id="check_grad" class="gpa">สถานะ : <span id="grad"></span></div>
@@ -330,15 +331,24 @@
                 var tt = document.getElementById("5.2").style.backgroundColor = "red";
                 grad = false;
             }
+             
+            var ttgpa = 0; 
+            if(gpadown != 0){
+                ttgpa = (gpatop/gpadown).toFixed(3);
+
+            }
             
-            
-            var ttgpa = (gpatop/gpadown).toFixed(3);
             var ttg = Math.round(ttgpa * 100) / 100;
             ttg = ttg.toFixed(2);
+            console.log(ttg);
             var setgpa = document.getElementById("totalgpa").innerHTML = ttg;
-            var mmgpa = (majorgpatop/majorgpadown).toFixed(3);
+            var mmgpa = 0;
+            if(majorgpadown != 0){
+                mmgpa = (majorgpatop/majorgpadown).toFixed(3);
+            }
             var mmg = Math.round(mmgpa * 100) / 100;
             mmg = mmg.toFixed(2);
+            console.log(mmg);
             var setmajorgpa = document.getElementById("majorgpa").innerHTML = mmg;
 
             
@@ -368,6 +378,8 @@
             var ch_plan = getplan; 
             console.log(getplan);
             
+            
+
             var container = document.getElementById("req").innerHTML = data[0]["วิชาบังคับ"];
             var container = document.getElementById("reqco").innerHTML = data[0]["เอกบังคับร่วม"];
             var container = document.getElementById("specco").innerHTML = data[0]["เอกประจำแผน"];
@@ -392,6 +404,8 @@
         $(document).ready(function () {
             console.log("{{session['stu']}}"); 
             if("{{session['type']}}" == '2'){
+                var minobox = document.getElementById("minospan").innerHTML += "{{session['minor']}}";
+
                 $.getJSON("/all_credit", function (data) { 
                     showcredit(data, "{{session['plan']}}"); 
                         $.getJSON("/curri", function (ttt) { 
@@ -413,6 +427,7 @@
                 });
             }else{
                 $.getJSON("/get_info", function(info){
+                    var minobox = document.getElementById("minospan").innerHTML += info['minor'];
                     $.getJSON("/all_credit", function (data) { 
                         showcredit(data, info['study_plan']); 
                         $.getJSON("/curri", function (ttt) { 

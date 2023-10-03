@@ -66,28 +66,7 @@ db.user.insertMany([
 	}
 ])
 
-db.student.insertMany([
-	{
-		"_id": "000",
-		"first_name": "000",
-		"last_name": "000",
-		"year_of_study": "000",
-		"curriculum_year": "000",
-		"cmu_acc": "000@000.com",
-		"pass": "000",
-		"enroll": "000"
-	},
-	{
-		"_id": "111",
-		"first_name": "111",
-		"last_name": "111",
-		"year_of_study": "111",
-		"curriculum_year": "111",
-		"cmu_acc": "111@111.com",
-		"pass": "111",
-		"enroll": "111"
-	}
-])
+
 
 db.student.insertMany([
 	{
@@ -95,7 +74,8 @@ db.student.insertMany([
 		first_name: "Kiattipoom",
 		last_name: "Khiawwan",
 		year_of_plan: 2564,
-		curriculum_year: 2564,
+		
+		curriculum_year: "หลักสูตรปรับปรุง 2564",
 		cmu_acc: "kiattipoom_k@cmu.ac.th",
 		pass: "$pbkdf2-sha256$29000$SWktpTTm/H8vRYjR2nuPcQ$eMYTVcZQnUpiKfO3lfFJpeyCUZH8fD0QxFztB43UVCY",
 		study_plan: "แผนปกติ",
@@ -137,7 +117,8 @@ db.student.insertMany([
 		first_name: "Ginsontom",
 		last_name: "Gunmai",
 		year_of_plan: 2564,
-		curriculum_year: 2564,
+		
+		curriculum_year: "หลักสูตรปรับปรุง 2564",
 		cmu_acc: "ginsontom_g@cmu.ac.th",
 		pass: "$pbkdf2-sha256$29000$TIkxRgjhvBdirNX6f8.5dw$iY3oioV4G5irM6.V1mhI2VzAtUnTmt/OeEzg3vBuxyg",
 		study_plan: "แผนสหกิจศึกษา",
@@ -188,7 +169,7 @@ db.student.insertMany([
 		first_name: "Namsai",
 		last_name: "Jaijing",
 		year_of_plan: 2564,
-		curriculum_year: 2564,
+		curriculum_year: "หลักสูตรปรับปรุง 2564",
 		cmu_acc: "nam_@cmu.ac.th",
 		pass: "$pbkdf2-sha256$29000$ZYyxVsrZWysFYAzhPIewtg$IJxCAuq4PPrD7umIE3edPXvnxQTvVzWF84ye99IYbdY",
 		study_plan: "แผนก้าวหน้า",
@@ -250,9 +231,10 @@ db.student.insertMany([
 	}
 ])
 
+
 db.curriculum.insertOne(
 {
-  "_id": 2564,
+  "_id": "หลักสูตรปรับปรุง 2564",
   "หน่วยกิต": 134,
   "เกณฑ์การสำเร็จการศึกษา": {
     "แผนปกติ": {

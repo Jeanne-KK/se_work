@@ -10,6 +10,7 @@ class User_teacher:
         session['stu'] = ""
         session['plan'] = ""
         session['year'] = ""
+        session['minor'] = ""
         
         return jsonify(user), 200
 

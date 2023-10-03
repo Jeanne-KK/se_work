@@ -348,7 +348,7 @@ def curri():
             ch = session['year']
         else:
             ch = session['user']['curriculum_year']
-        data = db.curriculum.find({"_id": int(ch)})    
+        data = db.curriculum.find({"_id": ch})    
         data= list(data)
         app.logger.debug(data)
         app.logger.debug("***********")
@@ -373,6 +373,7 @@ def revalue():
         ch = studata["study_plan"]
         session['plan'] = ch
         session['year'] = studata['curriculum_year']
+        session['minor'] = studata['minor']
         app.logger.debug(session['stu'])
         return redirect('/teacher_home')
         
@@ -752,15 +753,19 @@ def t_home():
         try:
             db = get_db()
             for i in range(first, last+1):
-                data = db.teacher.update_one(
-                    {
-                        "_id": session['user']['_id']
-                    },
-                    {
-                        "$push": {"advisee": str(i)}
-                    }
+                datach = ''
+                
+                datach = db.teacher.find_one({"advisee": str(i)})
+                if dashb == None:
+                    data = db.teacher.update_one(
+                        {
+                            "_id": session['user']['_id']
+                        },
+                        {
+                            "$push": {"advisee": str(i)}
+                        }
 
-                )
+                    )
             return redirect('/teacher_home')
                 
         except Exception as e:

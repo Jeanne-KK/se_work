@@ -1,5 +1,6 @@
 body {
     background-color: #334568;
+    font-family: 'Bai Jamjuree', sans-serif;
 }
 
 nav {
@@ -47,7 +48,7 @@ nav {
 .popup-menu li a {
     text-decoration: none;
     color: #334568;
-    font-family: "Inter", Helvetica;
+    
 }
 
 .Logout {
@@ -70,7 +71,7 @@ nav {
 }
 
 .active {
-    font-family: "Inter", Helvetica;
+    
     font-weight: 700;
     color: #334568;
     font-size: 20px;
@@ -84,7 +85,7 @@ nav {
     position: absolute;
     padding-top: 2.5%;
     margin-left: 3%;
-    font-family: "Inter", Helvetica;
+    
     font-weight: 500;
     color: #ffffff;
     font-size: 24px;
@@ -94,7 +95,7 @@ nav {
     background-color: #fee386;
     border-radius: 10px;
     padding: 15px 20px;
-    font-family: "Inter", Helvetica;
+    
     font-weight: 700;
     color: #000000;
     font-size: 20px;
@@ -126,7 +127,7 @@ nav {
     position: absolute;
     padding-top: 1.5%;
     margin-left: 3%;
-    font-family: "Inter-Bold", Helvetica;
+    
     font-weight: 700;
     color: #000000;
     font-size: 24px;
@@ -138,7 +139,7 @@ nav {
     position: absolute;
     width: 90%;
     padding: 20px; /* Adjust padding as needed for spacing */
-    font-family: "Inter", Helvetica;
+    
     font-weight: 500;
     color: #000000;
     font-size: 24px;
@@ -149,7 +150,7 @@ nav {
     margin-top: 15px;
     display: flex;
     justify-content: space-between; /* Align items and push the button to the right */
-    font-family: "Inter", Helvetica;
+    
     font-weight: 500;
     color: #000000;
     background-color: #ffffff;
@@ -167,7 +168,7 @@ nav {
     margin-left: 10px; /* Add some margin between the text and the button */
     background-color: #8fb5ff;
     border-radius: 10px;
-    font-family: "Inter", Helvetica;
+    
     font-weight: 700;
     color: #000000;
     font-size: 20px;
@@ -224,7 +225,7 @@ nav {
 
 .ids {
     color: #FFF;
-    font-family: Inter;
+    
     font-size: 28px;
     font-style: normal;
     font-weight: 700;
@@ -237,7 +238,7 @@ nav {
 
 .idst {
     color: #FFF;
-    font-family: Inter;
+    
     font-size: 24px;
     font-style: normal;
     font-weight: 500;
@@ -281,7 +282,7 @@ nav {
 }
 
 .plans {
-    font-family: "Inter", Helvetica;
+    
     font-weight: 600;
     color: #000000;
     font-size: 24px;

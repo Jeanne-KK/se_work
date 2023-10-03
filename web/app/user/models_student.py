@@ -22,7 +22,8 @@ class User_student:
             "last_name": request.form.get('last_name'),
             "year_of_study": request.form.get('year_of_study'),
             "study_plan": "แผนปกติ",
-            "curriculum_year": request.form.get('year_of_study'),
+            "minor": "ไม่เลือกวิชาโท",
+            "curriculum_year": "หลักสูตรปรับปรุง 2564",
             "cmu_acc": request.form.get('cmu_acc'),
             "pass": request.form.get('pass'),
             "enroll": [] 
