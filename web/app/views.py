@@ -551,11 +551,19 @@ def overview():
         name = request.form.get('subj')
         try:
             db = get_db()
+            ch = db.student.find_one({"_id": session['user']['_id'], "enroll.subject_id": name})
+            if ch == None:
+                return jsonify({"status": "error", "message": "ไม่มีวิชาดังกล่าว"})
+            data = ''
             data = db.student.update_one(
                     { "_id": session['user']['_id'] },
                     { "$pull": { "enroll": { "subject_id": name } } }
                     ) 
-            return redirect('/overview')
+            
+            
+            return jsonify({"status": "success", "message": "ลบสำเร็จ"})
+
+            
             
         except Exception as e:
             return jsonify({"errors": str(e)}), 500  # Return an error response with a 500 status code
@@ -639,6 +647,10 @@ def add_sub_all():
             
             # for i in range(0, lenn):
             #     app.logger.debug("5")
+            err = ''
+            if lenn == 0:
+                return jsonify({"message":"ไม่มีข้อมูล"})
+                
             for i in range(0, lenn):
                 app.logger.debug("1")
                 app.logger.debug("AAA")
@@ -651,6 +663,41 @@ def add_sub_all():
                 credit = int(credit) 
                 grade = float(grade)
                 year = int(year)
+                if len(_id) != 6:
+                    app.logger.debug("_id")
+                    
+                    app.logger.debug(_id)
+                    if err == '':
+                        err += " "+ _id
+                    else:
+                        err += ", " + _id
+                    continue
+                if grade != 4 and grade != 3.5 and grade != 3 and grade != 2.5 and grade != 2 and grade != 1.5 and grade != 1 and grade != 's' and grade != 'u' and grade != 'S' and grade != 'U':
+                    app.logger.debug("grade")
+                    app.logger.debug(grade)
+                    app.logger.debug(type(grade))
+                    app.logger.debug(_id)
+                    if err == '':
+                        err += " "+ _id
+                    else:
+                        err += ", " + _id
+                    continue 
+                if year != 1 and year != 2 and year != 3 and year != 4 and year != 5 and year != 6 and year != 7 and year != 8:
+                    app.logger.debug("year")
+                    app.logger.debug(_id)
+                    if err == '':
+                        err +=" "+ _id
+                    else:
+                        err += ", " + _id
+                    continue 
+                if credit != 1 and credit != 2 and credit != 3 and credit != 6:
+                    app.logger.debug("credit")
+                    app.logger.debug(_id)
+                    if err == '':
+                        err +=" "+ _id
+                    else:
+                        err += ", " + _id
+                    continue
                 chdata = ''
                 chdata = db.student.find_one({"_id": session['user']['_id'], "enroll.subject_id": _id})
                 # app.logger.debug(_id)
@@ -670,9 +717,14 @@ def add_sub_all():
                                 }
                             }
                         )
-                
-                
-            return redirect('/overview')
+                else:
+                    if err == '':
+                        err +=" "+ _id
+                    else:
+                        err += ", " + _id
+            
+            return jsonify({"message":"กรุณาตรวจสอบวิชาต่อไปนี้อีกครั้ง" + err })
+            
             
         except Exception as e:
             return jsonify({"errors": str(e)}), 500  # Return an error response with a 500 status code
@@ -694,6 +746,10 @@ def form2():
         gradea = float(request.form.get('grade'))
         yeara = int(request.form.get('year'))
         credita = int(request.form.get('credit'))
+        if len(suba) != 6:
+            return jsonify({"status": "error1", "message": "กรุณาใส่รหัสวิชาให้ถูกต้อง"})
+            
+        
         
         try:
             db = get_db()
@@ -716,9 +772,12 @@ def form2():
                         }
                     }
                 )
+                return jsonify({"status": "success", "message": "เพิ่มข้อมูลสำเร็จ"})
+            else:
+                return jsonify({"status": "error", "message": "มีข้อมูลอยู่แล้ว หากต้องการเปลี่ยนกรุณาลบอันเก่าก่อน"})
             
             
-            return redirect('/overview')
+            
             
         except Exception as e:
             return jsonify({"errors": str(e)}), 500  # Return an error response with a 500 status code

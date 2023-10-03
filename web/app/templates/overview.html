@@ -16,7 +16,7 @@
     <script src="/static/js/scripts.js"></script>
      <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
     <!-- <script src="https://cdn.tailwindcss.com"></script> -->
-    <title>ข้อมูลการลงทะเบียนวิชา</title>
+    <title>ข้อมูลการลงทะเบียนเรียน</title>
 </head>
 
 <body>
@@ -26,7 +26,7 @@
             <li class="list">
                 <a href="javascript:void(0);" onclick="ShowPopupMenu();"><i class="bi bi-list"></i></a>
                 <ul class="popup-menu" id="popupMenu">
-                    <li><a href="/overview">ข้อมูลการลงทะเบียนวิชา/Overview</a></li>
+                    <li><a href="/overview">ข้อมูลการลงทะเบียนเรียน/Overview</a></li>
                     <li><a href="/subject_credit">ภาพรวมหลักสูตร/Subjects</a></li>
                     <li><button class="Logout" type="button"><a href="/user/signout_student" class="btn btn-secondary">Sign Out</a></button></li>
                 </ul>
@@ -35,10 +35,13 @@
     </nav>
     <div class="info">
         <div class="text" style="font-size: 25px;">
+            <span class="span" style="color: yellow;">ชื่อ - นามสกุล / Name - Surname: <br></span>
             <span id="namefirst" class="span"></span><br>
-            <span id="idfirst" class="span">รหัสนักศึกษา / Student ID: {{ session['user']['_id'] }}</span><br>
-            <span class="span" id="tea">อาจารย์ที่ปรึกษา / Advisor:</span><br>
-            <span class="span">วิชาโท / Minor: <br>
+            <span class="span" style="color: yellow;">รหัสนักศึกษา / Student ID: </span><br>
+            <span id="idfirst" class="span" >- {{ session['user']['_id'] }}</span><br>
+            <span class="span" style="color: yellow;">อาจารย์ที่ปรึกษา / Adviser: </span><br>
+            <span class="span" id="tea"></span><br>
+            <span class="span" style="color: yellow;">วิชาโท / Minor: <br>
                 <select name="minor" style="font-size: 20px;">
                     <optgroup label="เลือกวิชาโท">
                         <option value="ไม่เลือกวิชาโท">ไม่เลือกวิชาโท</option>
@@ -48,7 +51,7 @@
     
             <!-- Move the <form> element inside the <p> element -->
             <form id="plan_form" action="/set_plan" method="post">
-                <span class="span" >แผนการศึกษา:<br></span >
+                <span class="span" style="color: yellow;">แผนการศึกษา:<br></span >
                 <select id="planner" name="plan_study" style="font-size: 20px;">
                     <optgroup id="planer" label="แผนการศึกษา">
                     </optgroup>
@@ -77,7 +80,7 @@
     
     <!-- จะทำเป็น link กดไป folder ในคอม แต่ทำไม่ได้ -->
     
-    <div class="study">ข้อมูลการลงทะเบียนวิชา <br>
+    <div class="study">ข้อมูลการลงทะเบียนเรียน <br>
         
         <button id="myBtn1" class="edit" type="button">เพิ่มวิชา</button>
         <button id="myBtn" class="edit" type="button">ลบวิชา</button>
@@ -131,7 +134,7 @@
         <div class="modal-content">
         <span class="close ttt">&times;</span>
         <div class="ids">รหัสวิชา</div>
-        <form method="post">
+        <form name="formdel">
             <input type="text" name="subj" class="id" placeholder="รหัสวิชา เช่น 204111" required>
             <input class="Del" id="myBtn" type="submit" value="ลบ">
         </form> 
@@ -143,19 +146,59 @@
         <div class="modal-content">
         <span class="close ttt1">&times;</span>
         <div class="ids2">เพิ่มวิชา</div>
-        <form method="post" action="/form2">
+        <form name="formadd">
             <div class="center-container">
                 <input type="text" name="subj" class="input-a" placeholder="รหัสวิชา เช่น 204111" required>
                 <input type="text" name="subject_n" class="input-a" placeholder="ชื่อวิชา(eng) เช่น Fundamentals of Programming" required>
                 <input type="text" name="grade" class="input-a" placeholder="เกรดทีได้รับ เช่น 2.5, 3, s, u" required>
                 <input type="text" name="year" class="input-a" placeholder="ปีที่ลงทะเบียน เช่น 1, 2, 3, 4, 5, 6" required>
                 <input type="text" name="credit" class="input-a" placeholder="หน่วยกิต เช่น 2, 3" required>
-            </div>
+                
+                
                 <input class="Add" id="myBtn" type="submit" value="เพิ่ม">
+            </div>
+                
         </form>
         </div>
     </div>
     <script>   
+        $("form[name=formdel]").submit(function (e) {
+            e.preventDefault();
+            var $form = $(this);
+            var data = $form.serialize();
+            $.post("/overview", data, function(res){
+                if(res.status === "error"){
+                    window.alert(res.message);
+                    //$('#myModal').attr('hidden', 'hidden'); 
+                    modal.style.display = "none";
+                }else if(res.status === "success"){
+                    window.alert(res.message);
+                    window.location.href = "/overview"; 
+                }
+            });
+            
+        });
+
+        $("form[name=formadd]").submit(function (e) {
+            e.preventDefault();
+            var $form = $(this);
+            var data = $form.serialize();
+            $.post("/form2", data, function(res){
+                if(res.status === "error"){
+                    window.alert(res.message);
+                    modal1.style.display = "none";
+                    
+                }else if(res.status === "success"){
+                    window.alert(res.message);
+                    window.location.href = "/overview"; 
+                }else if(res.status === "error1"){
+                    window.alert(res.message);
+
+                }
+            });
+            
+        });
+        
         console.log("AAA");
         console.log("{{session['user']['study_plan']}}");
 
@@ -201,7 +244,9 @@
             console.log(data);
             console.log("AAAAAAAAAAAAAA");
             var url = '/add_sub_all'       
-            $.post(url, data, function(){
+            $.post(url, data, function(res){
+                console.log(res);
+                window.alert(res.message);
                 window.location.href = "/overview";
             })
         }
@@ -418,13 +463,21 @@
         }
         
         function showteacher(data){
+            // 
+            html = '';
+            if(data.length == 0){
+                html = "- รอดำเนินการจาก Adviser";
+            }else{
+                var a= data[0]["first_name"];
+                var b= data[0]["last_name"];
+                html = `- ${a} ${b}`;
+                
+            }
             
-            var a= data[0]["first_name"];
-            var b= data[0]["last_name"];
             console.log(a);
-            var html = '';
+            
             var container = document.getElementById("tea");
-            html += `อาจารย์ที่ปรึกษา / Advisor: ${a} ${b}`;
+            
             container.innerHTML = html;
 
         }
@@ -439,7 +492,7 @@
 
         }
         function displayinfo(data){
-            var namecon = document.getElementById("namefirst").innerHTML = `ชื่อ - นามสกุล / Name - Surname: ${data['first_name']} ${data['last_name']} `;
+            var namecon = document.getElementById("namefirst").innerHTML = `- ${data['first_name']} ${data['last_name']} `;
 
         }
         $(document).ready(function () {

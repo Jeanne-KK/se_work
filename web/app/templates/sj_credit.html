@@ -25,10 +25,9 @@
     </nav>
     <div class="topic">ภาพรวมหลักสูตร</div>
     <div id="mino" class="gpa">วิชาโท    : <span id="minospan"></span></div>
-    <div  class="gpa">- เพื่อผ่านหลักสูตรต้องมีเกรดเฉลี่ยรวม และ เกรดเฉลี่ยวิชาเอก ผ่านขั้นต่ำ    : <span id="minospan"></span></div>
-    
-    <div id="gpatotal" class="gpa">เกรดเฉลี่ยรวมเพื่อผ่านหลักสูตร    : <span id="totalgpa"></span> / <span id="toplan"></span></div>
-    <div id="gpamajortotal" class="gpa">เกรดเฉลี่ยวิชาเอกเพื่อผ่านหลักสูตร : <span id="majorgpa"></span> / <span id="maplan"></span></div>
+    <div  class="gpa" style="color: yellow;">- เพื่อผ่านหลักสูตรต้องมีเกรดเฉลี่ยรวม และ เกรดเฉลี่ยวิชาเอก ผ่านขั้นต่ำ    : <span id="minospan"></span></div> 
+    <div id="gpatotal" class="gpa">เกรดเฉลี่ยรวมตลอดหลักสูตร : <span id="totalgpa"></span> <span id="toplan"></span></div>
+    <div id="gpamajortotal" class="gpa">เกรดเฉลี่ยวิชาเอก : <span id="majorgpa"></span> <span id="maplan"></span></div>
     <div id="check_grad" class="gpa">สถานะ : <span id="grad" style="font-size: 30px;"></span></div>
     <div class="required">วิชาบังคับ<br />(Required Courses)
         <div id="reqbox" class="rec1"></div>
@@ -367,10 +366,10 @@
             }
 
             if(grad){
-                document.getElementById("grad").innerHTML += "ลงทะเบียนเรียนครบหลักสูตร";
+                document.getElementById("grad").innerHTML += "ลงทะเบียนเรียนครบตามหลักสูตร";
                 
             }else{
-                document.getElementById("grad").innerHTML += "ลงทะเบียนเรียนยังไม่ครบหลักสูตร";
+                document.getElementById("grad").innerHTML += "ลงทะเบียนเรียนยังไม่ครบตามหลักสูตร";
                 document.getElementById("grad").style.color = "red";
             }
         }
@@ -420,8 +419,8 @@
                                 
                             console.log(curri[0]["เกณฑ์การสำเร็จการศึกษา"][plan]["เกรดเฉลี่ยตลอดหลักสูตร"]); 
 
-                            var tran = document.getElementById("toplan").innerHTML = `${curri[0]["เกณฑ์การสำเร็จการศึกษา"][plan]["เกรดเฉลี่ยตลอดหลักสูตร"].toFixed(2)}`;
-                            var tran = document.getElementById("maplan").innerHTML = `${curri[0]["เกณฑ์การสำเร็จการศึกษา"][plan]['เกรดเฉลี่ยวิชาเอก'].toFixed(2)}`; 
+                            var tran = document.getElementById("toplan").innerHTML = `(เกณฑ์ผ่าน ${curri[0]["เกณฑ์การสำเร็จการศึกษา"][plan]["เกรดเฉลี่ยตลอดหลักสูตร"].toFixed(2)})`;
+                            var tran = document.getElementById("maplan").innerHTML = `(เกณฑ์ผ่าน ${curri[0]["เกณฑ์การสำเร็จการศึกษา"][plan]['เกรดเฉลี่ยวิชาเอก'].toFixed(2)})`; 
                             $.getJSON("/data5", function (data) { 
                                 showdata(data, curri[0], plan);
                             });
@@ -439,8 +438,8 @@
                                 
                             console.log(curri[0]["เกณฑ์การสำเร็จการศึกษา"][plan]["เกรดเฉลี่ยตลอดหลักสูตร"]); 
 
-                            var tran = document.getElementById("toplan").innerHTML = `${curri[0]["เกณฑ์การสำเร็จการศึกษา"][plan]["เกรดเฉลี่ยตลอดหลักสูตร"].toFixed(2)}`;
-                            var tran = document.getElementById("maplan").innerHTML = `${curri[0]["เกณฑ์การสำเร็จการศึกษา"][plan]['เกรดเฉลี่ยวิชาเอก'].toFixed(2)}`; 
+                            var tran = document.getElementById("toplan").innerHTML = `(เกณฑ์ผ่าน ${curri[0]["เกณฑ์การสำเร็จการศึกษา"][plan]["เกรดเฉลี่ยตลอดหลักสูตร"].toFixed(2)})`;
+                            var tran = document.getElementById("maplan").innerHTML = `(เกณฑ์ผ่าน ${curri[0]["เกณฑ์การสำเร็จการศึกษา"][plan]['เกรดเฉลี่ยวิชาเอก'].toFixed(2)})`; 
                             $.getJSON("/data5", function (data) { 
                                 showdata(data, curri[0], plan);
                             });
