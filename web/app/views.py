@@ -42,6 +42,9 @@ def get_db():
     db = client["test_db"]
     return db
 
+def remove(string):
+    return string.replace(" ", "")
+
 @app.route('/')
 def home():
     return "Bank says: 'Hello World!'"
@@ -367,6 +370,7 @@ def revalue():
     db = ""
     if request.method == 'POST':
         name = request.form.get("_id")
+        
         db = get_db()
         session['stu'] = str(name)
         studata = db.student.find_one({"_id": session['stu']})
@@ -639,6 +643,7 @@ def add_sub_all():
                 app.logger.debug("1")
                 app.logger.debug("AAA")
                 _id = request.form.get('enroll[{}][subject_id]'.format(str(i)))
+                _id = remove(_id)
                 name = request.form.get('enroll[{}][subject_name]'.format(str(i)))
                 grade = request.form.get('enroll[{}][grade]'.format(str(i)))
                 year = request.form.get('enroll[{}][year]'.format(str(i)))
@@ -684,6 +689,7 @@ def form2():
         app.logger.debug(request.form)
         db=""
         suba = request.form.get('subj')
+        suba = remove(suba)
         name = request.form.get('subject_n')
         gradea = float(request.form.get('grade'))
         yeara = int(request.form.get('year'))
@@ -756,7 +762,7 @@ def t_home():
                 datach = ''
                 
                 datach = db.teacher.find_one({"advisee": str(i)})
-                if dashb == None:
+                if datach == None:
                     data = db.teacher.update_one(
                         {
                             "_id": session['user']['_id']

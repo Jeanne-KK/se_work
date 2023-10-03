@@ -121,7 +121,7 @@
         <span class="close ttt">&times;</span>
         <div class="ids">รหัสวิชา</div>
         <form method="post">
-            <input type="text" name="subj" class="id">
+            <input type="text" name="subj" class="id" required>
             <input class="Del" id="myBtn" type="submit" value="ลบ">
         </form> 
         </div>
@@ -134,11 +134,11 @@
         <div class="ids2">เพิ่มวิชา</div>
         <form method="post" action="/form2">
             <div class="center-container">
-                <input type="text" name="subj" class="input-a" placeholder="รหัสวิชา">
-                <input type="text" name="subject_n" class="input-a" placeholder="ชื่อวิชา">
-                <input type="text" name="grade" class="input-a" placeholder="เกรดทีได้รับ">
-                <input type="text" name="year" class="input-a" placeholder="ปีที่ลงทะเบียน">
-                <input type="text" name="credit" class="input-a" placeholder="หน่วยกิต">
+                <input type="text" name="subj" class="input-a" placeholder="รหัสวิชา" required>
+                <input type="text" name="subject_n" class="input-a" placeholder="ชื่อวิชา" required>
+                <input type="text" name="grade" class="input-a" placeholder="เกรดทีได้รับ" required>
+                <input type="text" name="year" class="input-a" placeholder="ปีที่ลงทะเบียน" required>
+                <input type="text" name="credit" class="input-a" placeholder="หน่วยกิต" required>
             </div>
                 <input class="Add" id="myBtn" type="submit" value="เพิ่ม">
         </form>
@@ -521,7 +521,7 @@
                     const subject_id = item.__EMPTY_1.toString();
                     const  subject_name = item.__EMPTY_2.toString();
 
-                    if (item.EMPTY_5){
+                    if (item.__EMPTY_5){
                         yyy = parseFloat(item.__EMPTY_5);
                         console.log('ssss');
                     }
