@@ -4,11 +4,23 @@ kiattipoom_k@cmu.ac.th
 // เกรดไม่ผ่าน ลงครบหมด
 ginsontom_g@cmu.ac.th
 
+
+
+//อาจารย์
+arrer_@cmu.ac.th
+
+kamonphop_@cmu.ac.th
+
+
+
 //เทสหน้าเว็ป
 204490
 Research in Computer Science
 2.5
 3
+
+
+
 
 
 //เทส วิชาโท
