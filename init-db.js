@@ -135,7 +135,7 @@ db.student.insertMany([
 				{subject_id: "204361", grade: 3, year: 3, credit: 3, subject_name: "Software Engineering",},
 				{subject_id: "204451", grade: 3, year: 3, credit: 3, subject_name: "Algorithm Design and Analysis",},
 				{subject_id: "204383", grade: 3, year: 3, credit: 3, subject_name: "Image Processing",},
-				{subject_id: "204383", grade: 2, year: 3, credit: 3, subject_name: "Image Processing",}
+				{subject_id: "204382", grade: 2, year: 3, credit: 3, subject_name: "Computer Graphics",}
 			]
 	},
 	{
@@ -203,7 +203,7 @@ db.student.insertMany([
       {subject_id: "204361", grade: 1, year: 3, credit: 3, subject_name: "Software Engineering",},
       {subject_id: "204451", grade: 1, year: 3, credit: 3, subject_name: "Algorithm Design and Analysis",},
       {subject_id: "204383", grade: 1, year: 3, credit: 3, subject_name: "Image Processing",},
-      {subject_id: "204383", grade: 1, year: 3, credit: 3, subject_name: "Image Processing",}
+      {subject_id: "204382", grade: 1, year: 3, credit: 3, subject_name: "Computer Graphics",}
     ]
 	},
 	{
@@ -610,7 +610,22 @@ db.curriculum.insertOne(
                                 "รหัสวิชา": "204383",
                                 "ชื่อวิชา": "Image Processing",
                                 "หน่วยกิต": 3
-                            }
+                            },
+                            {
+                              "รหัสวิชา": "206325",
+                              "ชื่อวิชา": "Linear Algebra",
+                              "หน่วยกิต": 3
+                          },
+                          {
+                              "รหัสวิชา": "206336",
+                              "ชื่อวิชา": "Real Analysis 1",
+                              "หน่วยกิต": 3
+                          },
+                          {
+                              "รหัสวิชา": "206370",
+                              "ชื่อวิชา": "Probability 1",
+                              "หน่วยกิต": 3
+                          },
                         ],
                         "400": [
                             {
@@ -713,21 +728,7 @@ db.curriculum.insertOne(
                                 "ชื่อวิชา": "Selected Topics in Computer Science 2",
                                 "หน่วยกิต": 3
                             },
-                            {
-                                "รหัสวิชา": "206325",
-                                "ชื่อวิชา": "Linear Algebra",
-                                "หน่วยกิต": 3
-                            },
-                            {
-                                "รหัสวิชา": "206336",
-                                "ชื่อวิชา": "Real Analysis 1",
-                                "หน่วยกิต": 3
-                            },
-                            {
-                                "รหัสวิชา": "206370",
-                                "ชื่อวิชา": "Probability 1",
-                                "หน่วยกิต": 3
-                            },
+                            
                             {
                                 "รหัสวิชา": "206428",
                                 "ชื่อวิชา": "Coding Theory",

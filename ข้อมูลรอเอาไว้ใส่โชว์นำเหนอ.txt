@@ -1,0 +1,26 @@
+  // ครบหลักสูตร แผนปกติ ทุกอย่าง เกรดผ่าน
+kiattipoom_k@cmu.ac.th
+
+// เกรดไม่ผ่าน ลงครบหมด
+ginsontom_g@cmu.ac.th
+
+//เทสหน้าเว็ป
+204490
+Research in Computer Science
+2.5
+3
+
+
+//เทส วิชาโท
+018131
+JAPANESE LANGUAGE & CULTURE 1
+3
+3
+
+//เทส วิชาโท
+018132
+JAPANESE LANGUAGE & CULTURE 2
+3
+3
+
+

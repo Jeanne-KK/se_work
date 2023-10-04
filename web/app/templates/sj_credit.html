@@ -181,6 +181,7 @@
             var credit7 = 0;
             var credit8 = 0;
             var credit9 = 0;
+            var credit300 = 0;
             var credit400 = 0;
             var credit700 = 0;
 
@@ -204,6 +205,10 @@
             var cn400 = document.getElementById("bf400");
             var cn700 = document.getElementById("bf700");
             var cn9 = document.getElementById("9")
+            var check5 = parseInt(document.getElementById("majorco").textContent);
+            var check400 = parseInt(document.getElementById("400").textContent);
+            var check700 = parseInt(document.getElementById("700").textContent);
+            var cc = check5 - check700;
             
             
             
@@ -211,6 +216,8 @@
             var cre_5 = parseInt(document.getElementById("majorco").textContent); 
             var cre_400 = parseInt(document.getElementById("400").textContent); 
             var cre_700 = parseInt(document.getElementById("700").textContent); 
+            console.log('TETSTESDFEWS');
+            console.log(cre_700);
             //console.log(cre_5)
             
 
@@ -304,32 +311,92 @@
                     majorgpatop += data[i]["grade"] * data[i]["credit"];
                     majorgpadown += data[i]["credit"];
                     if(data[i]["subject_id"][3] == '7'){
-                        html += `<div class="sjname">${data[i]["subject_id"]}</div>`;   
+                        html += `<div class="sjname">${data[i]["subject_id"]}</div>`;
                         container5.innerHTML += html; 
                         credit700 += data[i]["credit"];
-                        credit5 += data[i]["credit"];
-                        
+                        if(check700 > credit700){
+                            credit5 += data[i]["credit"];
+                        }
+                         
                     }else{
-                        
-                        if(data[i]["subject_id"][3] == '4'){
-                            
-                            
-                            if(cre_400 - credit400 > 0 || cre_5 - credit5 > 0 ){
-                                html += `<div class="sjname">${data[i]["subject_id"]}</div>`;   
-                                container5.innerHTML += html; 
-                                credit400 += data[i]["credit"];
-                                credit5 += data[i]["credit"];
+                        if(data[i]["subject_id"][2] == '6'){
+                            if(cc > credit5-credit400){
+                                console.log("HERERER")
+                                console.log(cc)
+                                console.log(credit5)
+                                console.log(credit400)
+                                
+                                if(cc > credit400){
+                                    html += `<div class="sjname">${data[i]["subject_id"]}</div>`;   
+                                    container5.innerHTML += html; 
+                                    credit400 += data[i]["credit"];
+                                    credit5 += data[i]["credit"];
+                                }else{
+                                    html += `<div class="sjname">${data[i]["subject_id"]}</div>`;   
+                                    container6.innerHTML += html; 
+                                    credit6 += data[i]["credit"];
+
+                                }
+                                
                             }
                             else{
                                 html += `<div class="sjname">${data[i]["subject_id"]}</div>`;   
                                 container6.innerHTML += html; 
                                 credit6 += data[i]["credit"];
                             }
-                        }else{
-                            if(cre_5 - credit5 > 0){
-                                html += `<div class="sjname">${data[i]["subject_id"]}</div>`;
-                                container5.innerHTML += html; 
-                                credit5 += data[i]["credit"]; 
+                        }
+                        else if(data[i]["subject_id"][3] == '4'){
+                            
+                            
+                            if(cc > credit5-credit400){
+                                
+                                // console.log("HERERER")
+                                // console.log(cc)
+                                // console.log(credit5)
+                                // console.log(credit400)
+                                
+                                if(cc > credit400){
+                                    console.log("PENRAIwa");
+                                    console.log(data[i]['subject_id']);
+                                    console.log(cc);
+                                    console.log(credit400);
+                                    html += `<div class="sjname">${data[i]["subject_id"]}</div>`;   
+                                    container5.innerHTML += html; 
+                                    credit400 += data[i]["credit"];
+                                    credit5 += data[i]["credit"];
+                                }else{
+                                    html += `<div class="sjname">${data[i]["subject_id"]}</div>`;   
+                                    container6.innerHTML += html; 
+                                    credit6 += data[i]["credit"];
+
+                                }
+                                
+                            }
+                            else{
+                                html += `<div class="sjname">${data[i]["subject_id"]}</div>`;   
+                                container6.innerHTML += html; 
+                                credit6 += data[i]["credit"];
+                            }
+                        }
+                        
+                        else{
+                            // console.log("GGGGG");
+                            // console.log(majorco2);
+                            // console.log(a7002);
+                            // console.log(a4002);
+                            console.log()
+                            if(credit300 < check5 - check700 - check400){
+                                if(credit400 + check700 < check5){
+                                    html += `<div class="sjname">${data[i]["subject_id"]}</div>`;
+                                    container5.innerHTML += html; 
+                                    credit5 += data[i]["credit"]; 
+                                    credit300 += data[i]["credit"];
+                                }else{
+                                    html += `<div class="sjname">${data[i]["subject_id"]}</div>`;   
+                                    container6.innerHTML += html; 
+                                    credit6 += data[i]["credit"];
+                                }
+                                
                             }else{
                                 html += `<div class="sjname">${data[i]["subject_id"]}</div>`;   
                                 container6.innerHTML += html; 
@@ -425,17 +492,28 @@
                 var tt = document.getElementById("4").style.backgroundColor = "red";
                 grad = false;
             }
+            check400again = 0;
+            if(a4002 - a4001 > 0){
+                var tt = document.getElementById("majorbox").innerHTML += `<div style="color: red; font-size:20px;" class="sjname">ขาดวิชาเอกเลือกระดับ 400 ${a4002 - a4001} หน่วยกิต</div>`;
+                var tt = document.getElementById("5.1").style.backgroundColor = "red";
+                grad = false;
+                
+            }else{
+                check400again = 1;
+            }
             if(majorco2 - majorco1 > 0){
-                if(a7002 -a7001 <= 0 && a4002 - a4001 <= 0){
-                    var tt = document.getElementById("majorbox").innerHTML += `<div style="color: red;" class="sjname">ขาดวิชาเอกเลือกระดับ 300, 400 ${majorco2 - majorco1} หน่วยกิต</div>`;
+                if(majorco2 - a7002 - credit400 - (majorco1 - credit700 - credit400 ) >0){
+                    console.log("AUN 1");
+                    console.log(majorco2 - a7002 - credit400 - (majorco1 - credit700 - credit400 ));
+                    if(credit300 < check5 - check700 - check400){
+                        if(check400again == 1){
+                            var tt = document.getElementById("majorbox").innerHTML += `<div style="color: red;" class="sjname">ขาดวิชาเอกเลือกระดับ 300, 400 ${check5 - check700 - check400 - credit300 - a4001 + a4002} หน่วยกิต</div>`;
+                        }else{
+                            var tt = document.getElementById("majorbox").innerHTML += `<div style="color: red;" class="sjname">ขาดวิชาเอกเลือกระดับ 300, 400 ${check5 - check700 - check400 - credit300} หน่วยกิต</div>`;
 
-                }else{
-                    if(majorco2 - a7002 - a4002 -majorco1 + a7001 + a4001 > 0){
-                        var tt = document.getElementById("majorbox").innerHTML += `<div style="color: red;" class="sjname">ขาดวิชาเอกเลือกระดับ 300, 400 ${majorco2 - a7002 - a4002 -majorco1 + a7001 + a4001} หน่วยกิต</div>`;
-
+                        }  
+                        
                     }
-                    
-
                 }
                 //var tt = document.getElementById("majorbox").innerHTML += `<div style="color: red;" class="sjname">ขาดเอกเลือกระดับ 300, 400 ${majorco2 - majorco1} หน่วยกิต</div>`;
                 var tt = document.getElementById("5").style.backgroundColor = "red";
@@ -455,11 +533,7 @@
                 var tt = document.getElementById("8").style.backgroundColor = "red";
                 grad = false;
             }
-            if(a4002 - a4001 > 0){
-                var tt = document.getElementById("majorbox").innerHTML += `<div style="color: red; font-size:20px;" class="sjname">ขาดวิชาเอกเลือกระดับ 400 ${a4002 - a4001} หน่วยกิต</div>`;
-                var tt = document.getElementById("5.1").style.backgroundColor = "red";
-                grad = false;
-            }
+            
             if(a7002 - a7001 > 0){
                 var tt = document.getElementById("majorbox").innerHTML += `<div style="color: red; font-size:20px;" class="sjname">ขาดวิชาเอกเลือกระดับ 700 ${a7002 - a7001} หน่วยกิต</div>`;
                 var tt = document.getElementById("5.2").style.backgroundColor = "red";
@@ -486,8 +560,11 @@
             var setmajorgpa = document.getElementById("majorgpa").innerHTML = mmg;
 
             
-            var top = document.getElementById("toplan").innerHTML ;
-            var down = document.getElementById("maplan").innerHTML; 
+            var top = document.getElementById("toplan").textContent.slice(11, 15);
+            var down = document.getElementById("maplan").textContent.slice(11, 15); 
+            console.log("SHOPHAW");
+            console.log(top);
+            console.log(down);
             
             if(ttg < top){
                 var tt = document.getElementById("gpatotal").style.color = "red";
