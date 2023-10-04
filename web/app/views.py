@@ -703,7 +703,7 @@ def add_sub_all():
             #     app.logger.debug("5")
             err = ''
             if lenn == 0:
-                return jsonify({"message":"ไม่มีข้อมูล"})
+                return jsonify({"message":"Excel ไม่มีข้อมูล"})
                 
             for i in range(0, lenn):
                 app.logger.debug("1")
