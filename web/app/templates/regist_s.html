@@ -75,7 +75,7 @@
                 success: function (resp) {
                     console.log(resp);
                     // หลังจากส่งข้อมูลสำเร็จ นำทางไปยังหน้า "/home"
-                    window.location.href = "/home";
+                    window.location.href = "/overview";
                 },
                 error: function (resp) {
                     $errorMessage.text(resp.responseJSON.error);
