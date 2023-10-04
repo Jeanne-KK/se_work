@@ -858,50 +858,99 @@ def s_credit():
 def t_reg():
     return render_template('regist_t.html')
 
-@app.route('/teacher_home', methods=('GET', 'POST'))
-def t_home():
-    app.logger.debug("AAAABBB")
-    app.logger.debug(session['stu'])
-    
-    
-    app.logger.debug("EIEIEIE")
-    app.logger.debug(session['stu'])
-    
-        
-
-    
-    
+@app.route('/add_stu', methods=('GET', 'POST'))
+def add_stu():
+   
     if request.method == 'POST':
         db=""
-        first = int(request.form.get('first'))
-        last = int(request.form.get('last'))
+        one = int(request.form.get('first'))
+        two = int(request.form.get('last'))
+
+        if one <= two:
+            first = one
+            last = two 
+        else:
+            first = two
+            last = one            
         app.logger.debug(first)
         app.logger.debug(last)
+        app.logger.debug("AAAAAAAAAAAA")
         try:
             db = get_db()
+            _id = ''
+            _id1 = ''
+            _id2 = ''
             for i in range(first, last+1):
                 datach = ''
                 
-                datach = db.teacher.find_one({"advisee": str(i)})
-                if datach == None:
-                    data = db.teacher.update_one(
-                        {
-                            "_id": session['user']['_id']
-                        },
-                        {
-                            "$push": {"advisee": str(i)}
-                        }
+                datach = db.student.find_one({"_id": str(i)})
+                
+                
+                if datach != None:
+                    
+                    chda = ''
+                    # hda = db.teacher.find_one({"_id": session['user']['_id'], 'advisee': str(i)})
+                    chda = db.teacher.find_one({"_id": {"$ne": session['user']['_id']}, "advisee": str(i)})
+                    if chda == None:
+                        lastch = ''
+                        lastch = db.teacher.find_one({"_id": session['user']['_id'], "advisee": str(i)})
+                        if lastch == None:
+                            data = db.teacher.update_one(
+                                {
+                                    "_id": session['user']['_id']
+                                },
+                                {
+                                    "$push": {"advisee": str(i)}
+                                }
 
-                    )
-            return redirect('/teacher_home')
+                            )
+                        else:
+                            if _id1 == '':
+                                _id1 += str(i)
+                            else:
+                                _id1 += ", " + str(i)
+                    else:
+                        
+
+                        app.logger.debug("HAHAHEEEE")
+                        app.logger.debug(chda['first_name'])
+                        
+                        _id2 += "รหัส " + str(i) + " ถูกดูแลโดย " + chda['first_name'] + " " +chda['last_name'] +"\n"
+                        
+                            
+                else:
+                    
+                    if _id == '':
+                        _id += str(i)
+                    else:
+                        _id += ", " + str(i)
+                    app.logger.debug(_id)
+            app.logger.debug(_id)
+            app.logger.debug(_id1)
+            app.logger.debug(_id2)
+            
+            if _id == '' and _id1 == '' and _id2 == '':
+                return jsonify({"status": "success", "message": "เสร็จสิ้น"})
+            else:
+                if(_id != '' and _id2 != ''):
+
+                    return jsonify({"status": "error", "message": "นักศึกษารหัสต่อไปนี้ยังไม่ได้ลงทะเบียน " + _id + "\n" +_id2})
+                if(_id != ''):
+                    return jsonify({"status": "error", "message": "นักศึกษารหัสต่อไปนี้ยังไม่ได้ลงทะเบียน " + _id})
+                if(_id2 != ''):
+                    return jsonify({"status": "error", "message": _id2})
+
+                if _id1 != "":
+                    return jsonify({"status": "error", "message": "นักศึกษารหัสต่อไปนี้ซ้ำ " + _id1})
                 
         except Exception as e:
             return jsonify({"errors": str(e)}), 500  # Return an error response with a 500 status code
         finally:
             if isinstance(db, MongoClient):
                 db.close()
-    
-        
+
+@app.route('/teacher_home')
+def t_home():        
     return render_template('t_home.html')
 
 

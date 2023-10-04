@@ -43,7 +43,7 @@
     <div class="modal-content">
       <span class="close">&times;</span>
       <div class="ids">รหัสนักศึกษา</div>
-      <form method="post">
+      <form name="formadd">
         <input name="first" type="text" class="id" required>
         &nbsp;
         <div class="idst">ถึง</div> 
@@ -54,6 +54,22 @@
   </div>
 
   <script>
+    $("form[name=formadd]").submit(function (e) {
+      e.preventDefault();
+      var $form = $(this);
+      var data = $form.serialize();
+      $.post("/add_stu", data, function(res){
+          if(res.status === "error"){
+              window.alert(res.message);
+                    //$('#myModal').attr('hidden', 'hidden'); 
+              window.location.href = "/teacher_home"; 
+                    
+          }else if(res.status === "success"){
+              window.alert(res.message);
+              window.location.href = "/teacher_home"; 
+          }
+      });
+    });
     if("{{session['type']}}" == '2'){
         $('#over').attr('hidden', 'hidden');
         $('#sub').attr('hidden', 'hidden');
