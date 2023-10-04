@@ -102,6 +102,50 @@
         
         
         function showdata(data, curri, plan){
+            var one = [];
+            var two = [];
+            var three = [];
+            var four = [];
+            var five = [];
+            console.log("testja");
+            
+            for(var i = 0; i < curri["หมวด"]["วิชาศึกษาทั่วไป"]["วิชาบังคับ"]["กลุ่มวิชาด้านการพัฒนาทักษะการเป็นผู้เรียนรู้"].length; i++){
+                one.push(curri["หมวด"]["วิชาศึกษาทั่วไป"]["วิชาบังคับ"]["กลุ่มวิชาด้านการพัฒนาทักษะการเป็นผู้เรียนรู้"][i]['รหัสวิชา']);
+            }
+            for(var i = 0; i < curri["หมวด"]["วิชาศึกษาทั่วไป"]["วิชาบังคับ"]["กลุ่มวิชาด้านการพัฒนาทักษะการเป็นผู้ร่วมสร้างสรรค์นวัตกรรม"].length; i++){
+                one.push(curri["หมวด"]["วิชาศึกษาทั่วไป"]["วิชาบังคับ"]["กลุ่มวิชาด้านการพัฒนาทักษะการเป็นผู้ร่วมสร้างสรรค์นวัตกรรม"][i]['รหัสวิชา']);
+            }
+            for(var i = 0; i < curri["หมวด"]["วิชาศึกษาทั่วไป"]["วิชาบังคับ"]["กลุ่มวิชาด้านการพัฒนาทักษะการเป็นพลเมืองที่เข้มแข็ง"].length; i++){
+                one.push(curri["หมวด"]["วิชาศึกษาทั่วไป"]["วิชาบังคับ"]["กลุ่มวิชาด้านการพัฒนาทักษะการเป็นพลเมืองที่เข้มแข็ง"][i]['รหัสวิชา']);
+            }
+            for(var i = 0; i < curri["หมวด"]["วิชาเฉพาะ"]["วิชาเอก"]["วิชาเอกบังคับร่วม"]["รายวิชา"].length; i++){
+                two.push(curri["หมวด"]["วิชาเฉพาะ"]["วิชาเอก"]["วิชาเอกบังคับร่วม"]["รายวิชา"][i]['รหัสวิชา']);
+            }
+            for(var i = 0; i < curri["หมวด"]["วิชาเฉพาะ"]["วิชาเอก"]["วิชาเอกบังคับประจำแผน"][plan]["รายวิชา"].length; i++){
+                three.push(curri["หมวด"]["วิชาเฉพาะ"]["วิชาเอก"]["วิชาเอกบังคับประจำแผน"][plan]["รายวิชา"][i]['รหัสวิชา']);
+            }
+            for(var i = 0; i < curri["หมวด"]["วิชาเฉพาะ"]["วิชาแกน"]["รายวิชา"].length; i++){
+                four.push(curri["หมวด"]["วิชาเฉพาะ"]["วิชาแกน"]["รายวิชา"][i]['รหัสวิชา']);
+            } 
+            
+            console.log(one);
+            var c = one.indexOf("140104");
+            delete one[c];
+            for(var i = 0; i < one.length; i++){
+                if(typeof(one[i]) == "string"){
+                    console.log(one[i]);
+                }
+                
+
+            }
+            
+            //console.log(two);
+            //console.log(three);
+            //console.log(four);
+            //console.log(five);
+            //console.log(curri["หมวด"]["วิชาศึกษาทั่วไป"]["วิชาบังคับ"]["กลุ่มวิชาด้านการพัฒนาทักษะการเป็นผู้เรียนรู้"][0]['รหัสวิชา']);    
+            
+            
             var grad = true;
             var gpatop = 0;
             var gpadown = 0;
@@ -157,6 +201,8 @@
                 gpadown += data[i]["credit"];
                 var html = ''; 
                 if(testt(data[i]["subject_id"], curri)[0].slice(0, 31) == "หมวด วิชาศึกษาทั่วไป วิชาบังคับ"){
+                    var chin = one.indexOf(data[i]["subject_id"]);
+                    delete one[chin];
                     html += `<div class="sjname">${data[i]["subject_id"]}</div>`;   
                     container1.innerHTML += html;
                     credit1 += data[i]["credit"];
@@ -258,6 +304,35 @@
                     credit8 += data[i]["credit"];
                 }
             }
+            for(var i = 0; i < one.length; i++){
+                html = '';
+                if(typeof(one[i]) == "string"){         
+                    html += `<div style="color: red;" class="sjname">${one[i]}</div>`;   
+                    container1.innerHTML += html;
+                }
+            }
+            for(var i = 0; i < two.length; i++){
+                html = '';
+                if(typeof(two[i]) == "string"){         
+                    html += `<div style="color: red;" class="sjname">${two[i]}</div>`;   
+                    container2.innerHTML += html;
+                }
+            }
+            for(var i = 0; i < three.length; i++){
+                html = '';
+                if(typeof(three[i]) == "string"){         
+                    html += `<div style="color: red;" class="sjname">${three[i]}</div>`;   
+                    container3.innerHTML += html;
+                }
+            }
+            for(var i = 0; i < four.length; i++){
+                html = '';
+                if(typeof(four[i]) == "string"){         
+                    html += `<div style="color: red;" class="sjname">${four[i]}</div>`;   
+                    container4.innerHTML += html;
+                }
+            }
+            
             
             cn1.innerHTML = `${credit1}/`;
             cn2.innerHTML = `${credit2}/`;
@@ -309,15 +384,25 @@
                 grad = false;
             }
             if(majorco2 - majorco1 > 0){
+                if(a7002 -a7001 <= 0 && a4002 - a4001 <= 0){
+                    var tt = document.getElementById("majorbox").innerHTML += `<div style="color: red;" class="sjname">ขาดเอกเลือกระดับ 300, 400 ${majorco2 - majorco1} หน่วยกิต</div>`;
+
+                }else{
+                    var tt = document.getElementById("majorbox").innerHTML += `<div style="color: red;" class="sjname">ขาดเอกเลือกระดับ 300, 400 ${majorco2 - a7002 - a4002 -majorco1 + a7001 + a4001} หน่วยกิต</div>`;
+
+                }
+                var tt = document.getElementById("majorbox").innerHTML += `<div style="color: red;" class="sjname">ขาดเอกเลือกระดับ 300, 400 ${majorco2 - majorco1} หน่วยกิต</div>`;
                 var tt = document.getElementById("5").style.backgroundColor = "red";
                 grad = false;
             }
             if(minor2 - minor1 > 0){
                 var tt = document.getElementById("6").style.backgroundColor = "red";
+                var tt = document.getElementById("minorbox").innerHTML += `<div style="color: red;" class="sjname">ขาด ${minor2-minor1} หน่วยกิต</div>`;
                 grad = false;
             }
             if(ge2 - ge1 > 0){
                 var tt = document.getElementById("7").style.backgroundColor = "red";
+                var tt = document.getElementById("gebox").innerHTML += `<div style="color: red;" class="sjname">ขาด ${ge2-ge1} หน่วยกิต</div>`;
                 grad = false;
             }
             if(free2 - free1 > 0){
@@ -325,10 +410,12 @@
                 grad = false;
             }
             if(a4002 - a4001 > 0){
+                var tt = document.getElementById("majorbox").innerHTML += `<div style="color: red;" class="sjname">ขาดเอกเลือกระดับ 400 ${a4002 - a4001} หน่วยกิต</div>`;
                 var tt = document.getElementById("5.1").style.backgroundColor = "red";
                 grad = false;
             }
             if(a7002 - a7001 > 0){
+                var tt = document.getElementById("majorbox").innerHTML += `<div style="color: red;" class="sjname">ขาดเอกเลือกระดับ 700 ${a7002 - a7001} หน่วยกิต</div>`;
                 var tt = document.getElementById("5.2").style.backgroundColor = "red";
                 grad = false;
             }
@@ -435,11 +522,12 @@
                             curri = ttt;
                             var plan = info['study_plan']; 
                             console.log("AAAAAAAAAAA");
-                                
-                            console.log(curri[0]["เกณฑ์การสำเร็จการศึกษา"][plan]["เกรดเฉลี่ยตลอดหลักสูตร"]); 
+                            
+                            //console.log(curri[0]["เกณฑ์การสำเร็จการศึกษา"][plan]["เกรดเฉลี่ยตลอดหลักสูตร"]); 
 
                             var tran = document.getElementById("toplan").innerHTML = `(เกณฑ์ผ่าน ${curri[0]["เกณฑ์การสำเร็จการศึกษา"][plan]["เกรดเฉลี่ยตลอดหลักสูตร"].toFixed(2)})`;
                             var tran = document.getElementById("maplan").innerHTML = `(เกณฑ์ผ่าน ${curri[0]["เกณฑ์การสำเร็จการศึกษา"][plan]['เกรดเฉลี่ยวิชาเอก'].toFixed(2)})`; 
+                            
                             $.getJSON("/data5", function (data) { 
                                 showdata(data, curri[0], plan);
                             });
