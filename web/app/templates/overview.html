@@ -153,17 +153,17 @@
                 <label for="grade" class="input-a-label">เกรดที่ได้รับ</label>
                 <select name="grade" class="input-ax" required>
                       <option value="" disabled selected hidden>เลือกเกรด</option>
-                      <option value="A">A</option>
-                      <option value="B+">B+</option>
-                      <option value="B">B</option>
-                      <option value="C+">C+</option>
-                      <option value="C">C</option>
-                      <option value="D+">D+</option>
-                      <option value="D">D</option>
-                      <option value="S">S</option>
+                      <option value="4">4</option>
+                      <option value="3.5">3.5</option>
+                      <option value="3">3</option>
+                      <option value="2.5">2.5</option>
+                      <option value="2">2</option>
+                      <option value="1.5">1.5</option>
+                      <option value="1">1</option>
+                      <option value="s">s</option>
                     </select>
                     <label for="grade" class="input-a-label">ปี่ที่รับการศึกษา</label>
-                    <select name="grade" class="input-ax" required>
+                    <select name="year" class="input-ax" required>
                       <option value="" disabled selected hidden>เลือกปี</option>
                       <option value="1">1</option>
                       <option value="2">2</option>
@@ -361,6 +361,8 @@
         var ch7 = 0;
         var ch8 = 0;
         function displayData(data){
+            var allgrade = 0;
+            var allcredit = 0;
             console.log(data[0]["subject_id"]);
             console.log(data[0]);
             console.log(data.length)
@@ -380,27 +382,45 @@
                 var num;
                 if(data[i]["grade"] == "4"){
                     num = "A"
+                    allgrade += 4*data[i]['credit'];
+                    allcredit += data[i]['credit'];
                 }
                 if(data[i]["grade"] == "3.5"){
                     num = "B+"
+                    allgrade += 3.5*data[i]['credit'];
+                    allcredit += data[i]['credit'];
                 }
                 if(data[i]["grade"] == "3"){
                     num = "B"
+                    allgrade += 3*data[i]['credit'];
+                    allcredit += data[i]['credit'];
                 }
                 if(data[i]["grade"] == "2.5"){
                     num = "C+"
+                    allgrade += 2.5*data[i]['credit'];
+                    allcredit += data[i]['credit'];
                 }
                 if(data[i]["grade"] == "2"){
                     num = "C"
+                    allgrade += 2*data[i]['credit'];
+                    allcredit += data[i]['credit'];
                 }
                 if(data[i]["grade"] == "1.5"){
                     num = "D+"
+                    allgrade += 1.5*data[i]['credit'];
+                    allcredit += data[i]['credit'];
                 }
                 if(data[i]["grade"] == "1"){
                     num = "D"
+                    allgrade += 1*data[i]['credit'];
+                    allcredit += data[i]['credit'];
                 }
                 if(data[i]["grade"] == "0"){
                     num = "F"
+                    allcredit += data[i]['credit'];
+                }
+                if(data[i]['grade'] == 's'){
+                    num = 's'
                 }
                 html+= `<div class='sid'><span class="left-content">${data[i]["subject_id"]}</span><span class="middle-content">Grade:</span><span class="right-content">${num}</span></div>`; 
                 if(data[i]['year'] == 1){
@@ -442,6 +462,14 @@
             //     html+= `<div class='sid'><span class="left-content">&nbsp;</span><span class="middle-content">&nbsp;</span><span class="right-content">&nbsp;</span></div>`; 
 
             // }
+            var gg = 0;
+            if(allcredit != 0){
+                gg = (allgrade/allcredit).toFixed(3);
+            }
+            
+            var ggt = Math.round(gg * 100) / 100;
+            ggt = ggt.toFixed(2);
+            var con = document.getElementById("GPAA").innerHTML += " "+ ggt;
             
             for(var i = 0; i < 16-ch1; i++){
                 container1.innerHTML += `<div class='sid'><span class="left-content">&nbsp;</span><span class="middle-content">&nbsp;</span><span class="right-content">&nbsp;</span></div>`;
@@ -511,16 +539,7 @@
             container.innerHTML = html;
 
         }
-        function showgrade(data){
-            var a = data[0]["Grade"];
-            console.log(typeof(a));
-            var container = document.getElementById("GPAA");
-            var html = a.toFixed(3);
-            var gpaa = a.toFixed(3);
-            var tgpa = Math.round(gpaa * 100) / 100;
-            container.innerHTML = `Cumulative GPA : ${tgpa.toFixed(2)}`;
-
-        }
+        
         function displayinfo(data){
             var namecon = document.getElementById("namefirst").innerHTML = `- ${data['first_name']} ${data['last_name']} `;
 
@@ -542,10 +561,7 @@
                 // Call the displayData function to update the HTML with the received data
                 showteacher(data);
             });
-            $.getJSON("/avggrade", function (data) {
-                // Call the displayData function to update the HTML with the received data
-                showgrade(data);
-            });
+            
             if(ch6 == 0 && ch5 == 0){
                 $('.y6').attr('hidden', 'hidden');
                 $('.y5').attr('hidden', 'hidden'); 

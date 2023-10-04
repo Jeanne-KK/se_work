@@ -715,7 +715,10 @@ def add_sub_all():
                 year = request.form.get('enroll[{}][year]'.format(str(i)))
                 credit = request.form.get('enroll[{}][credit]'.format(str(i)))
                 credit = int(credit) 
-                grade = float(grade)
+                if grade == 's':
+                    grade == 's'
+                else:
+                    grade = float(grade)
                 year = int(year)
                 if len(_id) != 6:
                     app.logger.debug("_id")
@@ -797,8 +800,13 @@ def form2():
         suba = request.form.get('subj')
         suba = remove(suba)
         name = request.form.get('subject_n')
-        gradea = float(request.form.get('grade'))
+        
+        
+        gradea = request.form.get('grade')
+        if gradea != 's':
+            gradea = float(gradea)
         yeara = int(request.form.get('year'))
+        
         credita = int(request.form.get('credit'))
         if len(suba) != 6:
             return jsonify({"status": "error1", "message": "กรุณาใส่รหัสวิชาให้ถูกต้อง"})

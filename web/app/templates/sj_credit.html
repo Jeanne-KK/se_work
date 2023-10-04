@@ -27,6 +27,7 @@
         </ul>
     </nav>
     <div class="topic">ภาพรวมหลักสูตร</div>
+    <div id="" class="gpa">แผนการศึกษา    : <span id="minplan"></span></div>
     <div id="mino" class="gpa">วิชาโท    : <span id="minospan"></span></div>
     <div  class="gpa" style="color: yellow;">- เพื่อผ่านหลักสูตรต้องมีเกรดเฉลี่ยรวม และ เกรดเฉลี่ยวิชาเอก ผ่านขั้นต่ำ    : <span id="minospan"></span></div> 
     <div id="gpatotal" class="gpa">เกรดเฉลี่ยรวมตลอดหลักสูตร : <span id="totalgpa"></span> <span id="toplan"></span></div>
@@ -215,8 +216,10 @@
 
             data.sort((a, b) => b.subject_id - a.subject_id)
             for(var i = 0; i < data.length; i++){
-                gpatop += data[i]["grade"] * data[i]["credit"];
-                gpadown += data[i]["credit"];
+                if(data[i]['grade'] != 's'){
+                    gpatop += data[i]["grade"] * data[i]["credit"];
+                    gpadown += data[i]["credit"];
+                }
                 var html = ''; 
                 if(testt(data[i]["subject_id"], curri)[0].slice(0, 31) == "หมวด วิชาศึกษาทั่วไป วิชาบังคับ"){
                     var chin = one.indexOf(data[i]["subject_id"]);
@@ -241,9 +244,14 @@
                 else if(testt(data[i]["subject_id"], curri)[0] == "หมวด วิชาเฉพาะ วิชาเอก วิชาเอกบังคับร่วม รายวิชา "){
                     var chin = two.indexOf(data[i]["subject_id"]);
                     delete two[chin];
+                    
                     html += `<div class="sjname">${data[i]["subject_id"]}</div>`;   
                     container2.innerHTML += html;
                     credit2 += data[i]["credit"];
+                    if(data[i]['grade'] == 's'){
+                        continue;
+                    }
+                    
                     majorgpatop += data[i]["grade"] * data[i]["credit"];
                     majorgpadown += data[i]["credit"];
                 }
@@ -265,18 +273,28 @@
                         html += `<div class="sjname">${data[i]["subject_id"]}</div>`;   
                         container3.innerHTML += html;
                         credit3 += data[i]["credit"];
+                        if(data[i]['grade'] == 's'){
+                            continue;
+                        }
+                        
                         majorgpatop += data[i]["grade"] * data[i]["credit"];
                         majorgpadown += data[i]["credit"];
                     }else if(chp ==testt(data[i]["subject_id"], curri)[0].slice(45, 52)){
                         html += `<div class="sjname">${data[i]["subject_id"]}</div>`;   
                         container3.innerHTML += html;
                         credit3 += data[i]["credit"];
+                        if(data[i]['grade'] == 's'){
+                            continue;
+                        }
                         majorgpatop += data[i]["grade"] * data[i]["credit"];
                         majorgpadown += data[i]["credit"];
                     }else{
                         html += `<div class="sjname">${data[i]["subject_id"]}</div>`;   
                         container9.innerHTML += html;
                         credit9 += data[i]["credit"];
+                        if(data[i]['grade'] == 's'){
+                            continue;
+                        }
                         majorgpatop += data[i]["grade"] * data[i]["credit"];
                         majorgpadown += data[i]["credit"];
                     }
@@ -529,6 +547,8 @@
                             var plan = "";
                             
                             plan = "{{session['plan']}}";
+                            var minobox = document.getElementById("minplan").innerHTML += plan;
+
                             
                             console.log("AAAAAAAAAAA");
                                 
@@ -549,6 +569,7 @@
                         $.getJSON("/curri", function (ttt) { 
                             curri = ttt;
                             var plan = info['study_plan']; 
+                            var minobox = document.getElementById("minplan").innerHTML += plan;
                             console.log("AAAAAAAAAAA");
                             
                             //console.log(curri[0]["เกณฑ์การสำเร็จการศึกษา"][plan]["เกรดเฉลี่ยตลอดหลักสูตร"]); 

@@ -129,6 +129,7 @@ body {
 
 .error-popup {
   display: none;
+  border-radius: 10px;
   position: fixed;
   top: 10%;
   left: 25%;

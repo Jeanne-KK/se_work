@@ -164,17 +164,18 @@ nav {
 }
 
 .Binfo {
+    align-items: right;
     height: auto;
     margin-left: 10px; /* Add some margin between the text and the button */
     background-color: #8fb5ff;
     border-radius: 10px;
-    
+    font-family: 'Bai Jamjuree', sans-serif;
     font-weight: 700;
     color: #000000;
     font-size: 20px;
     transition-duration: 0.3s;
     cursor: pointer;
-    margin-left: auto; /* Push the button to the right */
+    
 }
   
 .Binfo:hover {
