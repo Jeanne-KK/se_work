@@ -201,7 +201,7 @@ def get_info():
         
         app.logger.debug("****************************")
 
-           
+
         return jsonify(data)
         
     except Exception as e:
@@ -780,6 +780,8 @@ def add_sub_all():
                     else:
                         err += ", " + _id
             
+            if err == "":
+                return jsonify({"message":"เสร็จสิ้น" })
             return jsonify({"message":"กรุณาตรวจสอบวิชาต่อไปนี้อีกครั้ง" + err })
             
             
