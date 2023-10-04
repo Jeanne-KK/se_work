@@ -4,19 +4,24 @@
 <head>
   <meta charset="utf-8">
   <link rel="stylesheet" href="static/css/who.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bai+Jamjuree:wght@400;500&display=swap" rel="stylesheet">
   <title>Who is using?</title>
 </head>
 
 <body>
  
-  <nav>
+  <div class="topnav">
     <a class="active">Computer Science CMU</a>
-  </nav>
+  </div>
 
   <div class="who">
     <div class="topic">Who is using?</div>
-    <button class="BloginS" type="button" onclick="handleStudent()">นักศึกษา<br />Student</button>
-    <button class="BloginT" type="button" onclick="handleTeacher()">อาจารย์<br />Teacher</button>
+    <div class =selectbtn>
+      <button class="BloginS" type="button" onclick="handleStudent()">นักศึกษา<br />Student</button>
+      <button class="BloginT" type="button" onclick="handleTeacher()">อาจารย์<br />Teacher</button>
+    </div>
   </div>
 
   <script>

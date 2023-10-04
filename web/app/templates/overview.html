@@ -133,8 +133,8 @@
     <!-- Modal content -->
         <div class="modal-content">
         <span class="close ttt">&times;</span>
-        <div class="ids">รหัสวิชา</div>
-        <form name="formdel">
+        <p class="ids">รหัสวิชา</p>
+        <form name="formdel" class="delbox">
             <input type="text" name="subj" class="id" placeholder="รหัสวิชา เช่น 204111" required>
             <input class="Del" id="myBtn" type="submit" value="ลบ">
         </form> 
@@ -150,8 +150,30 @@
             <div class="center-container">
                 <input type="text" name="subj" class="input-a" placeholder="รหัสวิชา เช่น 204111" required>
                 <input type="text" name="subject_n" class="input-a" placeholder="ชื่อวิชา(eng) เช่น Fundamentals of Programming" required>
-                <input type="text" name="grade" class="input-a" placeholder="เกรดทีได้รับ เช่น 2.5, 3, s, u" required>
-                <input type="text" name="year" class="input-a" placeholder="ปีที่ลงทะเบียน เช่น 1, 2, 3, 4, 5, 6" required>
+                <label for="grade" class="input-a-label">เกรดที่ได้รับ</label>
+                <select name="grade" class="input-ax" required>
+                      <option value="" disabled selected hidden>เลือกเกรด</option>
+                      <option value="A">A</option>
+                      <option value="B+">B+</option>
+                      <option value="B">B</option>
+                      <option value="C+">C+</option>
+                      <option value="C">C</option>
+                      <option value="D+">D+</option>
+                      <option value="D">D</option>
+                      <option value="S">S</option>
+                    </select>
+                    <label for="grade" class="input-a-label">ปี่ที่รับการศึกษา</label>
+                    <select name="grade" class="input-ax" required>
+                      <option value="" disabled selected hidden>เลือกปี</option>
+                      <option value="1">1</option>
+                      <option value="2">2</option>
+                      <option value="3">3</option>
+                      <option value="4">4</option>
+                      <option value="5">5</option>
+                      <option value="6">6</option>
+                      <option value="7">7</option>
+                      <option value="8">8</option>
+                    </select>
                 <input type="text" name="credit" class="input-a" placeholder="หน่วยกิต เช่น 2, 3" required>
                 
                 

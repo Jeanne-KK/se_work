@@ -5,6 +5,9 @@
     <meta charset="utf-8">
     <link rel="stylesheet" href="static/css/subject_cd.css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bai+Jamjuree:wght@400;500&display=swap" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
     <title>Subject Credits</title>
 </head>
@@ -29,69 +32,84 @@
     <div id="gpatotal" class="gpa">เกรดเฉลี่ยรวมตลอดหลักสูตร : <span id="totalgpa"></span> <span id="toplan"></span></div>
     <div id="gpamajortotal" class="gpa">เกรดเฉลี่ยวิชาเอก : <span id="majorgpa"></span> <span id="maplan"></span></div>
     <div id="check_grad" class="gpa">สถานะ : <span id="grad" style="font-size: 30px;"></span></div>
-    <div class="required">วิชาบังคับ<br />(Required Courses)
-        <div id="reqbox" class="rec1"></div>
-        <div class="cr">หน่วยกิตที่ได้:
-            <div id="1" class="crbox"><span id="bfreq"></span><span id="req"></span></div>
+
+    <div class="centerlist">
+        <div class="yowbox">
+            <p class="namae">วิชาบังคับ<br />(Required Courses)</p>
+            <div id="reqbox" class="recbox"></div>
+            <p class="cr">หน่วยกิตที่ได้:</p>
+                <div id="1" class="crbox"><span id="bfreq"></span><span id="req"></span></div>
+            <div class ="spacing"></div>
         </div>
-    </div>
-    <div class="compulsory">วิชาเอกบังคับร่วม<br />(Compulsory Courses)
-        <div id="reqcobox" class="rec2"></div>
-        <div class="cr">หน่วยกิตที่ได้:
-            <div id="2" class="crbox"><span id="bfreqco"></span><span id="reqco"></span></div>
+
+        <div class="yowbox">
+            <p class="namae">วิชาเอกบังคับร่วม<br />(Compulsory Courses)</p>
+            <div id="reqcobox" class="recbox"></div>
+            <p class="cr">หน่วยกิตที่ได้:</p>
+                <div id="2" class="crbox"><span id="bfreqco"></span><span id="reqco"></span></div>
+                <div class ="spacing"></div>
         </div>
-    </div>
-    <div class="plan-spe">วิชาเอกบังคับประจำแผน<br />(Plan-specific)
-        <div id="speccobox" class="rec3"></div>
-        <div class="cr">หน่วยกิตที่ได้:
-            <div id="3" class="crbox"><span id="bfspecco"></span><span id="specco"></span></div>
+
+        <div class="yowbox">
+            <p class="namae">วิชาเอกบังคับประจำแผน<br />(Plan-specific)</p>
+            <div id="speccobox" class="recbox"></div>
+            <p class="cr">หน่วยกิตที่ได้:</p>
+                <div id="3" class="crbox"><span id="bfspecco"></span><span id="specco"></span></div>
+                <div class ="spacing"></div>
         </div>
-    </div>
-    <div class="core-courses">วิชาแกน<br />(Core Courses)
-        <div id="corebox" class="rec4"></div>
-        <div class="cr">หน่วยกิตที่ได้:
-            <div id="4" class="crbox"><span id="bfcore"></span><span id="core"></span></div>
+
+        <div class="yowbox">
+            <p class="namae">วิชาแกน<br/>(Core Courses)</p>
+            <div id="corebox" class="recbox"></div>
+            <p class="cr">หน่วยกิตที่ได้:</p>
+                <div id="4" class="crbox"><span id="bfcore"></span><span id="core"></span></div>
+                <div class ="spacing"></div>
         </div>
-    </div>
-    <div class="major">วิชาเอกเลือก<br />(Major Elective Courses)
-        <div id="majorbox" class="rec5"></div> 
-        <div class="cr">หน่วยกิตที่ได้:
-            <div id="5" class="crbox"><span id="bfmajorco"></span><span id="majorco"></span></div>      
+
+        <div class="yowbox">
+            <p class="namae">วิชาเอกเลือก<br />(Major Elective Courses)</p>
+            <div id="majorbox" class="recbox"></div> 
+            <p class="cr">หน่วยกิตที่ได้:</p>
+                <div id="5" class="crbox"><span id="bfmajorco"></span><span id="majorco"></span></div>      
+            <p class="cr1">หน่วยกิตวิชาระดับ 400:</p>
+                <div id="5.1" class="crbox"><span id="bf400"></span><span id="400"></span></div>      
+            <p class="cr2">หน่วยกิตวิชาระดับ 700:</p> 
+                <div id="5.2" class="crbox"><span id="bf700"></span><span id="700"></span></div>      
         </div>
-        <div class="cr1">400: 
-            <div id="5.1" class="crbox"><span id="bf400"></span><span id="400"></span></div>      
+
+        <div class="yowbox">
+            <p class="namae">วิชาโท<br />(Minor Courses)</p>
+            <div id="minorbox" class="recbox"></div>
+            <p class="cr">หน่วยกิตที่ได้:</p>
+                <div id="6" class="crbox"><span id="bfminor"></span><span id="minor"></span></div>
+                <div class ="spacing"></div>
         </div>
-        <div class="cr2">700:
-            
-            <div id="5.2" class="crbox"><span id="bf700"></span><span id="700"></span></div>      
+
+        <div class="yowbox">
+            <p class="namae">วิชาเลือกทั่วไป<br />(GE Elective)</p>
+            <div id="gebox" class="recbox"></div>
+            <p class="cr">หน่วยกิตที่ได้:</p>
+                <div id="7" class="crbox"><span id="bfge"></span><span id="ge"></span></div>
+                <div class ="spacing"></div>
         </div>
-            
-        
-    </div>
-    <div class="minor">วิชาโท<br />(Minor Courses)
-        <div id="minorbox" class="rec6"></div>
-        <div class="cr">หน่วยกิตที่ได้:
-            <div id="6" class="crbox"><span id="bfminor"></span><span id="minor"></span></div>
+
+        <div class="yowbox">
+            <P class="namae">วิชาเลือกเสรี<br/>(Free Elective)
+            </P>
+            <div id="freebox" class="recbox"></div>
+            <p class="cr">หน่วยกิตที่ได้:</p>
+                <div id="8" class="crbox"><span id="bffree"></span><span id="free"></span></div>
+                <div class ="spacing"></div>
         </div>
-    </div>
-    <div class="ge">วิชาเลือกทั่วไป<br />(GE Elective)
-        <div id="gebox" class="rec7"></div>
-        <div class="cr">หน่วยกิตที่ได้:
-            <div id="7" class="crbox"><span id="bfge"></span><span id="ge"></span></div>
+
+        <div class="yowbox">
+            <p namae="namae">อื่นๆ<br />(Other)</p>
+            <div id="nonbox" class="recbox"></div>
+            <p class="cr">หน่วยกิตที่ได้:</p>
+                <div id="9" class="crbox"></div>
+                <div class ="spacing"></div>
         </div>
-    </div>
-    <div class="free">วิชาเลือกเสรี<br />(Free Elective)
-        <div id="freebox" class="rec8"></div>
-        <div class="cr">หน่วยกิตที่ได้:
-            <div id="8" class="crbox"><span id="bffree"></span><span id="free"></span></div>
-        </div>
-    </div>
-    <div class="non">อื่นๆ<br />(Other)
-        <div id="nonbox" class="rec9"></div>
-        <div class="cr">หน่วยกิตที่ได้:
-            <div id="9" class="crbox"></div>
-        </div>
-    </div>
+</div>
 
     <script> 
         if("{{session['type']}}" == '2'){
@@ -208,6 +226,8 @@
                     credit1 += data[i]["credit"];
                 }
                 else if(testt(data[i]["subject_id"], curri)[0] == "หมวด วิชาเฉพาะ วิชาแกน รายวิชา "){
+                    var chin = four.indexOf(data[i]["subject_id"]);
+                    delete four[chin];
                     html += `<div class="sjname">${data[i]["subject_id"]}</div>`;   
                     container4.innerHTML += html;
                     if(data[i]["subject_id"].slice(0,3) == '204'){
@@ -219,6 +239,8 @@
                     credit4 += data[i]["credit"];
                 }
                 else if(testt(data[i]["subject_id"], curri)[0] == "หมวด วิชาเฉพาะ วิชาเอก วิชาเอกบังคับร่วม รายวิชา "){
+                    var chin = two.indexOf(data[i]["subject_id"]);
+                    delete two[chin];
                     html += `<div class="sjname">${data[i]["subject_id"]}</div>`;   
                     container2.innerHTML += html;
                     credit2 += data[i]["credit"];
@@ -231,6 +253,8 @@
                     credit7 += data[i]["credit"];
                 }
                 else if(testt(data[i]["subject_id"], curri)[0].slice(0, 44) == "หมวด วิชาเฉพาะ วิชาเอก วิชาเอกบังคับประจำแผน"){
+                    var chin = three.indexOf(data[i]["subject_id"]);
+                    delete three[chin];
                     chp = "";
                     if(plan == "แผนก้าวหน้า"){
                         chp= "แผนปกติ";
@@ -385,24 +409,28 @@
             }
             if(majorco2 - majorco1 > 0){
                 if(a7002 -a7001 <= 0 && a4002 - a4001 <= 0){
-                    var tt = document.getElementById("majorbox").innerHTML += `<div style="color: red;" class="sjname">ขาดเอกเลือกระดับ 300, 400 ${majorco2 - majorco1} หน่วยกิต</div>`;
+                    var tt = document.getElementById("majorbox").innerHTML += `<div style="color: red;" class="sjname">ขาดวิชาเอกเลือกระดับ 300, 400 ${majorco2 - majorco1} หน่วยกิต</div>`;
 
                 }else{
-                    var tt = document.getElementById("majorbox").innerHTML += `<div style="color: red;" class="sjname">ขาดเอกเลือกระดับ 300, 400 ${majorco2 - a7002 - a4002 -majorco1 + a7001 + a4001} หน่วยกิต</div>`;
+                    if(majorco2 - a7002 - a4002 -majorco1 + a7001 + a4001 > 0){
+                        var tt = document.getElementById("majorbox").innerHTML += `<div style="color: red;" class="sjname">ขาดวิชาเอกเลือกระดับ 300, 400 ${majorco2 - a7002 - a4002 -majorco1 + a7001 + a4001} หน่วยกิต</div>`;
+
+                    }
+                    
 
                 }
-                var tt = document.getElementById("majorbox").innerHTML += `<div style="color: red;" class="sjname">ขาดเอกเลือกระดับ 300, 400 ${majorco2 - majorco1} หน่วยกิต</div>`;
+                //var tt = document.getElementById("majorbox").innerHTML += `<div style="color: red;" class="sjname">ขาดเอกเลือกระดับ 300, 400 ${majorco2 - majorco1} หน่วยกิต</div>`;
                 var tt = document.getElementById("5").style.backgroundColor = "red";
                 grad = false;
             }
             if(minor2 - minor1 > 0){
                 var tt = document.getElementById("6").style.backgroundColor = "red";
-                var tt = document.getElementById("minorbox").innerHTML += `<div style="color: red;" class="sjname">ขาด ${minor2-minor1} หน่วยกิต</div>`;
+                var tt = document.getElementById("minorbox").innerHTML += `<div style="color: red; font-size:20px;" class="sjname">ขาด ${minor2-minor1} หน่วยกิต</div>`;
                 grad = false;
             }
             if(ge2 - ge1 > 0){
                 var tt = document.getElementById("7").style.backgroundColor = "red";
-                var tt = document.getElementById("gebox").innerHTML += `<div style="color: red;" class="sjname">ขาด ${ge2-ge1} หน่วยกิต</div>`;
+                var tt = document.getElementById("gebox").innerHTML += `<div style="color: red; font-size:20px;" class="sjname">ขาด ${ge2-ge1} หน่วยกิต</div>`;
                 grad = false;
             }
             if(free2 - free1 > 0){
@@ -410,12 +438,12 @@
                 grad = false;
             }
             if(a4002 - a4001 > 0){
-                var tt = document.getElementById("majorbox").innerHTML += `<div style="color: red;" class="sjname">ขาดเอกเลือกระดับ 400 ${a4002 - a4001} หน่วยกิต</div>`;
+                var tt = document.getElementById("majorbox").innerHTML += `<div style="color: red; font-size:20px;" class="sjname">ขาดวิชาเอกเลือกระดับ 400 ${a4002 - a4001} หน่วยกิต</div>`;
                 var tt = document.getElementById("5.1").style.backgroundColor = "red";
                 grad = false;
             }
             if(a7002 - a7001 > 0){
-                var tt = document.getElementById("majorbox").innerHTML += `<div style="color: red;" class="sjname">ขาดเอกเลือกระดับ 700 ${a7002 - a7001} หน่วยกิต</div>`;
+                var tt = document.getElementById("majorbox").innerHTML += `<div style="color: red; font-size:20px;" class="sjname">ขาดวิชาเอกเลือกระดับ 700 ${a7002 - a7001} หน่วยกิต</div>`;
                 var tt = document.getElementById("5.2").style.backgroundColor = "red";
                 grad = false;
             }
@@ -456,7 +484,7 @@
                 document.getElementById("grad").innerHTML += "ลงทะเบียนเรียนครบตามหลักสูตร";
                 
             }else{
-                document.getElementById("grad").innerHTML += "ลงทะเบียนเรียนยังไม่ครบตามหลักสูตร";
+                document.getElementById("grad").innerHTML += "ลงทะเบียนเรียนไม่ครบตามหลักสูตร";
                 document.getElementById("grad").style.color = "red";
             }
         }

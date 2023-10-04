@@ -1,5 +1,6 @@
 body {
     background-color: #334568;
+    font-family: 'Bai Jamjuree', sans-serif;
 }
 
 nav {
@@ -12,16 +13,24 @@ nav {
 }
 
 .active {
-    font-family: "Inter", Helvetica;
     font-weight: 700;
     color: #334568;
     font-size: 20px;
     float: left;
     padding: 14px 16px;
 }
-
+.centerneed{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 5%;
+}
 .rectangle {
-    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     width: 534px;
     height: 618px;
     top: 13%;
@@ -31,24 +40,20 @@ nav {
 }
 
 .topic {
-    position: absolute;
     width: 368px;
-    top: 35px;
-    left: 90px;
-    font-family: "Inter", Helvetica;
     font-weight: 700;
     color: #000000;
     font-size: 25px;
     letter-spacing: 0;
     line-height: normal;
+    margin-bottom: 10%;
 }
 
 .topic1 {
-    position: absolute;
+
     width: 368px;
     top: 95px;
     left: 53px;
-    font-family: "Inter", Helvetica;
     font-weight: 500;
     color: #000000;
     font-size: 16px;
@@ -58,21 +63,20 @@ nav {
 
 .name {
     width: 170px;
-    margin-top: 7%;
+    margin-top: 2%;
+    margin-bottom: 2%;
     background-color: #ffffff;
     border-radius: 10px;
-    position: absolute;
+
     height: 30px;
     font-size: 16px;
-    margin-left: -20%;
 }
 
 .topic2 {
-    position: absolute;
+
     width: 368px;
     top: 185px;
     left: 53px;
-    font-family: "Inter", Helvetica;
     font-weight: 500;
     color: #000000;
     font-size: 16px;
@@ -82,21 +86,20 @@ nav {
 
 .surname {
     width: 270px;
-    margin-top: 7%;
+    margin-top: 2%;
+    margin-bottom: 2%;
     background-color: #ffffff;
     border-radius: 10px;
-    position: absolute;
+
     height: 30px;
     font-size: 16px;
-    margin-left: -36%;
 }
 
 .topic5 {
-    position: absolute;
+
     width: 368px;
     top: 275px;
     left: 53px;
-    font-family: "Inter", Helvetica;
     font-weight: 500;
     color: #000000;
     font-size: 16px;
@@ -106,45 +109,42 @@ nav {
 
 .mail {
     width: 170px;
-    margin-top: 7%;
+    margin-top: 2%;
+    margin-bottom: 2%;
     background-color: #ffffff;
     border-radius: 10px;
-    position: absolute;
     height: 30px;
     font-size: 16px;
-    margin-left: -10%;
 }
 
 .topic6 {
-    position: absolute;
+
     width: 368px;
     top: 365px;
     left: 53px;
-    font-family: "Inter", Helvetica;
     font-weight: 500;
     color: #000000;
     font-size: 16px;
     letter-spacing: 0;
-    line-height: normal;
+
 }
 
 .pass {
     width: 170px;
-    margin-top: 7%;
+    margin-top: 2%;
+    margin-bottom: 2%;
     background-color: #ffffff;
     border-radius: 10px;
-    position: absolute;
+
     height: 30px;
     font-size: 16px;
-    margin-left: -18%;
 }
 
 .choose {
-    position: absolute;
+
     width: 368px;
     top: 450px;
     left: 53px;
-    font-family: "Inter", Helvetica;
     font-weight: 500;
     color: #000000;
     font-size: 18px;
@@ -163,21 +163,23 @@ nav {
 }
 
 .next {
-    position: absolute;
-    font-family: "Inter", Helvetica;
+    margin-top: 2%;
     font-weight: 700;
     font-size: 20px;
     width: 90px;
     height: 50px;
-    top: 88%;
-    left: 75%;
     background-color: #3865bd;
     color: #ffffff;
     border-radius: 15px;
     transition-duration: 0.3s;
     cursor: pointer;
 }
-
+.centersgn{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
 .next:hover {
     background-color: #739ff7;
     color: #000000;

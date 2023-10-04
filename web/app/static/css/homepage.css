@@ -1,5 +1,6 @@
 body {
   background-color: #334568;
+  font-family: 'Bai Jamjuree', sans-serif;
 }
 
 .topnav {
@@ -9,7 +10,6 @@ body {
 }
 
 .topnav a {
-  font-family: "Inter", Helvetica;
   font-weight: 700;
   color: #334568;
   font-size: 1.25rem;
@@ -17,15 +17,15 @@ body {
   padding: 0.875rem 1rem;
 }
 
-.home .SC-CMU-logo {
+.SC-CMU-logo {
+  display: block;
+  margin: 0 auto;
   width: 13.063rem;
   height: 13.125rem;
-  margin-left: 25rem;
   margin-top: 2rem;
 }
 
 .home .topic {
-  font-family: "Inter-Bold", Helvetica;
   font-weight: 700;
   color: #ffffff;
   font-size: 30px;
@@ -34,7 +34,6 @@ body {
 }
 
 .home .graduation {
-  font-family: "Inter-Medium", Helvetica;
   font-weight: 500;
   color: #ffffff;
   font-size: 24px;
@@ -42,71 +41,45 @@ body {
   padding-top: 0.2%;
 }
 
-.home .BloginS {
+.selectbtn {
+  display: flex;
+  justify-content: center;
+}
+
+.BloginS, .BloginT {
   background-color: #fee386;
   border-radius: 10px;
   padding: 15px 25px;
-  font-family: "Inter", Helvetica;
-  font-weight: 700;
+  font-family: 'Bai Jamjuree', sans-serif;
+  font-weight: 600;
   color: #000000;
   font-size: 20px;
   text-align: center;
-  margin-top: 3%;
-  margin-left: 24%;
-  margin-right: 5%;
+  margin: 3% 1%;
   transition-duration: 0.3s;
   cursor: pointer;
 }
 
-.home .BloginS:hover {
+.BloginS:hover, .BloginT:hover, .BloginT2:hover {
   background-color: #ffc506;
   color: #000000;
 }
 
-.home .BloginT {
-  background-color: #fee386;
+.BloginT2 {
+  background-color: #86bafe;
   border-radius: 10px;
   padding: 15px 25px;
-  font-family: "Inter", Helvetica;
-  font-weight: 700;
+  font-family: 'Bai Jamjuree', sans-serif;
+  font-weight: 600;
   color: #000000;
   font-size: 20px;
   text-align: center;
-  margin-top: 3%;
-  margin-left: 2%;
-  margin-bottom: 3%;
+  margin: 3% 1%;
   transition-duration: 0.3s;
   cursor: pointer;
-}
-
-.home .BloginT:hover {
-  background-color: #ffc506;
-  color: #000000;
 }
 
 .who {
   color: #ffffff;
-  font-family: "Inter-Bold", Helvetica;
   margin-left: 45%;
-}
-
-.home .BloginT2 {
-  background-color: #86bafe;
-  border-radius: 10px;
-  padding: 15px 25px;
-  font-family: "Inter", Helvetica;
-  font-weight: 700;
-  color: #000000;
-  font-size: 20px;
-  text-align: center;
-  margin-top: 3%;
-  margin-left: 7%;
-  margin-bottom: 3%;
-  transition-duration: 0.3s;
-  cursor: pointer;
-}
-
-.home .BloginT2:hover {
-  background-color: #066aff;
-  color: #000000;
 }

@@ -1,10 +1,10 @@
 body {
   background-color: #334568;
   margin: 0 auto;
+  font-family: 'Bai Jamjuree', sans-serif;
 }
 
 .active {
-  font-family: "Inter", Helvetica;
   font-weight: 700;
   color: #334568;
   font-size: 20px;
@@ -19,7 +19,6 @@ body {
 }
 
 .topnav a {
-  font-family: "Inter", Helvetica;
   font-weight: 700;
   color: #334568;
   font-size: 1.25rem;
@@ -28,7 +27,6 @@ body {
 }
 
 .log {
-  font-family: "Inter", Helvetica;
   font-weight: 700;
   color: #ffffff;
   font-size: 50px;
@@ -37,6 +35,7 @@ body {
 }
 
 .modal {
+  margin-top: 1%;
   position: fixed;
   top: 50%;
   left: 50%;
@@ -52,7 +51,6 @@ body {
 .email {
   margin-top: 4%;
   margin-left: 5%;
-  font-family: "Inter", Helvetica;
   font-weight: 500;
   color: #000;
   font-size: 24px;
@@ -73,7 +71,7 @@ body {
 .password {
   margin-top: 25%;
   margin-left: 5%;
-  font-family: "Inter", Helvetica;
+
   font-weight: 500;
   color: #000;
   font-size: 24px;

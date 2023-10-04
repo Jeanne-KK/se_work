@@ -1,74 +1,71 @@
 body {
   background-color: #334568;
   margin: 0 auto;
+  font-family: 'Bai Jamjuree', sans-serif;
+}
+
+.topnav {
+  background-color: #fecf2a;
+  margin: 0.4%;
+  height: 3.188rem;
+}
+
+.topnav a {
+  font-weight: 700;
+  color: #334568;
+  font-size: 1.25rem;
+  float: left;
+  padding: 0.875rem 1rem;
 }
 
 .active {
-  font-family: "Inter", Helvetica;
+  font-family: 'Bai Jamjuree', sans-serif;
   font-weight: 700;
   color: #334568;
   font-size: 20px;
   float: left;
   padding: 14px 16px;
-} 
+}
 
-nav{
+nav {
   background-color: #fecf2a;
   height: 51px;
   display: flex;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
   justify-content: space-between;
   align-items: center;
-  
 }
 
-.who .topic {
-  font-family: "Inter-Bold", Helvetica;
+.topic {
+  font-family: 'Bai Jamjuree', sans-serif;
   font-weight: 700;
   color: #ffffff;
   font-size: 40px;
   text-align: center;
   padding-top: 15%;
-  
 }
 
-.who .BloginS {
+.selectbtn {
+  display: flex;
+  justify-content: center;
+  padding-top: 10px;
+}
+
+.BloginS, .BloginT {
   background-color: #fee386;
   border-radius: 10px;
   padding: 10px 40px;
-  font-family: "Inter", Helvetica;
+  margin: 50px; /* Add margin for spacing */
+  font-family: 'Bai Jamjuree', sans-serif;
   font-weight: 700;
   color: #000000;
   font-size: 20px;
   text-align: center;
-  margin-top: 5%;
-  margin-left: 34%;
-  margin-right: 5%;
   transition-duration: 0.3s;
   cursor: pointer;
 }
 
-.who .BloginS:hover {
+.BloginS:hover, .BloginT:hover {
   background-color: #ffc506;
   color: #000000;
 }
-
-.who .BloginT {
-  background-color: #fee386;
-  border-radius: 10px;
-  padding: 10px 40px;
-  font-family: "Inter", Helvetica;
-  font-weight: 700;
-  color: #000000;
-  font-size: 20px;
-  text-align: center;
-  margin-top: 3%;
-  margin-left: 6%;
-  transition-duration: 0.3s;
-  cursor: pointer;
-}
-
-.who .BloginT:hover {
-  background-color: #ffc506;
-  color: #000000;
-}  

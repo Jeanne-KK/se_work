@@ -58,6 +58,7 @@ nav {
 }
 
 .ids {
+    position: flex;
     color: #FFF;
     font-size: 28px;
     font-style: normal;
@@ -83,44 +84,76 @@ nav {
     margin-top: 1px;
 }
 .id {
+    font-family: 'Bai Jamjuree', sans-serif;
     width: 255px;
-    position: absolute;
-    top: 35%;
-    left: 50%;
-    transform: translate(-50%, -50%);
     background-color: #ffffff;
     border-radius: 10px;
     height: 49px;
     font-size: 24px;
     text-align: center;
+    margin-bottom: 10px;
+}
+.delbox{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 30px;
 }
 .center-container {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    
     text-align: center;
 }
-.input-a {
-    width: 400px;
-    position: relative; /* Change position to relative */
+.input-a-container {
+    display: flex;
+    align-items: center;
+}
+
+.input-a-label {
+    font-size: 24px;
+    color: #ffffff;
+    margin-right: 10px; /* Adjust the spacing between label and dropdown */
+}
+
+.input-ax {
+    font-family: 'Bai Jamjuree', sans-serif;
+    width: 370px; /* Adjust the width as needed */
     margin-bottom: 10px; /* Add margin to create space between input elements */
     background-color: #ffffff;
     border-radius: 10px;
-    height: 40px;
+    height: 38px;
     font-size: 24px;
     text-align: center;
     box-sizing: border-box;
 }
-
+.input-a {
+    font-family: 'Bai Jamjuree', sans-serif;
+    width: 370px;
+    position: relative; /* Change position to relative */
+    margin-bottom: 10px; /* Add margin to create space between input elements */
+    background-color: #ffffff;
+    border-radius: 10px;
+    height: 38px;
+    font-size: 24px;
+    text-align: center;
+    box-sizing: border-box;
+}
+.input-a::placeholder {
+    font-size: 20px; /* Adjust the font size as needed */
+}
 .Del {
+    font-family: 'Bai Jamjuree', sans-serif;
     background-color: #37b47e;
     border-radius: 10px;
     padding: 10px 20px;
     font-weight: 500;
     color: #ffffff;
     font-size: 24px;
-    position: absolute;
+    position: flex;
     width: 120px;
     top: 55%;
     left: 50%;
@@ -135,18 +168,15 @@ nav {
     color: #000000;
 }
 .Add{
+    font-family: 'Bai Jamjuree', sans-serif;
     background-color: #37b47e;
     border-radius: 10px;
     padding: 10px 50px;
     font-weight: 500;
     color: #ffffff;
     font-size: 24px;
-    position: absolute;
-    /* top: 85%;
-    left: 50%; */
-    /* margin-left: 60px; */
+    position: flex;
     margin-top: 120px;
-    /* transform: translate(-50%, -50%); */
     transition-duration: 0.3s;
     cursor: pointer;
     margin-top: 10px;
@@ -261,6 +291,7 @@ nav {
     font-size: 20px;
 }
 .Bplan {
+    font-family: 'Bai Jamjuree', sans-serif;
     background-color: #fee386;
     border-radius: 10px;
     padding: 10px 20px;
@@ -453,6 +484,7 @@ nav {
 }
 
 .edit {
+    font-family: 'Bai Jamjuree', sans-serif;
     font-size: 20px;
     font-weight: 700;
     width: 120px; /* Adjust the width to your preference */
