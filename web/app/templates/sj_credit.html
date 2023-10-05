@@ -383,10 +383,17 @@
                             // console.log("GGGGG");
                             // console.log(majorco2);
                             // console.log(a7002);
-                            // console.log(a4002);
-                            console.log()
-                            if(credit300 < check5 - check700 - check400){
-                                if(credit400 + check700 < check5){
+                            
+                            
+                            console.log("HHHHHHHHHEEE");
+                            console.log(credit400);
+                            console.log(check700);
+                            console.log(check400);
+                            console.log(check5);
+                            console.log(credit300);
+                            if(check5 - check400 - check700 > credit300){
+                                if(check5 - credit400 - check700 > credit300){
+                                    
                                     html += `<div class="sjname">${data[i]["subject_id"]}</div>`;
                                     container5.innerHTML += html; 
                                     credit5 += data[i]["credit"]; 
@@ -398,6 +405,7 @@
                                 }
                                 
                             }else{
+                                console.log("AUNNAIIIIIIIIIIl");
                                 html += `<div class="sjname">${data[i]["subject_id"]}</div>`;   
                                 container6.innerHTML += html; 
                                 credit6 += data[i]["credit"];
