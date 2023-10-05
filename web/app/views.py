@@ -715,10 +715,6 @@ def add_sub_all():
                 year = request.form.get('enroll[{}][year]'.format(str(i)))
                 credit = request.form.get('enroll[{}][credit]'.format(str(i)))
                 credit = int(credit) 
-                if grade == 's':
-                    grade == 's'
-                else:
-                    grade = float(grade)
                 year = int(year)
                 if len(_id) != 6:
                     app.logger.debug("_id")
@@ -729,16 +725,36 @@ def add_sub_all():
                     else:
                         err += ", " + _id
                     continue
-                if grade != 4 and grade != 3.5 and grade != 3 and grade != 2.5 and grade != 2 and grade != 1.5 and grade != 1 and grade != 's' and grade != 'u' and grade != 'S' and grade != 'U':
+                chgrade = 0
+                if grade != 'A' and grade != 'B+' and grade != 'B' and grade != 'C+' and grade != 'C' and grade != 'D+' and grade != 'D' and grade != 's' and grade != 'S':
                     app.logger.debug("grade")
                     app.logger.debug(grade)
                     app.logger.debug(type(grade))
                     app.logger.debug(_id)
+                    
                     if err == '':
                         err += " "+ _id
                     else:
                         err += ", " + _id
                     continue 
+                if(grade == 'A'):
+                    chgrade = 4
+                elif(grade == 'B+'):
+                    chgrade = 3.5
+                elif grade == 'B':
+                    chgrade = 3
+                elif(grade == 'C+'):
+                    chgrade = 2.5
+                elif(grade == 'C'):
+                    chgrade = 2
+                elif(grade == 'D+'):
+                    chgrade = 1.5
+                elif(grade == 'D'):
+                    chgrade = 1
+                elif(grade == 'S'):
+                    chgrade = 's'
+                elif grade == 's':
+                    chgrade = 's'
                 if year != 1 and year != 2 and year != 3 and year != 4 and year != 5 and year != 6 and year != 7 and year != 8:
                     app.logger.debug("year")
                     app.logger.debug(_id)
@@ -769,7 +785,7 @@ def add_sub_all():
                             {
                                 "$push": {
                                     "enroll":{
-                                        "subject_id": _id, "grade": grade, "year": year, "credit": credit
+                                        "subject_id": _id, "grade": chgrade, "year": year, "credit": credit
                                     }
                                 }
                             }

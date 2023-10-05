@@ -153,14 +153,14 @@
                 <label for="grade" class="input-a-label">เกรดที่ได้รับ</label>
                 <select name="grade" class="input-ax" required>
                       <option value="" disabled selected hidden>เลือกเกรด</option>
-                      <option value="4">4</option>
-                      <option value="3.5">3.5</option>
-                      <option value="3">3</option>
-                      <option value="2.5">2.5</option>
-                      <option value="2">2</option>
-                      <option value="1.5">1.5</option>
-                      <option value="1">1</option>
-                      <option value="s">s</option>
+                      <option value="4">A</option>
+                      <option value="3.5">B+</option>
+                      <option value="3">B</option>
+                      <option value="2.5">C+</option>
+                      <option value="2">C</option>
+                      <option value="1.5">D+</option>
+                      <option value="1">D</option>
+                      <option value="s">S</option>
                     </select>
                     <label for="grade" class="input-a-label">ปี่ที่รับการศึกษา</label>
                     <select name="year" class="input-ax" required>
@@ -188,16 +188,24 @@
             e.preventDefault();
             var $form = $(this);
             var data = $form.serialize();
-            $.post("/overview", data, function(res){
-                if(res.status === "error"){
-                    window.alert(res.message);
-                    //$('#myModal').attr('hidden', 'hidden'); 
-                    modal.style.display = "none";
-                }else if(res.status === "success"){
-                    window.alert(res.message);
-                    window.location.href = "/overview"; 
-                }
-            });
+            var d = data.slice(5);
+            var txta = "ต้องการลบรหัสวิชา "+ d +" หรือไม่ ?";
+            var resul = confirm(txta);
+            
+            console.log(d);
+            if(resul == true){
+                $.post("/overview", data, function(res){
+                    if(res.status === "error"){
+                        window.alert(res.message);
+                        //$('#myModal').attr('hidden', 'hidden'); 
+                        modal.style.display = "none";
+                    }else if(res.status === "success"){
+                        window.alert(res.message);
+                        window.location.href = "/overview"; 
+                    }
+                });
+            }
+            
             
         });
 
@@ -636,7 +644,7 @@
                         console.log('ssss');
                     }
                     const year = parseFloat(item.__EMPTY_5) || yyy; // ถ้าไม่มีข้อมูลปีกำหนดให้เป็น 1
-                    const grade = parseFloat(item.__EMPTY_3);
+                    const grade = item.__EMPTY_3.toString();
                     const credit = parseFloat(item.__EMPTY_4);
                     return { subject_id, subject_name, grade, credit , year};
                 });
