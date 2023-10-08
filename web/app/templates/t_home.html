@@ -103,16 +103,16 @@
     }
 
     function showallstudent(data, data2){
-      
+      console.log(data[0]['student_ad'][0]); 
       data2[0]['advisee'].sort();
       console.log(data2[0]["advisee"].length);
-      console.log(data.length);
+      console.log(data[0]['student_ad'].length);
       var container = document.getElementById("loop_stu");
       var j = 0;
       for( var i = 0; i < data2[0]["advisee"].length; i++){
         console.log(i);
         var html = ''; 
-        if(data.length <= j){
+        if(data[0]['student_ad'].length <= j){
           var id = data2[0]["advisee"][i];
           html += `
             <div class="names">
@@ -124,11 +124,11 @@
             </div>
           `; 
         }else{
-          if(data2[0]["advisee"][i] == data[j]['student_ad']["_id"]){
-            var id = data[j]["student_ad"]["_id"];
-            var first_name = data[j]["student_ad"]["first_name"];
-            var last_name = data[j]["student_ad"]["last_name"];
-            var study_plan = data[j]["student_ad"]["study_plan"];
+          if(data2[0]["advisee"][i] == data[0]['student_ad'][j]["_id"]){
+            var id = data[0]["student_ad"][j]["_id"];
+            var first_name = data[0]["student_ad"][j]["first_name"];
+            var last_name = data[0]["student_ad"][j]["last_name"];
+            var study_plan = data[0]["student_ad"][j]["study_plan"];
             html += `
               <div class="names">
               <span class="student-info">${id} ${first_name} ${last_name}</span>

@@ -204,14 +204,6 @@ def stu_list():
                             "study_plan": 1
                         }
                         }
-                    },
-                    {
-                        "$unwind": "$student_ad"
-                    },
-                    {
-                        "$sort": {
-                        "student_ad._id": 1 
-                        }
                     }
                 ]);                
                         
