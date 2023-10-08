@@ -530,12 +530,14 @@
         
         function showteacher(data){
             // 
+            // console.log(data['first_name']);
+            console.log(data);
             html = '';
-            if(data.length == 0){
+            if(data == null){
                 html = "- รอดำเนินการจาก Adviser";
             }else{
-                var a= data[0]["first_name"];
-                var b= data[0]["last_name"];
+                var a= data['first_name'];
+                var b= data["last_name"];
                 html = `- ${a} ${b}`;
                 
             }
@@ -558,12 +560,11 @@
                 // Call the displayData function to update the HTML with the received data
                 displayinfo(data);
                 plan_set(data);
+                // console.log(data['enroll']);
+                displayData(data['enroll']);
             });
 
-            $.getJSON("/data5", function (data) {
-                // Call the displayData function to update the HTML with the received data
-                displayData(data);
-            });
+            
            
             $.getJSON("/tadvisee", function (data) {
                 // Call the displayData function to update the HTML with the received data

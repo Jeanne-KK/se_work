@@ -158,10 +158,11 @@
         
       }
     } 
+    
     $(document).ready(function () {
       
       
-            $.getJSON("/stu_list_all", function (list_all) {
+             $.getJSON("/stu_list_all", function (list_all) {
               $.getJSON("/stu_list", function (list) {
                 // Call the displayData function to update the HTML with the received data
                 showallstudent(list, list_all);

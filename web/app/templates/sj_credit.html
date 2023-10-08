@@ -621,54 +621,28 @@
             var container = document.getElementById("free").innerHTML = data[0]["เสรี"];
         }
         $(document).ready(function () {
-            console.log("{{session['stu']}}"); 
-            if("{{session['type']}}" == '2'){
-                var minobox = document.getElementById("minospan").innerHTML += "{{session['minor']}}";
-
+            //console.log("{{session['stu']}}"); 
+            $.getJSON("/get_info", function(info){
+                var minobox = document.getElementById("minospan").innerHTML += info['minor'];
                 $.getJSON("/all_credit", function (data) { 
-                    showcredit(data, "{{session['plan']}}"); 
-                        $.getJSON("/curri", function (ttt) { 
-                            curri = ttt;
-                            var plan = "";
-                            
-                            plan = "{{session['plan']}}";
-                            var minobox = document.getElementById("minplan").innerHTML += plan;
-
-                            
-                            console.log("AAAAAAAAAAA");
-                                
-                            console.log(curri[0]["เกณฑ์การสำเร็จการศึกษา"][plan]["เกรดเฉลี่ยตลอดหลักสูตร"]); 
-
-                            var tran = document.getElementById("toplan").innerHTML = `(เกณฑ์ผ่าน ${curri[0]["เกณฑ์การสำเร็จการศึกษา"][plan]["เกรดเฉลี่ยตลอดหลักสูตร"].toFixed(2)})`;
-                            var tran = document.getElementById("maplan").innerHTML = `(เกณฑ์ผ่าน ${curri[0]["เกณฑ์การสำเร็จการศึกษา"][plan]['เกรดเฉลี่ยวิชาเอก'].toFixed(2)})`; 
-                            $.getJSON("/data5", function (data) { 
-                                showdata(data, curri[0], plan);
-                            });
-                        });      
-                });
-            }else{
-                $.getJSON("/get_info", function(info){
-                    var minobox = document.getElementById("minospan").innerHTML += info['minor'];
-                    $.getJSON("/all_credit", function (data) { 
-                        showcredit(data, info['study_plan']); 
-                        $.getJSON("/curri", function (ttt) { 
-                            curri = ttt;
-                            var plan = info['study_plan']; 
-                            var minobox = document.getElementById("minplan").innerHTML += plan;
-                            console.log("AAAAAAAAAAA");
+                    showcredit(data, info['study_plan']); 
+                    $.getJSON("/curri", function (ttt) { 
+                        curri = ttt;
+                        var plan = info['study_plan']; 
+                        var minobox = document.getElementById("minplan").innerHTML += plan;
+                        console.log("AAAAAAAAAAA");
                             
                             //console.log(curri[0]["เกณฑ์การสำเร็จการศึกษา"][plan]["เกรดเฉลี่ยตลอดหลักสูตร"]); 
 
-                            var tran = document.getElementById("toplan").innerHTML = `(เกณฑ์ผ่าน ${curri[0]["เกณฑ์การสำเร็จการศึกษา"][plan]["เกรดเฉลี่ยตลอดหลักสูตร"].toFixed(2)})`;
-                            var tran = document.getElementById("maplan").innerHTML = `(เกณฑ์ผ่าน ${curri[0]["เกณฑ์การสำเร็จการศึกษา"][plan]['เกรดเฉลี่ยวิชาเอก'].toFixed(2)})`; 
+                        var tran = document.getElementById("toplan").innerHTML = `(เกณฑ์ผ่าน ${curri[0]["เกณฑ์การสำเร็จการศึกษา"][plan]["เกรดเฉลี่ยตลอดหลักสูตร"].toFixed(2)})`;
+                        var tran = document.getElementById("maplan").innerHTML = `(เกณฑ์ผ่าน ${curri[0]["เกณฑ์การสำเร็จการศึกษา"][plan]['เกรดเฉลี่ยวิชาเอก'].toFixed(2)})`; 
+                        showdata(info['enroll'], curri[0], plan);
                             
-                            $.getJSON("/data5", function (data) { 
-                                showdata(data, curri[0], plan);
-                            });
-                        });      
-                    });
+                            
+                    });      
                 });
-            }
+            });
+                
              
         });
         function ShowPopupMenu() {

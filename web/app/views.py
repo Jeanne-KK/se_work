@@ -65,68 +65,6 @@ def db_connection():
         return "<pre>{}</pre>".format(formatted_data)
     except FileNotFoundError:
         return f'<h1>JSON file not found at {json_file_path}</h1>'
-    
-
-@app.route('/data5')
-def data5():
-    db=""
-    app.logger.debug("AAAAAAAAAAAAAAAAAAAA")
-    try:
-        app.logger.debug("BBBBBBBBBBBBBBBBBBBBB")
-        db = get_db()
-        app.logger.debug(type(session["user"]["_id"]))
-        ch = ''
-        if session['type'] == '2':
-            ch = session['stu']
-        else:
-            ch =session['user']['_id']
-
-        data = db.student.aggregate([
-            {
-                "$match": {
-                "_id":  ch
-                }
-            },
-            {
-                "$unwind": "$enroll"
-            }, 
-            {
-                "$group": {
-                "_id": "null",
-                "subjects": {
-                    "$push": {
-                    "subject_id": "$enroll.subject_id",
-                    "grade": "$enroll.grade",
-                    "credit": "$enroll.credit",
-                    "year": "$enroll.year"
-                    }
-                }
-                }
-            },
-            {
-                "$project": {
-                "_id": 0,
-                "subjects": 1
-                }
-            }
-            ]) 
-        
-        
-        app.logger.debug("****************************")
-        #app.logger.debug(data)
-        app.logger.debug("****************************")
-        data_= []
-        for i in data: 
-            data_ += i["subjects"]
-            app.logger.debug(i["subjects"])
-            
-        return jsonify(data_)
-        
-    except Exception as e:
-        return jsonify({"errors": str(e)}), 500  # Return an error response with a 500 status code
-    finally:
-        if isinstance(db, MongoClient):
-            db.close() 
 
 @app.route('/tadvisee')
 def tadvisee():
@@ -137,48 +75,15 @@ def tadvisee():
         db = get_db()
         app.logger.debug(type(session["user"]["_id"]))
 
-        data = db.student.aggregate([
-            {
-                "$lookup":{
-                    "from": "teacher",
-                    "localField": "_id",
-                    "foreignField": "advisee",
-                    "as": "teacherad"
-                }
-            },
-            {
-                "$match":{
-                    "_id": session['user']['_id']
-                }
-            },
-            {
-                "$project":{
-                    "_id": 0,	
-                    "teacherad": {
-                        "first_name": 1,
-                        "last_name": 1
-                    }
-                }
-            },
-            
-        ]); 
+        data = db.teacher.find_one({"advisee": session['user']['_id']}, {"_id": 0, "first_name": 1, "last_name": 1})
         
-        
-        
-        data_= []
-        for i in data:
-            data_ += i["teacherad"]
-            
-            
-        app.logger.debug("****************************")
-        
-        app.logger.debug("****************************")
-        return jsonify(data_)
+        return jsonify(data)
     except Exception as e:
         return jsonify({"errors": str(e)}), 500  # Return an error response with a 500 status code
     finally:
         if isinstance(db, MongoClient):
             db.close()
+
 
 @app.route('/get_info')
 def get_info():
@@ -187,9 +92,12 @@ def get_info():
     try:
         app.logger.debug("BBBBBBBBBBBBBBBBBBBBB")
         db = get_db()
-        
-
-        data = db.student.find_one({"_id":session['user']['_id']})
+        _id = ''
+        if session['type'] == '2':
+            _id = session['stu']
+        else:
+            _id = session['user']['_id']
+        data = db.student.find_one({"_id": _id})
 
                 
                         
